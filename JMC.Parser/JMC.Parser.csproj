@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JMC.Parser.Command\JMC.Parser.Command.csproj" />
+    <ProjectReference Include="..\JMC.Shared\JMC.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

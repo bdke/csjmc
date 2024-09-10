@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "JMC": {
+      "commandName": "Project"
+    },
+    "ResetDatabase": {
+      "commandName": "Project",
+      "commandLineArgs": "db"
+    }
+  }
+}
