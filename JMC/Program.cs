@@ -1,4 +1,4 @@
-﻿using JMC.Parser.Command.Argument.Helper;
+﻿using JMC.Mcdoc.Parser;
 using JMC.Parser.Command.Datas;
 
 namespace JMC;
@@ -19,8 +19,7 @@ internal class Program
 
     public static void Run()
     {
-        MinecraftDbContext.Init();
-        _ = CommandValueParser.ParseBlock("barrel[facing=down]", out _);
-        _ = CommandValueParser.ParseBlock("barrel[facing=down]", out _);
+        var c = new DocComment();
+        c.Parse("///test\ntest", out var passedPos);
     }
 }
