@@ -8,13 +8,11 @@ internal class Comment : McdocSyntax
         {
             return false;
         }
-        using StringReader reader = new(new(text));
-        int currentChar = reader.Read();
+        char currentChar = text[passedPos];
         passedPos++;
-        while (currentChar is not (-1) and not '\n')
+        while (currentChar != '\n' && passedPos < text.Length)
         {
-            currentChar = reader.Read();
-            passedPos++;
+            currentChar = text[passedPos++];
         }
 
         return true;

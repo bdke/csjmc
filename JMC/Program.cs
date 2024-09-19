@@ -19,7 +19,7 @@ internal class Program
 
     public static void Run()
     {
-        var c = new DocComment();
-        c.Parse("///test\ntest", out var passedPos);
+        var c = new TypedNumber();
+        var result = c.Parse("-456.5b", out var passedPos);
     }
 }

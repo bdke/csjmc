@@ -8,13 +8,11 @@ internal class DocComment : McdocSyntax
         {
             return false;
         }
-        using StringReader reader = new(new(text));
-        int read = reader.Read();
+        char currentChar = text[passedPos];
         passedPos++;
-        while (read > -1 && read != '\n')
+        while (currentChar != '\n' && passedPos < text.Length)
         {
-            read = reader.Read();
-            passedPos++;
+            currentChar = text[passedPos++];
         }
         return true;
     }
