@@ -1,7 +1,6 @@
-﻿namespace JMC.Shared
+﻿namespace JMC.Shared;
+
+public interface IAsyncInitializeClass
 {
-    public interface IAsyncInitializeClass
-    {
-        public static abstract Task InitAsync();
-    }
+    public static abstract Task InitAsync();
 }

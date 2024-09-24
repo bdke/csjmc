@@ -1,8 +1,7 @@
-﻿namespace JMC.Shared
+﻿namespace JMC.Shared;
+
+public abstract class BaseError
 {
-    public abstract class BaseError
-    {
-        protected BaseError(string message) { }
-        public BaseError() { }
-    }
+    protected BaseError(string message) { }
+    public BaseError() { }
 }

@@ -1,7 +1,4 @@
-﻿using JMC.Mcdoc.Parser;
-using JMC.Parser.Command.Datas;
-
-namespace JMC;
+﻿namespace JMC;
 
 internal class Program
 {
@@ -19,7 +16,6 @@ internal class Program
 
     public static void Run()
     {
-        var c = new TypedNumber();
-        var result = c.Parse("-456.5b", out var passedPos);
+
     }
 }

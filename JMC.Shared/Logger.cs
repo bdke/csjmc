@@ -1,6 +1,5 @@
-﻿namespace JMC.Shared
+﻿namespace JMC.Shared;
+
+public class Logger
 {
-    public class Logger
-    {
-    }
 }
