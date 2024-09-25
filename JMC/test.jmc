@@ -1,0 +1,13 @@
+  import "amogus"; // test amogus is sus
+import "amogus2"; # I am not sus
+
+if (test) {
+    test;
+}
+
+function folder_name.function_name() {
+    say "Code example 1";
+    say "Code example 2";
+}
+
+$var += _.3;

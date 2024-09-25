@@ -11,4 +11,10 @@
     <ProjectReference Include="..\JMC.Parser\JMC.Parser.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="test.jmc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

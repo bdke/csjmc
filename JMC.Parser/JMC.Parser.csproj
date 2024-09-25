@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JMC.Core\JMC.Core.csproj" />
+    <ProjectReference Include="..\JMC.Shared\JMC.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
