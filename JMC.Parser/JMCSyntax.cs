@@ -51,6 +51,11 @@ public static class JMCSyntax
             .Next(new Parameters())
             .End()
             .Create();
+
+        _ = builder
+            .Next(new End())
+            .Create();
+
         //TODO: commands
 
         _ = builder.Build();
