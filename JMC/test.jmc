@@ -1,13 +1,21 @@
   import "amogus"; // test amogus is sus
-import "amogus2"; # I am not sus
+import "Amogus2"; # I am not sus
 
 if (test) {
-    test;
+    $var += 3 + (3 - 102) * 8;
+    folder_name.function_name();
 }
 
 function folder_name.function_name() {
-    say "Code example 1";
-    say "Code example 2";
+    $var = 1 + test;
 }
 
-$var += _.3;
+class amogus {
+    function folder_name.function_name() {
+        $var = 1 + test;
+    }
+
+    function folder_name.function_name() {
+        $var = 1 + test;
+    }
+}

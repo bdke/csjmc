@@ -1,4 +1,6 @@
-﻿namespace JMC.Parser.Types;
+﻿using JMC.Parser.Models;
+
+namespace JMC.Parser.Types;
 public class Keyword(string word) : BaseSyntaxType
 {
     public override bool Validate(string text)

@@ -1,5 +1,7 @@
-﻿namespace JMC.Parser.Types;
-public class Parenthesis : BaseSyntaxType
+﻿using JMC.Parser.Models;
+
+namespace JMC.Parser.Types;
+internal class Parameters : BaseSyntaxType
 {
     public override bool Validate(string text)
     {

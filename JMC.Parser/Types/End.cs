@@ -1,4 +1,6 @@
-﻿namespace JMC.Parser.Types;
+﻿using JMC.Parser.Models;
+
+namespace JMC.Parser.Types;
 internal class End : BaseSyntaxType
 {
     public override bool Validate(string text)

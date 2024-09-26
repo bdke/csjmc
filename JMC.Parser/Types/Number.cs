@@ -1,10 +1,10 @@
 ﻿using JMC.Parser.Models;
 
 namespace JMC.Parser.Types;
-public class String : BaseSyntaxType
+public sealed class Number : BaseSyntaxType
 {
     public override bool Validate(string text)
     {
-        return text.StartsWith('"') && text.EndsWith('"');
+        return int.TryParse(text, out _);
     }
 }

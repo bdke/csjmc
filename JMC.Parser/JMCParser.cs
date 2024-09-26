@@ -1,73 +1,136 @@
 ﻿using CommunityToolkit.HighPerformance;
+using JMC.Parser.Errors;
 using JMC.Parser.Helpers;
+using JMC.Parser.Models;
 
 namespace JMC.Parser;
 public sealed class JMCParser : IDisposable
 {
-    private readonly List2D<BaseSyntaxType> registeredSyntaxes = [];
-    public JMCParser(SyntaxBuilder syntaxBuilder)
+    private readonly List2D<BaseSyntaxType> registeredStatements = [];
+    private readonly JMCTokenizer tokenizer;
+
+    public JMCParser(JMCTokenizer tokenizer, SyntaxBuilder syntaxBuilder)
     {
-        registeredSyntaxes.AddRange(syntaxBuilder.BuiltSyntaxes);
+        this.tokenizer = tokenizer;
+        registeredStatements.AddRange(syntaxBuilder.Statements);
     }
 
-    public JMCParser(List2D<BaseSyntaxType> syntaxes)
+    public JMCParser(JMCTokenizer tokenizer, List2D<BaseSyntaxType> syntaxes)
     {
-        registeredSyntaxes.AddRange(syntaxes);
+        this.tokenizer = tokenizer;
+        registeredStatements.AddRange(syntaxes);
     }
 
-    public SyntaxTree Parse(IEnumerable<TokenData> tokenDatas)
+    void IDisposable.Dispose()
     {
+        registeredStatements.Clear();
+    }
+
+    /// <summary>
+    /// Parse the text with the highest <see cref="StatementParseResult.Accuracy"/>
+    /// </summary>
+    /// <param name="errors"></param>
+    /// <returns></returns>
+    public SyntaxTree Parse(out List<SyntaxError> errors)
+    {
+        var tokenDatas = tokenizer.Tokenize();
+        errors = [];
         SyntaxTree tree = [];
+        tokenDatas = tokenDatas.Where(v => !v.Value.StartsWith("//") && !v.Value.StartsWith('#'));
+        Span<TokenData> tokenDataSpan = tokenDatas.ToArray().AsSpan();
 
-        Span<TokenData> dataSpan = tokenDatas.ToArray().AsSpan();
-
-        for (int i = 0; i < dataSpan.Length; i++)
+        for (int offset = 0; offset < tokenDataSpan.Length; offset++)
         {
-            ref TokenData data = ref dataSpan[i];
+            ref TokenData data = ref tokenDataSpan[offset];
             string value = data.Value;
-            Span2D<BaseSyntaxType> searchResult = registeredSyntaxes
+            Span2D<BaseSyntaxType> firstSyntaxMatchedStatements = registeredStatements
                 .Where(v => v[0].Validate(value))
                 .ToList()
                 .AsSpan2D();
+            if (firstSyntaxMatchedStatements.IsEmpty)
+            {
+                errors.Add(new(tokenizer.ToPosition(data), "Unknown OpCode"));
+                continue;
+            }
 
-            int currentIndex = i;
-            bool match = true;
-            for (int y = 0; y < searchResult.Height; y++)
+            var statementParseResults = ParseSearchedResults(offset, firstSyntaxMatchedStatements, tokenDataSpan);
+
+            if (statementParseResults.Any(v => v.IsAllMatch))
             {
-                var valids = new List<TokenData>();
-                for (int x = 0; x < searchResult.Width; x++)
+                StatementParseResult firstMatchedStatement = Array.Find(statementParseResults, v => v.IsAllMatch);
+                offset += firstMatchedStatement.IndividualResults.Length - 1;
+                var unused = tree.AddFromStatement(firstMatchedStatement);
+                continue;
+            }
+            //add most accurate syntax instead
+            StatementParseResult mostAccurateStatement = statementParseResults.MaxBy(v => v.Accuracy);
+            var results = mostAccurateStatement.IndividualResults.AsSpan();
+            int accurateSyntaxes = 0;
+            for (; accurateSyntaxes < results.Length; accurateSyntaxes++)
+            {
+                ref var result = ref results[accurateSyntaxes];
+                if (!result.IsMatch)
                 {
-                    ref BaseSyntaxType syntax = ref searchResult[y, x];
-                    ref TokenData currentData = ref dataSpan[i];
-                    i++;
-                    if (!syntax.Validate(currentData.Value))
+                    if (result.SyntaxType != null)
                     {
-                        //TODO: Syntax error
-                        match = false;
-                        break;
+                        errors.Add(new(tokenizer.ToPosition(result.TokenData), $"Expect {result.SyntaxType.GetType().Name}"));
                     }
-                    valids.Add(currentData);
+                    break;
                 }
-                var nodes = valids.Select(v => new SyntaxNode(v));
-                var root = nodes.ElementAt(0);
-                var children = nodes.Skip(1);
-                root.AddRange(children);
-                tree.Add(root);
-                i--;
-                valids.Clear();
-                i = currentIndex;
             }
-            if (!match)
-            {
-                i++;
-            }
+            offset += accurateSyntaxes - 1;
+            tree.AddFromStatement(mostAccurateStatement);
         }
 
         return tree;
     }
 
-    void IDisposable.Dispose()
+    private static StatementParseResult[] ParseSearchedResults(int pOffset, Span2D<BaseSyntaxType> searchResult, Span<TokenData> dataSpan)
     {
-        registeredSyntaxes.Clear();
+        var offset = pOffset;
+        StatementParseResult[] statementParseResults = new StatementParseResult[searchResult.Height];
+        
+        for (int h = 0; h < searchResult.Height; h++)
+        {
+            StatementParseResult currentStatement = new()
+            {
+                IndividualResults = new SyntaxParseResult[searchResult.Width],
+            };
+            for (int w = 0; w < searchResult.Width; w++)
+            {
+                ref BaseSyntaxType syntax = ref searchResult[h, w];
+                if (syntax == null)
+                {
+                    currentStatement.IndividualResults[w] = SyntaxParseResult.VALID_EXCCEED;
+                    continue;
+                }
+                else if (offset >= dataSpan.Length)
+                {
+                    currentStatement.IndividualResults[w] = SyntaxParseResult.INVALID;
+                    continue;
+                }
+                ref TokenData currentData = ref dataSpan[offset];
+                offset++;
+                if (!syntax.Validate(currentData.Value))
+                {
+                    currentStatement.IndividualResults[w] = new()
+                    {
+                        IsMatch = false,
+                        TokenData = currentData,
+                        SyntaxType = syntax,
+                    };
+                    continue;
+                }
+                currentStatement.IndividualResults[w] = new()
+                {
+                    IsMatch = true,
+                    TokenData = currentData,
+                    SyntaxType = syntax,
+                };
+            }
+            statementParseResults[h] = currentStatement;
+            offset = pOffset;
+        }
+        return statementParseResults;
     }
 }

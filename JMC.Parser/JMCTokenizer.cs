@@ -1,10 +1,18 @@
-﻿namespace JMC.Parser;
-public sealed class JMCTokenizer(string rawText)
+﻿using JMC.Parser.Helpers;
+using JMC.Parser.Models;
+using JMC.Parser.Types;
+using OmniSharp.Extensions.LanguageServer.Protocol.Models;
+
+namespace JMC.Parser;
+public class JMCTokenizer(string rawText, int startOffset = 0)
 {
+    public int StartOffset => startOffset;
+    public string RawText => rawText;
     private int currentOffset = 0;
     private char CurrentChar => rawText[currentOffset];
     private char NextChar => rawText[currentOffset + 1];
-    public IEnumerable<TokenData> Tokenize()
+    private bool isValueOperation = false;
+    public virtual IEnumerable<TokenData> Tokenize()
     {
         List<TokenData> l = [];
         string? v;
@@ -15,10 +23,20 @@ public sealed class JMCTokenizer(string rawText)
             {
                 break;
             }
+            else if (v == string.Empty)
+            {
+                currentOffset++;
+                continue;
+            }
 
-            l.Add(new(currentOffset - v.Length, v));
+            l.Add(new(currentOffset - v.Length + startOffset, v));
         } while (v != null);
         return l;
+    }
+
+    public Position ToPosition(TokenData token)
+    {
+        return rawText.ToPosition(token.Offset - startOffset);
     }
 
     private string? ReadStatement()
@@ -28,26 +46,34 @@ public sealed class JMCTokenizer(string rawText)
         {
             return null;
         }
-        else
+        else if (isValueOperation && !Operator.VALID_OPERATORS.Contains(CurrentChar))
         {
-            return CurrentChar switch
-            {
-                '"' => ReadString(),
-                '{' => ReadPair('{', '}'),
-                '[' => ReadPair('[', ']'),
-                '(' => ReadPair('(', ')'),
-                '/' when rawText[currentOffset + 1] == '/' => ReadComment(),
-                '#' => ReadMCComment(),
-                ';' or '=' or '+' or '-' or '*' or '/' or '%' or '<' or '>' or '?' or '|' or '&' or '$' => ReadSingle(),
-                _ => ReadWord(),
-            };
+            return ReadUntil(';');
         }
+        else if (CurrentChar == '/' && NextChar == '/')
+        {
+            return ReadComment();
+        }
+        else if (Operator.VALID_OPERATORS.Contains(CurrentChar))
+        {
+            return ReadOperator();
+        }
+        return CurrentChar switch
+        {
+            '"' => ReadString(),
+            '{' => ReadPair('{', '}'),
+            '[' => ReadPair('[', ']'),
+            '(' => ReadPair('(', ')'),
+            '#' => ReadMCComment(),
+            ';' or '|' or '&' => ReadSingle(),
+            _ => ReadWord(),
+        };
     }
 
     private string ReadMCComment()
     {
-        var value = string.Empty;
-        
+        string value = string.Empty;
+
         while (currentOffset < rawText.Length && !IsCurrentOffsetNewLine())
         {
             value += CurrentChar;
@@ -58,7 +84,7 @@ public sealed class JMCTokenizer(string rawText)
 
     private string ReadComment()
     {
-        var value = "/";
+        string value = "/";
         currentOffset++;
 
         while (currentOffset < rawText.Length && !IsCurrentOffsetNewLine())
@@ -71,7 +97,15 @@ public sealed class JMCTokenizer(string rawText)
 
     private string ReadSingle()
     {
-        var value = CurrentChar.ToString();
+        string value = CurrentChar.ToString();
+        currentOffset++;
+        return value;
+    }
+
+    private string ReadOperator()
+    {
+        isValueOperation = true;
+        string value = CurrentChar.ToString();
         currentOffset++;
         return value;
     }
@@ -79,14 +113,19 @@ public sealed class JMCTokenizer(string rawText)
     private string ReadPair(char start, char end)
     {
         string value = start.ToString();
-        var bracketCount = 1;
+        int bracketCount = 1;
         while (currentOffset < rawText.Length && bracketCount != 0)
         {
             currentOffset++;
             if (CurrentChar == start)
+            {
                 bracketCount++;
+            }
             else if (CurrentChar == end)
+            {
                 bracketCount--;
+            }
+
             value += CurrentChar;
         }
         currentOffset++;
@@ -115,28 +154,40 @@ public sealed class JMCTokenizer(string rawText)
     private string ReadWord()
     {
         string value = string.Empty;
-        while (currentOffset < rawText.Length && !char.IsWhiteSpace(CurrentChar) && (char.IsLetterOrDigit(CurrentChar) || CurrentChar is '_' or '.'))
+        if (CurrentChar == '$')
         {
-            value += CurrentChar;
+            value += '$';
             currentOffset++;
         }
-        if (currentOffset < rawText.Length - 1 && CurrentChar is not '(' && !char.IsLetter(CurrentChar))
+
+        while (currentOffset < rawText.Length
+            && !char.IsWhiteSpace(CurrentChar)
+            && (char.IsLetterOrDigit(CurrentChar) || CurrentChar is '_' or '.'))
         {
+            value += CurrentChar;
             currentOffset++;
         }
 
         return value;
     }
 
+    private string ReadUntil(char c)
+    {
+        string value = string.Empty;
+        while (currentOffset < rawText.Length && CurrentChar != c)
+        {
+            value += CurrentChar;
+            currentOffset++;
+        }
+        isValueOperation = false;
+        return value;
+    }
+
     private bool IsCurrentOffsetNewLine()
     {
-        var newLine = Environment.NewLine;
-        if (currentOffset + 1 >= rawText.Length)
-            return false;
-        if (newLine.Length == 2)
-            return $"{CurrentChar}{NextChar}" == newLine;
-        else
-            return CurrentChar.ToString() == newLine;
+        string newLine = Environment.NewLine;
+        return currentOffset + 1 < rawText.Length
+&& (newLine.Length == 2 ? $"{CurrentChar}{NextChar}" == newLine : CurrentChar.ToString() == newLine);
     }
 
     private void SkipWhiteSpace()
