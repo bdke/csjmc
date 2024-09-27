@@ -3,7 +3,7 @@
 namespace JMC.Parser;
 public static class JMCSyntax
 {
-    private readonly static SyntaxBuilder builder = new();
+    private static readonly SyntaxBuilder builder = new();
     public static SyntaxBuilder GetCoreBuilder()
     {
         _ = builder
@@ -47,10 +47,24 @@ public static class JMCSyntax
             .Create();
 
         _ = builder
+            .Next(new Number())
+            .Next(new Operator())
+            .Next(new ValueOperation())
+            .Create();
+
+        _ = builder
+            .Next(new Condition())
+            .Next(new Operator())
+            .Next(new ValueOperation())
+            .Create();
+
+        _ = builder
             .Next(new Word())
             .Next(new Parameters())
             .End()
             .Create();
+
+        builder.Next(new Number()).Create();
 
         _ = builder
             .Next(new End())
@@ -59,6 +73,12 @@ public static class JMCSyntax
         //TODO: commands
 
         _ = builder.Build();
+        return builder;
+    }
+    public static SyntaxBuilder GetValueOperationBuilder()
+    {
+        SyntaxBuilder builder = new();
+
         return builder;
     }
 }

@@ -8,9 +8,9 @@ public class JMCTokenizer(string rawText, int startOffset = 0)
 {
     public int StartOffset => startOffset;
     public string RawText => rawText;
-    private int currentOffset = 0;
-    private char CurrentChar => rawText[currentOffset];
-    private char NextChar => rawText[currentOffset + 1];
+    protected int currentOffset = 0;
+    protected char CurrentChar => rawText[currentOffset];
+    protected char NextChar => rawText[currentOffset + 1];
     private bool isValueOperation = false;
     public virtual IEnumerable<TokenData> Tokenize()
     {

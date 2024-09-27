@@ -4,10 +4,10 @@ using JMC.Parser.Helpers;
 using JMC.Parser.Models;
 
 namespace JMC.Parser;
-public sealed class JMCParser : IDisposable
+public class JMCParser : IDisposable
 {
-    private readonly List2D<BaseSyntaxType> registeredStatements = [];
-    private readonly JMCTokenizer tokenizer;
+    protected readonly List2D<BaseSyntaxType> registeredStatements = [];
+    protected readonly JMCTokenizer tokenizer;
 
     public JMCParser(JMCTokenizer tokenizer, SyntaxBuilder syntaxBuilder)
     {
@@ -31,9 +31,9 @@ public sealed class JMCParser : IDisposable
     /// </summary>
     /// <param name="errors"></param>
     /// <returns></returns>
-    public SyntaxTree Parse(out List<SyntaxError> errors)
+    public virtual SyntaxTree Parse(out List<SyntaxError> errors)
     {
-        var tokenDatas = tokenizer.Tokenize();
+        IEnumerable<TokenData> tokenDatas = tokenizer.Tokenize();
         errors = [];
         SyntaxTree tree = [];
         tokenDatas = tokenDatas.Where(v => !v.Value.StartsWith("//") && !v.Value.StartsWith('#'));
@@ -53,33 +53,34 @@ public sealed class JMCParser : IDisposable
                 continue;
             }
 
-            var statementParseResults = ParseSearchedResults(offset, firstSyntaxMatchedStatements, tokenDataSpan);
+            StatementParseResult[] statementParseResults = ParseSearchedResults(offset, firstSyntaxMatchedStatements, tokenDataSpan);
 
             if (statementParseResults.Any(v => v.IsAllMatch))
             {
                 StatementParseResult firstMatchedStatement = Array.Find(statementParseResults, v => v.IsAllMatch);
                 offset += firstMatchedStatement.IndividualResults.Length - 1;
-                var unused = tree.AddFromStatement(firstMatchedStatement);
+                SyntaxNode unused = tree.AddFromStatement(firstMatchedStatement);
                 continue;
             }
             //add most accurate syntax instead
             StatementParseResult mostAccurateStatement = statementParseResults.MaxBy(v => v.Accuracy);
-            var results = mostAccurateStatement.IndividualResults.AsSpan();
+            Span<SyntaxParseResult> results = mostAccurateStatement.IndividualResults.AsSpan();
             int accurateSyntaxes = 0;
             for (; accurateSyntaxes < results.Length; accurateSyntaxes++)
             {
-                ref var result = ref results[accurateSyntaxes];
-                if (!result.IsMatch)
+                ref SyntaxParseResult result = ref results[accurateSyntaxes];
+                if (!result.IsMatch && result.SyntaxType != null)
                 {
-                    if (result.SyntaxType != null)
-                    {
-                        errors.Add(new(tokenizer.ToPosition(result.TokenData), $"Expect {result.SyntaxType.GetType().Name}"));
-                    }
+                    errors.Add(new(tokenizer.ToPosition(result.TokenData), $"Expect {result.SyntaxType.GetType().Name}"));
+                    break;
+                }
+                else if (!result.IsMatch)
+                {
                     break;
                 }
             }
             offset += accurateSyntaxes - 1;
-            tree.AddFromStatement(mostAccurateStatement);
+            var unused1 = tree.AddFromStatement(mostAccurateStatement);
         }
 
         return tree;
@@ -87,9 +88,9 @@ public sealed class JMCParser : IDisposable
 
     private static StatementParseResult[] ParseSearchedResults(int pOffset, Span2D<BaseSyntaxType> searchResult, Span<TokenData> dataSpan)
     {
-        var offset = pOffset;
+        int offset = pOffset;
         StatementParseResult[] statementParseResults = new StatementParseResult[searchResult.Height];
-        
+
         for (int h = 0; h < searchResult.Height; h++)
         {
             StatementParseResult currentStatement = new()

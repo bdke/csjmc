@@ -35,4 +35,12 @@ public class SyntaxTree : List<SyntaxNode>
         Add(root);
         return root;
     }
+
+    public void ExpandAll()
+    {
+        foreach (SyntaxNode node in this)
+        {
+            node.TryExpand();
+        }
+    }
 }
