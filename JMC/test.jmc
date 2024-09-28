@@ -1,21 +1,41 @@
-  import "amogus"; // test amogus is sus
-import "Amogus2"; # I am not sus
-
-if (test) {
-    $var += 3 + (3 - 102) * 8;
-    folder_name.function_name();
-}
-
-function folder_name.function_name() {
-    $var = 1 + test;
-}
-
-class amogus {
-    function folder_name.function_name() {
-        $var = 1 + test;
-    }
-
-    function folder_name.function_name() {
-        $var = 1 + test;
-    }
+function create_test() {
+  execute summon husk run {
+    health:@s = 150;
+    health.max:@s = 150;
+    regen:@s = 1;
+    resist.fire:@s = 1;
+    damage.bullet:@s = 50;
+    // loosen.effect.bleed:@s = true;
+    crit.chance:@s = 5;
+    crit.increase:@s = 20;
+    
+    @s:: += {
+      Silent: 1b,
+      Tags: ["test", "fot.custom"],
+      DeathLootTable:"brbr",
+      IsBaby: 0b,
+      HandItems:[
+      {
+        id:"minecraft:stone_hoe",
+        count:1b,
+        components:{
+          "custom_data":{
+            fot:{
+              damage:{
+                min:20,
+                max:20,
+                type:"physical"
+              },
+              effect:{
+                type:"stun",
+                chance:50
+              }
+            }
+          }
+        } 
+      },{}]
+    };
+    
+    attribute @s minecraft:generic.movement_speed base set 0.0;
+  } 
 }
