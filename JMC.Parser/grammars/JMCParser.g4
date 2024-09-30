@@ -15,7 +15,7 @@ functionBlock: FUNCTION IDENTIFIER PAREN_START expression* PAREN_END block;
 block: BLOCK_START line* BLOCK_END;
 
 attrbinbuteAssign: SELECTOR IMPLY assign attributeJson ;
-attributeJson: obj ;
+attributeJson: jsonObj ;
 
 import_: IMPORT STRING END;
 assignment: (VARIABLE_IDENTIFIER | scoreboardTarget) (SIMPLE_ADDICTIVE | (assign expression));
@@ -56,21 +56,15 @@ listElems: listElem (SEP listElem)* ;
 listElem: constant | IDENTIFIER | list;
 
 //json parser
-obj
-    : BLOCK_START pair (SEP pair)* BLOCK_END
-    | BLOCK_START BLOCK_END
-    ;
-pair
-    : (COMMANDS | IDENTIFIER | STRING) COLON value
-    ;
-arr
-    : LIST_START value (SEP value)* LIST_END
-    | LIST_START LIST_END
-    ;
-value
+jsonObj: BLOCK_START jsonObjPairs? BLOCK_END ;
+jsonObjPairs: jsonPair (SEP jsonPair)* ;
+jsonPair: (COMMANDS | IDENTIFIER | STRING) COLON jsonValue ;
+jsonList: LIST_START jsonElems? LIST_END;
+jsonElems: jsonValue (SEP jsonValue)* ;
+jsonValue
     : STRING
     | INTEGER
     | INT_VALUE
-    | obj
-    | arr
+    | jsonObj
+    | jsonList
     ;
