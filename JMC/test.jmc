@@ -1,41 +1,178 @@
-function create_test() {
-  execute summon husk run {
-    health:@s = 150;
-    health.max:@s = 150;
-    regen:@s = 1;
-    resist.fire:@s = 1;
-    damage.bullet:@s = 50;
-    // loosen.effect.bleed:@s = true;
-    crit.chance:@s = 5;
-    crit.increase:@s = 20;
-    
-    @s:: += {
-      Silent: 1b,
-      Tags: ["test", "fot.custom"],
-      DeathLootTable:"brbr",
-      IsBaby: 0b,
-      HandItems:[
-      {
-        id:"minecraft:stone_hoe",
-        count:1b,
-        components:{
-          "custom_data":{
-            fot:{
-              damage:{
-                min:20,
-                max:20,
-                type:"physical"
-              },
-              effect:{
-                type:"stun",
-                chance:50
+new advancement(medallion.on_click) {
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "components": {
+            "minecraft:food": {
+              "nutrition": 0,
+              "saturation": 0,
+              "can_always_eat": true,
+              "eat_seconds": 1000000
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "fot:medallion/on_click"
+  }
+}
+
+Hardcode.repeat(
+  "[i]", ()=>{
+    new advancement(medallion.spell_choice[i]) {
+      "criteria": {
+        "requirement": {
+          "trigger": "minecraft:using_item",
+          "conditions": {
+            "item": {
+              "components": {
+                "minecraft:food": {
+                  "nutrition": 0,
+                  "saturation": 0,
+                  "can_always_eat": true,
+                  "eat_seconds": 100000[i]
+                }
               }
             }
           }
-        } 
-      },{}]
-    };
-    
-    attribute @s minecraft:generic.movement_speed base set 0.0;
-  } 
+        }
+      },
+      "rewards": {
+        "function": "fot:medallion/spell_choice[i]"
+      }
+    }
+  },
+  start=1, stop=5
+);
+
+new loot_table(minecraft.blocks.yellow_shulker_box) {
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:yellow_shulker_box",
+          "functions": [
+            {
+              "function": "minecraft:copy_components",
+              "source": "block_entity",
+              "include": [
+                "minecraft:custom_name",
+                "minecraft:container",
+                "minecraft:lock",
+                "minecraft:container_loot"
+              ]
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "predicates": {
+                "minecraft:custom_data": {
+                  "drop_contents": 1
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:dynamic",
+          "name": "minecraft:contents"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "predicates": {
+              "minecraft:custom_data": {
+                "drop_contents": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:blocks/yellow_shulker_box",
+  "__smithed__": {
+    "priority": {
+      "stage": "early"
+    },
+    "rules": [
+      {
+        "type": "append",
+        "target": "pools[0].conditions",
+        "source": {
+          "type": "reference",
+          "path": "pools[0].conditions[0]"
+        }
+      },
+      {
+        "type": "append",
+        "target": "pools",
+        "source": {
+          "type": "reference",
+          "path": "pools[1]"
+        }
+      }
+    ]
+  }
+}
+
+new loot_table(medallion) {
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:food": {
+                  "nutrition": 0,
+                  "saturation": 0,
+                  "can_always_eat": true,
+                  "eat_seconds": 1000000
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+new predicate(stepping_on_air) {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "stepping_on": {
+      "block": {
+        "blocks": "minecraft:air"
+      }
+    }
+  }
 }

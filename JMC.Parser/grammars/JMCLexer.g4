@@ -26,6 +26,7 @@ FUNCTION: 'function';
 WHILE: 'while';
 IF: 'if';
 ELSE: 'else';
+NEW: 'new';
 END: ';' ;
 SEP: ',';
 NOT: '!';
@@ -39,8 +40,8 @@ COMMANDS:
 'setworldspawn' | 'spawnpoint' | 'spectate' | 'spreadplayers' | 'stop' | 'stopsound' | 'summon' | 'tag' | 'team' | 'teammsg' | 'teleport' | 'tell' | 'tellraw' | 'tick' | 
 'time' | 'title' | 'tm' | 'tp' | 'trigger' | 'w' | 'weather' | 'whitelist' | 'worldborder' | 'xp');
 
-INTEGER: [1-9][0-9]*;
-INT_VALUE: [0-9]+ 'b' ;
+JSON_INT: INTEGER 'b'?;
+INTEGER: [1-9][0-9]* | '0';
 FLOAT: [0-9]+ '.' [0-9]+;
 STRING: ('"' ~[\r\n"]* '"') | ('\'' ~[\r\n']* '\'');
 BOOL: 'true' | 'false';

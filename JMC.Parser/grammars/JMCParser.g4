@@ -5,7 +5,7 @@ options {
 }
 
 program: line* EOF;
-line: ifBlock | whileBlock | functionBlock | import_ | COMMENT | statement;
+line: ifBlock | whileBlock | functionBlock | import_ | COMMENT | statement | newJsonFile;
 statement: ((functionCall| attrbinbuteAssign | assignment) END) | command ;
 
 ifBlock: IF PAREN_START expression PAREN_END block (ELSE elseIfBlock)?;
@@ -20,13 +20,25 @@ attributeJson: jsonObj ;
 import_: IMPORT STRING END;
 assignment: (VARIABLE_IDENTIFIER | scoreboardTarget) (SIMPLE_ADDICTIVE | (assign expression));
 
-functionCall: IDENTIFIER PAREN_START funcArgs? PAREN_END;
-funcArgs: (expArgs (SEP specifiedArgs)?) | specifiedArgs;
-expArgs: expression (SEP expression)*;
+functionCall locals [
+	string funcName = "", 
+    string arg = ""
+]: IDENTIFIER {
+    $functionCall::funcName = $IDENTIFIER.text;
+} PAREN_START funcArgs? PAREN_END;
+funcArgs: ((expArgs (SEP specifiedArgs)?) | specifiedArgs) ;
+expArgs: arg1=expArg { 
+    if ($functionCall::funcName is "Hardcode.repeat" or "Hardcode.repeatList") {
+        $functionCall::arg = $arg1.text[1..^1];
+    }
+} (SEP expArg)* ;
+expArg: expression ;
 specifiedArgs: specifiedArg (SEP specifiedArg)* ;
 specifiedArg: IDENTIFIER ASSIGN expression ;
 
 command: (COMMANDS ~(END | RUN)+) (commandExtend | END);
+
+newJsonFile: NEW (IDENTIFIER | COMMANDS) PAREN_START IDENTIFIER PAREN_END (jsonObj | jsonList);
 
 expression
     : list #ListExression
@@ -42,7 +54,7 @@ expression
     | expression COMPARASION expression #ComparisonExpression
 ;
 
-constant: INTEGER | FLOAT | STRING | BOOL | NULL;
+constant: INTEGER | FLOAT | STRING | BOOL | NULL ;
 assign: ASSIGN_OPERATORS | ASSIGN | COMPARATOR ;
 
 scoreboardTarget: IDENTIFIER COLON SELECTOR;
@@ -63,8 +75,8 @@ jsonList: LIST_START jsonElems? LIST_END;
 jsonElems: jsonValue (SEP jsonValue)* ;
 jsonValue
     : STRING
-    | INTEGER
-    | INT_VALUE
+    | BOOL
+    | JSON_INT
     | jsonObj
     | jsonList
     ;
