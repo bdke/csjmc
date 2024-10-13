@@ -5,16 +5,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <Content Include="grammars/JMCParser.g4" />
         <Content Include="grammars/JMCLexer.g4" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Antlr4"
-                          Version="4.6.6">
+        <PackageReference Include="Antlr4" Version="4.6.6">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Antlr4.Runtime"
-                          Version="4.6.6" />
+        <PackageReference Include="Antlr4.Runtime" Version="4.6.6" />
     </ItemGroup>
 </Project>
