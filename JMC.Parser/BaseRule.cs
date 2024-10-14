@@ -6,5 +6,5 @@ public abstract class BaseRule(string ruleName)
 {
     public string RuleName => ruleName;
     //TODO: tokenstream
-    public abstract IEnumerable<SyntaxNode> Parse(ref List<SyntaxError> errors);
+    public abstract IEnumerable<SyntaxNode> Parse(ref TokenStream stream ,ref List<SyntaxError> errors);
 }
