@@ -1,12 +1,16 @@
 ﻿using Antlr4.Runtime;
+using JMC.Parser.grammars;
 
 namespace JMC.Parser;
 
-public sealed class TokenStream(IEnumerable<IToken> tokens)
+public sealed class TokenStream(JMCLexer lexer)
 {
-    private readonly IEnumerable<IToken> tokens = tokens;
+    private readonly IEnumerable<IToken> tokens = lexer.GetAllTokens();
     private int cursor = 0;
     public int Cursor => cursor;
+    public IVocabulary Vocabs => lexer.Vocabulary;
+
+    public string GetDisplayName(int tokenType) => Vocabs.GetDisplayName(tokenType);
 
     public IToken Read()
     {

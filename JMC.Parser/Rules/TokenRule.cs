@@ -8,7 +8,7 @@ public sealed class TokenRule(int tokenType) : BaseRule("Token")
         var token = stream.Read();
         if (token.Type != tokenType)
         {
-            errors.Add(new(false, token.TokenIndex.ToString(), token.Line - 1, token.Column));
+            errors.Add(new(false, stream.GetDisplayName(token.Type), token.Line - 1, token.Column));
         }
         return [new SyntaxNode(this)];
     }
