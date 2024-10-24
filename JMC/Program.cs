@@ -9,28 +9,22 @@ internal class Program
     private static int Main(string[] args)
     {
         var text = File.ReadAllText("test.jmc");
-        var lexerBuiltResult = LexerBuilder.BuildLexer<TokenType>();
-        if (lexerBuiltResult.IsError)
+        var lexerBuilder = LexerBuilder.BuildLexer<TokenType>();
+        if (lexerBuilder.IsError)
         {
-            var errors = lexerBuiltResult.Errors;
-            errors.ForEach((e) => Console.WriteLine(e.Message));
+            lexerBuilder.Errors.ForEach(Console.WriteLine);
             return 1;
         }
-        var lexer = lexerBuiltResult.Result;
-        
-        var parserBuilder = new ParserBuilder<TokenType, JMCToken>();
-        var parserBuiltResult = parserBuilder.BuildParser(new JMCParser(), ParserType.EBNF_LL_RECURSIVE_DESCENT, "program", ParserBuilderAction, lexer.LexerPostProcess);
-        if (parserBuiltResult.IsError)
+        var lexer = lexerBuilder.Result;
+        var tokenizeResult = lexer.Tokenize(text);
+        if (tokenizeResult.IsError)
         {
-            var errors = parserBuiltResult.Errors;
-            errors.ForEach((e) => Console.WriteLine(e.Message));
+            Console.WriteLine(tokenizeResult.Error);
             return 1;
         }
-        var parser = parserBuiltResult.Result;
-        return 0;
-    }
+        var tokens = tokenizeResult.Tokens;
+        var parser = new JMCParser(tokens, JMCRuleBuilder.DefaultRules);
 
-    private static void ParserBuilderAction(TokenType tokenType, LexemeAttribute attr, GenericLexer<TokenType> lexer)
-    {
+        return 0;
     }
 }

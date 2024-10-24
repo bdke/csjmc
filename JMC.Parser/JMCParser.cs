@@ -1,21 +1,23 @@
 ﻿using sly.lexer;
-using sly.parser.generator;
+using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 
 namespace JMC.Parser;
 
-public sealed class JMCParser
+public sealed class JMCParser(TokenChannels<TokenType> tokenChannels, ImmutableArray<IJMCRule> rules)
 {
-    [Production("program: line*")]
-    public JMCToken ParseProgram(List<JMCToken> tokens)
-    {
-        return default;
-    }
+    private readonly ReadOnlyMemory<Token<TokenType>> _mainTokens = new([.. tokenChannels.GetChannel(0).Tokens]);
+    private readonly ReadOnlyMemory<IJMCRule> _rules = rules.AsMemory();
 
-    [Prefix()]
-
-    [Production("number: [Int | Float]")]
-    public JMCToken PaseNumber(Token<TokenType> token)
+    private int pointer = 0;
+    private readonly JMCToken _rootToken = new()
     {
-        return new(token.TokenID, token.IntValue, token.Position.ToPosition());
+        RuleType = RuleType.Root,
+        Position = new(0, 0)
+    };
+
+    public void Parse()
+    {
+        var statements = 
     }
 }

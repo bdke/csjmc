@@ -1,8 +1,11 @@
 ﻿using sly.lexer;
 
 namespace JMC.Parser;
+
 public enum TokenType
 {
+    EOF = 0,
+
     #region Sugar
     [SingleLineComment("//")]
     Comment,
@@ -61,21 +64,23 @@ public enum TokenType
     [Sugar("(")]
     ParenStart,
     [Sugar(")")]
-    PareenEnd,
+    ParenEnd,
     [Sugar(":")]
     Colon,
     [Sugar("::")]
     Imply,
-    [Sugar("@[parse]")]
-    Selector,
     [Sugar(",")]
-    Separator,
+    Comma,
     [Sugar(";")]
     End,
     [Sugar("!")]
     Not,
     [Sugar("$")]
-    Variable,
+    DollarSign,
+    [Sugar("@")]
+    SelectorStart,
+    [Sugar(".")]
+    Concat,
     #endregion
 
     #region Keywords
@@ -108,10 +113,10 @@ public enum TokenType
     [Int]
     Int,
     [Double]
-    Float,
+    Double,
     [String]
     [String("'")]
     String,
     [AlphaNumDashId]
-    Identifier
+    Identifier,
 }

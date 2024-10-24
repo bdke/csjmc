@@ -1,9 +1,13 @@
-﻿namespace JMC.Parser;
-public struct JMCToken(TokenType tokenType, object value, Position position)
+﻿using System.Collections.Immutable;
+
+namespace JMC.Parser;
+public struct JMCToken()
 {
-    public TokenType TokenType { get; set; } = tokenType;
-    public object Value { get; set; } = value;
-    public Position Position { get; set; } = position;
+    public required RuleType RuleType { get; set; }
+    public object? Value { get; set; } = null;
+    public required Position Position { get; set; }
+    public ImmutableArray<JMCToken> SubRules { get; set; } = [];
+    public TokenType? TokenType { get; set; } = null;
 }
 
 public struct Position(int line, int column)
