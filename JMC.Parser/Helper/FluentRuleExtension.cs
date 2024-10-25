@@ -1,4 +1,6 @@
-﻿namespace JMC.Parser;
+﻿using JMC.Parser.Rules;
+
+namespace JMC.Parser.Helper;
 internal static class FluentRuleExtension
 {
     public static JMCORule Or(this IJMCRule rule, params IJMCRule[] rules)

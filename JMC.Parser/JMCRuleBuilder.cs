@@ -1,4 +1,6 @@
-﻿using System.Collections.Immutable;
+﻿using JMC.Parser.Helper;
+using JMC.Parser.Rules;
+using System.Collections.Immutable;
 
 namespace JMC.Parser;
 public sealed class JMCRuleBuilder
@@ -6,9 +8,9 @@ public sealed class JMCRuleBuilder
     private List<IJMCRule> _currentRuleConditiion = [];
     private RuleType? currentType = null;
     private RuleChannel channel = RuleChannel.None;
-    private readonly List<IJMCRule> _builtRules = [];
+    private readonly List<JMCRule> _builtRules = [];
 
-    public static ImmutableArray<IJMCRule> DefaultRules { get; } = CreateDefaultBuilder().Build();
+    public static ImmutableArray<JMCRule> DefaultRules { get; } = CreateDefaultBuilder().Build();
 
     /// <summary>
     /// 
@@ -147,9 +149,9 @@ public sealed class JMCRuleBuilder
     /// <returns></returns>
     /// <exception cref="InvalidOperationException"></exception>
     /// <exception cref="NullReferenceException"></exception>
-    public IJMCRule Create(string name)
+    public JMCRule Create(string name)
     {
-        if (_builtRules.Any(v => v is JMCRule rule && rule.Name == name))
+        if (_builtRules.Any(v => v.Name == name))
         {
             throw new InvalidOperationException($"'{name}' already exists");
         }
@@ -169,7 +171,7 @@ public sealed class JMCRuleBuilder
     /// Build to get all rules
     /// </summary>
     /// <returns></returns>
-    public ImmutableArray<IJMCRule> Build()
+    public ImmutableArray<JMCRule> Build()
     {
         return [.. _builtRules];
     }

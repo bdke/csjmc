@@ -1,6 +1,6 @@
 ﻿using sly.lexer;
 
-namespace JMC.Parser;
+namespace JMC.Parser.Helper;
 public static class TokenHelper
 {
     public static Position ToPosition(this LexerPosition lexerPosition)
@@ -35,6 +35,6 @@ public static class TokenHelper
 
     public static void PrintTree(this JMCToken token)
     {
-        PrintTree(token, string.Empty, false);
+        token.PrintTree(string.Empty, false);
     }
 }

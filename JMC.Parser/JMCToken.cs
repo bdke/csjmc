@@ -1,4 +1,6 @@
-﻿using System.Collections.Immutable;
+﻿using JMC.Parser.Rules;
+using sly.lexer;
+using System.Collections.Immutable;
 
 namespace JMC.Parser;
 public struct JMCToken()
@@ -14,4 +16,15 @@ public struct Position(int line, int column)
 {
     public int Line { get; set; } = line;
     public int Column { get; set; } = column;
+
+    public static implicit operator LexerPosition(Position pos)
+    {
+        return new(-1, pos.Line, pos.Column);
+    }
+
+
+    public static implicit operator Position(LexerPosition pos)
+    {
+        return new(pos.Line, pos.Column);
+    }
 }

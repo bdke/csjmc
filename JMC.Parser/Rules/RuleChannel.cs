@@ -1,4 +1,4 @@
-﻿namespace JMC.Parser;
+﻿namespace JMC.Parser.Rules;
 public enum RuleChannel : uint
 {
     None = 0,
