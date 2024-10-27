@@ -1,144 +1,74 @@
-﻿using JMC.Parser.Rules;
+﻿using sly.buildresult;
 using sly.lexer;
+using sly.parser;
+using sly.parser.generator;
 using System.Collections.Immutable;
 
 namespace JMC.Parser;
 
-public sealed class JMCParser(TokenChannels<TokenType> tokenChannels, ImmutableArray<JMCRule> rules)
+public static class JMCParser
 {
-    private readonly ReadOnlyMemory<Token<TokenType>> _mainTokens = new([.. tokenChannels.GetChannel(0).Tokens]);
-    private readonly ReadOnlyMemory<JMCRule> _rules = rules.AsMemory();
-    private ReadOnlySpan<JMCRule> StatementRules => GetRules(RuleChannel.Statement);
+    private static Parser<TokenType, JMCExpression> Parser => CreateParser();
+    private static readonly ILexer<TokenType> lexer = CreateLexer();
 
-    private int pointer = 0;
-    private readonly JMCToken _rootToken = new()
+    private static Parser<TokenType, JMCExpression> CreateParser()
     {
-        RuleType = RuleType.Root,
-        Position = new(0, 0)
-    };
-
-    public JMCToken Parse()
-    {
-        for (; pointer < _mainTokens.Length; pointer++)
+        ParserBuilder<TokenType, JMCExpression> parserBuilder = new();
+        BuildResult<Parser<TokenType, JMCExpression>> parserBuildResult = parserBuilder.BuildParser(new JMCRuleInstance(), ParserType.EBNF_LL_RECURSIVE_DESCENT, lexerPostProcess: JMCRuleInstance.LexemesPostProcess);
+        if (parserBuildResult.IsError)
         {
-            JMCRule? matchedRule = null;
-            JMCToken[] subRules = [];
-            ReadOnlySpan<JMCRule> statements = StatementRules;
-            foreach (JMCRule rule in statements)
-            {
-                if (TryParse(rule, out subRules))
-                {
-                    matchedRule = rule;
-                    break;
-                }
-            }
-            if (!matchedRule.HasValue)
-            {
-                continue;
-            }
-            pointer--;
-            JMCRule ruleValue = matchedRule.Value;
-            pointer += ruleValue.SubRules.Length;
-
+            IEnumerable<InvalidProgramException> errors = parserBuildResult.Errors.Select(e => new InvalidProgramException(e.Message));
+            throw new AggregateException("Initializtion Errors Occured", errors);
         }
-
-        return _rootToken;
+        return parserBuildResult.Result;
     }
 
-    private bool TryParse(JMCRule rule, out JMCToken[] jmcTokens)
+    private static ILexer<TokenType> CreateLexer()
     {
-        jmcTokens = [];
-        ImmutableArray<IJMCRule> subRules = rule.SubRules;
-        int length = subRules.Length;
-        ReadOnlySpan<Token<TokenType>> tokens = GetTokens(length);
-        if (tokens.IsEmpty)
+        BuildResult<ILexer<TokenType>> lexerBuiltResult = LexerBuilder.BuildLexer<TokenType>();
+        if (lexerBuiltResult.IsError)
         {
-            return false;
+            IEnumerable<InvalidProgramException> errors = lexerBuiltResult.Errors.Select(e => new InvalidProgramException(e.Message));
+            throw new AggregateException("Initializtion Errors Occured", errors);
         }
-        for (int i = 0; i < length; i++)
-        {
-            IJMCRule subRule = subRules[i];
-            Token<TokenType> token = tokens[i];
-            if (!TryParse(subRule, token.TokenID, out jmcTokens))
-            {
-                return false;
-            }
-        }
-
-        return true;
+        return lexerBuiltResult.Result;
     }
 
-    private bool TryParse(JMCCRule cRule, TokenType tokenType, out JMCToken[] tokens)
+    public static LexicalError? TryGenerateTokens(string text, out TokenChannels<TokenType> tokens)
     {
-        tokens = [];
-        ReadOnlySpan<JMCRule> rules = GetRules(cRule.Channel);
-
-        foreach (JMCRule rule in rules)
+        var lexResult = lexer.Tokenize(text);
+        if (lexResult.IsError)
         {
-            if (TryParse(rule, tokenType, out tokens))
-            {
-                return true;
-            }
+            tokens = [];
+            return lexResult.Error;
         }
-
-        return false;
+        tokens = lexResult.Tokens;
+        return null;
     }
 
-    private bool TryParse(JMCRRule rRule, TokenType tokenType, out JMCToken[] tokens)
+    public static ParseResult TryParse(string text)
     {
-        List<JMCToken> list = [];
-        int matchedCount = 0;
-
-        while (TryParse(rRule.Rule, tokenType, out tokens))
+        var parser = Parser;
+        ParseResult<TokenType, JMCExpression> parseResult = parser.Parse(text);
+        if (parseResult.IsError)
         {
-            matchedCount++;
-            list.AddRange(tokens);
+            return new(parseResult.Errors, JMCExpression.Empty, null);
+        }
+        var instance = parser.Instance;
+        if (instance is not JMCRuleInstance r)
+        {
+            throw new TypeAccessException($"{instance.GetType().Name} is not valid parser instance");
         }
 
-        tokens = [.. list];
-        return rRule.IsValid(matchedCount);
+        return new([], parseResult.Result, r);
     }
 
-    internal bool TryParse(IJMCRule rule, TokenType tokenType, out JMCToken[] token)
+    public readonly struct ParseResult(IEnumerable<ParseError> errors, JMCExpression root, JMCRuleInstance? instance)
     {
-        token = [];
-        JMCToken[] tokens = [];
-        return rule switch
-        {
-            JMCRule root => TryParse(root, out tokens),
-            JMCCRule c => TryParse(c, tokenType, out token),
-            JMCTRule t => t == tokenType,
-            JMCORule o => o.Rules.Any(v => TryParse(v, tokenType, out tokens)),
-            JMCGRule g => g.Rules.All(v => TryParse(v, tokenType, out tokens)),
-            JMCRRule r => TryParse(r, tokenType, out tokens),
-            _ => throw new NotImplementedException(),
-        };
-    }
+        public readonly ImmutableArray<ParseError> Errors = [.. errors];
+        public readonly JMCExpression Root = root;
+        public readonly JMCRuleInstance? Instance = instance;
 
-    private ReadOnlySpan<JMCRule> GetRules(RuleChannel channel)
-    {
-        ReadOnlySpan<JMCRule> rules = _rules.Span;
-        List<JMCRule> list = [];
-        foreach (JMCRule rule in rules)
-        {
-            if (rule.Channel != channel)
-            {
-                continue;
-            }
-            list.Add(rule);
-        }
-        return new([.. list]);
-    }
-
-    private ReadOnlySpan<Token<TokenType>> GetTokens(int length)
-    {
-        try
-        {
-            return _mainTokens.Slice(pointer, length).Span;
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            return [];
-        }
+        public bool IsError => Instance == null;
     }
 }

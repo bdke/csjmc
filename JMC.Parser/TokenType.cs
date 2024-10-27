@@ -80,7 +80,7 @@ public enum TokenType
     [Sugar("@")]
     SelectorStart,
     [Sugar(".")]
-    Concat,
+    Dot,
     #endregion
 
     #region Keywords
@@ -108,6 +108,8 @@ public enum TokenType
     NewKeyword,
     [Keyword("null")]
     NullKeyword,
+    [Keyword("command")]
+    CommandKeyword,
     #endregion
 
     [Int]
@@ -119,4 +121,6 @@ public enum TokenType
     String,
     [AlphaNumDashId]
     Identifier,
+    Variable,
+    Namespace,
 }

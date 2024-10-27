@@ -6,6 +6,6 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="sly" Version="3.3.5" />
+      <PackageReference Include="sly" Version="3.5.0-alpha6" />
     </ItemGroup>
 </Project>

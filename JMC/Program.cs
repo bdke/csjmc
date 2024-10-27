@@ -1,6 +1,5 @@
 ﻿using JMC.Parser;
-using sly.lexer;
-using sly.parser.generator;
+using JMC.Parser.Helper;
 
 namespace JMC;
 
@@ -8,23 +7,18 @@ internal class Program
 {
     private static int Main(string[] args)
     {
-        var text = File.ReadAllText("test.jmc");
-        var lexerBuilder = LexerBuilder.BuildLexer<TokenType>();
-        if (lexerBuilder.IsError)
+        string text = File.ReadAllText("test.jmc");
+        var result = JMCParser.TryParse(text);
+        if (result.IsError)
         {
-            lexerBuilder.Errors.ForEach(Console.WriteLine);
+            foreach (sly.parser.ParseError error in result.Errors)
+            {
+                Console.WriteLine(error.ErrorMessage);
+            }
             return 1;
         }
-        var lexer = lexerBuilder.Result;
-        var tokenizeResult = lexer.Tokenize(text);
-        if (tokenizeResult.IsError)
-        {
-            Console.WriteLine(tokenizeResult.Error);
-            return 1;
-        }
-        var tokens = tokenizeResult.Tokens;
-        var parser = new JMCParser(tokens, JMCRuleBuilder.DefaultRules);
 
+        result.Root.PrintTree();
         return 0;
     }
 }

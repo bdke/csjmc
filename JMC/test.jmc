@@ -1,1 +1,5 @@
-test("test", () => {});
+class test {
+	function test() {
+		$var = test;
+	}
+}
