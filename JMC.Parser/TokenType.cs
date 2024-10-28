@@ -37,6 +37,8 @@ public enum TokenType
     LessThanOrEqual,
     [Sugar("=")]
     Assign,
+    [Sugar("?=")]
+    BooleanAssign,
     [Sugar("%=")]
     RemainderAssign,
     [Sugar("+=")]
@@ -77,8 +79,6 @@ public enum TokenType
     Not,
     [Sugar("$")]
     DollarSign,
-    [Sugar("@")]
-    SelectorStart,
     [Sugar(".")]
     Dot,
     #endregion
@@ -110,6 +110,16 @@ public enum TokenType
     NullKeyword,
     [Keyword("command")]
     CommandKeyword,
+    [Sugar("@s")]
+    SelectorSelf,
+    [Sugar("@p")]
+    SelectorNearest,
+    [Sugar("@a")]
+    SelectorAllPlayers,
+    [Sugar("@r")]
+    SelectorRandomPlayer,
+    [Sugar("@e")]
+    SelectorAllEntities,
     #endregion
 
     [Int]

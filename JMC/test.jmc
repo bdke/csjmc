@@ -1,5 +1,5 @@
 class test {
 	function test() {
-		$var = test;
+		$var = test @s[test=test];
 	}
 }
