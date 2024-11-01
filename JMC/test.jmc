@@ -1,5 +1,1 @@
-class test {
-	function test() {
-		$var = test @s[test=test];
-	}
-}
+test = "3 3";

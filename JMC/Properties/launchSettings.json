@@ -1,7 +1,8 @@
 {
   "profiles": {
     "JMC": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "parse test.jmc"
     },
     "ResetDatabase": {
       "commandName": "Project",

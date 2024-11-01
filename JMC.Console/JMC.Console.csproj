@@ -1,21 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JMC.Console\JMC.Console.csproj" />
     <ProjectReference Include="..\JMC.Parser\JMC.Parser.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="test.jmc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\JMC.Shared\JMC.Shared.csproj" />
   </ItemGroup>
 
 </Project>

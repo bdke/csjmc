@@ -1,5 +1,5 @@
 ﻿using sly.lexer;
-using System.Collections.Immutable;
+using Spectre.Console;
 
 namespace JMC.Parser.Helper;
 public static class ExpressionHelper
@@ -11,32 +11,29 @@ public static class ExpressionHelper
         Value = token.Value,
     };
 
-    private static void PrintTree(this JMCExpression token, string indent, bool last)
+    public static Tree GetConsoleTree(this JMCExpression token)
     {
-        Console.Write(indent);
-        if (last)
+        var root = new Tree(token.Value?.ToString() ?? string.Empty);
+        foreach (var exp in token.SubExpressions)
         {
-            Console.Write("\\-");
-            indent += "  ";
+            var node = root.AddNode($"[green]{exp.TokenType}[/] [aqua]{exp.Value}[/]");
+            exp.ConvertToConsoleTree(ref node);
         }
-        else
-        {
-            Console.Write("|-");
-            indent += "| ";
-        }
-        Console.WriteLine($"{token.TokenType} {token.Value}");
-        ImmutableArray<JMCExpression> subRules = token.SubExpressions;
-        if (subRules.IsDefaultOrEmpty)
-            return;
-
-        for (int i = 0; i < subRules.Length; i++)
-        {
-            subRules[i].PrintTree(indent, i == subRules.Length - 1);
-        }
+        return root;
     }
 
-    public static void PrintTree(this JMCExpression token)
+    private static void ConvertToConsoleTree(this JMCExpression token, ref TreeNode node)
     {
-        token.PrintTree(string.Empty, false);
+        if (token.SubExpressions.IsDefaultOrEmpty)
+        {
+            return;
+        }
+
+        foreach (var exp in token.SubExpressions)
+        {
+            var position = exp.HasValue ? string.Empty : $" [red]{exp.Position}[/]";
+            var subNode = node.AddNode($"[green]{exp.TokenType}[/] [aqua]{exp.Value}[/]{position}");
+            exp.ConvertToConsoleTree(ref subNode);
+        }
     }
 }

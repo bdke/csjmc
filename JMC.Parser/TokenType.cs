@@ -7,7 +7,7 @@ public enum TokenType
     EOF = 0,
 
     #region Sugar
-    [SingleLineComment("//")]
+    [Comment("//", "/*", "*/")]
     Comment,
     [Sugar("++")]
     Increment,
@@ -81,6 +81,21 @@ public enum TokenType
     DollarSign,
     [Sugar(".")]
     Dot,
+    [Sugar("&")]
+    Deref,
+    [Sugar("||")]
+    Or,
+    [Sugar("&&")]
+    And,
+    [Sugar("\\")]
+    Escape,
+    [Sugar("\"")]
+    [Push("defaultString")]
+    StartQuote,
+    [Sugar("\"")]
+    [Mode("defaultString")]
+    [Pop]
+    EndQuote,
     #endregion
 
     #region Keywords
@@ -126,11 +141,13 @@ public enum TokenType
     Int,
     [Double]
     Double,
-    [String]
-    [String("'")]
-    String,
     [AlphaNumDashId]
     Identifier,
+
+    [UpTo("\"")]
+    [Mode("defaultString")]
+    StringValue,
+
     Variable,
     Namespace,
 }

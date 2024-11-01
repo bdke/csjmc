@@ -2,23 +2,29 @@
 using sly.lexer;
 using sly.parser;
 using sly.parser.generator;
+using Spectre.Console;
 using System.Collections.Immutable;
 
 namespace JMC.Parser;
 
 public static class JMCParser
 {
-    private static Parser<TokenType, JMCExpression> Parser => CreateParser();
+    private static readonly JMCRuleInstance ruleInstance = new();
+    private static readonly Parser<TokenType, JMCExpression> parser = CreateParser();
     private static readonly ILexer<TokenType> lexer = CreateLexer();
 
     private static Parser<TokenType, JMCExpression> CreateParser()
     {
         ParserBuilder<TokenType, JMCExpression> parserBuilder = new();
-        BuildResult<Parser<TokenType, JMCExpression>> parserBuildResult = parserBuilder.BuildParser(new JMCRuleInstance(), ParserType.EBNF_LL_RECURSIVE_DESCENT, lexerPostProcess: JMCRuleInstance.LexemesPostProcess);
+        BuildResult<Parser<TokenType, JMCExpression>> parserBuildResult = parserBuilder.BuildParser(ruleInstance, ParserType.EBNF_LL_RECURSIVE_DESCENT, lexerPostProcess: JMCRuleInstance.LexemesPostProcess);
         if (parserBuildResult.IsError)
         {
-            IEnumerable<InvalidProgramException> errors = parserBuildResult.Errors.Select(e => new InvalidProgramException(e.Message));
-            throw new AggregateException("Initializtion Errors Occured", errors);
+            IEnumerable<InvalidProgramException> errors = parserBuildResult.Errors
+                .Where(e => e.Level == ErrorLevel.ERROR)
+                .Select(e => new InvalidProgramException(e.Message));
+            var rootError = new AggregateException("Initializtion Errors Occured", errors);
+            AnsiConsole.WriteException(rootError);
+            throw rootError;
         }
         return parserBuildResult.Result;
     }
@@ -48,8 +54,25 @@ public static class JMCParser
 
     public static ParseResult TryParse(string text)
     {
-        var parser = Parser;
+        ruleInstance.FileDetail.Reset();
         ParseResult<TokenType, JMCExpression> parseResult = parser.Parse(text);
+        if (parseResult.IsError)
+        {
+            return new(parseResult.Errors, JMCExpression.Empty, null);
+        }
+        var instance = parser.Instance;
+        if (instance is not JMCRuleInstance r)
+        {
+            throw new TypeAccessException($"{instance.GetType().Name} is not valid parser instance");
+        }
+
+        return new([], parseResult.Result, r);
+    }
+
+    public static ParseResult TryParse(IList<Token<TokenType>> tokens)
+    {
+        ruleInstance.FileDetail.Reset();
+        ParseResult<TokenType, JMCExpression> parseResult = parser.ParseWithContext(tokens);
         if (parseResult.IsError)
         {
             return new(parseResult.Errors, JMCExpression.Empty, null);

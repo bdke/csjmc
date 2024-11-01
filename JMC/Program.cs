@@ -1,24 +1,19 @@
-﻿using JMC.Parser;
-using JMC.Parser.Helper;
+﻿using JMC.Console;
+using Spectre.Console.Cli;
 
 namespace JMC;
 
 internal class Program
 {
-    private static int Main(string[] args)
+    private static async Task<int> Main(string[] args)
     {
-        string text = File.ReadAllText("test.jmc");
-        var result = JMCParser.TryParse(text);
-        if (result.IsError)
-        {
-            foreach (sly.parser.ParseError error in result.Errors)
-            {
-                Console.WriteLine(error.ErrorMessage);
-            }
-            return 1;
-        }
+        var app = new CommandApp();
 
-        result.Root.PrintTree();
-        return 0;
+        app.Configure(options =>
+        {
+            options.AddCommand<JMCParserCommand>("parse");
+        });
+
+        return await app.RunAsync(args);
     }
 }
