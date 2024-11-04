@@ -1,25 +1,25 @@
 # Vanilla Command
 
-## Namespace
-
+## Functions
+command only function
 ```ts
-function foo.bar(i) {
-    i = 3;
+command function commandFunc() {
+    execute if @s;
+    $var = 3; // this will throw error
 }
+```
 
-class test {
-    function a(i) {
-        $var = i;
-        foo.bar(3);
-    }
-
+combined function
+```ts
+function func()  {
+    $var = 3;
+    test = 4;
+    execute if @s;// this will throw error
+    command: execute if @s;
     command {
-        execute 
-            if @s;
+        execute if @s;
+        data get @s;
+        $var = 3; // this will throw error
     }
 }
-
-test.a(3);
-//$var will be 3
-print($var);
 ```

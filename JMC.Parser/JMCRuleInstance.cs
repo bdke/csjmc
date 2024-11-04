@@ -54,6 +54,7 @@ public sealed class JMCRuleInstance
     [Production("statement: function")]
     [Production("statement: funcCall")]
     [Production("statement: commandBlock")]
+    [Production("statement: commandLine")]
     public static JMCExpression Statement(JMCExpression exp)
     {
         return exp;
@@ -123,15 +124,23 @@ public sealed class JMCRuleInstance
         };
     }
 
-    [Production($"commandBlock: {nameof(TokenType.CommandKeyword)}[d] {nameof(TokenType.BlockStart)} command* {RBLOCK}")]
-    public static JMCExpression CommadBlock(Token<TokenType> token, List<JMCExpression> commands)
+    [Production($"commandBlock: {nameof(TokenType.CommandKeyword)} {LBLOCK} command* {RBLOCK}")]
+    public static JMCExpression CommadBlock(Token<TokenType> keyword, List<JMCExpression> commands)
     {
-        return new()
-        {
-            Position = token.Position,
-            Value = "CommandBlock",
-            SubExpressions = [.. commands]
-        };
+        var exp = keyword.ToExpression();
+        exp.SubExpressions = [.. commands];
+        return exp;
+    }
+
+    [Production($"commandLine: {nameof(TokenType.CommandKeyword)}[d] {COLON} command")]
+    public static JMCExpression CommandLine(JMCExpression cmd) => cmd;
+
+    [Production($"commandFunction: {nameof(TokenType.CommandKeyword)} {nameof(TokenType.FunctionKeyword)}[d] namespace {LBLOCK} command* {RBLOCK}")]
+    public static JMCExpression CommandFunction(Token<TokenType> keyword, JMCExpression ns, List<JMCExpression> commands)
+    {
+        ns.SubExpressions = [.. commands];
+        ns.TokenType = keyword.TokenID;
+        return ns;
     }
 
     #endregion

@@ -6,7 +6,7 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="sly" Version="3.4.1" />
+      <PackageReference Include="sly" Version="3.4.2" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\JMC.Core\JMC.Core.csproj" />
