@@ -1,0 +1,2789 @@
+### YamlMime:ManagedReference
+items:
+- uid: JMC.Parser.TokenType
+  commentId: T:JMC.Parser.TokenType
+  id: TokenType
+  parent: JMC.Parser
+  children:
+  - JMC.Parser.TokenType.And
+  - JMC.Parser.TokenType.Arrow
+  - JMC.Parser.TokenType.Assign
+  - JMC.Parser.TokenType.BlockEnd
+  - JMC.Parser.TokenType.BlockStart
+  - JMC.Parser.TokenType.BooleanAssign
+  - JMC.Parser.TokenType.ClassKeyword
+  - JMC.Parser.TokenType.Colon
+  - JMC.Parser.TokenType.Comma
+  - JMC.Parser.TokenType.CommandKeyword
+  - JMC.Parser.TokenType.Comment
+  - JMC.Parser.TokenType.CompareAssign
+  - JMC.Parser.TokenType.Decrement
+  - JMC.Parser.TokenType.Deref
+  - JMC.Parser.TokenType.Divide
+  - JMC.Parser.TokenType.DivideAssign
+  - JMC.Parser.TokenType.DoKeyword
+  - JMC.Parser.TokenType.DollarSign
+  - JMC.Parser.TokenType.Dot
+  - JMC.Parser.TokenType.Double
+  - JMC.Parser.TokenType.EOF
+  - JMC.Parser.TokenType.ElseKeyword
+  - JMC.Parser.TokenType.End
+  - JMC.Parser.TokenType.EndQuote
+  - JMC.Parser.TokenType.Equal
+  - JMC.Parser.TokenType.Escape
+  - JMC.Parser.TokenType.False
+  - JMC.Parser.TokenType.FunctionKeyword
+  - JMC.Parser.TokenType.GreaterThan
+  - JMC.Parser.TokenType.GreaterThanOrEqual
+  - JMC.Parser.TokenType.Identifier
+  - JMC.Parser.TokenType.IfKeyword
+  - JMC.Parser.TokenType.Imply
+  - JMC.Parser.TokenType.ImportKeyword
+  - JMC.Parser.TokenType.Increment
+  - JMC.Parser.TokenType.Int
+  - JMC.Parser.TokenType.LessThan
+  - JMC.Parser.TokenType.LessThanOrEqual
+  - JMC.Parser.TokenType.ListEnd
+  - JMC.Parser.TokenType.ListStart
+  - JMC.Parser.TokenType.Minus
+  - JMC.Parser.TokenType.MinusAssign
+  - JMC.Parser.TokenType.Multiply
+  - JMC.Parser.TokenType.MultiplyAssign
+  - JMC.Parser.TokenType.Namespace
+  - JMC.Parser.TokenType.NewKeyword
+  - JMC.Parser.TokenType.Not
+  - JMC.Parser.TokenType.NotEqual
+  - JMC.Parser.TokenType.NullColesleAssign
+  - JMC.Parser.TokenType.NullKeyword
+  - JMC.Parser.TokenType.Or
+  - JMC.Parser.TokenType.ParenEnd
+  - JMC.Parser.TokenType.ParenStart
+  - JMC.Parser.TokenType.Plus
+  - JMC.Parser.TokenType.PlusAssign
+  - JMC.Parser.TokenType.Remainder
+  - JMC.Parser.TokenType.RemainderAssign
+  - JMC.Parser.TokenType.RunKeyword
+  - JMC.Parser.TokenType.SelectorAllEntities
+  - JMC.Parser.TokenType.SelectorAllPlayers
+  - JMC.Parser.TokenType.SelectorNearest
+  - JMC.Parser.TokenType.SelectorRandomPlayer
+  - JMC.Parser.TokenType.SelectorSelf
+  - JMC.Parser.TokenType.StartQuote
+  - JMC.Parser.TokenType.StringValue
+  - JMC.Parser.TokenType.True
+  - JMC.Parser.TokenType.Variable
+  - JMC.Parser.TokenType.WhileKeyword
+  langs:
+  - csharp
+  - vb
+  name: TokenType
+  nameWithType: TokenType
+  fullName: JMC.Parser.TokenType
+  type: Enum
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: TokenType
+    path: JMC.Parser/TokenType.cs
+    startLine: 4
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public enum TokenType
+    content.vb: Public Enum TokenType
+- uid: JMC.Parser.TokenType.EOF
+  commentId: F:JMC.Parser.TokenType.EOF
+  id: EOF
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: EOF
+  nameWithType: TokenType.EOF
+  fullName: JMC.Parser.TokenType.EOF
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: EOF
+    path: JMC.Parser/TokenType.cs
+    startLine: 6
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: EOF = 0
+    return:
+      type: JMC.Parser.TokenType
+- uid: JMC.Parser.TokenType.Comment
+  commentId: F:JMC.Parser.TokenType.Comment
+  id: Comment
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Comment
+  nameWithType: TokenType.Comment
+  fullName: JMC.Parser.TokenType.Comment
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Comment
+    path: JMC.Parser/TokenType.cs
+    startLine: 9
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Comment("//", "/*", "*/", false, 2)]
+
+      Comment = 1
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Comment("//", "/*", "*/", False, 2)>
+
+      Comment = 1
+  attributes:
+  - type: sly.lexer.CommentAttribute
+    ctor: sly.lexer.CommentAttribute.#ctor(System.String,System.String,System.String,System.Boolean,System.Int32)
+    arguments:
+    - type: System.String
+      value: //
+    - type: System.String
+      value: /*
+    - type: System.String
+      value: '*/'
+    - type: System.Boolean
+      value: false
+    - type: System.Int32
+      value: 2
+- uid: JMC.Parser.TokenType.Increment
+  commentId: F:JMC.Parser.TokenType.Increment
+  id: Increment
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Increment
+  nameWithType: TokenType.Increment
+  fullName: JMC.Parser.TokenType.Increment
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Increment
+    path: JMC.Parser/TokenType.cs
+    startLine: 11
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("++")]
+
+      Increment = 2
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("++")>
+
+      Increment = 2
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ++
+- uid: JMC.Parser.TokenType.Decrement
+  commentId: F:JMC.Parser.TokenType.Decrement
+  id: Decrement
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Decrement
+  nameWithType: TokenType.Decrement
+  fullName: JMC.Parser.TokenType.Decrement
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Decrement
+    path: JMC.Parser/TokenType.cs
+    startLine: 13
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("--")]
+
+      Decrement = 3
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("--")>
+
+      Decrement = 3
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: --
+- uid: JMC.Parser.TokenType.Plus
+  commentId: F:JMC.Parser.TokenType.Plus
+  id: Plus
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Plus
+  nameWithType: TokenType.Plus
+  fullName: JMC.Parser.TokenType.Plus
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Plus
+    path: JMC.Parser/TokenType.cs
+    startLine: 15
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("+")]
+
+      Plus = 4
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("+")>
+
+      Plus = 4
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: +
+- uid: JMC.Parser.TokenType.Minus
+  commentId: F:JMC.Parser.TokenType.Minus
+  id: Minus
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Minus
+  nameWithType: TokenType.Minus
+  fullName: JMC.Parser.TokenType.Minus
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Minus
+    path: JMC.Parser/TokenType.cs
+    startLine: 17
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("-")]
+
+      Minus = 5
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("-")>
+
+      Minus = 5
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '-'
+- uid: JMC.Parser.TokenType.Multiply
+  commentId: F:JMC.Parser.TokenType.Multiply
+  id: Multiply
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Multiply
+  nameWithType: TokenType.Multiply
+  fullName: JMC.Parser.TokenType.Multiply
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Multiply
+    path: JMC.Parser/TokenType.cs
+    startLine: 19
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("*")]
+
+      Multiply = 6
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("*")>
+
+      Multiply = 6
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '*'
+- uid: JMC.Parser.TokenType.Divide
+  commentId: F:JMC.Parser.TokenType.Divide
+  id: Divide
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Divide
+  nameWithType: TokenType.Divide
+  fullName: JMC.Parser.TokenType.Divide
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Divide
+    path: JMC.Parser/TokenType.cs
+    startLine: 21
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("/")]
+
+      Divide = 7
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("/")>
+
+      Divide = 7
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: /
+- uid: JMC.Parser.TokenType.Remainder
+  commentId: F:JMC.Parser.TokenType.Remainder
+  id: Remainder
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Remainder
+  nameWithType: TokenType.Remainder
+  fullName: JMC.Parser.TokenType.Remainder
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Remainder
+    path: JMC.Parser/TokenType.cs
+    startLine: 23
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("%")]
+
+      Remainder = 8
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("%")>
+
+      Remainder = 8
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '%'
+- uid: JMC.Parser.TokenType.GreaterThan
+  commentId: F:JMC.Parser.TokenType.GreaterThan
+  id: GreaterThan
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: GreaterThan
+  nameWithType: TokenType.GreaterThan
+  fullName: JMC.Parser.TokenType.GreaterThan
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: GreaterThan
+    path: JMC.Parser/TokenType.cs
+    startLine: 25
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar(">")]
+
+      GreaterThan = 9
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar(">")>
+
+      GreaterThan = 9
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '>'
+- uid: JMC.Parser.TokenType.LessThan
+  commentId: F:JMC.Parser.TokenType.LessThan
+  id: LessThan
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: LessThan
+  nameWithType: TokenType.LessThan
+  fullName: JMC.Parser.TokenType.LessThan
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: LessThan
+    path: JMC.Parser/TokenType.cs
+    startLine: 27
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("<")]
+
+      LessThan = 10
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("<")>
+
+      LessThan = 10
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: <
+- uid: JMC.Parser.TokenType.Equal
+  commentId: F:JMC.Parser.TokenType.Equal
+  id: Equal
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Equal
+  nameWithType: TokenType.Equal
+  fullName: JMC.Parser.TokenType.Equal
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Equal
+    path: JMC.Parser/TokenType.cs
+    startLine: 29
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("==")]
+
+      Equal = 11
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("==")>
+
+      Equal = 11
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ==
+- uid: JMC.Parser.TokenType.NotEqual
+  commentId: F:JMC.Parser.TokenType.NotEqual
+  id: NotEqual
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: NotEqual
+  nameWithType: TokenType.NotEqual
+  fullName: JMC.Parser.TokenType.NotEqual
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: NotEqual
+    path: JMC.Parser/TokenType.cs
+    startLine: 31
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("!=")]
+
+      NotEqual = 12
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("!=")>
+
+      NotEqual = 12
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '!='
+- uid: JMC.Parser.TokenType.GreaterThanOrEqual
+  commentId: F:JMC.Parser.TokenType.GreaterThanOrEqual
+  id: GreaterThanOrEqual
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: GreaterThanOrEqual
+  nameWithType: TokenType.GreaterThanOrEqual
+  fullName: JMC.Parser.TokenType.GreaterThanOrEqual
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: GreaterThanOrEqual
+    path: JMC.Parser/TokenType.cs
+    startLine: 33
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar(">=")]
+
+      GreaterThanOrEqual = 13
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar(">=")>
+
+      GreaterThanOrEqual = 13
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '>='
+- uid: JMC.Parser.TokenType.LessThanOrEqual
+  commentId: F:JMC.Parser.TokenType.LessThanOrEqual
+  id: LessThanOrEqual
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: LessThanOrEqual
+  nameWithType: TokenType.LessThanOrEqual
+  fullName: JMC.Parser.TokenType.LessThanOrEqual
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: LessThanOrEqual
+    path: JMC.Parser/TokenType.cs
+    startLine: 35
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("<=")]
+
+      LessThanOrEqual = 14
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("<=")>
+
+      LessThanOrEqual = 14
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: <=
+- uid: JMC.Parser.TokenType.Assign
+  commentId: F:JMC.Parser.TokenType.Assign
+  id: Assign
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Assign
+  nameWithType: TokenType.Assign
+  fullName: JMC.Parser.TokenType.Assign
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Assign
+    path: JMC.Parser/TokenType.cs
+    startLine: 37
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("=")]
+
+      Assign = 15
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("=")>
+
+      Assign = 15
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: =
+- uid: JMC.Parser.TokenType.BooleanAssign
+  commentId: F:JMC.Parser.TokenType.BooleanAssign
+  id: BooleanAssign
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: BooleanAssign
+  nameWithType: TokenType.BooleanAssign
+  fullName: JMC.Parser.TokenType.BooleanAssign
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: BooleanAssign
+    path: JMC.Parser/TokenType.cs
+    startLine: 39
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("?=")]
+
+      BooleanAssign = 16
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("?=")>
+
+      BooleanAssign = 16
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ?=
+- uid: JMC.Parser.TokenType.RemainderAssign
+  commentId: F:JMC.Parser.TokenType.RemainderAssign
+  id: RemainderAssign
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: RemainderAssign
+  nameWithType: TokenType.RemainderAssign
+  fullName: JMC.Parser.TokenType.RemainderAssign
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: RemainderAssign
+    path: JMC.Parser/TokenType.cs
+    startLine: 41
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("%=")]
+
+      RemainderAssign = 17
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("%=")>
+
+      RemainderAssign = 17
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '%='
+- uid: JMC.Parser.TokenType.PlusAssign
+  commentId: F:JMC.Parser.TokenType.PlusAssign
+  id: PlusAssign
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: PlusAssign
+  nameWithType: TokenType.PlusAssign
+  fullName: JMC.Parser.TokenType.PlusAssign
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: PlusAssign
+    path: JMC.Parser/TokenType.cs
+    startLine: 43
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("+=")]
+
+      PlusAssign = 18
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("+=")>
+
+      PlusAssign = 18
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: +=
+- uid: JMC.Parser.TokenType.MinusAssign
+  commentId: F:JMC.Parser.TokenType.MinusAssign
+  id: MinusAssign
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: MinusAssign
+  nameWithType: TokenType.MinusAssign
+  fullName: JMC.Parser.TokenType.MinusAssign
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: MinusAssign
+    path: JMC.Parser/TokenType.cs
+    startLine: 45
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("-=")]
+
+      MinusAssign = 19
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("-=")>
+
+      MinusAssign = 19
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: -=
+- uid: JMC.Parser.TokenType.MultiplyAssign
+  commentId: F:JMC.Parser.TokenType.MultiplyAssign
+  id: MultiplyAssign
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: MultiplyAssign
+  nameWithType: TokenType.MultiplyAssign
+  fullName: JMC.Parser.TokenType.MultiplyAssign
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: MultiplyAssign
+    path: JMC.Parser/TokenType.cs
+    startLine: 47
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("*=")]
+
+      MultiplyAssign = 20
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("*=")>
+
+      MultiplyAssign = 20
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '*='
+- uid: JMC.Parser.TokenType.DivideAssign
+  commentId: F:JMC.Parser.TokenType.DivideAssign
+  id: DivideAssign
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: DivideAssign
+  nameWithType: TokenType.DivideAssign
+  fullName: JMC.Parser.TokenType.DivideAssign
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: DivideAssign
+    path: JMC.Parser/TokenType.cs
+    startLine: 49
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("/=")]
+
+      DivideAssign = 21
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("/=")>
+
+      DivideAssign = 21
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: /=
+- uid: JMC.Parser.TokenType.CompareAssign
+  commentId: F:JMC.Parser.TokenType.CompareAssign
+  id: CompareAssign
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: CompareAssign
+  nameWithType: TokenType.CompareAssign
+  fullName: JMC.Parser.TokenType.CompareAssign
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: CompareAssign
+    path: JMC.Parser/TokenType.cs
+    startLine: 51
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("><")]
+
+      CompareAssign = 22
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("><")>
+
+      CompareAssign = 22
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '><'
+- uid: JMC.Parser.TokenType.NullColesleAssign
+  commentId: F:JMC.Parser.TokenType.NullColesleAssign
+  id: NullColesleAssign
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: NullColesleAssign
+  nameWithType: TokenType.NullColesleAssign
+  fullName: JMC.Parser.TokenType.NullColesleAssign
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: NullColesleAssign
+    path: JMC.Parser/TokenType.cs
+    startLine: 53
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("??=")]
+
+      NullColesleAssign = 23
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("??=")>
+
+      NullColesleAssign = 23
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ??=
+- uid: JMC.Parser.TokenType.Arrow
+  commentId: F:JMC.Parser.TokenType.Arrow
+  id: Arrow
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Arrow
+  nameWithType: TokenType.Arrow
+  fullName: JMC.Parser.TokenType.Arrow
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Arrow
+    path: JMC.Parser/TokenType.cs
+    startLine: 55
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("=>")]
+
+      Arrow = 24
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("=>")>
+
+      Arrow = 24
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: =>
+- uid: JMC.Parser.TokenType.BlockStart
+  commentId: F:JMC.Parser.TokenType.BlockStart
+  id: BlockStart
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: BlockStart
+  nameWithType: TokenType.BlockStart
+  fullName: JMC.Parser.TokenType.BlockStart
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: BlockStart
+    path: JMC.Parser/TokenType.cs
+    startLine: 57
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("{")]
+
+      BlockStart = 25
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("{")>
+
+      BlockStart = 25
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '{'
+- uid: JMC.Parser.TokenType.BlockEnd
+  commentId: F:JMC.Parser.TokenType.BlockEnd
+  id: BlockEnd
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: BlockEnd
+  nameWithType: TokenType.BlockEnd
+  fullName: JMC.Parser.TokenType.BlockEnd
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: BlockEnd
+    path: JMC.Parser/TokenType.cs
+    startLine: 59
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("}")]
+
+      BlockEnd = 26
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("}")>
+
+      BlockEnd = 26
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '}'
+- uid: JMC.Parser.TokenType.ListStart
+  commentId: F:JMC.Parser.TokenType.ListStart
+  id: ListStart
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: ListStart
+  nameWithType: TokenType.ListStart
+  fullName: JMC.Parser.TokenType.ListStart
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ListStart
+    path: JMC.Parser/TokenType.cs
+    startLine: 61
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("[")]
+
+      ListStart = 27
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("[")>
+
+      ListStart = 27
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '['
+- uid: JMC.Parser.TokenType.ListEnd
+  commentId: F:JMC.Parser.TokenType.ListEnd
+  id: ListEnd
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: ListEnd
+  nameWithType: TokenType.ListEnd
+  fullName: JMC.Parser.TokenType.ListEnd
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ListEnd
+    path: JMC.Parser/TokenType.cs
+    startLine: 63
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("]")]
+
+      ListEnd = 28
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("]")>
+
+      ListEnd = 28
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ']'
+- uid: JMC.Parser.TokenType.ParenStart
+  commentId: F:JMC.Parser.TokenType.ParenStart
+  id: ParenStart
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: ParenStart
+  nameWithType: TokenType.ParenStart
+  fullName: JMC.Parser.TokenType.ParenStart
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ParenStart
+    path: JMC.Parser/TokenType.cs
+    startLine: 65
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("(")]
+
+      ParenStart = 29
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("(")>
+
+      ParenStart = 29
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: (
+- uid: JMC.Parser.TokenType.ParenEnd
+  commentId: F:JMC.Parser.TokenType.ParenEnd
+  id: ParenEnd
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: ParenEnd
+  nameWithType: TokenType.ParenEnd
+  fullName: JMC.Parser.TokenType.ParenEnd
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ParenEnd
+    path: JMC.Parser/TokenType.cs
+    startLine: 67
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar(")")]
+
+      ParenEnd = 30
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar(")")>
+
+      ParenEnd = 30
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: )
+- uid: JMC.Parser.TokenType.Colon
+  commentId: F:JMC.Parser.TokenType.Colon
+  id: Colon
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Colon
+  nameWithType: TokenType.Colon
+  fullName: JMC.Parser.TokenType.Colon
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Colon
+    path: JMC.Parser/TokenType.cs
+    startLine: 69
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar(":")]
+
+      Colon = 31
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar(":")>
+
+      Colon = 31
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ':'
+- uid: JMC.Parser.TokenType.Imply
+  commentId: F:JMC.Parser.TokenType.Imply
+  id: Imply
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Imply
+  nameWithType: TokenType.Imply
+  fullName: JMC.Parser.TokenType.Imply
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Imply
+    path: JMC.Parser/TokenType.cs
+    startLine: 71
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("::")]
+
+      Imply = 32
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("::")>
+
+      Imply = 32
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '::'
+- uid: JMC.Parser.TokenType.Comma
+  commentId: F:JMC.Parser.TokenType.Comma
+  id: Comma
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Comma
+  nameWithType: TokenType.Comma
+  fullName: JMC.Parser.TokenType.Comma
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Comma
+    path: JMC.Parser/TokenType.cs
+    startLine: 73
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar(",")]
+
+      Comma = 33
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar(",")>
+
+      Comma = 33
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ','
+- uid: JMC.Parser.TokenType.End
+  commentId: F:JMC.Parser.TokenType.End
+  id: End
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: End
+  nameWithType: TokenType.End
+  fullName: JMC.Parser.TokenType.End
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: End
+    path: JMC.Parser/TokenType.cs
+    startLine: 75
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar(";")]
+
+      End = 34
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar(";")>
+
+      End = 34
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ;
+- uid: JMC.Parser.TokenType.Not
+  commentId: F:JMC.Parser.TokenType.Not
+  id: Not
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Not
+  nameWithType: TokenType.Not
+  fullName: JMC.Parser.TokenType.Not
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Not
+    path: JMC.Parser/TokenType.cs
+    startLine: 77
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("!")]
+
+      Not = 35
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("!")>
+
+      Not = 35
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '!'
+- uid: JMC.Parser.TokenType.DollarSign
+  commentId: F:JMC.Parser.TokenType.DollarSign
+  id: DollarSign
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: DollarSign
+  nameWithType: TokenType.DollarSign
+  fullName: JMC.Parser.TokenType.DollarSign
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: DollarSign
+    path: JMC.Parser/TokenType.cs
+    startLine: 79
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("$")]
+
+      DollarSign = 36
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("$")>
+
+      DollarSign = 36
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: $
+- uid: JMC.Parser.TokenType.Dot
+  commentId: F:JMC.Parser.TokenType.Dot
+  id: Dot
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Dot
+  nameWithType: TokenType.Dot
+  fullName: JMC.Parser.TokenType.Dot
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Dot
+    path: JMC.Parser/TokenType.cs
+    startLine: 81
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar(".")]
+
+      Dot = 37
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar(".")>
+
+      Dot = 37
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: .
+- uid: JMC.Parser.TokenType.Deref
+  commentId: F:JMC.Parser.TokenType.Deref
+  id: Deref
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Deref
+  nameWithType: TokenType.Deref
+  fullName: JMC.Parser.TokenType.Deref
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Deref
+    path: JMC.Parser/TokenType.cs
+    startLine: 83
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("&")]
+
+      Deref = 38
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("&")>
+
+      Deref = 38
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '&'
+- uid: JMC.Parser.TokenType.Or
+  commentId: F:JMC.Parser.TokenType.Or
+  id: Or
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Or
+  nameWithType: TokenType.Or
+  fullName: JMC.Parser.TokenType.Or
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Or
+    path: JMC.Parser/TokenType.cs
+    startLine: 85
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("||")]
+
+      Or = 39
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("||")>
+
+      Or = 39
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '||'
+- uid: JMC.Parser.TokenType.And
+  commentId: F:JMC.Parser.TokenType.And
+  id: And
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: And
+  nameWithType: TokenType.And
+  fullName: JMC.Parser.TokenType.And
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: And
+    path: JMC.Parser/TokenType.cs
+    startLine: 87
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("&&")]
+
+      And = 40
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("&&")>
+
+      And = 40
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '&&'
+- uid: JMC.Parser.TokenType.Escape
+  commentId: F:JMC.Parser.TokenType.Escape
+  id: Escape
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Escape
+  nameWithType: TokenType.Escape
+  fullName: JMC.Parser.TokenType.Escape
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Escape
+    path: JMC.Parser/TokenType.cs
+    startLine: 89
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("\\")]
+
+      Escape = 41
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("\")>
+
+      Escape = 41
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '\'
+- uid: JMC.Parser.TokenType.StartQuote
+  commentId: F:JMC.Parser.TokenType.StartQuote
+  id: StartQuote
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: StartQuote
+  nameWithType: TokenType.StartQuote
+  fullName: JMC.Parser.TokenType.StartQuote
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: StartQuote
+    path: JMC.Parser/TokenType.cs
+    startLine: 91
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("\"")]
+
+      [Push("defaultString")]
+
+      StartQuote = 42
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("""")>
+
+      <Push("defaultString")>
+
+      StartQuote = 42
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: "\""
+  - type: sly.lexer.PushAttribute
+    ctor: sly.lexer.PushAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: defaultString
+- uid: JMC.Parser.TokenType.EndQuote
+  commentId: F:JMC.Parser.TokenType.EndQuote
+  id: EndQuote
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: EndQuote
+  nameWithType: TokenType.EndQuote
+  fullName: JMC.Parser.TokenType.EndQuote
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: EndQuote
+    path: JMC.Parser/TokenType.cs
+    startLine: 94
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("\"")]
+
+      [Mode(new string[] { "defaultString" })]
+
+      [Pop]
+
+      EndQuote = 43
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("""")>
+
+      <Mode(New String() { "defaultString" })>
+
+      <Pop>
+
+      EndQuote = 43
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: "\""
+  - type: sly.lexer.PopAttribute
+    ctor: sly.lexer.PopAttribute.#ctor
+    arguments: []
+- uid: JMC.Parser.TokenType.True
+  commentId: F:JMC.Parser.TokenType.True
+  id: "True"
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: "True"
+  nameWithType: TokenType.True
+  fullName: JMC.Parser.TokenType.True
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: "True"
+    path: JMC.Parser/TokenType.cs
+    startLine: 101
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("true", 0)]
+
+      True = 44
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("true", 0)>
+
+      True = 44
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: "true"
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.False
+  commentId: F:JMC.Parser.TokenType.False
+  id: "False"
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: "False"
+  nameWithType: TokenType.False
+  fullName: JMC.Parser.TokenType.False
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: "False"
+    path: JMC.Parser/TokenType.cs
+    startLine: 103
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("false", 0)]
+
+      False = 45
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("false", 0)>
+
+      False = 45
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: "false"
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.RunKeyword
+  commentId: F:JMC.Parser.TokenType.RunKeyword
+  id: RunKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: RunKeyword
+  nameWithType: TokenType.RunKeyword
+  fullName: JMC.Parser.TokenType.RunKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: RunKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 105
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("run", 0)]
+
+      RunKeyword = 46
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("run", 0)>
+
+      RunKeyword = 46
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: run
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.ImportKeyword
+  commentId: F:JMC.Parser.TokenType.ImportKeyword
+  id: ImportKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: ImportKeyword
+  nameWithType: TokenType.ImportKeyword
+  fullName: JMC.Parser.TokenType.ImportKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ImportKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 107
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("import", 0)]
+
+      ImportKeyword = 47
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("import", 0)>
+
+      ImportKeyword = 47
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: import
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.FunctionKeyword
+  commentId: F:JMC.Parser.TokenType.FunctionKeyword
+  id: FunctionKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: FunctionKeyword
+  nameWithType: TokenType.FunctionKeyword
+  fullName: JMC.Parser.TokenType.FunctionKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: FunctionKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 109
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("function", 0)]
+
+      FunctionKeyword = 48
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("function", 0)>
+
+      FunctionKeyword = 48
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: function
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.WhileKeyword
+  commentId: F:JMC.Parser.TokenType.WhileKeyword
+  id: WhileKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: WhileKeyword
+  nameWithType: TokenType.WhileKeyword
+  fullName: JMC.Parser.TokenType.WhileKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: WhileKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 111
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("while", 0)]
+
+      WhileKeyword = 49
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("while", 0)>
+
+      WhileKeyword = 49
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: while
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.IfKeyword
+  commentId: F:JMC.Parser.TokenType.IfKeyword
+  id: IfKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: IfKeyword
+  nameWithType: TokenType.IfKeyword
+  fullName: JMC.Parser.TokenType.IfKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: IfKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 113
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("if", 0)]
+
+      IfKeyword = 50
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("if", 0)>
+
+      IfKeyword = 50
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: if
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.ElseKeyword
+  commentId: F:JMC.Parser.TokenType.ElseKeyword
+  id: ElseKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: ElseKeyword
+  nameWithType: TokenType.ElseKeyword
+  fullName: JMC.Parser.TokenType.ElseKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ElseKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 115
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("else", 0)]
+
+      ElseKeyword = 51
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("else", 0)>
+
+      ElseKeyword = 51
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: else
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.DoKeyword
+  commentId: F:JMC.Parser.TokenType.DoKeyword
+  id: DoKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: DoKeyword
+  nameWithType: TokenType.DoKeyword
+  fullName: JMC.Parser.TokenType.DoKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: DoKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 117
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("do", 0)]
+
+      DoKeyword = 52
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("do", 0)>
+
+      DoKeyword = 52
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: do
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.ClassKeyword
+  commentId: F:JMC.Parser.TokenType.ClassKeyword
+  id: ClassKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: ClassKeyword
+  nameWithType: TokenType.ClassKeyword
+  fullName: JMC.Parser.TokenType.ClassKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ClassKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 119
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("class", 0)]
+
+      ClassKeyword = 53
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("class", 0)>
+
+      ClassKeyword = 53
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: class
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.NewKeyword
+  commentId: F:JMC.Parser.TokenType.NewKeyword
+  id: NewKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: NewKeyword
+  nameWithType: TokenType.NewKeyword
+  fullName: JMC.Parser.TokenType.NewKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: NewKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 121
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("new", 0)]
+
+      NewKeyword = 54
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("new", 0)>
+
+      NewKeyword = 54
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: new
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.NullKeyword
+  commentId: F:JMC.Parser.TokenType.NullKeyword
+  id: NullKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: NullKeyword
+  nameWithType: TokenType.NullKeyword
+  fullName: JMC.Parser.TokenType.NullKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: NullKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 123
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("null", 0)]
+
+      NullKeyword = 55
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("null", 0)>
+
+      NullKeyword = 55
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: "null"
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.CommandKeyword
+  commentId: F:JMC.Parser.TokenType.CommandKeyword
+  id: CommandKeyword
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: CommandKeyword
+  nameWithType: TokenType.CommandKeyword
+  fullName: JMC.Parser.TokenType.CommandKeyword
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: CommandKeyword
+    path: JMC.Parser/TokenType.cs
+    startLine: 125
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Keyword("command", 0)]
+
+      CommandKeyword = 56
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Keyword("command", 0)>
+
+      CommandKeyword = 56
+  attributes:
+  - type: sly.lexer.KeywordAttribute
+    ctor: sly.lexer.KeywordAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: command
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.SelectorSelf
+  commentId: F:JMC.Parser.TokenType.SelectorSelf
+  id: SelectorSelf
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: SelectorSelf
+  nameWithType: TokenType.SelectorSelf
+  fullName: JMC.Parser.TokenType.SelectorSelf
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: SelectorSelf
+    path: JMC.Parser/TokenType.cs
+    startLine: 127
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("@s")]
+
+      SelectorSelf = 57
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("@s")>
+
+      SelectorSelf = 57
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '@s'
+- uid: JMC.Parser.TokenType.SelectorNearest
+  commentId: F:JMC.Parser.TokenType.SelectorNearest
+  id: SelectorNearest
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: SelectorNearest
+  nameWithType: TokenType.SelectorNearest
+  fullName: JMC.Parser.TokenType.SelectorNearest
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: SelectorNearest
+    path: JMC.Parser/TokenType.cs
+    startLine: 129
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("@p")]
+
+      SelectorNearest = 58
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("@p")>
+
+      SelectorNearest = 58
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '@p'
+- uid: JMC.Parser.TokenType.SelectorAllPlayers
+  commentId: F:JMC.Parser.TokenType.SelectorAllPlayers
+  id: SelectorAllPlayers
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: SelectorAllPlayers
+  nameWithType: TokenType.SelectorAllPlayers
+  fullName: JMC.Parser.TokenType.SelectorAllPlayers
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: SelectorAllPlayers
+    path: JMC.Parser/TokenType.cs
+    startLine: 131
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("@a")]
+
+      SelectorAllPlayers = 59
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("@a")>
+
+      SelectorAllPlayers = 59
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '@a'
+- uid: JMC.Parser.TokenType.SelectorRandomPlayer
+  commentId: F:JMC.Parser.TokenType.SelectorRandomPlayer
+  id: SelectorRandomPlayer
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: SelectorRandomPlayer
+  nameWithType: TokenType.SelectorRandomPlayer
+  fullName: JMC.Parser.TokenType.SelectorRandomPlayer
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: SelectorRandomPlayer
+    path: JMC.Parser/TokenType.cs
+    startLine: 133
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("@r")]
+
+      SelectorRandomPlayer = 60
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("@r")>
+
+      SelectorRandomPlayer = 60
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '@r'
+- uid: JMC.Parser.TokenType.SelectorAllEntities
+  commentId: F:JMC.Parser.TokenType.SelectorAllEntities
+  id: SelectorAllEntities
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: SelectorAllEntities
+  nameWithType: TokenType.SelectorAllEntities
+  fullName: JMC.Parser.TokenType.SelectorAllEntities
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: SelectorAllEntities
+    path: JMC.Parser/TokenType.cs
+    startLine: 135
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Sugar("@e")]
+
+      SelectorAllEntities = 61
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Sugar("@e")>
+
+      SelectorAllEntities = 61
+  attributes:
+  - type: sly.lexer.SugarAttribute
+    ctor: sly.lexer.SugarAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: '@e'
+- uid: JMC.Parser.TokenType.Int
+  commentId: F:JMC.Parser.TokenType.Int
+  id: Int
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Int
+  nameWithType: TokenType.Int
+  fullName: JMC.Parser.TokenType.Int
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Int
+    path: JMC.Parser/TokenType.cs
+    startLine: 139
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Int]
+
+      Int = 62
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Int>
+
+      Int = 62
+  attributes:
+  - type: sly.lexer.IntAttribute
+    ctor: sly.lexer.IntAttribute.#ctor
+    arguments: []
+- uid: JMC.Parser.TokenType.Double
+  commentId: F:JMC.Parser.TokenType.Double
+  id: Double
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Double
+  nameWithType: TokenType.Double
+  fullName: JMC.Parser.TokenType.Double
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Double
+    path: JMC.Parser/TokenType.cs
+    startLine: 141
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Double(".", 0)]
+
+      Double = 63
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <Double(".", 0)>
+
+      Double = 63
+  attributes:
+  - type: sly.lexer.DoubleAttribute
+    ctor: sly.lexer.DoubleAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: .
+    - type: System.Int32
+      value: 0
+- uid: JMC.Parser.TokenType.Identifier
+  commentId: F:JMC.Parser.TokenType.Identifier
+  id: Identifier
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Identifier
+  nameWithType: TokenType.Identifier
+  fullName: JMC.Parser.TokenType.Identifier
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Identifier
+    path: JMC.Parser/TokenType.cs
+    startLine: 143
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [AlphaNumDashId]
+
+      Identifier = 64
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <AlphaNumDashId>
+
+      Identifier = 64
+  attributes:
+  - type: sly.lexer.AlphaNumDashIdAttribute
+    ctor: sly.lexer.AlphaNumDashIdAttribute.#ctor
+    arguments: []
+- uid: JMC.Parser.TokenType.StringValue
+  commentId: F:JMC.Parser.TokenType.StringValue
+  id: StringValue
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: StringValue
+  nameWithType: TokenType.StringValue
+  fullName: JMC.Parser.TokenType.StringValue
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: StringValue
+    path: JMC.Parser/TokenType.cs
+    startLine: 146
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [UpTo(new string[] { "\"" })]
+
+      [Mode(new string[] { "defaultString" })]
+
+      StringValue = 65
+    return:
+      type: JMC.Parser.TokenType
+    content.vb: >-
+      <UpTo(New String() { """" })>
+
+      <Mode(New String() { "defaultString" })>
+
+      StringValue = 65
+- uid: JMC.Parser.TokenType.Variable
+  commentId: F:JMC.Parser.TokenType.Variable
+  id: Variable
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Variable
+  nameWithType: TokenType.Variable
+  fullName: JMC.Parser.TokenType.Variable
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Variable
+    path: JMC.Parser/TokenType.cs
+    startLine: 150
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: Variable = 66
+    return:
+      type: JMC.Parser.TokenType
+- uid: JMC.Parser.TokenType.Namespace
+  commentId: F:JMC.Parser.TokenType.Namespace
+  id: Namespace
+  parent: JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: Namespace
+  nameWithType: TokenType.Namespace
+  fullName: JMC.Parser.TokenType.Namespace
+  type: Field
+  source:
+    remote:
+      path: JMC.Parser/TokenType.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Namespace
+    path: JMC.Parser/TokenType.cs
+    startLine: 151
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: Namespace = 67
+    return:
+      type: JMC.Parser.TokenType
+references:
+- uid: JMC.Parser
+  commentId: N:JMC.Parser
+  href: JMC.html
+  name: JMC.Parser
+  nameWithType: JMC.Parser
+  fullName: JMC.Parser
+  spec.csharp:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+  spec.vb:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+- uid: JMC.Parser.TokenType
+  commentId: T:JMC.Parser.TokenType
+  parent: JMC.Parser
+  href: JMC.Parser.TokenType.html
+  name: TokenType
+  nameWithType: TokenType
+  fullName: JMC.Parser.TokenType

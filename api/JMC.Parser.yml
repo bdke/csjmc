@@ -1,0 +1,109 @@
+### YamlMime:ManagedReference
+items:
+- uid: JMC.Parser
+  commentId: N:JMC.Parser
+  id: JMC.Parser
+  children:
+  - JMC.Parser.JMCExpression
+  - JMC.Parser.JMCFileDetail
+  - JMC.Parser.JMCParser
+  - JMC.Parser.JMCParser.ParseResult
+  - JMC.Parser.JMCRuleInstance
+  - JMC.Parser.Position
+  - JMC.Parser.TokenType
+  langs:
+  - csharp
+  - vb
+  name: JMC.Parser
+  nameWithType: JMC.Parser
+  fullName: JMC.Parser
+  type: Namespace
+  assemblies:
+  - JMC.Parser
+references:
+- uid: JMC.Parser.JMCExpression
+  commentId: T:JMC.Parser.JMCExpression
+  parent: JMC.Parser
+  href: JMC.Parser.JMCExpression.html
+  name: JMCExpression
+  nameWithType: JMCExpression
+  fullName: JMC.Parser.JMCExpression
+- uid: JMC.Parser.JMCFileDetail
+  commentId: T:JMC.Parser.JMCFileDetail
+  parent: JMC.Parser
+  href: JMC.Parser.JMCFileDetail.html
+  name: JMCFileDetail
+  nameWithType: JMCFileDetail
+  fullName: JMC.Parser.JMCFileDetail
+- uid: JMC.Parser.JMCParser
+  commentId: T:JMC.Parser.JMCParser
+  href: JMC.Parser.JMCParser.html
+  name: JMCParser
+  nameWithType: JMCParser
+  fullName: JMC.Parser.JMCParser
+- uid: JMC.Parser.JMCParser.ParseResult
+  commentId: T:JMC.Parser.JMCParser.ParseResult
+  parent: JMC.Parser
+  href: JMC.Parser.JMCParser.html
+  name: JMCParser.ParseResult
+  nameWithType: JMCParser.ParseResult
+  fullName: JMC.Parser.JMCParser.ParseResult
+  spec.csharp:
+  - uid: JMC.Parser.JMCParser
+    name: JMCParser
+    href: JMC.Parser.JMCParser.html
+  - name: .
+  - uid: JMC.Parser.JMCParser.ParseResult
+    name: ParseResult
+    href: JMC.Parser.JMCParser.ParseResult.html
+  spec.vb:
+  - uid: JMC.Parser.JMCParser
+    name: JMCParser
+    href: JMC.Parser.JMCParser.html
+  - name: .
+  - uid: JMC.Parser.JMCParser.ParseResult
+    name: ParseResult
+    href: JMC.Parser.JMCParser.ParseResult.html
+- uid: JMC.Parser.JMCRuleInstance
+  commentId: T:JMC.Parser.JMCRuleInstance
+  parent: JMC.Parser
+  href: JMC.Parser.JMCRuleInstance.html
+  name: JMCRuleInstance
+  nameWithType: JMCRuleInstance
+  fullName: JMC.Parser.JMCRuleInstance
+- uid: JMC.Parser.Position
+  commentId: T:JMC.Parser.Position
+  parent: JMC.Parser
+  href: JMC.Parser.Position.html
+  name: Position
+  nameWithType: Position
+  fullName: JMC.Parser.Position
+- uid: JMC.Parser.TokenType
+  commentId: T:JMC.Parser.TokenType
+  parent: JMC.Parser
+  href: JMC.Parser.TokenType.html
+  name: TokenType
+  nameWithType: TokenType
+  fullName: JMC.Parser.TokenType
+- uid: JMC.Parser
+  commentId: N:JMC.Parser
+  href: JMC.html
+  name: JMC.Parser
+  nameWithType: JMC.Parser
+  fullName: JMC.Parser
+  spec.csharp:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+  spec.vb:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html

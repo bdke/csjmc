@@ -1,0 +1,528 @@
+### YamlMime:ManagedReference
+items:
+- uid: JMC.Parser.Helper.ExpressionHelper
+  commentId: T:JMC.Parser.Helper.ExpressionHelper
+  id: ExpressionHelper
+  parent: JMC.Parser.Helper
+  children:
+  - JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+  - JMC.Parser.Helper.ExpressionHelper.ToExpression(sly.lexer.Token{JMC.Parser.TokenType})
+  langs:
+  - csharp
+  - vb
+  name: ExpressionHelper
+  nameWithType: ExpressionHelper
+  fullName: JMC.Parser.Helper.ExpressionHelper
+  type: Class
+  source:
+    remote:
+      path: JMC.Parser/Helper/ExpressionHelper.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ExpressionHelper
+    path: JMC.Parser/Helper/ExpressionHelper.cs
+    startLine: 4
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser.Helper
+  syntax:
+    content: public static class ExpressionHelper
+    content.vb: Public Module ExpressionHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JMC.Parser.Helper.ExpressionHelper.ToExpression(sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.Helper.ExpressionHelper.ToExpression(sly.lexer.Token{JMC.Parser.TokenType})
+  id: ToExpression(sly.lexer.Token{JMC.Parser.TokenType})
+  isExtensionMethod: true
+  parent: JMC.Parser.Helper.ExpressionHelper
+  langs:
+  - csharp
+  - vb
+  name: ToExpression(Token<TokenType>)
+  nameWithType: ExpressionHelper.ToExpression(Token<TokenType>)
+  fullName: JMC.Parser.Helper.ExpressionHelper.ToExpression(sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/Helper/ExpressionHelper.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ToExpression
+    path: JMC.Parser/Helper/ExpressionHelper.cs
+    startLine: 6
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser.Helper
+  syntax:
+    content: public static JMCExpression ToExpression(this Token<TokenType> token)
+    parameters:
+    - id: token
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: Public Shared Function ToExpression(token As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.Helper.ExpressionHelper.ToExpression*
+  nameWithType.vb: ExpressionHelper.ToExpression(Token(Of TokenType))
+  fullName.vb: JMC.Parser.Helper.ExpressionHelper.ToExpression(sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: ToExpression(Token(Of TokenType))
+- uid: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+  id: GetConsoleTree(JMC.Parser.JMCExpression)
+  isExtensionMethod: true
+  parent: JMC.Parser.Helper.ExpressionHelper
+  langs:
+  - csharp
+  - vb
+  name: GetConsoleTree(JMCExpression)
+  nameWithType: ExpressionHelper.GetConsoleTree(JMCExpression)
+  fullName: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/Helper/ExpressionHelper.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: GetConsoleTree
+    path: JMC.Parser/Helper/ExpressionHelper.cs
+    startLine: 13
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser.Helper
+  syntax:
+    content: public static Tree GetConsoleTree(this JMCExpression token)
+    parameters:
+    - id: token
+      type: JMC.Parser.JMCExpression
+    return:
+      type: Spectre.Console.Tree
+    content.vb: Public Shared Function GetConsoleTree(token As JMCExpression) As Tree
+  overload: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree*
+references:
+- uid: JMC.Parser.Helper
+  commentId: N:JMC.Parser.Helper
+  href: JMC.html
+  name: JMC.Parser.Helper
+  nameWithType: JMC.Parser.Helper
+  fullName: JMC.Parser.Helper
+  spec.csharp:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+  - name: .
+  - uid: JMC.Parser.Helper
+    name: Helper
+    href: JMC.Parser.Helper.html
+  spec.vb:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+  - name: .
+  - uid: JMC.Parser.Helper
+    name: Helper
+    href: JMC.Parser.Helper.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JMC.Parser.Helper.ExpressionHelper.ToExpression*
+  commentId: Overload:JMC.Parser.Helper.ExpressionHelper.ToExpression
+  href: JMC.Parser.Helper.ExpressionHelper.html#JMC_Parser_Helper_ExpressionHelper_ToExpression_sly_lexer_Token_JMC_Parser_TokenType__
+  name: ToExpression
+  nameWithType: ExpressionHelper.ToExpression
+  fullName: JMC.Parser.Helper.ExpressionHelper.ToExpression
+- uid: sly.lexer.Token{JMC.Parser.TokenType}
+  commentId: T:sly.lexer.Token{JMC.Parser.TokenType}
+  parent: sly.lexer
+  definition: sly.lexer.Token`1
+  href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  name: Token<TokenType>
+  nameWithType: Token<TokenType>
+  fullName: sly.lexer.Token<JMC.Parser.TokenType>
+  nameWithType.vb: Token(Of TokenType)
+  fullName.vb: sly.lexer.Token(Of JMC.Parser.TokenType)
+  name.vb: Token(Of TokenType)
+  spec.csharp:
+  - uid: sly.lexer.Token`1
+    name: Token
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  - name: <
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: '>'
+  spec.vb:
+  - uid: sly.lexer.Token`1
+    name: Token
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: )
+- uid: JMC.Parser.JMCExpression
+  commentId: T:JMC.Parser.JMCExpression
+  parent: JMC.Parser
+  href: JMC.Parser.JMCExpression.html
+  name: JMCExpression
+  nameWithType: JMCExpression
+  fullName: JMC.Parser.JMCExpression
+- uid: sly.lexer.Token`1
+  commentId: T:sly.lexer.Token`1
+  isExternal: true
+  href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  name: Token<T>
+  nameWithType: Token<T>
+  fullName: sly.lexer.Token<T>
+  nameWithType.vb: Token(Of T)
+  fullName.vb: sly.lexer.Token(Of T)
+  name.vb: Token(Of T)
+  spec.csharp:
+  - uid: sly.lexer.Token`1
+    name: Token
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: sly.lexer.Token`1
+    name: Token
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: sly.lexer
+  commentId: N:sly.lexer
+  isExternal: true
+  name: sly.lexer
+  nameWithType: sly.lexer
+  fullName: sly.lexer
+  spec.csharp:
+  - uid: sly
+    name: sly
+    isExternal: true
+  - name: .
+  - uid: sly.lexer
+    name: lexer
+    isExternal: true
+  spec.vb:
+  - uid: sly
+    name: sly
+    isExternal: true
+  - name: .
+  - uid: sly.lexer
+    name: lexer
+    isExternal: true
+- uid: JMC.Parser
+  commentId: N:JMC.Parser
+  href: JMC.html
+  name: JMC.Parser
+  nameWithType: JMC.Parser
+  fullName: JMC.Parser
+  spec.csharp:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+  spec.vb:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+- uid: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree*
+  commentId: Overload:JMC.Parser.Helper.ExpressionHelper.GetConsoleTree
+  href: JMC.Parser.Helper.ExpressionHelper.html#JMC_Parser_Helper_ExpressionHelper_GetConsoleTree_JMC_Parser_JMCExpression_
+  name: GetConsoleTree
+  nameWithType: ExpressionHelper.GetConsoleTree
+  fullName: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree
+- uid: Spectre.Console.Tree
+  commentId: T:Spectre.Console.Tree
+  parent: Spectre.Console
+  isExternal: true
+  name: Tree
+  nameWithType: Tree
+  fullName: Spectre.Console.Tree
+- uid: Spectre.Console
+  commentId: N:Spectre.Console
+  isExternal: true
+  name: Spectre.Console
+  nameWithType: Spectre.Console
+  fullName: Spectre.Console
+  spec.csharp:
+  - uid: Spectre
+    name: Spectre
+    isExternal: true
+  - name: .
+  - uid: Spectre.Console
+    name: Console
+    isExternal: true
+  spec.vb:
+  - uid: Spectre
+    name: Spectre
+    isExternal: true
+  - name: .
+  - uid: Spectre.Console
+    name: Console
+    isExternal: true

@@ -6,6 +6,10 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "vscode-ext": true
+        "vscode-ext": true,
+        "bin": true,
+        "obj": true,
+        ".cr": true,
+        ".vs": true
     }
 }

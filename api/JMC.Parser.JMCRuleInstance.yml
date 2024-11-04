@@ -1,0 +1,3692 @@
+### YamlMime:ManagedReference
+items:
+- uid: JMC.Parser.JMCRuleInstance
+  commentId: T:JMC.Parser.JMCRuleInstance
+  id: JMCRuleInstance
+  parent: JMC.Parser
+  children:
+  - JMC.Parser.JMCRuleInstance.AL(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  - JMC.Parser.JMCRuleInstance.ALS(JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.Assign(sly.lexer.Token{JMC.Parser.TokenType})
+  - JMC.Parser.JMCRuleInstance.Block(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  - JMC.Parser.JMCRuleInstance.Bool(sly.lexer.Token{JMC.Parser.TokenType})
+  - JMC.Parser.JMCRuleInstance.Class(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression,System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  - JMC.Parser.JMCRuleInstance.ColorString(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.CommadBlock(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  - JMC.Parser.JMCRuleInstance.Command(JMC.Parser.JMCExpression,System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  - JMC.Parser.JMCRuleInstance.CommandArgument(JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.CommandAssign(sly.lexer.Token{JMC.Parser.TokenType})
+  - JMC.Parser.JMCRuleInstance.CommandKeyword(sly.lexer.Token{JMC.Parser.TokenType})
+  - JMC.Parser.JMCRuleInstance.CommandValue(JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.CommandValue(sly.lexer.Token{JMC.Parser.TokenType})
+  - JMC.Parser.JMCRuleInstance.DefaultString(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  - JMC.Parser.JMCRuleInstance.FileDetail
+  - JMC.Parser.JMCRuleInstance.FuncArg(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  - JMC.Parser.JMCRuleInstance.FuncArgs(JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.FuncArgs(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  - JMC.Parser.JMCRuleInstance.FuncNamedArg(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.FuncNamedArgs(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  - JMC.Parser.JMCRuleInstance.FuncParams(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  - JMC.Parser.JMCRuleInstance.FunctionCallStatement(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  - JMC.Parser.JMCRuleInstance.FunctionStatement(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.Identifier(sly.lexer.Token{JMC.Parser.TokenType})
+  - JMC.Parser.JMCRuleInstance.JsonList(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  - JMC.Parser.JMCRuleInstance.JsonObject(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  - JMC.Parser.JMCRuleInstance.JsonValue(JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.LambdaFunction(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.LexemesPostProcess(System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  - JMC.Parser.JMCRuleInstance.Namespace(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  - JMC.Parser.JMCRuleInstance.NormalString(JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.Number(sly.lexer.Token{JMC.Parser.TokenType})
+  - JMC.Parser.JMCRuleInstance.Operand(sly.lexer.Token{JMC.Parser.TokenType})
+  - JMC.Parser.JMCRuleInstance.PosFR(sly.lexer.Token{JMC.Parser.TokenType},sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.PosI(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.Program(System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  - JMC.Parser.JMCRuleInstance.Properties(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  - JMC.Parser.JMCRuleInstance.Property(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.QuotedProperties(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  - JMC.Parser.JMCRuleInstance.Selector(sly.lexer.Token{JMC.Parser.TokenType},sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  - JMC.Parser.JMCRuleInstance.Statement(JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.Unary(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.Value(JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.ValueSign(sly.lexer.Token{JMC.Parser.TokenType})
+  - JMC.Parser.JMCRuleInstance.Variable(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  - JMC.Parser.JMCRuleInstance.Variable(sly.lexer.Token{JMC.Parser.TokenType},sly.lexer.Token{JMC.Parser.TokenType})
+  - JMC.Parser.JMCRuleInstance.VariableStatement(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.Vec2(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  - JMC.Parser.JMCRuleInstance.Vec3(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  langs:
+  - csharp
+  - vb
+  name: JMCRuleInstance
+  nameWithType: JMCRuleInstance
+  fullName: JMC.Parser.JMCRuleInstance
+  type: Class
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: JMCRuleInstance
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 8
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [ParserRoot("program")]
+
+      public sealed class JMCRuleInstance
+    content.vb: >-
+      <ParserRoot("program")>
+
+      Public NotInheritable Class JMCRuleInstance
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: sly.parser.generator.ParserRootAttribute
+    ctor: sly.parser.generator.ParserRootAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: program
+- uid: JMC.Parser.JMCRuleInstance.FileDetail
+  commentId: P:JMC.Parser.JMCRuleInstance.FileDetail
+  id: FileDetail
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: FileDetail
+  nameWithType: JMCRuleInstance.FileDetail
+  fullName: JMC.Parser.JMCRuleInstance.FileDetail
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: FileDetail
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 33
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public JMCFileDetail FileDetail { get; }
+    parameters: []
+    return:
+      type: JMC.Parser.JMCFileDetail
+    content.vb: Public ReadOnly Property FileDetail As JMCFileDetail
+  overload: JMC.Parser.JMCRuleInstance.FileDetail*
+- uid: JMC.Parser.JMCRuleInstance.LexemesPostProcess(System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  commentId: M:JMC.Parser.JMCRuleInstance.LexemesPostProcess(System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  id: LexemesPostProcess(System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: LexemesPostProcess(List<Token<TokenType>>)
+  nameWithType: JMCRuleInstance.LexemesPostProcess(List<Token<TokenType>>)
+  fullName: JMC.Parser.JMCRuleInstance.LexemesPostProcess(System.Collections.Generic.List<sly.lexer.Token<JMC.Parser.TokenType>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: LexemesPostProcess
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 35
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public static List<Token<TokenType>> LexemesPostProcess(List<Token<TokenType>> tokens)
+    parameters:
+    - id: tokens
+      type: System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}}
+    return:
+      type: System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}}
+    content.vb: Public Shared Function LexemesPostProcess(tokens As List(Of Token(Of TokenType))) As List(Of Token(Of TokenType))
+  overload: JMC.Parser.JMCRuleInstance.LexemesPostProcess*
+  nameWithType.vb: JMCRuleInstance.LexemesPostProcess(List(Of Token(Of TokenType)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.LexemesPostProcess(System.Collections.Generic.List(Of sly.lexer.Token(Of JMC.Parser.TokenType)))
+  name.vb: LexemesPostProcess(List(Of Token(Of TokenType)))
+- uid: JMC.Parser.JMCRuleInstance.Program(System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  commentId: M:JMC.Parser.JMCRuleInstance.Program(System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  id: Program(System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Program(List<JMCExpression>)
+  nameWithType: JMCRuleInstance.Program(List<JMCExpression>)
+  fullName: JMC.Parser.JMCRuleInstance.Program(System.Collections.Generic.List<JMC.Parser.JMCExpression>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Program
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 40
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("program: statement*")]
+
+      public static JMCExpression Program(List<JMCExpression> expressions)
+    parameters:
+    - id: expressions
+      type: System.Collections.Generic.List{JMC.Parser.JMCExpression}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("program: statement*")>
+
+      Public Shared Function Program(expressions As List(Of JMCExpression)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Program*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'program: statement*'
+  nameWithType.vb: JMCRuleInstance.Program(List(Of JMCExpression))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Program(System.Collections.Generic.List(Of JMC.Parser.JMCExpression))
+  name.vb: Program(List(Of JMCExpression))
+- uid: JMC.Parser.JMCRuleInstance.Statement(JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.Statement(JMC.Parser.JMCExpression)
+  id: Statement(JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Statement(JMCExpression)
+  nameWithType: JMCRuleInstance.Statement(JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.Statement(JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Statement
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 51
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("statement: class")]
+
+      [Production("statement: variableStatement")]
+
+      [Production("statement: function")]
+
+      [Production("statement: funcCall")]
+
+      [Production("statement: commandBlock")]
+
+      public static JMCExpression Statement(JMCExpression exp)
+    parameters:
+    - id: exp
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("statement: class")>
+
+      <Production("statement: variableStatement")>
+
+      <Production("statement: function")>
+
+      <Production("statement: funcCall")>
+
+      <Production("statement: commandBlock")>
+
+      Public Shared Function Statement(exp As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Statement*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'statement: class'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'statement: variableStatement'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'statement: function'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'statement: funcCall'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'statement: commandBlock'
+- uid: JMC.Parser.JMCRuleInstance.Block(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  commentId: M:JMC.Parser.JMCRuleInstance.Block(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  id: Block(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Block(Token<TokenType>, List<JMCExpression>)
+  nameWithType: JMCRuleInstance.Block(Token<TokenType>, List<JMCExpression>)
+  fullName: JMC.Parser.JMCRuleInstance.Block(sly.lexer.Token<JMC.Parser.TokenType>, System.Collections.Generic.List<JMC.Parser.JMCExpression>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Block
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 62
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("block: BlockStart statement* BlockEnd[d]")]
+
+      public static JMCExpression Block(Token<TokenType> lBlock, List<JMCExpression> statements)
+    parameters:
+    - id: lBlock
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: statements
+      type: System.Collections.Generic.List{JMC.Parser.JMCExpression}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("block: BlockStart statement* BlockEnd[d]")>
+
+      Public Shared Function Block(lBlock As Token(Of TokenType), statements As List(Of JMCExpression)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Block*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'block: BlockStart statement* BlockEnd[d]'
+  nameWithType.vb: JMCRuleInstance.Block(Token(Of TokenType), List(Of JMCExpression))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Block(sly.lexer.Token(Of JMC.Parser.TokenType), System.Collections.Generic.List(Of JMC.Parser.JMCExpression))
+  name.vb: Block(Token(Of TokenType), List(Of JMCExpression))
+- uid: JMC.Parser.JMCRuleInstance.Class(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression,System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  commentId: M:JMC.Parser.JMCRuleInstance.Class(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression,System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  id: Class(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression,System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Class(Token<TokenType>, JMCExpression, List<JMCExpression>)
+  nameWithType: JMCRuleInstance.Class(Token<TokenType>, JMCExpression, List<JMCExpression>)
+  fullName: JMC.Parser.JMCRuleInstance.Class(sly.lexer.Token<JMC.Parser.TokenType>, JMC.Parser.JMCExpression, System.Collections.Generic.List<JMC.Parser.JMCExpression>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Class
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 73
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("class: ClassKeyword namespace BlockStart[d] [function|class]* BlockEnd[d]")]
+
+      public static JMCExpression Class(Token<TokenType> keyword, JMCExpression funcName, List<JMCExpression> expressions)
+    parameters:
+    - id: keyword
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: funcName
+      type: JMC.Parser.JMCExpression
+    - id: expressions
+      type: System.Collections.Generic.List{JMC.Parser.JMCExpression}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("class: ClassKeyword namespace BlockStart[d] [function|class]* BlockEnd[d]")>
+
+      Public Shared Function [Class](keyword As Token(Of TokenType), funcName As JMCExpression, expressions As List(Of JMCExpression)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Class*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'class: ClassKeyword namespace BlockStart[d] [function|class]* BlockEnd[d]'
+  nameWithType.vb: JMCRuleInstance.Class(Token(Of TokenType), JMCExpression, List(Of JMCExpression))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Class(sly.lexer.Token(Of JMC.Parser.TokenType), JMC.Parser.JMCExpression, System.Collections.Generic.List(Of JMC.Parser.JMCExpression))
+  name.vb: Class(Token(Of TokenType), JMCExpression, List(Of JMCExpression))
+- uid: JMC.Parser.JMCRuleInstance.VariableStatement(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.VariableStatement(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  id: VariableStatement(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: VariableStatement(JMCExpression, JMCExpression, JMCExpression)
+  nameWithType: JMCRuleInstance.VariableStatement(JMCExpression, JMCExpression, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.VariableStatement(JMC.Parser.JMCExpression, JMC.Parser.JMCExpression, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: VariableStatement
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 87
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("variableStatement: IDENTIFIER assign STRING End[d]")]
+
+      [Production("variableStatement: variable assign al End[d]")]
+
+      [Production("variableStatement: variable cmdAssign command")]
+
+      public static JMCExpression VariableStatement(JMCExpression variable, JMCExpression assign, JMCExpression als)
+    parameters:
+    - id: variable
+      type: JMC.Parser.JMCExpression
+    - id: assign
+      type: JMC.Parser.JMCExpression
+    - id: als
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("variableStatement: IDENTIFIER assign STRING End[d]")>
+
+      <Production("variableStatement: variable assign al End[d]")>
+
+      <Production("variableStatement: variable cmdAssign command")>
+
+      Public Shared Function VariableStatement(variable As JMCExpression, assign As JMCExpression, als As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.VariableStatement*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'variableStatement: IDENTIFIER assign STRING End[d]'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'variableStatement: variable assign al End[d]'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'variableStatement: variable cmdAssign command'
+- uid: JMC.Parser.JMCRuleInstance.FunctionStatement(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.FunctionStatement(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  id: FunctionStatement(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: FunctionStatement(JMCExpression, ValueOption<JMCExpression>, JMCExpression)
+  nameWithType: JMCRuleInstance.FunctionStatement(JMCExpression, ValueOption<JMCExpression>, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.FunctionStatement(JMC.Parser.JMCExpression, sly.parser.parser.ValueOption<JMC.Parser.JMCExpression>, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: FunctionStatement
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 101
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("function: FunctionKeyword[d] namespace ParenStart[d] funcParams? ParenEnd[d] block")]
+
+      public static JMCExpression FunctionStatement(JMCExpression funcName, ValueOption<JMCExpression> funcParams, JMCExpression block)
+    parameters:
+    - id: funcName
+      type: JMC.Parser.JMCExpression
+    - id: funcParams
+      type: sly.parser.parser.ValueOption{JMC.Parser.JMCExpression}
+    - id: block
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("function: FunctionKeyword[d] namespace ParenStart[d] funcParams? ParenEnd[d] block")>
+
+      Public Shared Function FunctionStatement(funcName As JMCExpression, funcParams As ValueOption(Of JMCExpression), block As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.FunctionStatement*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'function: FunctionKeyword[d] namespace ParenStart[d] funcParams? ParenEnd[d] block'
+  nameWithType.vb: JMCRuleInstance.FunctionStatement(JMCExpression, ValueOption(Of JMCExpression), JMCExpression)
+  fullName.vb: JMC.Parser.JMCRuleInstance.FunctionStatement(JMC.Parser.JMCExpression, sly.parser.parser.ValueOption(Of JMC.Parser.JMCExpression), JMC.Parser.JMCExpression)
+  name.vb: FunctionStatement(JMCExpression, ValueOption(Of JMCExpression), JMCExpression)
+- uid: JMC.Parser.JMCRuleInstance.FunctionCallStatement(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  commentId: M:JMC.Parser.JMCRuleInstance.FunctionCallStatement(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  id: FunctionCallStatement(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: FunctionCallStatement(JMCExpression, ValueOption<JMCExpression>)
+  nameWithType: JMCRuleInstance.FunctionCallStatement(JMCExpression, ValueOption<JMCExpression>)
+  fullName: JMC.Parser.JMCRuleInstance.FunctionCallStatement(JMC.Parser.JMCExpression, sly.parser.parser.ValueOption<JMC.Parser.JMCExpression>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: FunctionCallStatement
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 113
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("funcCall: namespace ParenStart[d] funcArgs? ParenEnd[d] End[d]")]
+
+      public static JMCExpression FunctionCallStatement(JMCExpression funcName, ValueOption<JMCExpression> funcArgs)
+    parameters:
+    - id: funcName
+      type: JMC.Parser.JMCExpression
+    - id: funcArgs
+      type: sly.parser.parser.ValueOption{JMC.Parser.JMCExpression}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("funcCall: namespace ParenStart[d] funcArgs? ParenEnd[d] End[d]")>
+
+      Public Shared Function FunctionCallStatement(funcName As JMCExpression, funcArgs As ValueOption(Of JMCExpression)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.FunctionCallStatement*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'funcCall: namespace ParenStart[d] funcArgs? ParenEnd[d] End[d]'
+  nameWithType.vb: JMCRuleInstance.FunctionCallStatement(JMCExpression, ValueOption(Of JMCExpression))
+  fullName.vb: JMC.Parser.JMCRuleInstance.FunctionCallStatement(JMC.Parser.JMCExpression, sly.parser.parser.ValueOption(Of JMC.Parser.JMCExpression))
+  name.vb: FunctionCallStatement(JMCExpression, ValueOption(Of JMCExpression))
+- uid: JMC.Parser.JMCRuleInstance.CommadBlock(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  commentId: M:JMC.Parser.JMCRuleInstance.CommadBlock(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  id: CommadBlock(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: CommadBlock(Token<TokenType>, List<JMCExpression>)
+  nameWithType: JMCRuleInstance.CommadBlock(Token<TokenType>, List<JMCExpression>)
+  fullName: JMC.Parser.JMCRuleInstance.CommadBlock(sly.lexer.Token<JMC.Parser.TokenType>, System.Collections.Generic.List<JMC.Parser.JMCExpression>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: CommadBlock
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 125
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("commandBlock: CommandKeyword[d] BlockStart command* BlockEnd[d]")]
+
+      public static JMCExpression CommadBlock(Token<TokenType> token, List<JMCExpression> commands)
+    parameters:
+    - id: token
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: commands
+      type: System.Collections.Generic.List{JMC.Parser.JMCExpression}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("commandBlock: CommandKeyword[d] BlockStart command* BlockEnd[d]")>
+
+      Public Shared Function CommadBlock(token As Token(Of TokenType), commands As List(Of JMCExpression)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.CommadBlock*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'commandBlock: CommandKeyword[d] BlockStart command* BlockEnd[d]'
+  nameWithType.vb: JMCRuleInstance.CommadBlock(Token(Of TokenType), List(Of JMCExpression))
+  fullName.vb: JMC.Parser.JMCRuleInstance.CommadBlock(sly.lexer.Token(Of JMC.Parser.TokenType), System.Collections.Generic.List(Of JMC.Parser.JMCExpression))
+  name.vb: CommadBlock(Token(Of TokenType), List(Of JMCExpression))
+- uid: JMC.Parser.JMCRuleInstance.LambdaFunction(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.LambdaFunction(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  id: LambdaFunction(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: LambdaFunction(ValueOption<JMCExpression>, JMCExpression)
+  nameWithType: JMCRuleInstance.LambdaFunction(ValueOption<JMCExpression>, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.LambdaFunction(sly.parser.parser.ValueOption<JMC.Parser.JMCExpression>, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: LambdaFunction
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 139
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("lambdaFunction: ParenStart[d] funcParams? ParenEnd[d] Arrow[d] block")]
+
+      public static JMCExpression LambdaFunction(ValueOption<JMCExpression> funcParams, JMCExpression block)
+    parameters:
+    - id: funcParams
+      type: sly.parser.parser.ValueOption{JMC.Parser.JMCExpression}
+    - id: block
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("lambdaFunction: ParenStart[d] funcParams? ParenEnd[d] Arrow[d] block")>
+
+      Public Shared Function LambdaFunction(funcParams As ValueOption(Of JMCExpression), block As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.LambdaFunction*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'lambdaFunction: ParenStart[d] funcParams? ParenEnd[d] Arrow[d] block'
+  nameWithType.vb: JMCRuleInstance.LambdaFunction(ValueOption(Of JMCExpression), JMCExpression)
+  fullName.vb: JMC.Parser.JMCRuleInstance.LambdaFunction(sly.parser.parser.ValueOption(Of JMC.Parser.JMCExpression), JMC.Parser.JMCExpression)
+  name.vb: LambdaFunction(ValueOption(Of JMCExpression), JMCExpression)
+- uid: JMC.Parser.JMCRuleInstance.Namespace(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  commentId: M:JMC.Parser.JMCRuleInstance.Namespace(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  id: Namespace(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Namespace(Token<TokenType>, List<Group<TokenType, JMCExpression>>)
+  nameWithType: JMCRuleInstance.Namespace(Token<TokenType>, List<Group<TokenType, JMCExpression>>)
+  fullName: JMC.Parser.JMCRuleInstance.Namespace(sly.lexer.Token<JMC.Parser.TokenType>, System.Collections.Generic.List<sly.parser.parser.Group<JMC.Parser.TokenType, JMC.Parser.JMCExpression>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Namespace
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 152
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("namespace: Identifier (Dot[d] Identifier)*")]
+
+      public static JMCExpression Namespace(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
+    parameters:
+    - id: left
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: right
+      type: System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("namespace: Identifier (Dot[d] Identifier)*")>
+
+      Public Shared Function [Namespace](left As Token(Of TokenType), right As List(Of Group(Of TokenType, JMCExpression))) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Namespace*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'namespace: Identifier (Dot[d] Identifier)*'
+  nameWithType.vb: JMCRuleInstance.Namespace(Token(Of TokenType), List(Of Group(Of TokenType, JMCExpression)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Namespace(sly.lexer.Token(Of JMC.Parser.TokenType), System.Collections.Generic.List(Of sly.parser.parser.Group(Of JMC.Parser.TokenType, JMC.Parser.JMCExpression)))
+  name.vb: Namespace(Token(Of TokenType), List(Of Group(Of TokenType, JMCExpression)))
+- uid: JMC.Parser.JMCRuleInstance.FuncParams(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  commentId: M:JMC.Parser.JMCRuleInstance.FuncParams(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  id: FuncParams(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: FuncParams(Token<TokenType>, List<Group<TokenType, JMCExpression>>)
+  nameWithType: JMCRuleInstance.FuncParams(Token<TokenType>, List<Group<TokenType, JMCExpression>>)
+  fullName: JMC.Parser.JMCRuleInstance.FuncParams(sly.lexer.Token<JMC.Parser.TokenType>, System.Collections.Generic.List<sly.parser.parser.Group<JMC.Parser.TokenType, JMC.Parser.JMCExpression>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: FuncParams
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 166
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("funcParams: Identifier (Comma[d] Identifier)*")]
+
+      public static JMCExpression FuncParams(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
+    parameters:
+    - id: left
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: right
+      type: System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("funcParams: Identifier (Comma[d] Identifier)*")>
+
+      Public Shared Function FuncParams(left As Token(Of TokenType), right As List(Of Group(Of TokenType, JMCExpression))) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.FuncParams*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'funcParams: Identifier (Comma[d] Identifier)*'
+  nameWithType.vb: JMCRuleInstance.FuncParams(Token(Of TokenType), List(Of Group(Of TokenType, JMCExpression)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.FuncParams(sly.lexer.Token(Of JMC.Parser.TokenType), System.Collections.Generic.List(Of sly.parser.parser.Group(Of JMC.Parser.TokenType, JMC.Parser.JMCExpression)))
+  name.vb: FuncParams(Token(Of TokenType), List(Of Group(Of TokenType, JMCExpression)))
+- uid: JMC.Parser.JMCRuleInstance.FuncArgs(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  commentId: M:JMC.Parser.JMCRuleInstance.FuncArgs(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  id: FuncArgs(JMC.Parser.JMCExpression,sly.parser.parser.ValueOption{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: FuncArgs(JMCExpression, ValueOption<Group<TokenType, JMCExpression>>)
+  nameWithType: JMCRuleInstance.FuncArgs(JMCExpression, ValueOption<Group<TokenType, JMCExpression>>)
+  fullName: JMC.Parser.JMCRuleInstance.FuncArgs(JMC.Parser.JMCExpression, sly.parser.parser.ValueOption<sly.parser.parser.Group<JMC.Parser.TokenType, JMC.Parser.JMCExpression>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: FuncArgs
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 187
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("funcArgs: funcArg (Comma[d] funcNameArgs)?")]
+
+      public static JMCExpression FuncArgs(JMCExpression funcArg, ValueOption<Group<TokenType, JMCExpression>> namedArgs)
+    parameters:
+    - id: funcArg
+      type: JMC.Parser.JMCExpression
+    - id: namedArgs
+      type: sly.parser.parser.ValueOption{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("funcArgs: funcArg (Comma[d] funcNameArgs)?")>
+
+      Public Shared Function FuncArgs(funcArg As JMCExpression, namedArgs As ValueOption(Of Group(Of TokenType, JMCExpression))) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.FuncArgs*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'funcArgs: funcArg (Comma[d] funcNameArgs)?'
+  nameWithType.vb: JMCRuleInstance.FuncArgs(JMCExpression, ValueOption(Of Group(Of TokenType, JMCExpression)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.FuncArgs(JMC.Parser.JMCExpression, sly.parser.parser.ValueOption(Of sly.parser.parser.Group(Of JMC.Parser.TokenType, JMC.Parser.JMCExpression)))
+  name.vb: FuncArgs(JMCExpression, ValueOption(Of Group(Of TokenType, JMCExpression)))
+- uid: JMC.Parser.JMCRuleInstance.FuncArgs(JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.FuncArgs(JMC.Parser.JMCExpression)
+  id: FuncArgs(JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: FuncArgs(JMCExpression)
+  nameWithType: JMCRuleInstance.FuncArgs(JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.FuncArgs(JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: FuncArgs
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 201
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("funcArgs: funcNameArgs")]
+
+      public static JMCExpression FuncArgs(JMCExpression funcNameArgs)
+    parameters:
+    - id: funcNameArgs
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("funcArgs: funcNameArgs")>
+
+      Public Shared Function FuncArgs(funcNameArgs As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.FuncArgs*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'funcArgs: funcNameArgs'
+- uid: JMC.Parser.JMCRuleInstance.FuncArg(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  commentId: M:JMC.Parser.JMCRuleInstance.FuncArg(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  id: FuncArg(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: FuncArg(JMCExpression, List<Group<TokenType, JMCExpression>>)
+  nameWithType: JMCRuleInstance.FuncArg(JMCExpression, List<Group<TokenType, JMCExpression>>)
+  fullName: JMC.Parser.JMCRuleInstance.FuncArg(JMC.Parser.JMCExpression, System.Collections.Generic.List<sly.parser.parser.Group<JMC.Parser.TokenType, JMC.Parser.JMCExpression>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: FuncArg
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 207
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("funcArg: value (Comma[d] value)*")]
+
+      public static JMCExpression FuncArg(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
+    parameters:
+    - id: left
+      type: JMC.Parser.JMCExpression
+    - id: right
+      type: System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("funcArg: value (Comma[d] value)*")>
+
+      Public Shared Function FuncArg(left As JMCExpression, right As List(Of Group(Of TokenType, JMCExpression))) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.FuncArg*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'funcArg: value (Comma[d] value)*'
+  nameWithType.vb: JMCRuleInstance.FuncArg(JMCExpression, List(Of Group(Of TokenType, JMCExpression)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.FuncArg(JMC.Parser.JMCExpression, System.Collections.Generic.List(Of sly.parser.parser.Group(Of JMC.Parser.TokenType, JMC.Parser.JMCExpression)))
+  name.vb: FuncArg(JMCExpression, List(Of Group(Of TokenType, JMCExpression)))
+- uid: JMC.Parser.JMCRuleInstance.FuncNamedArg(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.FuncNamedArg(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  id: FuncNamedArg(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: FuncNamedArg(Token<TokenType>, JMCExpression)
+  nameWithType: JMCRuleInstance.FuncNamedArg(Token<TokenType>, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.FuncNamedArg(sly.lexer.Token<JMC.Parser.TokenType>, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: FuncNamedArg
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 220
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("funcNameArg: Identifier Colon[d] value")]
+
+      public static JMCExpression FuncNamedArg(Token<TokenType> paramName, JMCExpression value)
+    parameters:
+    - id: paramName
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: value
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("funcNameArg: Identifier Colon[d] value")>
+
+      Public Shared Function FuncNamedArg(paramName As Token(Of TokenType), value As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.FuncNamedArg*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'funcNameArg: Identifier Colon[d] value'
+  nameWithType.vb: JMCRuleInstance.FuncNamedArg(Token(Of TokenType), JMCExpression)
+  fullName.vb: JMC.Parser.JMCRuleInstance.FuncNamedArg(sly.lexer.Token(Of JMC.Parser.TokenType), JMC.Parser.JMCExpression)
+  name.vb: FuncNamedArg(Token(Of TokenType), JMCExpression)
+- uid: JMC.Parser.JMCRuleInstance.FuncNamedArgs(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  commentId: M:JMC.Parser.JMCRuleInstance.FuncNamedArgs(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  id: FuncNamedArgs(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: FuncNamedArgs(JMCExpression, List<Group<TokenType, JMCExpression>>)
+  nameWithType: JMCRuleInstance.FuncNamedArgs(JMCExpression, List<Group<TokenType, JMCExpression>>)
+  fullName: JMC.Parser.JMCRuleInstance.FuncNamedArgs(JMC.Parser.JMCExpression, System.Collections.Generic.List<sly.parser.parser.Group<JMC.Parser.TokenType, JMC.Parser.JMCExpression>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: FuncNamedArgs
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 231
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("funcNameArgs: funcNameArg (Comma[d] funcNameArg)*")]
+
+      public static JMCExpression FuncNamedArgs(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
+    parameters:
+    - id: left
+      type: JMC.Parser.JMCExpression
+    - id: right
+      type: System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("funcNameArgs: funcNameArg (Comma[d] funcNameArg)*")>
+
+      Public Shared Function FuncNamedArgs(left As JMCExpression, right As List(Of Group(Of TokenType, JMCExpression))) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.FuncNamedArgs*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'funcNameArgs: funcNameArg (Comma[d] funcNameArg)*'
+  nameWithType.vb: JMCRuleInstance.FuncNamedArgs(JMCExpression, List(Of Group(Of TokenType, JMCExpression)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.FuncNamedArgs(JMC.Parser.JMCExpression, System.Collections.Generic.List(Of sly.parser.parser.Group(Of JMC.Parser.TokenType, JMC.Parser.JMCExpression)))
+  name.vb: FuncNamedArgs(JMCExpression, List(Of Group(Of TokenType, JMCExpression)))
+- uid: JMC.Parser.JMCRuleInstance.AL(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  commentId: M:JMC.Parser.JMCRuleInstance.AL(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  id: AL(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: AL(JMCExpression, List<Group<TokenType, JMCExpression>>)
+  nameWithType: JMCRuleInstance.AL(JMCExpression, List<Group<TokenType, JMCExpression>>)
+  fullName: JMC.Parser.JMCRuleInstance.AL(JMC.Parser.JMCExpression, System.Collections.Generic.List<sly.parser.parser.Group<JMC.Parser.TokenType, JMC.Parser.JMCExpression>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: AL
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 248
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("al: als (operand als)*")]
+
+      public static JMCExpression AL(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
+    parameters:
+    - id: left
+      type: JMC.Parser.JMCExpression
+    - id: right
+      type: System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("al: als (operand als)*")>
+
+      Public Shared Function AL(left As JMCExpression, right As List(Of Group(Of TokenType, JMCExpression))) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.AL*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'al: als (operand als)*'
+  nameWithType.vb: JMCRuleInstance.AL(JMCExpression, List(Of Group(Of TokenType, JMCExpression)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.AL(JMC.Parser.JMCExpression, System.Collections.Generic.List(Of sly.parser.parser.Group(Of JMC.Parser.TokenType, JMC.Parser.JMCExpression)))
+  name.vb: AL(JMCExpression, List(Of Group(Of TokenType, JMCExpression)))
+- uid: JMC.Parser.JMCRuleInstance.ALS(JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.ALS(JMC.Parser.JMCExpression)
+  id: ALS(JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: ALS(JMCExpression)
+  nameWithType: JMCRuleInstance.ALS(JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.ALS(JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ALS
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 272
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("als: number")]
+
+      [Production("als: variable")]
+
+      [Production("als: unaryExp")]
+
+      [Production("als: IDENTIFIER")]
+
+      public static JMCExpression ALS(JMCExpression als)
+    parameters:
+    - id: als
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("als: number")>
+
+      <Production("als: variable")>
+
+      <Production("als: unaryExp")>
+
+      <Production("als: IDENTIFIER")>
+
+      Public Shared Function ALS(als As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.ALS*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'als: number'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'als: variable'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'als: unaryExp'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'als: IDENTIFIER'
+- uid: JMC.Parser.JMCRuleInstance.Unary(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.Unary(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  id: Unary(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Unary(Token<TokenType>, JMCExpression)
+  nameWithType: JMCRuleInstance.Unary(Token<TokenType>, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.Unary(sly.lexer.Token<JMC.Parser.TokenType>, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Unary
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 281
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("unaryExp: [Plus|Minus]? ParenStart[d] al ParenEnd[d]")]
+
+      public static JMCExpression Unary(Token<TokenType> prefix, JMCExpression als)
+    parameters:
+    - id: prefix
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: als
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("unaryExp: [Plus|Minus]? ParenStart[d] al ParenEnd[d]")>
+
+      Public Shared Function Unary(prefix As Token(Of TokenType), als As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Unary*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'unaryExp: [Plus|Minus]? ParenStart[d] al ParenEnd[d]'
+  nameWithType.vb: JMCRuleInstance.Unary(Token(Of TokenType), JMCExpression)
+  fullName.vb: JMC.Parser.JMCRuleInstance.Unary(sly.lexer.Token(Of JMC.Parser.TokenType), JMC.Parser.JMCExpression)
+  name.vb: Unary(Token(Of TokenType), JMCExpression)
+- uid: JMC.Parser.JMCRuleInstance.Operand(sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.JMCRuleInstance.Operand(sly.lexer.Token{JMC.Parser.TokenType})
+  id: Operand(sly.lexer.Token{JMC.Parser.TokenType})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Operand(Token<TokenType>)
+  nameWithType: JMCRuleInstance.Operand(Token<TokenType>)
+  fullName: JMC.Parser.JMCRuleInstance.Operand(sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Operand
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 293
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Operand]
+
+      [Production("operand: Plus")]
+
+      [Production("operand: Minus")]
+
+      [Production("operand: Divide")]
+
+      [Production("operand: Multiply")]
+
+      [Production("operand: Remainder")]
+
+      public static JMCExpression Operand(Token<TokenType> token)
+    parameters:
+    - id: token
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Operand>
+
+      <Production("operand: Plus")>
+
+      <Production("operand: Minus")>
+
+      <Production("operand: Divide")>
+
+      <Production("operand: Multiply")>
+
+      <Production("operand: Remainder")>
+
+      Public Shared Function Operand(token As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Operand*
+  attributes:
+  - type: sly.parser.generator.OperandAttribute
+    ctor: sly.parser.generator.OperandAttribute.#ctor
+    arguments: []
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'operand: Plus'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'operand: Minus'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'operand: Divide'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'operand: Multiply'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'operand: Remainder'
+  nameWithType.vb: JMCRuleInstance.Operand(Token(Of TokenType))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Operand(sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: Operand(Token(Of TokenType))
+- uid: JMC.Parser.JMCRuleInstance.Command(JMC.Parser.JMCExpression,System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  commentId: M:JMC.Parser.JMCRuleInstance.Command(JMC.Parser.JMCExpression,System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  id: Command(JMC.Parser.JMCExpression,System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Command(JMCExpression, List<JMCExpression>)
+  nameWithType: JMCRuleInstance.Command(JMCExpression, List<JMCExpression>)
+  fullName: JMC.Parser.JMCRuleInstance.Command(JMC.Parser.JMCExpression, System.Collections.Generic.List<JMC.Parser.JMCExpression>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Command
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 311
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("command: cmdKeyword cmdArg* End[d]")]
+
+      public static JMCExpression Command(JMCExpression root, List<JMCExpression> args)
+    parameters:
+    - id: root
+      type: JMC.Parser.JMCExpression
+    - id: args
+      type: System.Collections.Generic.List{JMC.Parser.JMCExpression}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("command: cmdKeyword cmdArg* End[d]")>
+
+      Public Shared Function Command(root As JMCExpression, args As List(Of JMCExpression)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Command*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'command: cmdKeyword cmdArg* End[d]'
+  nameWithType.vb: JMCRuleInstance.Command(JMCExpression, List(Of JMCExpression))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Command(JMC.Parser.JMCExpression, System.Collections.Generic.List(Of JMC.Parser.JMCExpression))
+  name.vb: Command(JMCExpression, List(Of JMCExpression))
+- uid: JMC.Parser.JMCRuleInstance.CommandArgument(JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.CommandArgument(JMC.Parser.JMCExpression)
+  id: CommandArgument(JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: CommandArgument(JMCExpression)
+  nameWithType: JMCRuleInstance.CommandArgument(JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.CommandArgument(JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: CommandArgument
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 319
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("cmdArg: vec2")]
+
+      [Production("cmdArg: vec3")]
+
+      [Production("cmdArg: cmdKeyword")]
+
+      [Production("cmdArg: selector")]
+
+      public static JMCExpression CommandArgument(JMCExpression exp)
+    parameters:
+    - id: exp
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("cmdArg: vec2")>
+
+      <Production("cmdArg: vec3")>
+
+      <Production("cmdArg: cmdKeyword")>
+
+      <Production("cmdArg: selector")>
+
+      Public Shared Function CommandArgument(exp As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.CommandArgument*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'cmdArg: vec2'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'cmdArg: vec3'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'cmdArg: cmdKeyword'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'cmdArg: selector'
+- uid: JMC.Parser.JMCRuleInstance.PosI(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.PosI(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  id: PosI(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: PosI(ValueOption<JMCExpression>, JMCExpression)
+  nameWithType: JMCRuleInstance.PosI(ValueOption<JMCExpression>, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.PosI(sly.parser.parser.ValueOption<JMC.Parser.JMCExpression>, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: PosI
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 325
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("posI: valueSign? number")]
+
+      public static JMCExpression PosI(ValueOption<JMCExpression> sign, JMCExpression exp)
+    parameters:
+    - id: sign
+      type: sly.parser.parser.ValueOption{JMC.Parser.JMCExpression}
+    - id: exp
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("posI: valueSign? number")>
+
+      Public Shared Function PosI(sign As ValueOption(Of JMCExpression), exp As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.PosI*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'posI: valueSign? number'
+  nameWithType.vb: JMCRuleInstance.PosI(ValueOption(Of JMCExpression), JMCExpression)
+  fullName.vb: JMC.Parser.JMCRuleInstance.PosI(sly.parser.parser.ValueOption(Of JMC.Parser.JMCExpression), JMC.Parser.JMCExpression)
+  name.vb: PosI(ValueOption(Of JMCExpression), JMCExpression)
+- uid: JMC.Parser.JMCRuleInstance.PosFR(sly.lexer.Token{JMC.Parser.TokenType},sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.PosFR(sly.lexer.Token{JMC.Parser.TokenType},sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  id: PosFR(sly.lexer.Token{JMC.Parser.TokenType},sly.parser.parser.ValueOption{JMC.Parser.JMCExpression},JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: PosFR(Token<TokenType>, ValueOption<JMCExpression>, JMCExpression)
+  nameWithType: JMCRuleInstance.PosFR(Token<TokenType>, ValueOption<JMCExpression>, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.PosFR(sly.lexer.Token<JMC.Parser.TokenType>, sly.parser.parser.ValueOption<JMC.Parser.JMCExpression>, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: PosFR
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 332
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("posF: '^' valueSign? number")]
+
+      [Production("posR: '~' valueSign? number")]
+
+      public static JMCExpression PosFR(Token<TokenType> s, ValueOption<JMCExpression> sign, JMCExpression i)
+    parameters:
+    - id: s
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: sign
+      type: sly.parser.parser.ValueOption{JMC.Parser.JMCExpression}
+    - id: i
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("posF: '^' valueSign? number")>
+
+      <Production("posR: '~' valueSign? number")>
+
+      Public Shared Function PosFR(s As Token(Of TokenType), sign As ValueOption(Of JMCExpression), i As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.PosFR*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: "posF: '^' valueSign? number"
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: "posR: '~' valueSign? number"
+  nameWithType.vb: JMCRuleInstance.PosFR(Token(Of TokenType), ValueOption(Of JMCExpression), JMCExpression)
+  fullName.vb: JMC.Parser.JMCRuleInstance.PosFR(sly.lexer.Token(Of JMC.Parser.TokenType), sly.parser.parser.ValueOption(Of JMC.Parser.JMCExpression), JMC.Parser.JMCExpression)
+  name.vb: PosFR(Token(Of TokenType), ValueOption(Of JMCExpression), JMCExpression)
+- uid: JMC.Parser.JMCRuleInstance.Vec2(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.Vec2(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  id: Vec2(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Vec2(JMCExpression, JMCExpression)
+  nameWithType: JMCRuleInstance.Vec2(JMCExpression, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.Vec2(JMC.Parser.JMCExpression, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Vec2
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 347
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("vec2: posI posI")]
+
+      [Production("vec2: posR posR")]
+
+      [Production("vec2: posF posF")]
+
+      public static JMCExpression Vec2(JMCExpression e1, JMCExpression e2)
+    parameters:
+    - id: e1
+      type: JMC.Parser.JMCExpression
+    - id: e2
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("vec2: posI posI")>
+
+      <Production("vec2: posR posR")>
+
+      <Production("vec2: posF posF")>
+
+      Public Shared Function Vec2(e1 As JMCExpression, e2 As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Vec2*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'vec2: posI posI'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'vec2: posR posR'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'vec2: posF posF'
+- uid: JMC.Parser.JMCRuleInstance.Vec3(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.Vec3(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  id: Vec3(JMC.Parser.JMCExpression,JMC.Parser.JMCExpression,JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Vec3(JMCExpression, JMCExpression, JMCExpression)
+  nameWithType: JMCRuleInstance.Vec3(JMCExpression, JMCExpression, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.Vec3(JMC.Parser.JMCExpression, JMC.Parser.JMCExpression, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Vec3
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 360
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("vec3: posI posI posI")]
+
+      [Production("vec3: posR posR posR")]
+
+      [Production("vec3: posF posF posF")]
+
+      public static JMCExpression Vec3(JMCExpression e1, JMCExpression e2, JMCExpression e3)
+    parameters:
+    - id: e1
+      type: JMC.Parser.JMCExpression
+    - id: e2
+      type: JMC.Parser.JMCExpression
+    - id: e3
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("vec3: posI posI posI")>
+
+      <Production("vec3: posR posR posR")>
+
+      <Production("vec3: posF posF posF")>
+
+      Public Shared Function Vec3(e1 As JMCExpression, e2 As JMCExpression, e3 As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Vec3*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'vec3: posI posI posI'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'vec3: posR posR posR'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'vec3: posF posF posF'
+- uid: JMC.Parser.JMCRuleInstance.QuotedProperties(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  commentId: M:JMC.Parser.JMCRuleInstance.QuotedProperties(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  id: QuotedProperties(sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: QuotedProperties(ValueOption<JMCExpression>)
+  nameWithType: JMCRuleInstance.QuotedProperties(ValueOption<JMCExpression>)
+  fullName: JMC.Parser.JMCRuleInstance.QuotedProperties(sly.parser.parser.ValueOption<JMC.Parser.JMCExpression>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: QuotedProperties
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 373
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("quotedProps: ListStart[d] properties? ListEnd[d]")]
+
+      public static JMCExpression QuotedProperties(ValueOption<JMCExpression> props)
+    parameters:
+    - id: props
+      type: sly.parser.parser.ValueOption{JMC.Parser.JMCExpression}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("quotedProps: ListStart[d] properties? ListEnd[d]")>
+
+      Public Shared Function QuotedProperties(props As ValueOption(Of JMCExpression)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.QuotedProperties*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'quotedProps: ListStart[d] properties? ListEnd[d]'
+  nameWithType.vb: JMCRuleInstance.QuotedProperties(ValueOption(Of JMCExpression))
+  fullName.vb: JMC.Parser.JMCRuleInstance.QuotedProperties(sly.parser.parser.ValueOption(Of JMC.Parser.JMCExpression))
+  name.vb: QuotedProperties(ValueOption(Of JMCExpression))
+- uid: JMC.Parser.JMCRuleInstance.Properties(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  commentId: M:JMC.Parser.JMCRuleInstance.Properties(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  id: Properties(JMC.Parser.JMCExpression,System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Properties(JMCExpression, List<Group<TokenType, JMCExpression>>)
+  nameWithType: JMCRuleInstance.Properties(JMCExpression, List<Group<TokenType, JMCExpression>>)
+  fullName: JMC.Parser.JMCRuleInstance.Properties(JMC.Parser.JMCExpression, System.Collections.Generic.List<sly.parser.parser.Group<JMC.Parser.TokenType, JMC.Parser.JMCExpression>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Properties
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 376
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("properties: property (Comma[d] property)*")]
+
+      public static JMCExpression Properties(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
+    parameters:
+    - id: left
+      type: JMC.Parser.JMCExpression
+    - id: right
+      type: System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("properties: property (Comma[d] property)*")>
+
+      Public Shared Function Properties(left As JMCExpression, right As List(Of Group(Of TokenType, JMCExpression))) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Properties*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'properties: property (Comma[d] property)*'
+  nameWithType.vb: JMCRuleInstance.Properties(JMCExpression, List(Of Group(Of TokenType, JMCExpression)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Properties(JMC.Parser.JMCExpression, System.Collections.Generic.List(Of sly.parser.parser.Group(Of JMC.Parser.TokenType, JMC.Parser.JMCExpression)))
+  name.vb: Properties(JMCExpression, List(Of Group(Of TokenType, JMCExpression)))
+- uid: JMC.Parser.JMCRuleInstance.Property(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.Property(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  id: Property(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Property(Token<TokenType>, JMCExpression)
+  nameWithType: JMCRuleInstance.Property(Token<TokenType>, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.Property(sly.lexer.Token<JMC.Parser.TokenType>, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Property
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 390
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("property: Identifier Assign[d] cmdValue")]
+
+      public static JMCExpression Property(Token<TokenType> key, JMCExpression value)
+    parameters:
+    - id: key
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: value
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("property: Identifier Assign[d] cmdValue")>
+
+      Public Shared Function [Property](key As Token(Of TokenType), value As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Property*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'property: Identifier Assign[d] cmdValue'
+  nameWithType.vb: JMCRuleInstance.Property(Token(Of TokenType), JMCExpression)
+  fullName.vb: JMC.Parser.JMCRuleInstance.Property(sly.lexer.Token(Of JMC.Parser.TokenType), JMC.Parser.JMCExpression)
+  name.vb: Property(Token(Of TokenType), JMCExpression)
+- uid: JMC.Parser.JMCRuleInstance.CommandValue(JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.CommandValue(JMC.Parser.JMCExpression)
+  id: CommandValue(JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: CommandValue(JMCExpression)
+  nameWithType: JMCRuleInstance.CommandValue(JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.CommandValue(JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: CommandValue
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 398
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("cmdValue: bool")]
+
+      [Production("cmdValue: number")]
+
+      public static JMCExpression CommandValue(JMCExpression exp)
+    parameters:
+    - id: exp
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("cmdValue: bool")>
+
+      <Production("cmdValue: number")>
+
+      Public Shared Function CommandValue(exp As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.CommandValue*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'cmdValue: bool'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'cmdValue: number'
+- uid: JMC.Parser.JMCRuleInstance.CommandValue(sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.JMCRuleInstance.CommandValue(sly.lexer.Token{JMC.Parser.TokenType})
+  id: CommandValue(sly.lexer.Token{JMC.Parser.TokenType})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: CommandValue(Token<TokenType>)
+  nameWithType: JMCRuleInstance.CommandValue(Token<TokenType>)
+  fullName: JMC.Parser.JMCRuleInstance.CommandValue(sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: CommandValue
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 402
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("cmdValue: Identifier")]
+
+      public static JMCExpression CommandValue(Token<TokenType> token)
+    parameters:
+    - id: token
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("cmdValue: Identifier")>
+
+      Public Shared Function CommandValue(token As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.CommandValue*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'cmdValue: Identifier'
+  nameWithType.vb: JMCRuleInstance.CommandValue(Token(Of TokenType))
+  fullName.vb: JMC.Parser.JMCRuleInstance.CommandValue(sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: CommandValue(Token(Of TokenType))
+- uid: JMC.Parser.JMCRuleInstance.CommandKeyword(sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.JMCRuleInstance.CommandKeyword(sly.lexer.Token{JMC.Parser.TokenType})
+  id: CommandKeyword(sly.lexer.Token{JMC.Parser.TokenType})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: CommandKeyword(Token<TokenType>)
+  nameWithType: JMCRuleInstance.CommandKeyword(Token<TokenType>)
+  fullName: JMC.Parser.JMCRuleInstance.CommandKeyword(sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: CommandKeyword
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 405
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("cmdKeyword: Identifier")]
+
+      public static JMCExpression CommandKeyword(Token<TokenType> token)
+    parameters:
+    - id: token
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("cmdKeyword: Identifier")>
+
+      Public Shared Function CommandKeyword(token As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.CommandKeyword*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'cmdKeyword: Identifier'
+  nameWithType.vb: JMCRuleInstance.CommandKeyword(Token(Of TokenType))
+  fullName.vb: JMC.Parser.JMCRuleInstance.CommandKeyword(sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: CommandKeyword(Token(Of TokenType))
+- uid: JMC.Parser.JMCRuleInstance.JsonValue(JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.JsonValue(JMC.Parser.JMCExpression)
+  id: JsonValue(JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: JsonValue(JMCExpression)
+  nameWithType: JMCRuleInstance.JsonValue(JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.JsonValue(JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: JsonValue
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 408
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("jsonValue: jsonObject")]
+
+      [Production("jsonValue: jsonList")]
+
+      [Production("jsonValue: bool")]
+
+      [Production("jsonValue: number")]
+
+      [Production("jsonValue: STRING")]
+
+      public static JMCExpression JsonValue(JMCExpression exp)
+    parameters:
+    - id: exp
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("jsonValue: jsonObject")>
+
+      <Production("jsonValue: jsonList")>
+
+      <Production("jsonValue: bool")>
+
+      <Production("jsonValue: number")>
+
+      <Production("jsonValue: STRING")>
+
+      Public Shared Function JsonValue(exp As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.JsonValue*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'jsonValue: jsonObject'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'jsonValue: jsonList'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'jsonValue: bool'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'jsonValue: number'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'jsonValue: STRING'
+- uid: JMC.Parser.JMCRuleInstance.JsonObject(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  commentId: M:JMC.Parser.JMCRuleInstance.JsonObject(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  id: JsonObject(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: JsonObject(Token<TokenType>, List<Group<TokenType, JMCExpression>>)
+  nameWithType: JMCRuleInstance.JsonObject(Token<TokenType>, List<Group<TokenType, JMCExpression>>)
+  fullName: JMC.Parser.JMCRuleInstance.JsonObject(sly.lexer.Token<JMC.Parser.TokenType>, System.Collections.Generic.List<sly.parser.parser.Group<JMC.Parser.TokenType, JMC.Parser.JMCExpression>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: JsonObject
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 415
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("jsonObject: BlockStart ([STRING|IDENTIFIER] Colon[d] jsonValue)* BlockEnd[d]")]
+
+      public static JMCExpression JsonObject(Token<TokenType> lBlock, List<Group<TokenType, JMCExpression>> values)
+    parameters:
+    - id: lBlock
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: values
+      type: System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("jsonObject: BlockStart ([STRING|IDENTIFIER] Colon[d] jsonValue)* BlockEnd[d]")>
+
+      Public Shared Function JsonObject(lBlock As Token(Of TokenType), values As List(Of Group(Of TokenType, JMCExpression))) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.JsonObject*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'jsonObject: BlockStart ([STRING|IDENTIFIER] Colon[d] jsonValue)* BlockEnd[d]'
+  nameWithType.vb: JMCRuleInstance.JsonObject(Token(Of TokenType), List(Of Group(Of TokenType, JMCExpression)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.JsonObject(sly.lexer.Token(Of JMC.Parser.TokenType), System.Collections.Generic.List(Of sly.parser.parser.Group(Of JMC.Parser.TokenType, JMC.Parser.JMCExpression)))
+  name.vb: JsonObject(Token(Of TokenType), List(Of Group(Of TokenType, JMCExpression)))
+- uid: JMC.Parser.JMCRuleInstance.JsonList(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  commentId: M:JMC.Parser.JMCRuleInstance.JsonList(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  id: JsonList(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{JMC.Parser.JMCExpression})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: JsonList(Token<TokenType>, List<JMCExpression>)
+  nameWithType: JMCRuleInstance.JsonList(Token<TokenType>, List<JMCExpression>)
+  fullName: JMC.Parser.JMCRuleInstance.JsonList(sly.lexer.Token<JMC.Parser.TokenType>, System.Collections.Generic.List<JMC.Parser.JMCExpression>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: JsonList
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 433
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("jsonList: ListStart jsonValue* ListEnd[d]")]
+
+      public static JMCExpression JsonList(Token<TokenType> token, List<JMCExpression> values)
+    parameters:
+    - id: token
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: values
+      type: System.Collections.Generic.List{JMC.Parser.JMCExpression}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("jsonList: ListStart jsonValue* ListEnd[d]")>
+
+      Public Shared Function JsonList(token As Token(Of TokenType), values As List(Of JMCExpression)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.JsonList*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'jsonList: ListStart jsonValue* ListEnd[d]'
+  nameWithType.vb: JMCRuleInstance.JsonList(Token(Of TokenType), List(Of JMCExpression))
+  fullName.vb: JMC.Parser.JMCRuleInstance.JsonList(sly.lexer.Token(Of JMC.Parser.TokenType), System.Collections.Generic.List(Of JMC.Parser.JMCExpression))
+  name.vb: JsonList(Token(Of TokenType), List(Of JMCExpression))
+- uid: JMC.Parser.JMCRuleInstance.Assign(sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.JMCRuleInstance.Assign(sly.lexer.Token{JMC.Parser.TokenType})
+  id: Assign(sly.lexer.Token{JMC.Parser.TokenType})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Assign(Token<TokenType>)
+  nameWithType: JMCRuleInstance.Assign(Token<TokenType>)
+  fullName: JMC.Parser.JMCRuleInstance.Assign(sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Assign
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 447
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("assign: [Assign|CompareAssign|DivideAssign|MinusAssign|MultiplyAssign|NullColesleAssign|PlusAssign|RemainderAssign]")]
+
+      public static JMCExpression Assign(Token<TokenType> token)
+    parameters:
+    - id: token
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("assign: [Assign|CompareAssign|DivideAssign|MinusAssign|MultiplyAssign|NullColesleAssign|PlusAssign|RemainderAssign]")>
+
+      Public Shared Function Assign(token As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Assign*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'assign: [Assign|CompareAssign|DivideAssign|MinusAssign|MultiplyAssign|NullColesleAssign|PlusAssign|RemainderAssign]'
+  nameWithType.vb: JMCRuleInstance.Assign(Token(Of TokenType))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Assign(sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: Assign(Token(Of TokenType))
+- uid: JMC.Parser.JMCRuleInstance.CommandAssign(sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.JMCRuleInstance.CommandAssign(sly.lexer.Token{JMC.Parser.TokenType})
+  id: CommandAssign(sly.lexer.Token{JMC.Parser.TokenType})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: CommandAssign(Token<TokenType>)
+  nameWithType: JMCRuleInstance.CommandAssign(Token<TokenType>)
+  fullName: JMC.Parser.JMCRuleInstance.CommandAssign(sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: CommandAssign
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 462
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("cmdAssign: Assign")]
+
+      [Production("cmdAssign: BooleanAssign")]
+
+      public static JMCExpression CommandAssign(Token<TokenType> token)
+    parameters:
+    - id: token
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("cmdAssign: Assign")>
+
+      <Production("cmdAssign: BooleanAssign")>
+
+      Public Shared Function CommandAssign(token As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.CommandAssign*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'cmdAssign: Assign'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'cmdAssign: BooleanAssign'
+  nameWithType.vb: JMCRuleInstance.CommandAssign(Token(Of TokenType))
+  fullName.vb: JMC.Parser.JMCRuleInstance.CommandAssign(sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: CommandAssign(Token(Of TokenType))
+- uid: JMC.Parser.JMCRuleInstance.Number(sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.JMCRuleInstance.Number(sly.lexer.Token{JMC.Parser.TokenType})
+  id: Number(sly.lexer.Token{JMC.Parser.TokenType})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Number(Token<TokenType>)
+  nameWithType: JMCRuleInstance.Number(Token<TokenType>)
+  fullName: JMC.Parser.JMCRuleInstance.Number(sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Number
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 466
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("number: [Int|Double]")]
+
+      public static JMCExpression Number(Token<TokenType> number)
+    parameters:
+    - id: number
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("number: [Int|Double]")>
+
+      Public Shared Function Number(number As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Number*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'number: [Int|Double]'
+  nameWithType.vb: JMCRuleInstance.Number(Token(Of TokenType))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Number(sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: Number(Token(Of TokenType))
+- uid: JMC.Parser.JMCRuleInstance.Bool(sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.JMCRuleInstance.Bool(sly.lexer.Token{JMC.Parser.TokenType})
+  id: Bool(sly.lexer.Token{JMC.Parser.TokenType})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Bool(Token<TokenType>)
+  nameWithType: JMCRuleInstance.Bool(Token<TokenType>)
+  fullName: JMC.Parser.JMCRuleInstance.Bool(sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Bool
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 477
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("bool: [True|False]")]
+
+      public static JMCExpression Bool(Token<TokenType> b)
+    parameters:
+    - id: b
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("bool: [True|False]")>
+
+      Public Shared Function Bool(b As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Bool*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'bool: [True|False]'
+  nameWithType.vb: JMCRuleInstance.Bool(Token(Of TokenType))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Bool(sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: Bool(Token(Of TokenType))
+- uid: JMC.Parser.JMCRuleInstance.Variable(sly.lexer.Token{JMC.Parser.TokenType},sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.JMCRuleInstance.Variable(sly.lexer.Token{JMC.Parser.TokenType},sly.lexer.Token{JMC.Parser.TokenType})
+  id: Variable(sly.lexer.Token{JMC.Parser.TokenType},sly.lexer.Token{JMC.Parser.TokenType})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Variable(Token<TokenType>, Token<TokenType>)
+  nameWithType: JMCRuleInstance.Variable(Token<TokenType>, Token<TokenType>)
+  fullName: JMC.Parser.JMCRuleInstance.Variable(sly.lexer.Token<JMC.Parser.TokenType>, sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Variable
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 488
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("variable: DollarSign Identifier")]
+
+      public JMCExpression Variable(Token<TokenType> dollarSign, Token<TokenType> identifier)
+    parameters:
+    - id: dollarSign
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: identifier
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("variable: DollarSign Identifier")>
+
+      Public Function Variable(dollarSign As Token(Of TokenType), identifier As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Variable*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'variable: DollarSign Identifier'
+  nameWithType.vb: JMCRuleInstance.Variable(Token(Of TokenType), Token(Of TokenType))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Variable(sly.lexer.Token(Of JMC.Parser.TokenType), sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: Variable(Token(Of TokenType), Token(Of TokenType))
+- uid: JMC.Parser.JMCRuleInstance.Variable(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  commentId: M:JMC.Parser.JMCRuleInstance.Variable(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  id: Variable(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Variable(Token<TokenType>, List<Token<TokenType>>)
+  nameWithType: JMCRuleInstance.Variable(Token<TokenType>, List<Token<TokenType>>)
+  fullName: JMC.Parser.JMCRuleInstance.Variable(sly.lexer.Token<JMC.Parser.TokenType>, System.Collections.Generic.List<sly.lexer.Token<JMC.Parser.TokenType>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Variable
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 503
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("variable: DollarSign BlockStart[d] Identifier* BlockEnd[d]")]
+
+      public static JMCExpression Variable(Token<TokenType> dollarSign, List<Token<TokenType>> identifiers)
+    parameters:
+    - id: dollarSign
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: identifiers
+      type: System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("variable: DollarSign BlockStart[d] Identifier* BlockEnd[d]")>
+
+      Public Shared Function Variable(dollarSign As Token(Of TokenType), identifiers As List(Of Token(Of TokenType))) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Variable*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'variable: DollarSign BlockStart[d] Identifier* BlockEnd[d]'
+  nameWithType.vb: JMCRuleInstance.Variable(Token(Of TokenType), List(Of Token(Of TokenType)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Variable(sly.lexer.Token(Of JMC.Parser.TokenType), System.Collections.Generic.List(Of sly.lexer.Token(Of JMC.Parser.TokenType)))
+  name.vb: Variable(Token(Of TokenType), List(Of Token(Of TokenType)))
+- uid: JMC.Parser.JMCRuleInstance.DefaultString(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  commentId: M:JMC.Parser.JMCRuleInstance.DefaultString(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  id: DefaultString(sly.lexer.Token{JMC.Parser.TokenType},System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: DefaultString(Token<TokenType>, List<Token<TokenType>>)
+  nameWithType: JMCRuleInstance.DefaultString(Token<TokenType>, List<Token<TokenType>>)
+  fullName: JMC.Parser.JMCRuleInstance.DefaultString(sly.lexer.Token<JMC.Parser.TokenType>, System.Collections.Generic.List<sly.lexer.Token<JMC.Parser.TokenType>>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: DefaultString
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 515
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("defaultString: StartQuote StringValue* EndQuote[d]")]
+
+      public static JMCExpression DefaultString(Token<TokenType> start, List<Token<TokenType>> strValues)
+    parameters:
+    - id: start
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: strValues
+      type: System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("defaultString: StartQuote StringValue* EndQuote[d]")>
+
+      Public Shared Function DefaultString(start As Token(Of TokenType), strValues As List(Of Token(Of TokenType))) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.DefaultString*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'defaultString: StartQuote StringValue* EndQuote[d]'
+  nameWithType.vb: JMCRuleInstance.DefaultString(Token(Of TokenType), List(Of Token(Of TokenType)))
+  fullName.vb: JMC.Parser.JMCRuleInstance.DefaultString(sly.lexer.Token(Of JMC.Parser.TokenType), System.Collections.Generic.List(Of sly.lexer.Token(Of JMC.Parser.TokenType)))
+  name.vb: DefaultString(Token(Of TokenType), List(Of Token(Of TokenType)))
+- uid: JMC.Parser.JMCRuleInstance.NormalString(JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.NormalString(JMC.Parser.JMCExpression)
+  id: NormalString(JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: NormalString(JMCExpression)
+  nameWithType: JMCRuleInstance.NormalString(JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.NormalString(JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: NormalString
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 524
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("STRING: defaultString")]
+
+      public static JMCExpression NormalString(JMCExpression exp)
+    parameters:
+    - id: exp
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("STRING: defaultString")>
+
+      Public Shared Function NormalString(exp As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.NormalString*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'STRING: defaultString'
+- uid: JMC.Parser.JMCRuleInstance.ColorString(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.ColorString(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  id: ColorString(sly.lexer.Token{JMC.Parser.TokenType},JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: ColorString(Token<TokenType>, JMCExpression)
+  nameWithType: JMCRuleInstance.ColorString(Token<TokenType>, JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.ColorString(sly.lexer.Token<JMC.Parser.TokenType>, JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ColorString
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 527
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("STRING: Deref defaultString")]
+
+      public static JMCExpression ColorString(Token<TokenType> token, JMCExpression strExp)
+    parameters:
+    - id: token
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: strExp
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("STRING: Deref defaultString")>
+
+      Public Shared Function ColorString(token As Token(Of TokenType), strExp As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.ColorString*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'STRING: Deref defaultString'
+  nameWithType.vb: JMCRuleInstance.ColorString(Token(Of TokenType), JMCExpression)
+  fullName.vb: JMC.Parser.JMCRuleInstance.ColorString(sly.lexer.Token(Of JMC.Parser.TokenType), JMC.Parser.JMCExpression)
+  name.vb: ColorString(Token(Of TokenType), JMCExpression)
+- uid: JMC.Parser.JMCRuleInstance.ValueSign(sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.JMCRuleInstance.ValueSign(sly.lexer.Token{JMC.Parser.TokenType})
+  id: ValueSign(sly.lexer.Token{JMC.Parser.TokenType})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: ValueSign(Token<TokenType>)
+  nameWithType: JMCRuleInstance.ValueSign(Token<TokenType>)
+  fullName: JMC.Parser.JMCRuleInstance.ValueSign(sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ValueSign
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 535
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("valueSign: Plus")]
+
+      [Production("valueSign: Minus")]
+
+      public static JMCExpression ValueSign(Token<TokenType> value)
+    parameters:
+    - id: value
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("valueSign: Plus")>
+
+      <Production("valueSign: Minus")>
+
+      Public Shared Function ValueSign(value As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.ValueSign*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'valueSign: Plus'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'valueSign: Minus'
+  nameWithType.vb: JMCRuleInstance.ValueSign(Token(Of TokenType))
+  fullName.vb: JMC.Parser.JMCRuleInstance.ValueSign(sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: ValueSign(Token(Of TokenType))
+- uid: JMC.Parser.JMCRuleInstance.Value(JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.JMCRuleInstance.Value(JMC.Parser.JMCExpression)
+  id: Value(JMC.Parser.JMCExpression)
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Value(JMCExpression)
+  nameWithType: JMCRuleInstance.Value(JMCExpression)
+  fullName: JMC.Parser.JMCRuleInstance.Value(JMC.Parser.JMCExpression)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Value
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 542
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("value: lambdaFunction")]
+
+      [Production("value: number")]
+
+      [Production("value: variable")]
+
+      [Production("value: STRING")]
+
+      public static JMCExpression Value(JMCExpression expression)
+    parameters:
+    - id: expression
+      type: JMC.Parser.JMCExpression
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("value: lambdaFunction")>
+
+      <Production("value: number")>
+
+      <Production("value: variable")>
+
+      <Production("value: STRING")>
+
+      Public Shared Function Value(expression As JMCExpression) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Value*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'value: lambdaFunction'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'value: number'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'value: variable'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'value: STRING'
+- uid: JMC.Parser.JMCRuleInstance.Selector(sly.lexer.Token{JMC.Parser.TokenType},sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  commentId: M:JMC.Parser.JMCRuleInstance.Selector(sly.lexer.Token{JMC.Parser.TokenType},sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  id: Selector(sly.lexer.Token{JMC.Parser.TokenType},sly.parser.parser.ValueOption{JMC.Parser.JMCExpression})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Selector(Token<TokenType>, ValueOption<JMCExpression>)
+  nameWithType: JMCRuleInstance.Selector(Token<TokenType>, ValueOption<JMCExpression>)
+  fullName: JMC.Parser.JMCRuleInstance.Selector(sly.lexer.Token<JMC.Parser.TokenType>, sly.parser.parser.ValueOption<JMC.Parser.JMCExpression>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Selector
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 551
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("selector: SelectorSelf quotedProps?")]
+
+      [Production("selector: SelectorAllPlayers quotedProps?")]
+
+      [Production("selector: SelectorAllEntities quotedProps?")]
+
+      [Production("selector: SelectorNearest quotedProps?")]
+
+      [Production("selector: SelectorRandomPlayer quotedProps?")]
+
+      public static JMCExpression Selector(Token<TokenType> start, ValueOption<JMCExpression> properties)
+    parameters:
+    - id: start
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    - id: properties
+      type: sly.parser.parser.ValueOption{JMC.Parser.JMCExpression}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("selector: SelectorSelf quotedProps?")>
+
+      <Production("selector: SelectorAllPlayers quotedProps?")>
+
+      <Production("selector: SelectorAllEntities quotedProps?")>
+
+      <Production("selector: SelectorNearest quotedProps?")>
+
+      <Production("selector: SelectorRandomPlayer quotedProps?")>
+
+      Public Shared Function Selector(start As Token(Of TokenType), properties As ValueOption(Of JMCExpression)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Selector*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'selector: SelectorSelf quotedProps?'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'selector: SelectorAllPlayers quotedProps?'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'selector: SelectorAllEntities quotedProps?'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'selector: SelectorNearest quotedProps?'
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'selector: SelectorRandomPlayer quotedProps?'
+  nameWithType.vb: JMCRuleInstance.Selector(Token(Of TokenType), ValueOption(Of JMCExpression))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Selector(sly.lexer.Token(Of JMC.Parser.TokenType), sly.parser.parser.ValueOption(Of JMC.Parser.JMCExpression))
+  name.vb: Selector(Token(Of TokenType), ValueOption(Of JMCExpression))
+- uid: JMC.Parser.JMCRuleInstance.Identifier(sly.lexer.Token{JMC.Parser.TokenType})
+  commentId: M:JMC.Parser.JMCRuleInstance.Identifier(sly.lexer.Token{JMC.Parser.TokenType})
+  id: Identifier(sly.lexer.Token{JMC.Parser.TokenType})
+  parent: JMC.Parser.JMCRuleInstance
+  langs:
+  - csharp
+  - vb
+  name: Identifier(Token<TokenType>)
+  nameWithType: JMCRuleInstance.Identifier(Token<TokenType>)
+  fullName: JMC.Parser.JMCRuleInstance.Identifier(sly.lexer.Token<JMC.Parser.TokenType>)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/JMCRuleInstance.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Identifier
+    path: JMC.Parser/JMCRuleInstance.cs
+    startLine: 563
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: >-
+      [Production("IDENTIFIER: Identifier")]
+
+      public static JMCExpression Identifier(Token<TokenType> token)
+    parameters:
+    - id: token
+      type: sly.lexer.Token{JMC.Parser.TokenType}
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: >-
+      <Production("IDENTIFIER: Identifier")>
+
+      Public Shared Function Identifier(token As Token(Of TokenType)) As JMCExpression
+  overload: JMC.Parser.JMCRuleInstance.Identifier*
+  attributes:
+  - type: sly.parser.generator.ProductionAttribute
+    ctor: sly.parser.generator.ProductionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 'IDENTIFIER: Identifier'
+  nameWithType.vb: JMCRuleInstance.Identifier(Token(Of TokenType))
+  fullName.vb: JMC.Parser.JMCRuleInstance.Identifier(sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: Identifier(Token(Of TokenType))
+references:
+- uid: JMC.Parser
+  commentId: N:JMC.Parser
+  href: JMC.html
+  name: JMC.Parser
+  nameWithType: JMC.Parser
+  fullName: JMC.Parser
+  spec.csharp:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+  spec.vb:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JMC.Parser.JMCRuleInstance.FileDetail*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.FileDetail
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_FileDetail
+  name: FileDetail
+  nameWithType: JMCRuleInstance.FileDetail
+  fullName: JMC.Parser.JMCRuleInstance.FileDetail
+- uid: JMC.Parser.JMCFileDetail
+  commentId: T:JMC.Parser.JMCFileDetail
+  parent: JMC.Parser
+  href: JMC.Parser.JMCFileDetail.html
+  name: JMCFileDetail
+  nameWithType: JMCFileDetail
+  fullName: JMC.Parser.JMCFileDetail
+- uid: JMC.Parser.JMCRuleInstance.LexemesPostProcess*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.LexemesPostProcess
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_LexemesPostProcess_System_Collections_Generic_List_sly_lexer_Token_JMC_Parser_TokenType___
+  name: LexemesPostProcess
+  nameWithType: JMCRuleInstance.LexemesPostProcess
+  fullName: JMC.Parser.JMCRuleInstance.LexemesPostProcess
+- uid: System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}}
+  commentId: T:System.Collections.Generic.List{sly.lexer.Token{JMC.Parser.TokenType}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Token<TokenType>>
+  nameWithType: List<Token<TokenType>>
+  fullName: System.Collections.Generic.List<sly.lexer.Token<JMC.Parser.TokenType>>
+  nameWithType.vb: List(Of Token(Of TokenType))
+  fullName.vb: System.Collections.Generic.List(Of sly.lexer.Token(Of JMC.Parser.TokenType))
+  name.vb: List(Of Token(Of TokenType))
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: sly.lexer.Token`1
+    name: Token
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  - name: <
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: sly.lexer.Token`1
+    name: Token
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: JMC.Parser.JMCRuleInstance.Program*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Program
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Program_System_Collections_Generic_List_JMC_Parser_JMCExpression__
+  name: Program
+  nameWithType: JMCRuleInstance.Program
+  fullName: JMC.Parser.JMCRuleInstance.Program
+- uid: System.Collections.Generic.List{JMC.Parser.JMCExpression}
+  commentId: T:System.Collections.Generic.List{JMC.Parser.JMCExpression}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<JMCExpression>
+  nameWithType: List<JMCExpression>
+  fullName: System.Collections.Generic.List<JMC.Parser.JMCExpression>
+  nameWithType.vb: List(Of JMCExpression)
+  fullName.vb: System.Collections.Generic.List(Of JMC.Parser.JMCExpression)
+  name.vb: List(Of JMCExpression)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: )
+- uid: JMC.Parser.JMCExpression
+  commentId: T:JMC.Parser.JMCExpression
+  parent: JMC.Parser
+  href: JMC.Parser.JMCExpression.html
+  name: JMCExpression
+  nameWithType: JMCExpression
+  fullName: JMC.Parser.JMCExpression
+- uid: JMC.Parser.JMCRuleInstance.Statement*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Statement
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Statement_JMC_Parser_JMCExpression_
+  name: Statement
+  nameWithType: JMCRuleInstance.Statement
+  fullName: JMC.Parser.JMCRuleInstance.Statement
+- uid: JMC.Parser.JMCRuleInstance.Block*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Block
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Block_sly_lexer_Token_JMC_Parser_TokenType__System_Collections_Generic_List_JMC_Parser_JMCExpression__
+  name: Block
+  nameWithType: JMCRuleInstance.Block
+  fullName: JMC.Parser.JMCRuleInstance.Block
+- uid: sly.lexer.Token{JMC.Parser.TokenType}
+  commentId: T:sly.lexer.Token{JMC.Parser.TokenType}
+  parent: sly.lexer
+  definition: sly.lexer.Token`1
+  href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  name: Token<TokenType>
+  nameWithType: Token<TokenType>
+  fullName: sly.lexer.Token<JMC.Parser.TokenType>
+  nameWithType.vb: Token(Of TokenType)
+  fullName.vb: sly.lexer.Token(Of JMC.Parser.TokenType)
+  name.vb: Token(Of TokenType)
+  spec.csharp:
+  - uid: sly.lexer.Token`1
+    name: Token
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  - name: <
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: '>'
+  spec.vb:
+  - uid: sly.lexer.Token`1
+    name: Token
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: )
+- uid: sly.lexer.Token`1
+  commentId: T:sly.lexer.Token`1
+  isExternal: true
+  href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  name: Token<T>
+  nameWithType: Token<T>
+  fullName: sly.lexer.Token<T>
+  nameWithType.vb: Token(Of T)
+  fullName.vb: sly.lexer.Token(Of T)
+  name.vb: Token(Of T)
+  spec.csharp:
+  - uid: sly.lexer.Token`1
+    name: Token
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: sly.lexer.Token`1
+    name: Token
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/Token.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: sly.lexer
+  commentId: N:sly.lexer
+  isExternal: true
+  name: sly.lexer
+  nameWithType: sly.lexer
+  fullName: sly.lexer
+  spec.csharp:
+  - uid: sly
+    name: sly
+    isExternal: true
+  - name: .
+  - uid: sly.lexer
+    name: lexer
+    isExternal: true
+  spec.vb:
+  - uid: sly
+    name: sly
+    isExternal: true
+  - name: .
+  - uid: sly.lexer
+    name: lexer
+    isExternal: true
+- uid: JMC.Parser.JMCRuleInstance.Class*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Class
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Class_sly_lexer_Token_JMC_Parser_TokenType__JMC_Parser_JMCExpression_System_Collections_Generic_List_JMC_Parser_JMCExpression__
+  name: Class
+  nameWithType: JMCRuleInstance.Class
+  fullName: JMC.Parser.JMCRuleInstance.Class
+- uid: JMC.Parser.JMCRuleInstance.VariableStatement*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.VariableStatement
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_VariableStatement_JMC_Parser_JMCExpression_JMC_Parser_JMCExpression_JMC_Parser_JMCExpression_
+  name: VariableStatement
+  nameWithType: JMCRuleInstance.VariableStatement
+  fullName: JMC.Parser.JMCRuleInstance.VariableStatement
+- uid: JMC.Parser.JMCRuleInstance.FunctionStatement*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.FunctionStatement
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_FunctionStatement_JMC_Parser_JMCExpression_sly_parser_parser_ValueOption_JMC_Parser_JMCExpression__JMC_Parser_JMCExpression_
+  name: FunctionStatement
+  nameWithType: JMCRuleInstance.FunctionStatement
+  fullName: JMC.Parser.JMCRuleInstance.FunctionStatement
+- uid: sly.parser.parser.ValueOption{JMC.Parser.JMCExpression}
+  commentId: T:sly.parser.parser.ValueOption{JMC.Parser.JMCExpression}
+  parent: sly.parser.parser
+  definition: sly.parser.parser.ValueOption`1
+  href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/ValueOption.cs
+  name: ValueOption<JMCExpression>
+  nameWithType: ValueOption<JMCExpression>
+  fullName: sly.parser.parser.ValueOption<JMC.Parser.JMCExpression>
+  nameWithType.vb: ValueOption(Of JMCExpression)
+  fullName.vb: sly.parser.parser.ValueOption(Of JMC.Parser.JMCExpression)
+  name.vb: ValueOption(Of JMCExpression)
+  spec.csharp:
+  - uid: sly.parser.parser.ValueOption`1
+    name: ValueOption
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/ValueOption.cs
+  - name: <
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: '>'
+  spec.vb:
+  - uid: sly.parser.parser.ValueOption`1
+    name: ValueOption
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/ValueOption.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: )
+- uid: sly.parser.parser.ValueOption`1
+  commentId: T:sly.parser.parser.ValueOption`1
+  isExternal: true
+  href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/ValueOption.cs
+  name: ValueOption<T>
+  nameWithType: ValueOption<T>
+  fullName: sly.parser.parser.ValueOption<T>
+  nameWithType.vb: ValueOption(Of T)
+  fullName.vb: sly.parser.parser.ValueOption(Of T)
+  name.vb: ValueOption(Of T)
+  spec.csharp:
+  - uid: sly.parser.parser.ValueOption`1
+    name: ValueOption
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/ValueOption.cs
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: sly.parser.parser.ValueOption`1
+    name: ValueOption
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/ValueOption.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: sly.parser.parser
+  commentId: N:sly.parser.parser
+  isExternal: true
+  name: sly.parser.parser
+  nameWithType: sly.parser.parser
+  fullName: sly.parser.parser
+  spec.csharp:
+  - uid: sly
+    name: sly
+    isExternal: true
+  - name: .
+  - uid: sly.parser
+    name: parser
+    isExternal: true
+  - name: .
+  - uid: sly.parser.parser
+    name: parser
+    isExternal: true
+  spec.vb:
+  - uid: sly
+    name: sly
+    isExternal: true
+  - name: .
+  - uid: sly.parser
+    name: parser
+    isExternal: true
+  - name: .
+  - uid: sly.parser.parser
+    name: parser
+    isExternal: true
+- uid: JMC.Parser.JMCRuleInstance.FunctionCallStatement*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.FunctionCallStatement
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_FunctionCallStatement_JMC_Parser_JMCExpression_sly_parser_parser_ValueOption_JMC_Parser_JMCExpression__
+  name: FunctionCallStatement
+  nameWithType: JMCRuleInstance.FunctionCallStatement
+  fullName: JMC.Parser.JMCRuleInstance.FunctionCallStatement
+- uid: JMC.Parser.JMCRuleInstance.CommadBlock*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.CommadBlock
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_CommadBlock_sly_lexer_Token_JMC_Parser_TokenType__System_Collections_Generic_List_JMC_Parser_JMCExpression__
+  name: CommadBlock
+  nameWithType: JMCRuleInstance.CommadBlock
+  fullName: JMC.Parser.JMCRuleInstance.CommadBlock
+- uid: JMC.Parser.JMCRuleInstance.LambdaFunction*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.LambdaFunction
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_LambdaFunction_sly_parser_parser_ValueOption_JMC_Parser_JMCExpression__JMC_Parser_JMCExpression_
+  name: LambdaFunction
+  nameWithType: JMCRuleInstance.LambdaFunction
+  fullName: JMC.Parser.JMCRuleInstance.LambdaFunction
+- uid: JMC.Parser.JMCRuleInstance.Namespace*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Namespace
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Namespace_sly_lexer_Token_JMC_Parser_TokenType__System_Collections_Generic_List_sly_parser_parser_Group_JMC_Parser_TokenType_JMC_Parser_JMCExpression___
+  name: Namespace
+  nameWithType: JMCRuleInstance.Namespace
+  fullName: JMC.Parser.JMCRuleInstance.Namespace
+- uid: System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+  commentId: T:System.Collections.Generic.List{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Group<TokenType, JMCExpression>>
+  nameWithType: List<Group<TokenType, JMCExpression>>
+  fullName: System.Collections.Generic.List<sly.parser.parser.Group<JMC.Parser.TokenType, JMC.Parser.JMCExpression>>
+  nameWithType.vb: List(Of Group(Of TokenType, JMCExpression))
+  fullName.vb: System.Collections.Generic.List(Of sly.parser.parser.Group(Of JMC.Parser.TokenType, JMC.Parser.JMCExpression))
+  name.vb: List(Of Group(Of TokenType, JMCExpression))
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: sly.parser.parser.Group`2
+    name: Group
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/Group.cs
+  - name: <
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: ','
+  - name: " "
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: sly.parser.parser.Group`2
+    name: Group
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/Group.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: ','
+  - name: " "
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: )
+  - name: )
+- uid: JMC.Parser.JMCRuleInstance.FuncParams*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.FuncParams
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_FuncParams_sly_lexer_Token_JMC_Parser_TokenType__System_Collections_Generic_List_sly_parser_parser_Group_JMC_Parser_TokenType_JMC_Parser_JMCExpression___
+  name: FuncParams
+  nameWithType: JMCRuleInstance.FuncParams
+  fullName: JMC.Parser.JMCRuleInstance.FuncParams
+- uid: JMC.Parser.JMCRuleInstance.FuncArgs*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.FuncArgs
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_FuncArgs_JMC_Parser_JMCExpression_sly_parser_parser_ValueOption_sly_parser_parser_Group_JMC_Parser_TokenType_JMC_Parser_JMCExpression___
+  name: FuncArgs
+  nameWithType: JMCRuleInstance.FuncArgs
+  fullName: JMC.Parser.JMCRuleInstance.FuncArgs
+- uid: sly.parser.parser.ValueOption{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+  commentId: T:sly.parser.parser.ValueOption{sly.parser.parser.Group{JMC.Parser.TokenType,JMC.Parser.JMCExpression}}
+  parent: sly.parser.parser
+  definition: sly.parser.parser.ValueOption`1
+  href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/ValueOption.cs
+  name: ValueOption<Group<TokenType, JMCExpression>>
+  nameWithType: ValueOption<Group<TokenType, JMCExpression>>
+  fullName: sly.parser.parser.ValueOption<sly.parser.parser.Group<JMC.Parser.TokenType, JMC.Parser.JMCExpression>>
+  nameWithType.vb: ValueOption(Of Group(Of TokenType, JMCExpression))
+  fullName.vb: sly.parser.parser.ValueOption(Of sly.parser.parser.Group(Of JMC.Parser.TokenType, JMC.Parser.JMCExpression))
+  name.vb: ValueOption(Of Group(Of TokenType, JMCExpression))
+  spec.csharp:
+  - uid: sly.parser.parser.ValueOption`1
+    name: ValueOption
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/ValueOption.cs
+  - name: <
+  - uid: sly.parser.parser.Group`2
+    name: Group
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/Group.cs
+  - name: <
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: ','
+  - name: " "
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: sly.parser.parser.ValueOption`1
+    name: ValueOption
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/ValueOption.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: sly.parser.parser.Group`2
+    name: Group
+    isExternal: true
+    href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/parser/parser/Group.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: ','
+  - name: " "
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: )
+  - name: )
+- uid: JMC.Parser.JMCRuleInstance.FuncArg*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.FuncArg
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_FuncArg_JMC_Parser_JMCExpression_System_Collections_Generic_List_sly_parser_parser_Group_JMC_Parser_TokenType_JMC_Parser_JMCExpression___
+  name: FuncArg
+  nameWithType: JMCRuleInstance.FuncArg
+  fullName: JMC.Parser.JMCRuleInstance.FuncArg
+- uid: JMC.Parser.JMCRuleInstance.FuncNamedArg*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.FuncNamedArg
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_FuncNamedArg_sly_lexer_Token_JMC_Parser_TokenType__JMC_Parser_JMCExpression_
+  name: FuncNamedArg
+  nameWithType: JMCRuleInstance.FuncNamedArg
+  fullName: JMC.Parser.JMCRuleInstance.FuncNamedArg
+- uid: JMC.Parser.JMCRuleInstance.FuncNamedArgs*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.FuncNamedArgs
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_FuncNamedArgs_JMC_Parser_JMCExpression_System_Collections_Generic_List_sly_parser_parser_Group_JMC_Parser_TokenType_JMC_Parser_JMCExpression___
+  name: FuncNamedArgs
+  nameWithType: JMCRuleInstance.FuncNamedArgs
+  fullName: JMC.Parser.JMCRuleInstance.FuncNamedArgs
+- uid: JMC.Parser.JMCRuleInstance.AL*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.AL
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_AL_JMC_Parser_JMCExpression_System_Collections_Generic_List_sly_parser_parser_Group_JMC_Parser_TokenType_JMC_Parser_JMCExpression___
+  name: AL
+  nameWithType: JMCRuleInstance.AL
+  fullName: JMC.Parser.JMCRuleInstance.AL
+- uid: JMC.Parser.JMCRuleInstance.ALS*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.ALS
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_ALS_JMC_Parser_JMCExpression_
+  name: ALS
+  nameWithType: JMCRuleInstance.ALS
+  fullName: JMC.Parser.JMCRuleInstance.ALS
+- uid: JMC.Parser.JMCRuleInstance.Unary*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Unary
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Unary_sly_lexer_Token_JMC_Parser_TokenType__JMC_Parser_JMCExpression_
+  name: Unary
+  nameWithType: JMCRuleInstance.Unary
+  fullName: JMC.Parser.JMCRuleInstance.Unary
+- uid: JMC.Parser.JMCRuleInstance.Operand*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Operand
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Operand_sly_lexer_Token_JMC_Parser_TokenType__
+  name: Operand
+  nameWithType: JMCRuleInstance.Operand
+  fullName: JMC.Parser.JMCRuleInstance.Operand
+- uid: JMC.Parser.JMCRuleInstance.Command*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Command
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Command_JMC_Parser_JMCExpression_System_Collections_Generic_List_JMC_Parser_JMCExpression__
+  name: Command
+  nameWithType: JMCRuleInstance.Command
+  fullName: JMC.Parser.JMCRuleInstance.Command
+- uid: JMC.Parser.JMCRuleInstance.CommandArgument*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.CommandArgument
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_CommandArgument_JMC_Parser_JMCExpression_
+  name: CommandArgument
+  nameWithType: JMCRuleInstance.CommandArgument
+  fullName: JMC.Parser.JMCRuleInstance.CommandArgument
+- uid: JMC.Parser.JMCRuleInstance.PosI*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.PosI
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_PosI_sly_parser_parser_ValueOption_JMC_Parser_JMCExpression__JMC_Parser_JMCExpression_
+  name: PosI
+  nameWithType: JMCRuleInstance.PosI
+  fullName: JMC.Parser.JMCRuleInstance.PosI
+- uid: JMC.Parser.JMCRuleInstance.PosFR*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.PosFR
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_PosFR_sly_lexer_Token_JMC_Parser_TokenType__sly_parser_parser_ValueOption_JMC_Parser_JMCExpression__JMC_Parser_JMCExpression_
+  name: PosFR
+  nameWithType: JMCRuleInstance.PosFR
+  fullName: JMC.Parser.JMCRuleInstance.PosFR
+- uid: JMC.Parser.JMCRuleInstance.Vec2*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Vec2
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Vec2_JMC_Parser_JMCExpression_JMC_Parser_JMCExpression_
+  name: Vec2
+  nameWithType: JMCRuleInstance.Vec2
+  fullName: JMC.Parser.JMCRuleInstance.Vec2
+- uid: JMC.Parser.JMCRuleInstance.Vec3*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Vec3
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Vec3_JMC_Parser_JMCExpression_JMC_Parser_JMCExpression_JMC_Parser_JMCExpression_
+  name: Vec3
+  nameWithType: JMCRuleInstance.Vec3
+  fullName: JMC.Parser.JMCRuleInstance.Vec3
+- uid: JMC.Parser.JMCRuleInstance.QuotedProperties*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.QuotedProperties
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_QuotedProperties_sly_parser_parser_ValueOption_JMC_Parser_JMCExpression__
+  name: QuotedProperties
+  nameWithType: JMCRuleInstance.QuotedProperties
+  fullName: JMC.Parser.JMCRuleInstance.QuotedProperties
+- uid: JMC.Parser.JMCRuleInstance.Properties*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Properties
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Properties_JMC_Parser_JMCExpression_System_Collections_Generic_List_sly_parser_parser_Group_JMC_Parser_TokenType_JMC_Parser_JMCExpression___
+  name: Properties
+  nameWithType: JMCRuleInstance.Properties
+  fullName: JMC.Parser.JMCRuleInstance.Properties
+- uid: JMC.Parser.JMCRuleInstance.Property*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Property
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Property_sly_lexer_Token_JMC_Parser_TokenType__JMC_Parser_JMCExpression_
+  name: Property
+  nameWithType: JMCRuleInstance.Property
+  fullName: JMC.Parser.JMCRuleInstance.Property
+- uid: JMC.Parser.JMCRuleInstance.CommandValue*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.CommandValue
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_CommandValue_JMC_Parser_JMCExpression_
+  name: CommandValue
+  nameWithType: JMCRuleInstance.CommandValue
+  fullName: JMC.Parser.JMCRuleInstance.CommandValue
+- uid: JMC.Parser.JMCRuleInstance.CommandKeyword*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.CommandKeyword
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_CommandKeyword_sly_lexer_Token_JMC_Parser_TokenType__
+  name: CommandKeyword
+  nameWithType: JMCRuleInstance.CommandKeyword
+  fullName: JMC.Parser.JMCRuleInstance.CommandKeyword
+- uid: JMC.Parser.JMCRuleInstance.JsonValue*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.JsonValue
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_JsonValue_JMC_Parser_JMCExpression_
+  name: JsonValue
+  nameWithType: JMCRuleInstance.JsonValue
+  fullName: JMC.Parser.JMCRuleInstance.JsonValue
+- uid: JMC.Parser.JMCRuleInstance.JsonObject*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.JsonObject
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_JsonObject_sly_lexer_Token_JMC_Parser_TokenType__System_Collections_Generic_List_sly_parser_parser_Group_JMC_Parser_TokenType_JMC_Parser_JMCExpression___
+  name: JsonObject
+  nameWithType: JMCRuleInstance.JsonObject
+  fullName: JMC.Parser.JMCRuleInstance.JsonObject
+- uid: JMC.Parser.JMCRuleInstance.JsonList*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.JsonList
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_JsonList_sly_lexer_Token_JMC_Parser_TokenType__System_Collections_Generic_List_JMC_Parser_JMCExpression__
+  name: JsonList
+  nameWithType: JMCRuleInstance.JsonList
+  fullName: JMC.Parser.JMCRuleInstance.JsonList
+- uid: JMC.Parser.JMCRuleInstance.Assign*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Assign
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Assign_sly_lexer_Token_JMC_Parser_TokenType__
+  name: Assign
+  nameWithType: JMCRuleInstance.Assign
+  fullName: JMC.Parser.JMCRuleInstance.Assign
+- uid: JMC.Parser.JMCRuleInstance.CommandAssign*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.CommandAssign
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_CommandAssign_sly_lexer_Token_JMC_Parser_TokenType__
+  name: CommandAssign
+  nameWithType: JMCRuleInstance.CommandAssign
+  fullName: JMC.Parser.JMCRuleInstance.CommandAssign
+- uid: JMC.Parser.JMCRuleInstance.Number*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Number
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Number_sly_lexer_Token_JMC_Parser_TokenType__
+  name: Number
+  nameWithType: JMCRuleInstance.Number
+  fullName: JMC.Parser.JMCRuleInstance.Number
+- uid: JMC.Parser.JMCRuleInstance.Bool*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Bool
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Bool_sly_lexer_Token_JMC_Parser_TokenType__
+  name: Bool
+  nameWithType: JMCRuleInstance.Bool
+  fullName: JMC.Parser.JMCRuleInstance.Bool
+- uid: JMC.Parser.JMCRuleInstance.Variable*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Variable
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Variable_sly_lexer_Token_JMC_Parser_TokenType__sly_lexer_Token_JMC_Parser_TokenType__
+  name: Variable
+  nameWithType: JMCRuleInstance.Variable
+  fullName: JMC.Parser.JMCRuleInstance.Variable
+- uid: JMC.Parser.JMCRuleInstance.DefaultString*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.DefaultString
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_DefaultString_sly_lexer_Token_JMC_Parser_TokenType__System_Collections_Generic_List_sly_lexer_Token_JMC_Parser_TokenType___
+  name: DefaultString
+  nameWithType: JMCRuleInstance.DefaultString
+  fullName: JMC.Parser.JMCRuleInstance.DefaultString
+- uid: JMC.Parser.JMCRuleInstance.NormalString*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.NormalString
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_NormalString_JMC_Parser_JMCExpression_
+  name: NormalString
+  nameWithType: JMCRuleInstance.NormalString
+  fullName: JMC.Parser.JMCRuleInstance.NormalString
+- uid: JMC.Parser.JMCRuleInstance.ColorString*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.ColorString
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_ColorString_sly_lexer_Token_JMC_Parser_TokenType__JMC_Parser_JMCExpression_
+  name: ColorString
+  nameWithType: JMCRuleInstance.ColorString
+  fullName: JMC.Parser.JMCRuleInstance.ColorString
+- uid: JMC.Parser.JMCRuleInstance.ValueSign*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.ValueSign
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_ValueSign_sly_lexer_Token_JMC_Parser_TokenType__
+  name: ValueSign
+  nameWithType: JMCRuleInstance.ValueSign
+  fullName: JMC.Parser.JMCRuleInstance.ValueSign
+- uid: JMC.Parser.JMCRuleInstance.Value*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Value
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Value_JMC_Parser_JMCExpression_
+  name: Value
+  nameWithType: JMCRuleInstance.Value
+  fullName: JMC.Parser.JMCRuleInstance.Value
+- uid: JMC.Parser.JMCRuleInstance.Selector*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Selector
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Selector_sly_lexer_Token_JMC_Parser_TokenType__sly_parser_parser_ValueOption_JMC_Parser_JMCExpression__
+  name: Selector
+  nameWithType: JMCRuleInstance.Selector
+  fullName: JMC.Parser.JMCRuleInstance.Selector
+- uid: JMC.Parser.JMCRuleInstance.Identifier*
+  commentId: Overload:JMC.Parser.JMCRuleInstance.Identifier
+  href: JMC.Parser.JMCRuleInstance.html#JMC_Parser_JMCRuleInstance_Identifier_sly_lexer_Token_JMC_Parser_TokenType__
+  name: Identifier
+  nameWithType: JMCRuleInstance.Identifier
+  fullName: JMC.Parser.JMCRuleInstance.Identifier

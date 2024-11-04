@@ -1,0 +1,788 @@
+### YamlMime:ManagedReference
+items:
+- uid: JMC.Parser.JMCExpression
+  commentId: T:JMC.Parser.JMCExpression
+  id: JMCExpression
+  parent: JMC.Parser
+  children:
+  - JMC.Parser.JMCExpression.#ctor
+  - JMC.Parser.JMCExpression.Empty
+  - JMC.Parser.JMCExpression.HasValue
+  - JMC.Parser.JMCExpression.Position
+  - JMC.Parser.JMCExpression.SubExpressions
+  - JMC.Parser.JMCExpression.TokenType
+  - JMC.Parser.JMCExpression.Value
+  langs:
+  - csharp
+  - vb
+  name: JMCExpression
+  nameWithType: JMCExpression
+  fullName: JMC.Parser.JMCExpression
+  type: Struct
+  source:
+    remote:
+      path: JMC.Parser/JMCExpression.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: JMCExpression
+    path: JMC.Parser/JMCExpression.cs
+    startLine: 3
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public struct JMCExpression
+    content.vb: Public Structure JMCExpression
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - JMC.Parser.JMCExpression.JMC.Parser.Helper.ExpressionHelper.GetConsoleTree
+- uid: JMC.Parser.JMCExpression.#ctor
+  commentId: M:JMC.Parser.JMCExpression.#ctor
+  id: '#ctor'
+  parent: JMC.Parser.JMCExpression
+  langs:
+  - csharp
+  - vb
+  name: JMCExpression()
+  nameWithType: JMCExpression.JMCExpression()
+  fullName: JMC.Parser.JMCExpression.JMCExpression()
+  type: Constructor
+  source:
+    remote:
+      path: JMC.Parser/JMCExpression.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: .ctor
+    path: JMC.Parser/JMCExpression.cs
+    startLine: 3
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public JMCExpression()
+    content.vb: Public Sub New()
+  overload: JMC.Parser.JMCExpression.#ctor*
+  nameWithType.vb: JMCExpression.New()
+  fullName.vb: JMC.Parser.JMCExpression.New()
+  name.vb: New()
+- uid: JMC.Parser.JMCExpression.Value
+  commentId: P:JMC.Parser.JMCExpression.Value
+  id: Value
+  parent: JMC.Parser.JMCExpression
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: JMCExpression.Value
+  fullName: JMC.Parser.JMCExpression.Value
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/JMCExpression.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Value
+    path: JMC.Parser/JMCExpression.cs
+    startLine: 5
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public object? Value { readonly get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property Value As Object
+  overload: JMC.Parser.JMCExpression.Value*
+- uid: JMC.Parser.JMCExpression.Position
+  commentId: P:JMC.Parser.JMCExpression.Position
+  id: Position
+  parent: JMC.Parser.JMCExpression
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: JMCExpression.Position
+  fullName: JMC.Parser.JMCExpression.Position
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/JMCExpression.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Position
+    path: JMC.Parser/JMCExpression.cs
+    startLine: 6
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public required Position Position { readonly get; set; }
+    parameters: []
+    return:
+      type: JMC.Parser.Position
+    content.vb: Public Property Position As Position
+  overload: JMC.Parser.JMCExpression.Position*
+- uid: JMC.Parser.JMCExpression.SubExpressions
+  commentId: P:JMC.Parser.JMCExpression.SubExpressions
+  id: SubExpressions
+  parent: JMC.Parser.JMCExpression
+  langs:
+  - csharp
+  - vb
+  name: SubExpressions
+  nameWithType: JMCExpression.SubExpressions
+  fullName: JMC.Parser.JMCExpression.SubExpressions
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/JMCExpression.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: SubExpressions
+    path: JMC.Parser/JMCExpression.cs
+    startLine: 7
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public ImmutableArray<JMCExpression> SubExpressions { readonly get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Immutable.ImmutableArray{JMC.Parser.JMCExpression}
+    content.vb: Public Property SubExpressions As ImmutableArray(Of JMCExpression)
+  overload: JMC.Parser.JMCExpression.SubExpressions*
+- uid: JMC.Parser.JMCExpression.TokenType
+  commentId: P:JMC.Parser.JMCExpression.TokenType
+  id: TokenType
+  parent: JMC.Parser.JMCExpression
+  langs:
+  - csharp
+  - vb
+  name: TokenType
+  nameWithType: JMCExpression.TokenType
+  fullName: JMC.Parser.JMCExpression.TokenType
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/JMCExpression.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: TokenType
+    path: JMC.Parser/JMCExpression.cs
+    startLine: 8
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public TokenType? TokenType { readonly get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{JMC.Parser.TokenType}
+    content.vb: Public Property TokenType As TokenType?
+  overload: JMC.Parser.JMCExpression.TokenType*
+- uid: JMC.Parser.JMCExpression.Empty
+  commentId: P:JMC.Parser.JMCExpression.Empty
+  id: Empty
+  parent: JMC.Parser.JMCExpression
+  langs:
+  - csharp
+  - vb
+  name: Empty
+  nameWithType: JMCExpression.Empty
+  fullName: JMC.Parser.JMCExpression.Empty
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/JMCExpression.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Empty
+    path: JMC.Parser/JMCExpression.cs
+    startLine: 10
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public static JMCExpression Empty { get; }
+    parameters: []
+    return:
+      type: JMC.Parser.JMCExpression
+    content.vb: Public Shared ReadOnly Property Empty As JMCExpression
+  overload: JMC.Parser.JMCExpression.Empty*
+- uid: JMC.Parser.JMCExpression.HasValue
+  commentId: P:JMC.Parser.JMCExpression.HasValue
+  id: HasValue
+  parent: JMC.Parser.JMCExpression
+  langs:
+  - csharp
+  - vb
+  name: HasValue
+  nameWithType: JMCExpression.HasValue
+  fullName: JMC.Parser.JMCExpression.HasValue
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/JMCExpression.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: HasValue
+    path: JMC.Parser/JMCExpression.cs
+    startLine: 11
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public readonly bool HasValue { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasValue As Boolean
+  overload: JMC.Parser.JMCExpression.HasValue*
+references:
+- uid: JMC.Parser
+  commentId: N:JMC.Parser
+  href: JMC.html
+  name: JMC.Parser
+  nameWithType: JMC.Parser
+  fullName: JMC.Parser
+  spec.csharp:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+  spec.vb:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: JMC.Parser.JMCExpression.JMC.Parser.Helper.ExpressionHelper.GetConsoleTree
+  commentId: M:JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+  parent: JMC.Parser.Helper.ExpressionHelper
+  definition: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+  href: JMC.Parser.Helper.ExpressionHelper.html#JMC_Parser_Helper_ExpressionHelper_GetConsoleTree_JMC_Parser_JMCExpression_
+  name: GetConsoleTree(JMCExpression)
+  nameWithType: ExpressionHelper.GetConsoleTree(JMCExpression)
+  fullName: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+  spec.csharp:
+  - uid: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+    name: GetConsoleTree
+    href: JMC.Parser.Helper.ExpressionHelper.html#JMC_Parser_Helper_ExpressionHelper_GetConsoleTree_JMC_Parser_JMCExpression_
+  - name: (
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: )
+  spec.vb:
+  - uid: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+    name: GetConsoleTree
+    href: JMC.Parser.Helper.ExpressionHelper.html#JMC_Parser_Helper_ExpressionHelper_GetConsoleTree_JMC_Parser_JMCExpression_
+  - name: (
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+  commentId: M:JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+  href: JMC.Parser.Helper.ExpressionHelper.html#JMC_Parser_Helper_ExpressionHelper_GetConsoleTree_JMC_Parser_JMCExpression_
+  name: GetConsoleTree(JMCExpression)
+  nameWithType: ExpressionHelper.GetConsoleTree(JMCExpression)
+  fullName: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+  spec.csharp:
+  - uid: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+    name: GetConsoleTree
+    href: JMC.Parser.Helper.ExpressionHelper.html#JMC_Parser_Helper_ExpressionHelper_GetConsoleTree_JMC_Parser_JMCExpression_
+  - name: (
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: )
+  spec.vb:
+  - uid: JMC.Parser.Helper.ExpressionHelper.GetConsoleTree(JMC.Parser.JMCExpression)
+    name: GetConsoleTree
+    href: JMC.Parser.Helper.ExpressionHelper.html#JMC_Parser_Helper_ExpressionHelper_GetConsoleTree_JMC_Parser_JMCExpression_
+  - name: (
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: )
+- uid: JMC.Parser.Helper.ExpressionHelper
+  commentId: T:JMC.Parser.Helper.ExpressionHelper
+  parent: JMC.Parser.Helper
+  href: JMC.Parser.Helper.ExpressionHelper.html
+  name: ExpressionHelper
+  nameWithType: ExpressionHelper
+  fullName: JMC.Parser.Helper.ExpressionHelper
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JMC.Parser.Helper
+  commentId: N:JMC.Parser.Helper
+  href: JMC.html
+  name: JMC.Parser.Helper
+  nameWithType: JMC.Parser.Helper
+  fullName: JMC.Parser.Helper
+  spec.csharp:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+  - name: .
+  - uid: JMC.Parser.Helper
+    name: Helper
+    href: JMC.Parser.Helper.html
+  spec.vb:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+  - name: .
+  - uid: JMC.Parser.Helper
+    name: Helper
+    href: JMC.Parser.Helper.html
+- uid: JMC.Parser.JMCExpression.#ctor*
+  commentId: Overload:JMC.Parser.JMCExpression.#ctor
+  href: JMC.Parser.JMCExpression.html#JMC_Parser_JMCExpression__ctor
+  name: JMCExpression
+  nameWithType: JMCExpression.JMCExpression
+  fullName: JMC.Parser.JMCExpression.JMCExpression
+  nameWithType.vb: JMCExpression.New
+  fullName.vb: JMC.Parser.JMCExpression.New
+  name.vb: New
+- uid: JMC.Parser.JMCExpression.Value*
+  commentId: Overload:JMC.Parser.JMCExpression.Value
+  href: JMC.Parser.JMCExpression.html#JMC_Parser_JMCExpression_Value
+  name: Value
+  nameWithType: JMCExpression.Value
+  fullName: JMC.Parser.JMCExpression.Value
+- uid: JMC.Parser.JMCExpression.Position*
+  commentId: Overload:JMC.Parser.JMCExpression.Position
+  href: JMC.Parser.JMCExpression.html#JMC_Parser_JMCExpression_Position
+  name: Position
+  nameWithType: JMCExpression.Position
+  fullName: JMC.Parser.JMCExpression.Position
+- uid: JMC.Parser.Position
+  commentId: T:JMC.Parser.Position
+  parent: JMC.Parser
+  href: JMC.Parser.Position.html
+  name: Position
+  nameWithType: Position
+  fullName: JMC.Parser.Position
+- uid: JMC.Parser.JMCExpression.SubExpressions*
+  commentId: Overload:JMC.Parser.JMCExpression.SubExpressions
+  href: JMC.Parser.JMCExpression.html#JMC_Parser_JMCExpression_SubExpressions
+  name: SubExpressions
+  nameWithType: JMCExpression.SubExpressions
+  fullName: JMC.Parser.JMCExpression.SubExpressions
+- uid: System.Collections.Immutable.ImmutableArray{JMC.Parser.JMCExpression}
+  commentId: T:System.Collections.Immutable.ImmutableArray{JMC.Parser.JMCExpression}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableArray`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<JMCExpression>
+  nameWithType: ImmutableArray<JMCExpression>
+  fullName: System.Collections.Immutable.ImmutableArray<JMC.Parser.JMCExpression>
+  nameWithType.vb: ImmutableArray(Of JMCExpression)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of JMC.Parser.JMCExpression)
+  name.vb: ImmutableArray(Of JMCExpression)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JMC.Parser.JMCExpression
+    name: JMCExpression
+    href: JMC.Parser.JMCExpression.html
+  - name: )
+- uid: System.Collections.Immutable.ImmutableArray`1
+  commentId: T:System.Collections.Immutable.ImmutableArray`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<T>
+  nameWithType: ImmutableArray<T>
+  fullName: System.Collections.Immutable.ImmutableArray<T>
+  nameWithType.vb: ImmutableArray(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of T)
+  name.vb: ImmutableArray(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Immutable
+  commentId: N:System.Collections.Immutable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Immutable
+  nameWithType: System.Collections.Immutable
+  fullName: System.Collections.Immutable
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+- uid: JMC.Parser.JMCExpression.TokenType*
+  commentId: Overload:JMC.Parser.JMCExpression.TokenType
+  href: JMC.Parser.JMCExpression.html#JMC_Parser_JMCExpression_TokenType
+  name: TokenType
+  nameWithType: JMCExpression.TokenType
+  fullName: JMC.Parser.JMCExpression.TokenType
+- uid: System.Nullable{JMC.Parser.TokenType}
+  commentId: T:System.Nullable{JMC.Parser.TokenType}
+  parent: System
+  definition: System.Nullable`1
+  href: JMC.Parser.TokenType.html
+  name: TokenType?
+  nameWithType: TokenType?
+  fullName: JMC.Parser.TokenType?
+  spec.csharp:
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: '?'
+  spec.vb:
+  - uid: JMC.Parser.TokenType
+    name: TokenType
+    href: JMC.Parser.TokenType.html
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JMC.Parser.JMCExpression.Empty*
+  commentId: Overload:JMC.Parser.JMCExpression.Empty
+  href: JMC.Parser.JMCExpression.html#JMC_Parser_JMCExpression_Empty
+  name: Empty
+  nameWithType: JMCExpression.Empty
+  fullName: JMC.Parser.JMCExpression.Empty
+- uid: JMC.Parser.JMCExpression
+  commentId: T:JMC.Parser.JMCExpression
+  parent: JMC.Parser
+  href: JMC.Parser.JMCExpression.html
+  name: JMCExpression
+  nameWithType: JMCExpression
+  fullName: JMC.Parser.JMCExpression
+- uid: JMC.Parser.JMCExpression.HasValue*
+  commentId: Overload:JMC.Parser.JMCExpression.HasValue
+  href: JMC.Parser.JMCExpression.html#JMC_Parser_JMCExpression_HasValue
+  name: HasValue
+  nameWithType: JMCExpression.HasValue
+  fullName: JMC.Parser.JMCExpression.HasValue
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

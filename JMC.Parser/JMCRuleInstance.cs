@@ -85,9 +85,9 @@ public sealed class JMCRuleInstance
             };
     }
 
+    [Production($"variableStatement: IDENTIFIER assign STRING {END}")]
     [Production($"variableStatement: variable assign al {END}")]
     [Production($"variableStatement: variable cmdAssign command")]
-    [Production($"variableStatement: IDENTIFIER assign STRING {END}")]
     public static JMCExpression VariableStatement(JMCExpression variable, JMCExpression assign, JMCExpression als)
     {
         return new()

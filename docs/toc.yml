@@ -1,0 +1,16 @@
+- name: Introduction
+  href: introduction.md
+- name: Getting Started
+  href: getting-started.md
+- name: Syntax
+  items:
+  - name: JMC
+    items:
+    - name: Command
+      href: syntaxes/jmc/command.md
+    - name: Flow Control
+      href: syntaxes/jmc/flow_control.md
+    - name: Variables
+      href: syntaxes/jmc/variable.md
+    - name: Built-In Functions
+      href: syntaxes/jmc/built-in_functions.md

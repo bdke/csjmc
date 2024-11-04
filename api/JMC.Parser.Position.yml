@@ -1,0 +1,964 @@
+### YamlMime:ManagedReference
+items:
+- uid: JMC.Parser.Position
+  commentId: T:JMC.Parser.Position
+  id: Position
+  parent: JMC.Parser
+  children:
+  - JMC.Parser.Position.#ctor(System.Int32,System.Int32)
+  - JMC.Parser.Position.Column
+  - JMC.Parser.Position.Empty
+  - JMC.Parser.Position.Equals(System.Object)
+  - JMC.Parser.Position.GetHashCode
+  - JMC.Parser.Position.HasValue
+  - JMC.Parser.Position.Line
+  - JMC.Parser.Position.ToString
+  - JMC.Parser.Position.op_Equality(JMC.Parser.Position,JMC.Parser.Position)
+  - JMC.Parser.Position.op_Implicit(JMC.Parser.Position)~OmniSharp.Extensions.LanguageServer.Protocol.Models.Position
+  - JMC.Parser.Position.op_Implicit(JMC.Parser.Position)~sly.lexer.LexerPosition
+  - JMC.Parser.Position.op_Implicit(OmniSharp.Extensions.LanguageServer.Protocol.Models.Position)~JMC.Parser.Position
+  - JMC.Parser.Position.op_Implicit(sly.lexer.LexerPosition)~JMC.Parser.Position
+  - JMC.Parser.Position.op_Inequality(JMC.Parser.Position,JMC.Parser.Position)
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: Position
+  fullName: JMC.Parser.Position
+  type: Struct
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Position
+    path: JMC.Parser/Position.cs
+    startLine: 6
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public struct Position
+    content.vb: Public Structure Position
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: JMC.Parser.Position.#ctor(System.Int32,System.Int32)
+  commentId: M:JMC.Parser.Position.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: Position(int, int)
+  nameWithType: Position.Position(int, int)
+  fullName: JMC.Parser.Position.Position(int, int)
+  type: Constructor
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: .ctor
+    path: JMC.Parser/Position.cs
+    startLine: 6
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public Position(int line, int column)
+    parameters:
+    - id: line
+      type: System.Int32
+    - id: column
+      type: System.Int32
+    content.vb: Public Sub New(line As Integer, column As Integer)
+  overload: JMC.Parser.Position.#ctor*
+  nameWithType.vb: Position.New(Integer, Integer)
+  fullName.vb: JMC.Parser.Position.New(Integer, Integer)
+  name.vb: New(Integer, Integer)
+- uid: JMC.Parser.Position.Line
+  commentId: P:JMC.Parser.Position.Line
+  id: Line
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: Line
+  nameWithType: Position.Line
+  fullName: JMC.Parser.Position.Line
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Line
+    path: JMC.Parser/Position.cs
+    startLine: 8
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public int Line { readonly get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Line As Integer
+  overload: JMC.Parser.Position.Line*
+- uid: JMC.Parser.Position.Column
+  commentId: P:JMC.Parser.Position.Column
+  id: Column
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: Column
+  nameWithType: Position.Column
+  fullName: JMC.Parser.Position.Column
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Column
+    path: JMC.Parser/Position.cs
+    startLine: 9
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public int Column { readonly get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Column As Integer
+  overload: JMC.Parser.Position.Column*
+- uid: JMC.Parser.Position.Empty
+  commentId: P:JMC.Parser.Position.Empty
+  id: Empty
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: Empty
+  nameWithType: Position.Empty
+  fullName: JMC.Parser.Position.Empty
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Empty
+    path: JMC.Parser/Position.cs
+    startLine: 11
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public static Position Empty { get; }
+    parameters: []
+    return:
+      type: JMC.Parser.Position
+    content.vb: Public Shared ReadOnly Property Empty As Position
+  overload: JMC.Parser.Position.Empty*
+- uid: JMC.Parser.Position.HasValue
+  commentId: P:JMC.Parser.Position.HasValue
+  id: HasValue
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: HasValue
+  nameWithType: Position.HasValue
+  fullName: JMC.Parser.Position.HasValue
+  type: Property
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: HasValue
+    path: JMC.Parser/Position.cs
+    startLine: 12
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public readonly bool HasValue { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasValue As Boolean
+  overload: JMC.Parser.Position.HasValue*
+- uid: JMC.Parser.Position.op_Implicit(JMC.Parser.Position)~sly.lexer.LexerPosition
+  commentId: M:JMC.Parser.Position.op_Implicit(JMC.Parser.Position)~sly.lexer.LexerPosition
+  id: op_Implicit(JMC.Parser.Position)~sly.lexer.LexerPosition
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: implicit operator LexerPosition(Position)
+  nameWithType: Position.implicit operator LexerPosition(Position)
+  fullName: JMC.Parser.Position.implicit operator sly.lexer.LexerPosition(JMC.Parser.Position)
+  type: Operator
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: op_Implicit
+    path: JMC.Parser/Position.cs
+    startLine: 14
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public static implicit operator LexerPosition(Position position)
+    parameters:
+    - id: position
+      type: JMC.Parser.Position
+    return:
+      type: sly.lexer.LexerPosition
+    content.vb: Public Shared Widening Operator CType(position As Position) As LexerPosition
+  overload: JMC.Parser.Position.op_Implicit*
+  nameWithType.vb: Position.CType(Position)
+  fullName.vb: JMC.Parser.Position.CType(JMC.Parser.Position)
+  name.vb: CType(Position)
+- uid: JMC.Parser.Position.op_Implicit(sly.lexer.LexerPosition)~JMC.Parser.Position
+  commentId: M:JMC.Parser.Position.op_Implicit(sly.lexer.LexerPosition)~JMC.Parser.Position
+  id: op_Implicit(sly.lexer.LexerPosition)~JMC.Parser.Position
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: implicit operator Position(LexerPosition)
+  nameWithType: Position.implicit operator Position(LexerPosition)
+  fullName: JMC.Parser.Position.implicit operator JMC.Parser.Position(sly.lexer.LexerPosition)
+  type: Operator
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: op_Implicit
+    path: JMC.Parser/Position.cs
+    startLine: 15
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public static implicit operator Position(LexerPosition position)
+    parameters:
+    - id: position
+      type: sly.lexer.LexerPosition
+    return:
+      type: JMC.Parser.Position
+    content.vb: Public Shared Widening Operator CType(position As LexerPosition) As Position
+  overload: JMC.Parser.Position.op_Implicit*
+  nameWithType.vb: Position.CType(LexerPosition)
+  fullName.vb: JMC.Parser.Position.CType(sly.lexer.LexerPosition)
+  name.vb: CType(LexerPosition)
+- uid: JMC.Parser.Position.op_Implicit(JMC.Parser.Position)~OmniSharp.Extensions.LanguageServer.Protocol.Models.Position
+  commentId: M:JMC.Parser.Position.op_Implicit(JMC.Parser.Position)~OmniSharp.Extensions.LanguageServer.Protocol.Models.Position
+  id: op_Implicit(JMC.Parser.Position)~OmniSharp.Extensions.LanguageServer.Protocol.Models.Position
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: implicit operator Position(Position)
+  nameWithType: Position.implicit operator Position(Position)
+  fullName: JMC.Parser.Position.implicit operator OmniSharp.Extensions.LanguageServer.Protocol.Models.Position(JMC.Parser.Position)
+  type: Operator
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: op_Implicit
+    path: JMC.Parser/Position.cs
+    startLine: 17
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public static implicit operator Position(Position position)
+    parameters:
+    - id: position
+      type: JMC.Parser.Position
+    return:
+      type: OmniSharp.Extensions.LanguageServer.Protocol.Models.Position
+    content.vb: Public Shared Widening Operator CType(position As Position) As Position
+  overload: JMC.Parser.Position.op_Implicit*
+  nameWithType.vb: Position.CType(Position)
+  fullName.vb: JMC.Parser.Position.CType(JMC.Parser.Position)
+  name.vb: CType(Position)
+- uid: JMC.Parser.Position.op_Implicit(OmniSharp.Extensions.LanguageServer.Protocol.Models.Position)~JMC.Parser.Position
+  commentId: M:JMC.Parser.Position.op_Implicit(OmniSharp.Extensions.LanguageServer.Protocol.Models.Position)~JMC.Parser.Position
+  id: op_Implicit(OmniSharp.Extensions.LanguageServer.Protocol.Models.Position)~JMC.Parser.Position
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: implicit operator Position(Position)
+  nameWithType: Position.implicit operator Position(Position)
+  fullName: JMC.Parser.Position.implicit operator JMC.Parser.Position(OmniSharp.Extensions.LanguageServer.Protocol.Models.Position)
+  type: Operator
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: op_Implicit
+    path: JMC.Parser/Position.cs
+    startLine: 18
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public static implicit operator Position(Position position)
+    parameters:
+    - id: position
+      type: OmniSharp.Extensions.LanguageServer.Protocol.Models.Position
+    return:
+      type: JMC.Parser.Position
+    content.vb: Public Shared Widening Operator CType(position As Position) As Position
+  overload: JMC.Parser.Position.op_Implicit*
+  nameWithType.vb: Position.CType(Position)
+  fullName.vb: JMC.Parser.Position.CType(OmniSharp.Extensions.LanguageServer.Protocol.Models.Position)
+  name.vb: CType(Position)
+- uid: JMC.Parser.Position.op_Equality(JMC.Parser.Position,JMC.Parser.Position)
+  commentId: M:JMC.Parser.Position.op_Equality(JMC.Parser.Position,JMC.Parser.Position)
+  id: op_Equality(JMC.Parser.Position,JMC.Parser.Position)
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: operator ==(Position, Position)
+  nameWithType: Position.operator ==(Position, Position)
+  fullName: JMC.Parser.Position.operator ==(JMC.Parser.Position, JMC.Parser.Position)
+  type: Operator
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: op_Equality
+    path: JMC.Parser/Position.cs
+    startLine: 20
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public static bool operator ==(Position left, Position right)
+    parameters:
+    - id: left
+      type: JMC.Parser.Position
+    - id: right
+      type: JMC.Parser.Position
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator =(left As Position, right As Position) As Boolean
+  overload: JMC.Parser.Position.op_Equality*
+  nameWithType.vb: Position.=(Position, Position)
+  fullName.vb: JMC.Parser.Position.=(JMC.Parser.Position, JMC.Parser.Position)
+  name.vb: =(Position, Position)
+- uid: JMC.Parser.Position.op_Inequality(JMC.Parser.Position,JMC.Parser.Position)
+  commentId: M:JMC.Parser.Position.op_Inequality(JMC.Parser.Position,JMC.Parser.Position)
+  id: op_Inequality(JMC.Parser.Position,JMC.Parser.Position)
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: operator !=(Position, Position)
+  nameWithType: Position.operator !=(Position, Position)
+  fullName: JMC.Parser.Position.operator !=(JMC.Parser.Position, JMC.Parser.Position)
+  type: Operator
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: op_Inequality
+    path: JMC.Parser/Position.cs
+    startLine: 25
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  syntax:
+    content: public static bool operator !=(Position left, Position right)
+    parameters:
+    - id: left
+      type: JMC.Parser.Position
+    - id: right
+      type: JMC.Parser.Position
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <>(left As Position, right As Position) As Boolean
+  overload: JMC.Parser.Position.op_Inequality*
+  nameWithType.vb: Position.<>(Position, Position)
+  fullName.vb: JMC.Parser.Position.<>(JMC.Parser.Position, JMC.Parser.Position)
+  name.vb: <>(Position, Position)
+- uid: JMC.Parser.Position.Equals(System.Object)
+  commentId: M:JMC.Parser.Position.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: Equals(object?)
+  nameWithType: Position.Equals(object?)
+  fullName: JMC.Parser.Position.Equals(object?)
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: Equals
+    path: JMC.Parser/Position.cs
+    startLine: 30
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  summary: Indicates whether this instance and a specified object are equal.
+  example: []
+  syntax:
+    content: public override readonly bool Equals(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with the current instance.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: JMC.Parser.Position.Equals*
+  nameWithType.vb: Position.Equals(Object)
+  fullName.vb: JMC.Parser.Position.Equals(Object)
+  name.vb: Equals(Object)
+- uid: JMC.Parser.Position.ToString
+  commentId: M:JMC.Parser.Position.ToString
+  id: ToString
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: Position.ToString()
+  fullName: JMC.Parser.Position.ToString()
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: ToString
+    path: JMC.Parser/Position.cs
+    startLine: 37
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  summary: Returns the fully qualified type name of this instance.
+  example: []
+  syntax:
+    content: public override readonly string ToString()
+    return:
+      type: System.String
+      description: The fully qualified type name.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: JMC.Parser.Position.ToString*
+- uid: JMC.Parser.Position.GetHashCode
+  commentId: M:JMC.Parser.Position.GetHashCode
+  id: GetHashCode
+  parent: JMC.Parser.Position
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: Position.GetHashCode()
+  fullName: JMC.Parser.Position.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: JMC.Parser/Position.cs
+      branch: master
+      repo: https://github.com/bdke/csjmc.git
+    id: GetHashCode
+    path: JMC.Parser/Position.cs
+    startLine: 42
+  assemblies:
+  - JMC.Parser
+  namespace: JMC.Parser
+  summary: Returns the hash code for this instance.
+  example: []
+  syntax:
+    content: public override readonly int GetHashCode()
+    return:
+      type: System.Int32
+      description: A 32-bit signed integer that is the hash code for this instance.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: JMC.Parser.Position.GetHashCode*
+references:
+- uid: JMC.Parser
+  commentId: N:JMC.Parser
+  href: JMC.html
+  name: JMC.Parser
+  nameWithType: JMC.Parser
+  fullName: JMC.Parser
+  spec.csharp:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+  spec.vb:
+  - uid: JMC
+    name: JMC
+    href: JMC.html
+  - name: .
+  - uid: JMC.Parser
+    name: Parser
+    href: JMC.Parser.html
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JMC.Parser.Position.#ctor*
+  commentId: Overload:JMC.Parser.Position.#ctor
+  href: JMC.Parser.Position.html#JMC_Parser_Position__ctor_System_Int32_System_Int32_
+  name: Position
+  nameWithType: Position.Position
+  fullName: JMC.Parser.Position.Position
+  nameWithType.vb: Position.New
+  fullName.vb: JMC.Parser.Position.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: JMC.Parser.Position.Line*
+  commentId: Overload:JMC.Parser.Position.Line
+  href: JMC.Parser.Position.html#JMC_Parser_Position_Line
+  name: Line
+  nameWithType: Position.Line
+  fullName: JMC.Parser.Position.Line
+- uid: JMC.Parser.Position.Column*
+  commentId: Overload:JMC.Parser.Position.Column
+  href: JMC.Parser.Position.html#JMC_Parser_Position_Column
+  name: Column
+  nameWithType: Position.Column
+  fullName: JMC.Parser.Position.Column
+- uid: JMC.Parser.Position.Empty*
+  commentId: Overload:JMC.Parser.Position.Empty
+  href: JMC.Parser.Position.html#JMC_Parser_Position_Empty
+  name: Empty
+  nameWithType: Position.Empty
+  fullName: JMC.Parser.Position.Empty
+- uid: JMC.Parser.Position
+  commentId: T:JMC.Parser.Position
+  parent: JMC.Parser
+  href: JMC.Parser.Position.html
+  name: Position
+  nameWithType: Position
+  fullName: JMC.Parser.Position
+- uid: JMC.Parser.Position.HasValue*
+  commentId: Overload:JMC.Parser.Position.HasValue
+  href: JMC.Parser.Position.html#JMC_Parser_Position_HasValue
+  name: HasValue
+  nameWithType: Position.HasValue
+  fullName: JMC.Parser.Position.HasValue
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: JMC.Parser.Position.op_Implicit*
+  commentId: Overload:JMC.Parser.Position.op_Implicit
+  name: implicit operator
+  nameWithType: Position.implicit operator
+  fullName: JMC.Parser.Position.implicit operator
+  nameWithType.vb: Position.CType
+  fullName.vb: JMC.Parser.Position.CType
+  name.vb: CType
+  spec.csharp:
+  - name: implicit
+  - name: " "
+  - name: operator
+- uid: sly.lexer.LexerPosition
+  commentId: T:sly.lexer.LexerPosition
+  parent: sly.lexer
+  isExternal: true
+  href: https://github.com/b3b00/csly/blob/57b0f21af72f17d5e7cc16844c8d01697fc31a7c/src/sly/lexer/LexerPosition.cs
+  name: LexerPosition
+  nameWithType: LexerPosition
+  fullName: sly.lexer.LexerPosition
+- uid: sly.lexer
+  commentId: N:sly.lexer
+  isExternal: true
+  name: sly.lexer
+  nameWithType: sly.lexer
+  fullName: sly.lexer
+  spec.csharp:
+  - uid: sly
+    name: sly
+    isExternal: true
+  - name: .
+  - uid: sly.lexer
+    name: lexer
+    isExternal: true
+  spec.vb:
+  - uid: sly
+    name: sly
+    isExternal: true
+  - name: .
+  - uid: sly.lexer
+    name: lexer
+    isExternal: true
+- uid: OmniSharp.Extensions.LanguageServer.Protocol.Models.Position
+  commentId: T:OmniSharp.Extensions.LanguageServer.Protocol.Models.Position
+  parent: OmniSharp.Extensions.LanguageServer.Protocol.Models
+  isExternal: true
+  href: https://github.com/OmniSharp/csharp-language-server-protocol/blob/445179ac1e5774c5e10433cb7066129b7d0cde29/src/Protocol/Models/Position.Helpers.cs
+  name: Position
+  nameWithType: Position
+  fullName: OmniSharp.Extensions.LanguageServer.Protocol.Models.Position
+- uid: OmniSharp.Extensions.LanguageServer.Protocol.Models
+  commentId: N:OmniSharp.Extensions.LanguageServer.Protocol.Models
+  isExternal: true
+  name: OmniSharp.Extensions.LanguageServer.Protocol.Models
+  nameWithType: OmniSharp.Extensions.LanguageServer.Protocol.Models
+  fullName: OmniSharp.Extensions.LanguageServer.Protocol.Models
+  spec.csharp:
+  - uid: OmniSharp
+    name: OmniSharp
+    isExternal: true
+  - name: .
+  - uid: OmniSharp.Extensions
+    name: Extensions
+    isExternal: true
+  - name: .
+  - uid: OmniSharp.Extensions.LanguageServer
+    name: LanguageServer
+    isExternal: true
+  - name: .
+  - uid: OmniSharp.Extensions.LanguageServer.Protocol
+    name: Protocol
+    isExternal: true
+  - name: .
+  - uid: OmniSharp.Extensions.LanguageServer.Protocol.Models
+    name: Models
+    isExternal: true
+  spec.vb:
+  - uid: OmniSharp
+    name: OmniSharp
+    isExternal: true
+  - name: .
+  - uid: OmniSharp.Extensions
+    name: Extensions
+    isExternal: true
+  - name: .
+  - uid: OmniSharp.Extensions.LanguageServer
+    name: LanguageServer
+    isExternal: true
+  - name: .
+  - uid: OmniSharp.Extensions.LanguageServer.Protocol
+    name: Protocol
+    isExternal: true
+  - name: .
+  - uid: OmniSharp.Extensions.LanguageServer.Protocol.Models
+    name: Models
+    isExternal: true
+- uid: JMC.Parser.Position.op_Equality*
+  commentId: Overload:JMC.Parser.Position.op_Equality
+  href: JMC.Parser.Position.html#JMC_Parser_Position_op_Equality_JMC_Parser_Position_JMC_Parser_Position_
+  name: operator ==
+  nameWithType: Position.operator ==
+  fullName: JMC.Parser.Position.operator ==
+  nameWithType.vb: Position.=
+  fullName.vb: JMC.Parser.Position.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: JMC.Parser.Position.op_Equality*
+    name: ==
+    href: JMC.Parser.Position.html#JMC_Parser_Position_op_Equality_JMC_Parser_Position_JMC_Parser_Position_
+- uid: JMC.Parser.Position.op_Inequality*
+  commentId: Overload:JMC.Parser.Position.op_Inequality
+  href: JMC.Parser.Position.html#JMC_Parser_Position_op_Inequality_JMC_Parser_Position_JMC_Parser_Position_
+  name: operator !=
+  nameWithType: Position.operator !=
+  fullName: JMC.Parser.Position.operator !=
+  nameWithType.vb: Position.<>
+  fullName.vb: JMC.Parser.Position.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: JMC.Parser.Position.op_Inequality*
+    name: '!='
+    href: JMC.Parser.Position.html#JMC_Parser_Position_op_Inequality_JMC_Parser_Position_JMC_Parser_Position_
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: JMC.Parser.Position.Equals*
+  commentId: Overload:JMC.Parser.Position.Equals
+  href: JMC.Parser.Position.html#JMC_Parser_Position_Equals_System_Object_
+  name: Equals
+  nameWithType: Position.Equals
+  fullName: JMC.Parser.Position.Equals
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: JMC.Parser.Position.ToString*
+  commentId: Overload:JMC.Parser.Position.ToString
+  href: JMC.Parser.Position.html#JMC_Parser_Position_ToString
+  name: ToString
+  nameWithType: Position.ToString
+  fullName: JMC.Parser.Position.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: JMC.Parser.Position.GetHashCode*
+  commentId: Overload:JMC.Parser.Position.GetHashCode
+  href: JMC.Parser.Position.html#JMC_Parser_Position_GetHashCode
+  name: GetHashCode
+  nameWithType: Position.GetHashCode
+  fullName: JMC.Parser.Position.GetHashCode

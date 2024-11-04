@@ -20,7 +20,6 @@ public static class JMCParser
         if (parserBuildResult.IsError)
         {
             IEnumerable<InvalidProgramException> errors = parserBuildResult.Errors
-                .Where(e => e.Level == ErrorLevel.ERROR)
                 .Select(e => new InvalidProgramException(e.Message));
             var rootError = new AggregateException("Initializtion Errors Occured", errors);
             AnsiConsole.WriteException(rootError);
