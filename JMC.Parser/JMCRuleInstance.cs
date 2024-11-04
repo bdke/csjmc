@@ -75,15 +75,13 @@ public sealed class JMCRuleInstance
     [Production($"class: {nameof(TokenType.ClassKeyword)} namespace {LBLOCK} [function|class]* {RBLOCK}")]
     public static JMCExpression Class(Token<TokenType> keyword, JMCExpression funcName, List<JMCExpression> expressions)
     {
-        return expressions.Count == 0
-            ? JMCExpression.Empty
-            : new()
-            {
-                Position = keyword.Position,
-                SubExpressions = [.. expressions],
-                TokenType = keyword.TokenID,
-                Value = funcName.Value
-            };
+        return new()
+        {
+            Position = keyword.Position,
+            SubExpressions = [.. expressions],
+            TokenType = keyword.TokenID,
+            Value = funcName.Value
+        };
     }
 
     [Production($"variableStatement: IDENTIFIER assign STRING {END}")]
@@ -176,20 +174,20 @@ public sealed class JMCRuleInstance
     [Production($"funcParams: {IDENTIFIER} ({COMMA} {IDENTIFIER})*")]
     public static JMCExpression FuncParams(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
     {
-        IEnumerable<JMCExpression> allParams = right
+        var additionalParams = right
             .Select(v => v.Token(IDENTIFIER))
-            .Concat([left])
             .Select(v => new JMCExpression()
             {
                 Position = v.Position,
                 TokenType = v.TokenID,
                 Value = v.Value,
             });
+        var allParams = new JMCExpression[] { left.ToExpression() }.Concat(additionalParams);
 
         return new()
         {
             Position = left.Position,
-            Value = left.Value,
+            Value = "FuncParams",
             SubExpressions = [.. allParams]
         };
     }
@@ -453,21 +451,13 @@ public sealed class JMCRuleInstance
 
     #endregion
 
-    #region values
+    #region Values
     [Production($"assign: [" +
         $"{nameof(TokenType.Assign)}|{nameof(TokenType.CompareAssign)}|{nameof(TokenType.DivideAssign)}|" +
         $"{nameof(TokenType.MinusAssign)}|{nameof(TokenType.MultiplyAssign)}|{nameof(TokenType.NullColesleAssign)}|" +
         $"{nameof(TokenType.PlusAssign)}|{nameof(TokenType.RemainderAssign)}" +
         $"]")]
-    public static JMCExpression Assign(Token<TokenType> token)
-    {
-        return new()
-        {
-            Position = token.Position,
-            TokenType = token.TokenID,
-            Value = token.Value
-        };
-    }
+    public static JMCExpression Assign(Token<TokenType> token) => token.ToExpression();
 
     [Production($"cmdAssign: {nameof(TokenType.Assign)}")]
     [Production($"cmdAssign: {nameof(TokenType.BooleanAssign)}")]

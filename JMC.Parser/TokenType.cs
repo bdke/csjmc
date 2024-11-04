@@ -148,6 +148,5 @@ public enum TokenType
     [Mode("defaultString")]
     StringValue,
 
-    Variable,
     Namespace,
 }

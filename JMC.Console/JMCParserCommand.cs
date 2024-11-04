@@ -33,28 +33,42 @@ public sealed class JMCParserCommand : AsyncCommand<JMCParserCommand.Settings>
 
         if (settings.FilePath.EndsWith(".jmc"))
         {
-            var content = await File.ReadAllTextAsync(settings.FilePath);
-            var result = JMCParser.TryParse(content);
-            if (result.IsError)
-            {
-                var errors = result.Errors.Select(v => new SyntaxErrorException(v.ErrorMessage));
-                var rootError = new AggregateException(errors);
-                AnsiConsole.WriteException(rootError);
+            return await ParseJMCFileAsync(settings.FilePath) ? 1 : 0;
+        }
+        InvalidDataException error = new(settings.FilePath);
+        AnsiConsole.WriteException(error);
+        return 1;
+    }
 
-                var lexError = JMCParser.TryGenerateTokens(content, out var channels);
-                var tokens = channels.GetChannel(0).Tokens
-                    .Select(v => v?.ToString() ?? string.Empty)
-                    .Where(v => !string.IsNullOrEmpty(v));
-                var values = string.Join(Environment.NewLine, tokens);
-                if (lexError != null)
-                    AnsiConsole.WriteException(new InvalidProgramException(lexError.ErrorMessage));
-                AnsiConsole.WriteLine(values);
-                return 1;
-            }
-            var tree = result.Root.GetConsoleTree();
+    private static async Task<bool> ParseJMCFileAsync(string filePath)
+    {
+        string content = await File.ReadAllTextAsync(filePath);
+        JMCParser.ParseResult result = JMCParser.TryParse(content);
+
+        if (!result.IsError)
+        {
+            //print tree
+            Tree tree = result.Root.GetConsoleTree();
             AnsiConsole.Write(tree);
+            return true;
         }
 
-        return 0;
+        //print errors
+        IEnumerable<SyntaxErrorException> errors = result.Errors.Select(v => new SyntaxErrorException(v.ErrorMessage));
+        AggregateException rootError = new(errors);
+        AnsiConsole.WriteException(rootError);
+
+        sly.lexer.LexicalError? lexError = JMCParser.TryGenerateTokens(content, out sly.lexer.TokenChannels<TokenType>? channels);
+        IEnumerable<string> tokens = channels.GetChannel(0).Tokens
+                .Select(v => v?.ToString() ?? string.Empty)
+                .Where(v => !string.IsNullOrEmpty(v));
+        string values = string.Join(Environment.NewLine, tokens);
+        if (lexError != null)
+        {
+            AnsiConsole.WriteException(new InvalidProgramException(lexError.ErrorMessage));
+            return false;
+        }
+        AnsiConsole.WriteLine(values);
+        return false;
     }
 }
