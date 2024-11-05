@@ -1,6 +1,6 @@
 # Flow Control
 
-```ts
+```
 
 if ($var == 3) {
     $var = 4;

@@ -90,10 +90,10 @@ public enum TokenType
     [Sugar("\\")]
     Escape,
     [Sugar("\"")]
-    [Push("defaultString")]
+    [Push("string")]
     StartQuote,
     [Sugar("\"")]
-    [Mode("defaultString")]
+    [Mode("string")]
     [Pop]
     EndQuote,
     #endregion
@@ -145,8 +145,6 @@ public enum TokenType
     Identifier,
 
     [UpTo("\"")]
-    [Mode("defaultString")]
+    [Mode("string")]
     StringValue,
-
-    Namespace,
 }

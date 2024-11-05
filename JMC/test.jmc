@@ -1,5 +1,1 @@
-class ns {
-	function test(i1, i2) {
-		$var = i1;
-	}
-}
+function test() {}

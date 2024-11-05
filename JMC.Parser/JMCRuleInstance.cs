@@ -3,6 +3,7 @@ using sly.lexer;
 using sly.parser.generator;
 using sly.parser.parser;
 using System.Collections.Immutable;
+using System.Linq;
 
 namespace JMC.Parser;
 
@@ -160,14 +161,17 @@ public sealed class JMCRuleInstance
     [Production($"namespace: {IDENTIFIER} ({DOT} {IDENTIFIER})*")]
     public static JMCExpression Namespace(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
     {
-        string value = string.Join('.', right.Select(v => v.Token(IDENTIFIER).Value));
+        var rightValues = right.Select(v => v.Token(IDENTIFIER).ToExpression());
+        var values = new JMCExpression[] { left.ToExpression() }.Concat(rightValues);
+
+        string value = string.Join('.', rightValues.Select(v => v.Value));
         value = !string.IsNullOrEmpty(value) ? $"{left.Value}.{value}" : left.Value;
 
         return new()
         {
             Position = left.Position,
             Value = value,
-            TokenType = TokenType.Namespace
+            SubExpressions = [.. rightValues]
         };
     }
 

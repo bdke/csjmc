@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JMC.Parser", "JMC.Parser\JM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JMC.Console", "JMC.Console\JMC.Console.csproj", "{FCEFD834-5A61-4E76-B69A-3B3D064ADA91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMC.Parser.Test", "JMC.Parser.Test\JMC.Parser.Test.csproj", "{ABE276C9-1CA6-47EB-9BF8-6E09E9923647}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JMC.Parser.Test", "JMC.Parser.Test\JMC.Parser.Test.csproj", "{ABE276C9-1CA6-47EB-9BF8-6E09E9923647}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

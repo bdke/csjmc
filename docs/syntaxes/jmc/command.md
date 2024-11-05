@@ -2,7 +2,7 @@
 
 ## Functions
 command only function
-```ts
+```
 command function commandFunc() {
     execute if @s;
     $var = 3; // this will throw error
@@ -10,7 +10,7 @@ command function commandFunc() {
 ```
 
 combined function
-```ts
+```
 function func()  {
     $var = 3;
     test = 4;

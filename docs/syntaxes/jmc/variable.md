@@ -2,7 +2,7 @@
 
 ## Scoreboard
 Generic cases
-```ts
+```
 $var = 3 + (3);
 $var++;
 $var -= 1;
@@ -23,7 +23,7 @@ using $var = 3;
 ```
 
 anythings in `${}` will joined to form a scoreboard.
-```ts
+```
 // this will compile as $nametest
 ${name, test} = 3;
 ```
@@ -32,7 +32,7 @@ ${name, test} = 3;
 
 ## Static
 
-```ts
+```
 test = "3";
 test -= 3;
 
