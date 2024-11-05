@@ -3,7 +3,6 @@ using sly.lexer;
 using sly.parser.generator;
 using sly.parser.parser;
 using System.Collections.Immutable;
-using System.Linq;
 
 namespace JMC.Parser;
 
@@ -257,10 +256,11 @@ public sealed class JMCRuleInstance
     #endregion Functions
 
     #region AL
-    [Production($"al: als (operand als)*")]
-    public static JMCExpression AL(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
+    
+    [Production($"al: [{nameof(TokenType.Plus)}|{nameof(TokenType.Minus)}]? als (operand als)*")]
+    public static JMCExpression AL(Token<TokenType> prefix, JMCExpression left, List<Group<TokenType, JMCExpression>> right)
     {
-        IEnumerable<JMCExpression> subRules = right.Select(g =>
+        IEnumerable<JMCExpression> subExps = right.Select(g =>
         {
             JMCExpression operand = g.Value("operand");
             JMCExpression als = g.Value("als");
@@ -272,12 +272,17 @@ public sealed class JMCRuleInstance
                 TokenType = operand.TokenType
             };
         });
+
+        var pExp = prefix.IsEmpty ? JMCExpression.Empty : prefix.ToExpression();
+        pExp.SubExpressions = [left];
+
+        var exps = new JMCExpression[] { pExp }.Concat(subExps);
+
         return new()
         {
-            Position = left.Position,
-            Value = left.Value,
-            SubExpressions = [.. subRules],
-            TokenType = left.TokenType
+            Position = prefix.IsEmpty ? left.Position : pExp.Position,
+            Value = "AL",
+            SubExpressions = [.. exps],
         };
     }
 
@@ -290,17 +295,8 @@ public sealed class JMCRuleInstance
         return als;
     }
 
-    [Production($"unaryExp: [{nameof(TokenType.Plus)}|{nameof(TokenType.Minus)}]? {LPAREN} al {RPAREN}")]
-    public static JMCExpression Unary(Token<TokenType> prefix, JMCExpression als)
-    {
-        return !prefix.IsEmpty ? new()
-        {
-            Position = prefix.Position,
-            SubExpressions = [als],
-            Value = prefix.Value,
-            TokenType = prefix.TokenID
-        } : als;
-    }
+    [Production($"unaryExp: {LPAREN} al {RPAREN}")]
+    public static JMCExpression Unary(JMCExpression al) => al;
 
     [Operand]
     [Production($"operand: {nameof(TokenType.Plus)}")]

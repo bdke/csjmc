@@ -4,8 +4,10 @@ using Xunit.Categories;
 namespace JMC.Parser.Test.Syntaxes;
 public sealed class JMCSyntaxTest()
 {
-    [Fact]
-    [TestCase("JMCSyntax")]
+    private const string JMCSYNTAX = "JMCSyntax";
+
+    [Fact(DisplayName = "Class&Function")]
+    [TestCase(JMCSYNTAX)]
     public void ClassFunctionSyntax_Test()
     {
         var value = "class ns { function test() {} }";
@@ -29,8 +31,8 @@ public sealed class JMCSyntaxTest()
         funcBlock.SubExpressions.Should().BeEmpty();
     }
 
-    [Fact]
-    [TestCase("JMCSyntax")]
+    [Fact(DisplayName = "Class")]
+    [TestCase(JMCSYNTAX)]
     public void ClassSyntax_Test()
     {
         var value = "class ns { }";
@@ -43,8 +45,8 @@ public sealed class JMCSyntaxTest()
         exp.TokenType.Should().Be(TokenType.ClassKeyword);
     }
 
-    [Fact]
-    [TestCase("JMCSyntax")]
+    [Fact(DisplayName = "Function")]
+    [TestCase(JMCSYNTAX)]
     public void FunctionSyntax_Test()
     {
         var value = "function test(i1, i2) { $var = i1; }";
@@ -79,14 +81,26 @@ public sealed class JMCSyntaxTest()
         v2.Value.Should().Be("i1");
     }
 
-    [Theory]
-    [Bug("JMCSyntax")]
+    [Fact(DisplayName = "AL_Parenthsis")]
+    [TestCase(JMCSYNTAX)]
+    public void ALParen_Test()
+    {
+        var paren = "$test = -(3 + 3);";
+        var result = JMCParser.TryParse(paren);
+        result.ShouldNotBeError();
+        
+        var rootVar = result.Root.SubExpressions[0];
+        //TODO:
+    }
+
+    [Theory(DisplayName = "Class_Error")]
+    [Bug(JMCSYNTAX)]
     [InlineData("class {}")]
     [InlineData("class ns }")]
     [InlineData("class ns {")]
     public void ClassSyntaxError_Test(string text)
     {
         var result = JMCParser.TryParse(text);
-        result.IsError.Should().BeTrue();
+        result.ShouldNotBeError();
     }
 }
