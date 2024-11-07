@@ -75,9 +75,10 @@ public sealed class JMCSyntaxTest()
         vassign.SubExpressions.Should().HaveCount(2);
 
         var v1 = vassign.SubExpressions[0];
-        var v2 = vassign.SubExpressions[1];
+        var v2 = vassign.SubExpressions[1].SubExpressions[0].SubExpressions[0];
         v1.TokenType.Should().Be(TokenType.Assign);
-        v2.TokenType.Should().Be(TokenType.Identifier);
+
+        v2.ShouldHaveTokenType(TokenType.Identifier);
         v2.Value.Should().Be("i1");
     }
 
@@ -90,7 +91,33 @@ public sealed class JMCSyntaxTest()
         result.ShouldNotBeError();
         
         var rootVar = result.Root.SubExpressions[0];
-        //TODO:
+        rootVar.SubExpressions.Should().HaveCount(2);
+
+        var al = rootVar.SubExpressions[1];
+        al.SubExpressions.Should().HaveCount(1);
+
+        var sign = al.SubExpressions[0];
+        sign.SubExpressions.Should().HaveCount(1);
+        sign.ShouldHaveValue("-");
+        sign.ShouldHaveTokenType(TokenType.Minus);
+
+        var al2 = sign.SubExpressions[0];
+        al2.SubExpressions.Should().HaveCount(2);
+
+        var fAl2 = al2.SubExpressions[0];
+        fAl2.ShouldHaveValue("Empty");
+
+        var fAl2V = fAl2.SubExpressions[0];
+        fAl2V.Value.Should().BeEquivalentTo(3);
+        fAl2V.ShouldHaveTokenType(TokenType.Int);
+
+        var sAl2 = al2.SubExpressions[1];
+        fAl2.ShouldHaveValue("Empty");
+
+        var sAl2V = fAl2.SubExpressions[0];
+        sAl2V.Value.Should().BeEquivalentTo(3);
+        sAl2V.ShouldHaveTokenType(TokenType.Int);
+
     }
 
     [Theory(DisplayName = "Class_Error")]
@@ -101,6 +128,6 @@ public sealed class JMCSyntaxTest()
     public void ClassSyntaxError_Test(string text)
     {
         var result = JMCParser.TryParse(text);
-        result.ShouldNotBeError();
+        result.ShouldBeError();
     }
 }

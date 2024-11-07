@@ -89,13 +89,6 @@ public enum TokenType
     And,
     [Sugar("\\")]
     Escape,
-    [Sugar("\"")]
-    [Push("string")]
-    StartQuote,
-    [Sugar("\"")]
-    [Mode("string")]
-    [Pop]
-    EndQuote,
     #endregion
 
     #region Keywords
@@ -143,6 +136,24 @@ public enum TokenType
     Double,
     [AlphaNumDashId]
     Identifier,
+
+    //normal string
+    [Sugar("\"")]
+    [Push("string")]
+    StartQuote,
+    [Sugar("\"")]
+    [Mode("string")]
+    [Pop]
+    EndQuote,
+
+    //string brackets
+    [Sugar("{")]
+    [Mode("string")]
+    [Pop]
+    StartStringBracket,
+    [Sugar("}")]
+    [Mode("string")]
+    EndStringBracket,
 
     [UpTo("\"")]
     [Mode("string")]

@@ -512,19 +512,38 @@ public sealed class JMCRuleInstance
         };
     }
 
-    [Production($"defaultString: {STRING_START_KEEP} {STRING_VALUE}* {STRING_END}")]
-    public static JMCExpression DefaultString(Token<TokenType> start, List<Token<TokenType>> strValues)
+    [Production($"strValue: {STRING_VALUE}")]
+    public static JMCExpression StringValue(Token<TokenType> token) => token.ToExpression();
+
+
+    [Production($"strValue: {nameof(TokenType.StartStringBracket)} al? {nameof(TokenType.StartStringBracket)}[d]")]
+    public static JMCExpression StringValue(Token<TokenType> start, ValueOption<JMCExpression> al)
     {
-        var exp = start.ToExpression();
-        var values = strValues.Select(v => v.ToExpression());
-        exp.SubExpressions = [.. values];
-        return exp;
+        JMCExpression exp = al.Match(v => v, () => JMCExpression.Empty);
+        return new()
+        {
+            Position = start.Position,
+            Value = "BracketValue",
+            SubExpressions = [exp]
+        };
+    }
+
+    [Production($"defaultString: {STRING_START_KEEP} strValue* {STRING_END}")]
+    public static JMCExpression DefaultString(Token<TokenType> start, List<JMCExpression> strValues)
+    {
+        ImmutableArray<JMCExpression> exps = [.. strValues];
+        return new()
+        {
+            Position = start.Position,
+            Value = "String",
+            SubExpressions = exps
+        };
     }
 
     [Production($"STRING: defaultString")]
     public static JMCExpression NormalString(JMCExpression exp) => exp;
 
-    [Production($"STRING: {nameof(TokenType.Deref)} defaultString")]
+    [Production($"STRING: [{nameof(TokenType.Deref)}|{nameof(TokenType.DollarSign)}] defaultString")]
     public static JMCExpression ColorString(Token<TokenType> token, JMCExpression strExp)
     {
         var exp = token.ToExpression();
