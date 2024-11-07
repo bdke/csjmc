@@ -1,5 +1,4 @@
-﻿using OmniSharp.Extensions.LanguageServer.Protocol.Models;
-using sly.lexer;
+﻿using sly.lexer;
 using Spectre.Console;
 
 namespace JMC.Parser.Helper;
@@ -11,6 +10,8 @@ public static class ExpressionHelper
         TokenType = token.TokenID,
         Value = token.Value,
     };
+
+    public static IEnumerable<JMCExpression> ToExpressions(this IEnumerable<Token<TokenType>> tokens) => tokens.Select(v => v.ToExpression());
 
     public static Tree GetConsoleTree(this JMCExpression token)
     {

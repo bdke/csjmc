@@ -512,26 +512,10 @@ public sealed class JMCRuleInstance
         };
     }
 
-    [Production($"strValue: {STRING_VALUE}")]
-    public static JMCExpression StringValue(Token<TokenType> token) => token.ToExpression();
-
-
-    [Production($"strValue: {nameof(TokenType.StartStringBracket)} al? {nameof(TokenType.StartStringBracket)}[d]")]
-    public static JMCExpression StringValue(Token<TokenType> start, ValueOption<JMCExpression> al)
+    [Production($"defaultString: {STRING_START_KEEP} {STRING_VALUE}* {STRING_END}")]
+    public static JMCExpression DefaultString(Token<TokenType> start, List<Token<TokenType>> strValues)
     {
-        JMCExpression exp = al.Match(v => v, () => JMCExpression.Empty);
-        return new()
-        {
-            Position = start.Position,
-            Value = "BracketValue",
-            SubExpressions = [exp]
-        };
-    }
-
-    [Production($"defaultString: {STRING_START_KEEP} strValue* {STRING_END}")]
-    public static JMCExpression DefaultString(Token<TokenType> start, List<JMCExpression> strValues)
-    {
-        ImmutableArray<JMCExpression> exps = [.. strValues];
+        ImmutableArray<JMCExpression> exps = [.. strValues.ToExpressions()];
         return new()
         {
             Position = start.Position,
@@ -540,16 +524,26 @@ public sealed class JMCRuleInstance
         };
     }
 
+    [Production($"fStringExpression: {nameof(TokenType.FStringBracketStart)}[d] al {nameof(TokenType.FStringBracketEnd)}[d]")]
+    public static JMCExpression FStringExpression(JMCExpression al) => al;
+
+    [Production($"fStringExpression: {nameof(TokenType.FStringContent)}")]
+    public static JMCExpression FStringExpression(Token<TokenType> token) => token.ToExpression();
+
+    [Production($"fString: {nameof(TokenType.StartFString)} fStringExpression* {nameof(TokenType.EndFString)}[d]")]
+    public static JMCExpression FString(Token<TokenType> start, List<JMCExpression> contents)
+    {
+        return new()
+        {
+            Position = start.Position,
+            Value = "FString",
+            SubExpressions = [.. contents]
+        };
+    }
+
+    [Production($"STRING: fString")]
     [Production($"STRING: defaultString")]
     public static JMCExpression NormalString(JMCExpression exp) => exp;
-
-    [Production($"STRING: [{nameof(TokenType.Deref)}|{nameof(TokenType.DollarSign)}] defaultString")]
-    public static JMCExpression ColorString(Token<TokenType> token, JMCExpression strExp)
-    {
-        var exp = token.ToExpression();
-        exp.SubExpressions = [strExp];
-        return exp;
-    }
 
     [Production($"valueSign: {nameof(TokenType.Plus)}")]
     [Production($"valueSign: {nameof(TokenType.Minus)}")]

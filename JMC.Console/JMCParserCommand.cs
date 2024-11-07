@@ -2,6 +2,7 @@
 using JMC.Parser.Helper;
 using Serilog;
 using Serilog.Sinks.Spectre;
+using sly.lexer;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using System.Data;
@@ -45,11 +46,19 @@ public sealed class JMCParserCommand : AsyncCommand<JMCParserCommand.Settings>
         string content = await File.ReadAllTextAsync(filePath);
         JMCParser.ParseResult result = JMCParser.TryParse(content);
 
-        if (!result.IsError)
+        //generate tokens
+        LexicalError? lexError = JMCParser.TryGenerateTokens(content, out TokenChannels<TokenType>? channels);
+        IEnumerable<string>? tokens = channels?.GetChannel(0).Tokens
+            .Select(v => v?.ToString() ?? string.Empty)
+            .Where(v => !string.IsNullOrEmpty(v)) ?? null;
+        string tokenValues = string.Join(Environment.NewLine, tokens ?? []);
+
+        if (!result.IsError && channels != null)
         {
             //print tree
             Tree tree = result.Root.GetConsoleTree();
             AnsiConsole.Write(tree);
+            AnsiConsole.WriteLine(tokenValues);
             return true;
         }
 
@@ -58,17 +67,17 @@ public sealed class JMCParserCommand : AsyncCommand<JMCParserCommand.Settings>
         AggregateException rootError = new(errors);
         AnsiConsole.WriteException(rootError);
 
-        sly.lexer.LexicalError? lexError = JMCParser.TryGenerateTokens(content, out sly.lexer.TokenChannels<TokenType>? channels);
-        IEnumerable<string> tokens = channels.GetChannel(0).Tokens
-                .Select(v => v?.ToString() ?? string.Empty)
-                .Where(v => !string.IsNullOrEmpty(v));
-        string values = string.Join(Environment.NewLine, tokens);
+        if (channels == null)
+        {
+            return false;
+        }
+
         if (lexError != null)
         {
             AnsiConsole.WriteException(new InvalidProgramException(lexError.ErrorMessage));
             return false;
         }
-        AnsiConsole.WriteLine(values);
+        AnsiConsole.WriteLine(tokenValues);
         return false;
     }
 }

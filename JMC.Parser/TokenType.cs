@@ -10,18 +10,25 @@ public enum TokenType
     [Comment("//", "/*", "*/")]
     Comment,
     [Sugar("++")]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Increment,
     [Sugar("--")]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Decrement,
     [Sugar("+")]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Plus,
     [Sugar("-")]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Minus,
     [Sugar("*")]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Multiply,
     [Sugar("/")]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Divide,
     [Sugar("%")]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Remainder,
     [Sugar(">")]
     GreaterThan,
@@ -78,6 +85,7 @@ public enum TokenType
     [Sugar("!")]
     Not,
     [Sugar("$")]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     DollarSign,
     [Sugar(".")]
     Dot,
@@ -131,10 +139,13 @@ public enum TokenType
     #endregion
 
     [Int]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Int,
     [Double]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Double,
     [AlphaNumDashId]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Identifier,
 
     //normal string
@@ -145,17 +156,33 @@ public enum TokenType
     [Mode("string")]
     [Pop]
     EndQuote,
-
-    //string brackets
-    [Sugar("{")]
-    [Mode("string")]
-    [Pop]
-    StartStringBracket,
-    [Sugar("}")]
-    [Mode("string")]
-    EndStringBracket,
-
     [UpTo("\"")]
     [Mode("string")]
     StringValue,
+
+    //fstring
+    [Sugar("$\"")]
+    [Push("fstring")]
+    StartFString,
+    [Sugar("\"")]
+    [Mode("fstring")]
+    [Pop]
+    EndFString,
+
+    [Push("fstringExpression")]
+    [Mode("fstring")]
+    [Sugar("{")]
+    FStringBracketStart,
+    [Pop]
+    [Mode("fstringExpression")]
+    [Sugar("}")]
+    FStringBracketEnd,
+
+    [Mode("fstringExpression")]
+    [UpTo("}")]
+    FStringExpression,
+
+    [UpTo("{", "\"")]
+    [Mode("fstring")]
+    FStringContent
 }
