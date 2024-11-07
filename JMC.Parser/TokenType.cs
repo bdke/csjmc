@@ -148,6 +148,7 @@ public enum TokenType
     [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
     Identifier,
 
+    #region String
     //normal string
     [Sugar("\"")]
     [Push("string")]
@@ -169,20 +170,46 @@ public enum TokenType
     [Pop]
     EndFString,
 
-    [Push("fstringExpression")]
-    [Mode("fstring")]
     [Sugar("{")]
+    [Mode("fstring")]
+    [Push("fstringExpression")]
     FStringBracketStart,
-    [Pop]
-    [Mode("fstringExpression")]
     [Sugar("}")]
-    FStringBracketEnd,
-
     [Mode("fstringExpression")]
-    [UpTo("}")]
-    FStringExpression,
+    [Pop]
+    FStringBracketEnd,
 
     [UpTo("{", "\"")]
     [Mode("fstring")]
-    FStringContent
+    FStringContent,
+
+    //color string
+    [Sugar("&\"")]
+    [Push("colorString")]
+    StartColorString,
+    [Sugar("\"")]
+    [Mode("colorString")]
+    [Pop]
+    EndColorString,
+
+    [Sugar("<")]
+    [Mode("colorString")]
+    [Push("colorStringTag")]
+    ColoStringTagStart,
+    [Sugar(">")]
+    [Mode("colorStringTag")]
+    [Pop]
+    ColoStringTagEnd,
+
+    [Sugar("/")]
+    [Mode("colorStringTag")]
+    ColorStringTagEndValue,
+    [AlphaId]
+    [Mode("colorStringTag")]
+    ColorStringTagValue,
+    [UpTo("<", "\"")]
+    [Mode("colorString")]
+    ColorStringContent,
+
+    #endregion
 }

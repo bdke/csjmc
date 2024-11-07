@@ -524,8 +524,16 @@ public sealed class JMCRuleInstance
         };
     }
 
-    [Production($"fStringExpression: {nameof(TokenType.FStringBracketStart)}[d] al {nameof(TokenType.FStringBracketEnd)}[d]")]
-    public static JMCExpression FStringExpression(JMCExpression al) => al;
+    [Production($"fStringExpression: {nameof(TokenType.FStringBracketStart)} al {nameof(TokenType.FStringBracketEnd)}[d]")]
+    public static JMCExpression FStringExpression(Token<TokenType> start, JMCExpression al)
+    {
+        return new()
+        {
+            Position = start.Position,
+            Value = "FStringExpression",
+            SubExpressions = [al]
+        };
+    }
 
     [Production($"fStringExpression: {nameof(TokenType.FStringContent)}")]
     public static JMCExpression FStringExpression(Token<TokenType> token) => token.ToExpression();
@@ -541,7 +549,33 @@ public sealed class JMCRuleInstance
         };
     }
 
+    [Production($"colorStringValue: {nameof(TokenType.ColorStringContent)}")]
+    public static JMCExpression ColorStringValue(Token<TokenType> token) => token.ToExpression();
+
+    [Production($"colorStringValue: {nameof(TokenType.ColoStringTagStart)} [{nameof(TokenType.ColorStringTagValue)}|{nameof(TokenType.ColorStringTagEndValue)}] {nameof(TokenType.ColoStringTagEnd)}[d]")]
+    public static JMCExpression ColorStringValue(Token<TokenType> start, Token<TokenType> value)
+    {
+        return new()
+        {
+            Position = start.Position,
+            Value = "ColorTag",
+            SubExpressions = [value.ToExpression()]
+        };
+    }
+
+    [Production($"colorString: {nameof(TokenType.StartColorString)} colorStringValue* {nameof(TokenType.EndColorString)}[d]")]
+    public static JMCExpression ColorString(Token<TokenType> start, List<JMCExpression> values)
+    {
+        return new()
+        {
+            Position = start.Position,
+            Value = "ColorString",
+            SubExpressions = [.. values]
+        };
+    }
+
     [Production($"STRING: fString")]
+    [Production($"STRING: colorString")]
     [Production($"STRING: defaultString")]
     public static JMCExpression NormalString(JMCExpression exp) => exp;
 
