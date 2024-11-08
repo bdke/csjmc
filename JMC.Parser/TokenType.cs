@@ -97,6 +97,16 @@ public enum TokenType
     And,
     [Sugar("\\")]
     Escape,
+    [Sugar("@s")]
+    SelectorSelf,
+    [Sugar("@p")]
+    SelectorNearest,
+    [Sugar("@a")]
+    SelectorAllPlayers,
+    [Sugar("@r")]
+    SelectorRandomPlayer,
+    [Sugar("@e")]
+    SelectorAllEntities,
     #endregion
 
     #region Keywords
@@ -107,6 +117,7 @@ public enum TokenType
     [Keyword("run")]
     RunKeyword,
     [Keyword("import")]
+    [Push("importMode")]
     ImportKeyword,
     [Keyword("function")]
     FunctionKeyword,
@@ -126,16 +137,20 @@ public enum TokenType
     NullKeyword,
     [Keyword("command")]
     CommandKeyword,
-    [Sugar("@s")]
-    SelectorSelf,
-    [Sugar("@p")]
-    SelectorNearest,
-    [Sugar("@a")]
-    SelectorAllPlayers,
-    [Sugar("@r")]
-    SelectorRandomPlayer,
-    [Sugar("@e")]
-    SelectorAllEntities,
+    [Keyword("code")]
+    CodeKeyword,
+    [Keyword("using")]
+    UsingKeyword,
+    #endregion
+
+    #region Import
+    [UpTo(";")]
+    [Mode("importMode")]
+    ImportContent,
+    [Sugar(";")]
+    [Mode("importMode")]
+    [Pop]
+    EndImport,
     #endregion
 
     #region String

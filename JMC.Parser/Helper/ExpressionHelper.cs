@@ -4,23 +4,29 @@ using Spectre.Console;
 namespace JMC.Parser.Helper;
 public static class ExpressionHelper
 {
-    public static JMCExpression ToExpression(this Token<TokenType> token) => new()
+    public static JMCExpression ToExpression(this Token<TokenType> token)
     {
-        Position = token.Position,
-        TokenType = token.TokenID,
-        Value = token.Value,
-    };
+        return new()
+        {
+            Position = token.Position,
+            TokenType = token.TokenID,
+            Value = token.Value,
+        };
+    }
 
-    public static IEnumerable<JMCExpression> ToExpressions(this IEnumerable<Token<TokenType>> tokens) => tokens.Select(v => v.ToExpression());
+    public static IEnumerable<JMCExpression> ToExpressions(this IEnumerable<Token<TokenType>> tokens)
+    {
+        return tokens.Select(v => v.ToExpression());
+    }
 
     public static Tree GetConsoleTree(this JMCExpression token)
     {
-        var root = new Tree(token.Value?.ToString() ?? string.Empty);
-        var position = token.HasValue ? string.Empty : $" [red]{token.Position}[/]";
-        foreach (var exp in token.SubExpressions)
+        Tree root = new(token.Value?.ToString() ?? string.Empty);
+        string position = token.HasValue ? string.Empty : $" [red]{token.Position}[/]";
+        foreach (JMCExpression exp in token.SubExpressions)
         {
-            var type = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
-            var node = root.AddNode($"{type}[aqua]{exp.Value}[/]{position}");
+            string type = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
+            TreeNode node = root.AddNode($"{type}[aqua]{exp.Value}[/]{position}");
             exp.ConvertToConsoleTree(ref node);
         }
         return root;
@@ -33,11 +39,11 @@ public static class ExpressionHelper
             return;
         }
 
-        foreach (var exp in token.SubExpressions)
+        foreach (JMCExpression exp in token.SubExpressions)
         {
-            var type = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
-            var position = exp.HasValue ? string.Empty : $" [red]{exp.Position}[/]";
-            var subNode = node.AddNode($"{type}[aqua]{exp.Value}[/]{position}");
+            string type = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
+            string position = exp.HasValue ? string.Empty : $" [red]{exp.Position}[/]";
+            TreeNode subNode = node.AddNode($"{type}[aqua]{exp.Value}[/]{position}");
             exp.ConvertToConsoleTree(ref subNode);
         }
     }

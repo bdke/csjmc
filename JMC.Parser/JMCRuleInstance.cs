@@ -86,6 +86,7 @@ public sealed class JMCRuleInstance
         };
     }
 
+
     [Production($"variableStatement: IDENTIFIER assign value {END}")]
     [Production($"variableStatement: variable assign al {END}")]
     [Production($"variableStatement: variable cmdAssign command")]
