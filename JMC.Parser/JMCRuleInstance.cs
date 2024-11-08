@@ -16,6 +16,9 @@ public sealed class JMCRuleInstance
     private const string RPAREN = $"{nameof(TokenType.ParenEnd)}[d]";
     private const string LBLOCK = $"{nameof(TokenType.BlockStart)}[d]";
     private const string LBLOCK_KEEP = $"{nameof(TokenType.BlockStart)}";
+    private const string LLIST = $"{LLIST_KEEP}[d]";
+    private const string LLIST_KEEP = nameof(TokenType.ListStart);
+    private const string RLIST = $"{nameof(TokenType.ListEnd)}[d]";
     private const string RBLOCK = $"{nameof(TokenType.BlockEnd)}[d]";
     private const string COMMA = $"{nameof(TokenType.Comma)}[d]";
 
@@ -30,8 +33,7 @@ public sealed class JMCRuleInstance
     private const string NAMED_ARG = "NamedArg";
     private const string ROOT_ARG = "RootArg";
 
-    private readonly JMCFileDetail fileDetail = new();
-    public JMCFileDetail FileDetail => fileDetail;
+    public JMCFileDetail FileDetail { get; } = new();
 
     public static List<Token<TokenType>> LexemesPostProcess(List<Token<TokenType>> tokens)
     {
@@ -84,7 +86,7 @@ public sealed class JMCRuleInstance
         };
     }
 
-    [Production($"variableStatement: IDENTIFIER assign STRING {END}")]
+    [Production($"variableStatement: IDENTIFIER assign value {END}")]
     [Production($"variableStatement: variable assign al {END}")]
     [Production($"variableStatement: variable cmdAssign command")]
     public static JMCExpression VariableStatement(JMCExpression variable, JMCExpression assign, JMCExpression als)
@@ -125,13 +127,16 @@ public sealed class JMCRuleInstance
     [Production($"commandBlock: {nameof(TokenType.CommandKeyword)} {LBLOCK} command* {RBLOCK}")]
     public static JMCExpression CommadBlock(Token<TokenType> keyword, List<JMCExpression> commands)
     {
-        var exp = keyword.ToExpression();
+        JMCExpression exp = keyword.ToExpression();
         exp.SubExpressions = [.. commands];
         return exp;
     }
 
     [Production($"commandLine: {nameof(TokenType.CommandKeyword)}[d] {COLON} command")]
-    public static JMCExpression CommandLine(JMCExpression cmd) => cmd;
+    public static JMCExpression CommandLine(JMCExpression cmd)
+    {
+        return cmd;
+    }
 
     [Production($"commandFunction: {nameof(TokenType.CommandKeyword)} {nameof(TokenType.FunctionKeyword)}[d] namespace {LBLOCK} command* {RBLOCK}")]
     public static JMCExpression CommandFunction(Token<TokenType> keyword, JMCExpression ns, List<JMCExpression> commands)
@@ -160,8 +165,8 @@ public sealed class JMCRuleInstance
     [Production($"namespace: {IDENTIFIER} ({DOT} {IDENTIFIER})*")]
     public static JMCExpression Namespace(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
     {
-        var rightValues = right.Select(v => v.Token(IDENTIFIER).ToExpression());
-        var values = new JMCExpression[] { left.ToExpression() }.Concat(rightValues);
+        IEnumerable<JMCExpression> rightValues = right.Select(v => v.Token(IDENTIFIER).ToExpression());
+        IEnumerable<JMCExpression> values = new JMCExpression[] { left.ToExpression() }.Concat(rightValues);
 
         string value = string.Join('.', rightValues.Select(v => v.Value));
         value = !string.IsNullOrEmpty(value) ? $"{left.Value}.{value}" : left.Value;
@@ -177,7 +182,7 @@ public sealed class JMCRuleInstance
     [Production($"funcParams: {IDENTIFIER} ({COMMA} {IDENTIFIER})*")]
     public static JMCExpression FuncParams(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
     {
-        var additionalParams = right
+        IEnumerable<JMCExpression> additionalParams = right
             .Select(v => v.Token(IDENTIFIER))
             .Select(v => new JMCExpression()
             {
@@ -185,7 +190,7 @@ public sealed class JMCRuleInstance
                 TokenType = v.TokenID,
                 Value = v.Value,
             });
-        var allParams = new JMCExpression[] { left.ToExpression() }.Concat(additionalParams);
+        IEnumerable<JMCExpression> allParams = new JMCExpression[] { left.ToExpression() }.Concat(additionalParams);
 
         return new()
         {
@@ -256,9 +261,9 @@ public sealed class JMCRuleInstance
     #endregion Functions
 
     #region AL
-    
-    [Production($"al: [{nameof(TokenType.Plus)}|{nameof(TokenType.Minus)}]? als (operand als)*")]
-    public static JMCExpression AL(Token<TokenType> prefix, JMCExpression left, List<Group<TokenType, JMCExpression>> right)
+
+    [Production($"al: valueSign? als (operand als)*")]
+    public static JMCExpression AL(ValueOption<JMCExpression> prefix, JMCExpression left, List<Group<TokenType, JMCExpression>> right)
     {
         IEnumerable<JMCExpression> subExps = right.Select(g =>
         {
@@ -273,14 +278,14 @@ public sealed class JMCRuleInstance
             };
         });
 
-        var pExp = prefix.IsEmpty ? JMCExpression.Empty : prefix.ToExpression();
+        JMCExpression pExp = prefix.Match(v => v, () => JMCExpression.Empty);
         pExp.SubExpressions = [left];
 
-        var exps = new JMCExpression[] { pExp }.Concat(subExps);
+        IEnumerable<JMCExpression> exps = new JMCExpression[] { pExp }.Concat(subExps);
 
         return new()
         {
-            Position = prefix.IsEmpty ? left.Position : pExp.Position,
+            Position = pExp.HasValue ? pExp.Position : left.Position,
             Value = "AL",
             SubExpressions = [.. exps],
         };
@@ -296,7 +301,10 @@ public sealed class JMCRuleInstance
     }
 
     [Production($"unaryExp: {LPAREN} al {RPAREN}")]
-    public static JMCExpression Unary(JMCExpression al) => al;
+    public static JMCExpression Unary(JMCExpression al)
+    {
+        return al;
+    }
 
     [Operand]
     [Production($"operand: {nameof(TokenType.Plus)}")]
@@ -328,7 +336,10 @@ public sealed class JMCRuleInstance
     [Production("cmdArg: vec3")]
     [Production("cmdArg: cmdKeyword")]
     [Production("cmdArg: selector")]
-    public static JMCExpression CommandArgument(JMCExpression exp) => exp;
+    public static JMCExpression CommandArgument(JMCExpression exp)
+    {
+        return exp;
+    }
 
     [Production($"posI: valueSign? number")]
     public static JMCExpression PosI(ValueOption<JMCExpression> sign, JMCExpression exp)
@@ -379,12 +390,15 @@ public sealed class JMCRuleInstance
     }
 
     [Production($"quotedProps: {nameof(TokenType.ListStart)}[d] properties? {nameof(TokenType.ListEnd)}[d]")]
-    public static JMCExpression QuotedProperties(ValueOption<JMCExpression> props) => props.Match(v => v, () => JMCExpression.Empty);
+    public static JMCExpression QuotedProperties(ValueOption<JMCExpression> props)
+    {
+        return props.Match(v => v, () => JMCExpression.Empty);
+    }
 
     [Production($"properties: property ({COMMA} property)*")]
     public static JMCExpression Properties(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
     {
-        var rValues = right.Select(v => v.Value(0));
+        IEnumerable<JMCExpression> rValues = right.Select(v => v.Value(0));
         ImmutableArray<JMCExpression> values = [left, .. rValues];
 
         return new()
@@ -398,32 +412,44 @@ public sealed class JMCRuleInstance
     [Production($"property: {IDENTIFIER} {nameof(TokenType.Assign)}[d] cmdValue")]
     public static JMCExpression Property(Token<TokenType> key, JMCExpression value)
     {
-        var exp = key.ToExpression();
+        JMCExpression exp = key.ToExpression();
         exp.SubExpressions = [value];
         return exp;
     }
 
     [Production($"cmdValue: bool")]
     [Production($"cmdValue: number")]
-    public static JMCExpression CommandValue(JMCExpression exp) => exp;
+    public static JMCExpression CommandValue(JMCExpression exp)
+    {
+        return exp;
+    }
 
     [Production($"cmdValue: {IDENTIFIER}")]
-    public static JMCExpression CommandValue(Token<TokenType> token) => token.ToExpression();
+    public static JMCExpression CommandValue(Token<TokenType> token)
+    {
+        return token.ToExpression();
+    }
 
     [Production($"cmdKeyword: {IDENTIFIER}")]
-    public static JMCExpression CommandKeyword(Token<TokenType> token) => token.ToExpression();
+    public static JMCExpression CommandKeyword(Token<TokenType> token)
+    {
+        return token.ToExpression();
+    }
 
     [Production($"jsonValue: jsonObject")]
     [Production($"jsonValue: jsonList")]
     [Production($"jsonValue: bool")]
     [Production($"jsonValue: number")]
     [Production($"jsonValue: STRING")]
-    public static JMCExpression JsonValue(JMCExpression exp) => exp;
+    public static JMCExpression JsonValue(JMCExpression exp)
+    {
+        return exp;
+    }
 
     [Production($"jsonObject: {LBLOCK_KEEP} ([STRING|IDENTIFIER] {COLON} jsonValue)* {RBLOCK}")]
     public static JMCExpression JsonObject(Token<TokenType> lBlock, List<Group<TokenType, JMCExpression>> values)
     {
-        var exps = values.Select(v => new JMCExpression()
+        ImmutableArray<JMCExpression> exps = values.Select(v => new JMCExpression()
         {
             Position = v.Value(0).Position,
             Value = v.Value(0).Value,
@@ -457,11 +483,17 @@ public sealed class JMCRuleInstance
         $"{nameof(TokenType.MinusAssign)}|{nameof(TokenType.MultiplyAssign)}|{nameof(TokenType.NullColesleAssign)}|" +
         $"{nameof(TokenType.PlusAssign)}|{nameof(TokenType.RemainderAssign)}" +
         $"]")]
-    public static JMCExpression Assign(Token<TokenType> token) => token.ToExpression();
+    public static JMCExpression Assign(Token<TokenType> token)
+    {
+        return token.ToExpression();
+    }
 
     [Production($"cmdAssign: {nameof(TokenType.Assign)}")]
     [Production($"cmdAssign: {nameof(TokenType.BooleanAssign)}")]
-    public static JMCExpression CommandAssign(Token<TokenType> token) => token.ToExpression();
+    public static JMCExpression CommandAssign(Token<TokenType> token)
+    {
+        return token.ToExpression();
+    }
 
     [Production($"number: [{nameof(TokenType.Int)}|{nameof(TokenType.Double)}]")]
     public static JMCExpression Number(Token<TokenType> number)
@@ -490,7 +522,7 @@ public sealed class JMCRuleInstance
     {
         string value = identifier.Value;
 
-        _ = fileDetail.Variables.Add(value);
+        _ = FileDetail.Variables.Add(value);
 
         return new()
         {
@@ -503,7 +535,7 @@ public sealed class JMCRuleInstance
     [Production($"variable: {nameof(TokenType.DollarSign)} {LBLOCK} {IDENTIFIER}* {RBLOCK}")]
     public static JMCExpression Variable(Token<TokenType> dollarSign, List<Token<TokenType>> identifiers)
     {
-        var exps = identifiers.Select(v => v.ToExpression());
+        IEnumerable<JMCExpression> exps = identifiers.Select(v => v.ToExpression());
         return new()
         {
             Position = dollarSign.Position,
@@ -536,7 +568,10 @@ public sealed class JMCRuleInstance
     }
 
     [Production($"fStringExpression: {nameof(TokenType.FStringContent)}")]
-    public static JMCExpression FStringExpression(Token<TokenType> token) => token.ToExpression();
+    public static JMCExpression FStringExpression(Token<TokenType> token)
+    {
+        return token.ToExpression();
+    }
 
     [Production($"fString: {nameof(TokenType.StartFString)} fStringExpression* {nameof(TokenType.EndFString)}[d]")]
     public static JMCExpression FString(Token<TokenType> start, List<JMCExpression> contents)
@@ -550,7 +585,10 @@ public sealed class JMCRuleInstance
     }
 
     [Production($"colorStringValue: {nameof(TokenType.ColorStringContent)}")]
-    public static JMCExpression ColorStringValue(Token<TokenType> token) => token.ToExpression();
+    public static JMCExpression ColorStringValue(Token<TokenType> token)
+    {
+        return token.ToExpression();
+    }
 
     [Production($"colorStringValue: {nameof(TokenType.ColoStringTagStart)} [{nameof(TokenType.ColorStringTagValue)}|{nameof(TokenType.ColorStringTagEndValue)}] {nameof(TokenType.ColoStringTagEnd)}[d]")]
     public static JMCExpression ColorStringValue(Token<TokenType> start, Token<TokenType> value)
@@ -574,10 +612,40 @@ public sealed class JMCRuleInstance
         };
     }
 
+    [Production($"arrayElem: value ({COMMA} value)*")]
+    public static JMCExpression ArrayElement(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
+    {
+        var rightValues = right.Select(v => v.Value(0));
+        var exps = new JMCExpression[] { left }.Concat(rightValues);
+
+        return new()
+        {
+            Position = left.Position,
+            Value = "ArrayElems",
+            SubExpressions = [.. exps]
+        };
+    }
+
+    [Production($"array: {LLIST_KEEP} arrayElem? {RLIST}")]
+    public static JMCExpression ArrayExpressions(Token<TokenType> start, ValueOption<JMCExpression> elem)
+    {
+        var exps = elem.Match(v => v.SubExpressions, () => []);
+
+        return new()
+        {
+            Position = start.Position,
+            SubExpressions = exps,
+            Value = "Array"
+        };
+    }
+
     [Production($"STRING: fString")]
     [Production($"STRING: colorString")]
     [Production($"STRING: defaultString")]
-    public static JMCExpression NormalString(JMCExpression exp) => exp;
+    public static JMCExpression NormalString(JMCExpression exp)
+    {
+        return exp;
+    }
 
     [Production($"valueSign: {nameof(TokenType.Plus)}")]
     [Production($"valueSign: {nameof(TokenType.Minus)}")]
@@ -590,6 +658,7 @@ public sealed class JMCRuleInstance
     [Production("value: number")]
     [Production("value: variable")]
     [Production("value: STRING")]
+    [Production("value: array")]
     public static JMCExpression Value(JMCExpression expression)
     {
         return expression;
@@ -602,13 +671,16 @@ public sealed class JMCRuleInstance
     [Production($"selector: {nameof(TokenType.SelectorRandomPlayer)} quotedProps?")]
     public static JMCExpression Selector(Token<TokenType> start, ValueOption<JMCExpression> properties)
     {
-        var exp = start.ToExpression();
+        JMCExpression exp = start.ToExpression();
         exp.SubExpressions = [properties.Match(v => v, () => JMCExpression.Empty)];
         return exp;
     }
 
     [Production($"IDENTIFIER: {IDENTIFIER}")]
-    public static JMCExpression Identifier(Token<TokenType> token) => token.ToExpression();
+    public static JMCExpression Identifier(Token<TokenType> token)
+    {
+        return token.ToExpression();
+    }
 
     #endregion
 }

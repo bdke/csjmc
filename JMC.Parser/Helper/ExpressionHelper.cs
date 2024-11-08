@@ -19,7 +19,8 @@ public static class ExpressionHelper
         var position = token.HasValue ? string.Empty : $" [red]{token.Position}[/]";
         foreach (var exp in token.SubExpressions)
         {
-            var node = root.AddNode($"[green]{exp.TokenType}[/] [aqua]{exp.Value}[/]{position}");
+            var type = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
+            var node = root.AddNode($"{type}[aqua]{exp.Value}[/]{position}");
             exp.ConvertToConsoleTree(ref node);
         }
         return root;
@@ -34,8 +35,9 @@ public static class ExpressionHelper
 
         foreach (var exp in token.SubExpressions)
         {
+            var type = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
             var position = exp.HasValue ? string.Empty : $" [red]{exp.Position}[/]";
-            var subNode = node.AddNode($"[green]{exp.TokenType}[/] [aqua]{exp.Value}[/]{position}");
+            var subNode = node.AddNode($"{type}[aqua]{exp.Value}[/]{position}");
             exp.ConvertToConsoleTree(ref subNode);
         }
     }

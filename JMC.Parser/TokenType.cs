@@ -138,16 +138,6 @@ public enum TokenType
     SelectorAllEntities,
     #endregion
 
-    [Int]
-    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
-    Int,
-    [Double]
-    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
-    Double,
-    [AlphaNumDashId]
-    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
-    Identifier,
-
     #region String
     //normal string
     [Sugar("\"")]
@@ -210,6 +200,15 @@ public enum TokenType
     [UpTo("<", "\"")]
     [Mode("colorString")]
     ColorStringContent,
-
     #endregion
+
+    [Int]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
+    Int,
+    [Double]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
+    Double,
+    [AlphaNumDashId]
+    [Mode(ModeAttribute.DefaultLexerMode, "fstringExpression")]
+    Identifier,
 }
