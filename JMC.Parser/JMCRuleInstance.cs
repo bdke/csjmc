@@ -3,6 +3,7 @@ using sly.lexer;
 using sly.parser.generator;
 using sly.parser.parser;
 using System.Collections.Immutable;
+using System.Text.Json;
 
 namespace JMC.Parser;
 
@@ -57,6 +58,7 @@ public sealed class JMCRuleInstance
     [Production("statement: funcCall")]
     [Production("statement: commandBlock")]
     [Production("statement: commandLine")]
+    [Production("statement: import")]
     public static JMCExpression Statement(JMCExpression exp)
     {
         return exp;
@@ -86,6 +88,48 @@ public sealed class JMCRuleInstance
         };
     }
 
+    [Production($"importContent: {nameof(TokenType.ImportContent)} ({nameof(TokenType.ImportPathSeperator)}[d] {nameof(TokenType.ImportContent)})*")]
+    public static JMCExpression ImportContent(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
+    {
+        var rightExps = right.Select(v => v.Token(0).ToExpression());
+        var exps = new JMCExpression[] { left.ToExpression() }.Concat(rightExps);
+
+        return new()
+        {
+            Position = Position.Empty,
+            SubExpressions = [..exps]
+        };
+    }
+
+    [Production($"import: {nameof(TokenType.ImportKeyword)} importContent? {nameof(TokenType.EndImport)}[d]")]
+    public static JMCExpression ImportExpression(Token<TokenType> keyword, ValueOption<JMCExpression> content)
+    {
+        var exp = content.Match(v => v, () => JMCExpression.Empty);
+        var exps = exp.HasValue ? exp.SubExpressions : [];
+        var value = exps.IsDefaultOrEmpty ? string.Empty : string.Join('/', exps.Select(v => v.Value));
+
+        return new()
+        {
+            Position = keyword.Position,
+            SubExpressions = exps,
+            TokenType = keyword.TokenID,
+            Value = value
+        };
+    }
+
+    [Production($"import: {nameof(TokenType.CodeKeyword)} {nameof(TokenType.ImportKeyword)} importContent? {nameof(TokenType.EndImport)}[d]")]
+    public static JMCExpression ImportExpression(Token<TokenType> codeKeyword, Token<TokenType> importKeyword, ValueOption<JMCExpression> content)
+    {
+        var exp = content.Match(v => v, () => JMCExpression.Empty);
+        var exps = exp.HasValue ? exp.SubExpressions : [];
+        var value = exps.IsDefaultOrEmpty ? string.Empty : string.Join('/', exps.Select(v => v.Value));
+        var codeExp = codeKeyword.ToExpression();
+        var importExp = importKeyword.ToExpression();
+        importExp.Value = value;
+        importExp.SubExpressions = exps;
+        codeExp.SubExpressions = [importExp];
+        return codeExp;
+    }
 
     [Production($"variableStatement: IDENTIFIER assign value {END}")]
     [Production($"variableStatement: variable assign al {END}")]

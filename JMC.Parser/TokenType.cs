@@ -144,9 +144,13 @@ public enum TokenType
     #endregion
 
     #region Import
-    [UpTo(";")]
+    [AlphaNumDashId]
     [Mode("importMode")]
     ImportContent,
+    [Sugar("/")]
+    [Sugar("\\")]
+    [Mode("importMode")]
+    ImportPathSeperator,
     [Sugar(";")]
     [Mode("importMode")]
     [Pop]
