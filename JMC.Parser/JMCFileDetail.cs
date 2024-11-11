@@ -2,10 +2,10 @@ namespace JMC.Parser;
 
 public readonly struct JMCFileDetail()
 {
-    public readonly HashSet<string> Variables { get; } = [];
+    public readonly HashSet<string> ScoreboardVariables { get; } = [];
 
     public void Reset()
     {
-        Variables.Clear();
+        ScoreboardVariables.Clear();
     }
 }

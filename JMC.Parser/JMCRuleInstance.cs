@@ -30,9 +30,33 @@ public sealed class JMCRuleInstance
 
     private const string COLON = $"{nameof(TokenType.Colon)}[d]";
 
-    private const string NORMAL_ARG = "NormalArg";
-    private const string NAMED_ARG = "NamedArg";
-    private const string ROOT_ARG = "RootArg";
+    internal const string NORMAL_ARG = "NormalArg";
+    internal const string NAMED_ARG = "NamedArg";
+    internal const string ROOT_ARG = "RootArg";
+
+    internal const string BLOCK = "Block";
+    internal const string IMPORT_PATH = "ImportPath";
+
+    internal const string LAMBDA_FUNCTION = "LambdaFunction";
+    internal const string FUNC_PARAMS = "FuncParams";
+
+    internal const string AL_ROOT = "AL";
+
+    internal const string VEC2_COLLECTION = "Vec2";
+    internal const string VEC3_COLLECTION = "Vec3";
+    internal const string COMMAND_PROPERTIES = "Properties";
+
+    internal const string COMMAND_JSON_OBJECT = "JsonObject";
+    internal const string COMMAND_JSON_LIST = "JsonList";
+
+    internal const string VALUE_STRING = "String";
+    internal const string F_STRING_EXPRESSION = "FStringExpression";
+    internal const string F_STRING = "FString";
+    internal const string COLOR_STRING = "ColorString";
+    internal const string COLOR_TAG = "ColorTag";
+
+    internal const string ARRAY_ELEMS = "ArrayElems";
+    internal const string ARRAY = "Array";
 
     public JMCFileDetail FileDetail { get; } = new();
 
@@ -72,7 +96,7 @@ public sealed class JMCRuleInstance
         {
             Position = lBlock.Position,
             SubExpressions = [.. statements],
-            Value = "Block"
+            Value = BLOCK
         };
     }
 
@@ -93,13 +117,8 @@ public sealed class JMCRuleInstance
     [Production($"variableStatement: variable cmdAssign command")]
     public static JMCExpression VariableStatement(JMCExpression variable, JMCExpression assign, JMCExpression als)
     {
-        return new()
-        {
-            Position = variable.Position,
-            TokenType = variable.TokenType,
-            SubExpressions = [assign, als],
-            Value = variable.Value
-        };
+        variable.SubExpressions = [assign, als];
+        return variable;
     }
 
     [Production($"function: {nameof(TokenType.FunctionKeyword)}[d] namespace {LPAREN} funcParams? {RPAREN} block")]
@@ -117,13 +136,8 @@ public sealed class JMCRuleInstance
     [Production($"funcCall: namespace {LPAREN} funcArgs? {RPAREN} {END}")]
     public static JMCExpression FunctionCallStatement(JMCExpression funcName, ValueOption<JMCExpression> funcArgs)
     {
-        return new()
-        {
-            Position = funcName.Position,
-            SubExpressions = [funcArgs.Match(v => v, () => JMCExpression.Empty)],
-            Value = funcName.Value,
-            TokenType = funcName.TokenType
-        };
+        funcName.SubExpressions = [funcArgs.Match(v => v, () => JMCExpression.Empty)];
+        return funcName;
     }
 
     [Production($"commandBlock: {nameof(TokenType.CommandKeyword)} {LBLOCK} command* {RBLOCK}")]
@@ -176,9 +190,8 @@ public sealed class JMCRuleInstance
 
         return new()
         {
-            Position = Position.Empty,
             SubExpressions = [.. exps],
-            Value = "ImportPath"
+            Value = IMPORT_PATH
         };
     }
 
@@ -188,7 +201,7 @@ public sealed class JMCRuleInstance
         var exp = content.Match(v => v, () => JMCExpression.Empty);
         ImmutableArray<JMCExpression> exps = exp.HasValue ? [exp, alias.Match(v => v, () => JMCExpression.Empty)] : [];
         var value = exps.IsDefaultOrEmpty ? string.Empty : string.Join('/', exps.Select(v => v.Value));
-
+        
         return new()
         {
             Position = keyword.Position,
@@ -221,9 +234,8 @@ public sealed class JMCRuleInstance
 
         return new()
         {
-            Position = funcParamsValue.Position,
             SubExpressions = [funcParamsValue, block],
-            Value = "LambdaFunction"
+            Value = LAMBDA_FUNCTION
         };
     }
 
@@ -248,19 +260,12 @@ public sealed class JMCRuleInstance
     public static JMCExpression FuncParams(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
     {
         IEnumerable<JMCExpression> additionalParams = right
-            .Select(v => v.Token(IDENTIFIER))
-            .Select(v => new JMCExpression()
-            {
-                Position = v.Position,
-                TokenType = v.TokenID,
-                Value = v.Value,
-            });
+            .Select(v => v.Token(IDENTIFIER).ToExpression());
         IEnumerable<JMCExpression> allParams = new JMCExpression[] { left.ToExpression() }.Concat(additionalParams);
 
         return new()
         {
-            Position = left.Position,
-            Value = "FuncParams",
+            Value = FUNC_PARAMS,
             SubExpressions = [.. allParams]
         };
     }
@@ -273,7 +278,6 @@ public sealed class JMCRuleInstance
 
         return new()
         {
-            Position = funcArg.Position,
             SubExpressions = values,
             Value = ROOT_ARG
         };
@@ -292,7 +296,6 @@ public sealed class JMCRuleInstance
 
         return new()
         {
-            Position = left.Position,
             SubExpressions = [.. values],
             Value = NORMAL_ARG
         };
@@ -301,12 +304,9 @@ public sealed class JMCRuleInstance
     [Production($"funcNameArg: {IDENTIFIER} {nameof(TokenType.Colon)}[d] value")]
     public static JMCExpression FuncNamedArg(Token<TokenType> paramName, JMCExpression value)
     {
-        return new()
-        {
-            Position = paramName.Position,
-            SubExpressions = [value],
-            Value = paramName.Value
-        };
+        var exp = paramName.ToExpression();
+        exp.SubExpressions = [value];
+        return exp;
     }
 
     [Production($"funcNameArgs: funcNameArg ({COMMA} funcNameArg)*")]
@@ -317,7 +317,6 @@ public sealed class JMCRuleInstance
 
         return new()
         {
-            Position = left.Position,
             SubExpressions = [.. values],
             Value = NAMED_ARG
         };
@@ -334,13 +333,8 @@ public sealed class JMCRuleInstance
         {
             JMCExpression operand = g.Value("operand");
             JMCExpression als = g.Value("als");
-            return new JMCExpression()
-            {
-                Position = operand.Position,
-                Value = operand.Value,
-                SubExpressions = [als],
-                TokenType = operand.TokenType
-            };
+            operand.SubExpressions = [als];
+            return operand;
         });
 
         JMCExpression pExp = prefix.Match(v => v, () => JMCExpression.Empty);
@@ -350,8 +344,7 @@ public sealed class JMCRuleInstance
 
         return new()
         {
-            Position = pExp.HasValue ? pExp.Position : left.Position,
-            Value = "AL",
+            Value = AL_ROOT,
             SubExpressions = [.. exps],
         };
     }
@@ -379,12 +372,7 @@ public sealed class JMCRuleInstance
     [Production($"operand: {nameof(TokenType.Remainder)}")]
     public static JMCExpression Operand(Token<TokenType> token)
     {
-        return new()
-        {
-            Position = token.Position,
-            TokenType = token.TokenID,
-            Value = token.Value
-        };
+        return token.ToExpression();
     }
     #endregion
 
@@ -409,21 +397,20 @@ public sealed class JMCRuleInstance
     [Production($"posI: valueSign? number")]
     public static JMCExpression PosI(ValueOption<JMCExpression> sign, JMCExpression exp)
     {
-        JMCExpression value = sign.Match(v => v, () => JMCExpression.Empty);
-        exp.SubExpressions = [value];
-        return value;
+        exp.SubExpressions = [sign.GetValueOrEmpty()];
+        return exp;
     }
     [Production($"posF: '^' valueSign? number")]
     [Production($"posR: '~' valueSign? number")]
     public static JMCExpression PosFR(Token<TokenType> s, ValueOption<JMCExpression> sign, JMCExpression i)
     {
         JMCExpression exp = s.ToExpression();
-        JMCExpression signValue = sign.Match(v => v, () => JMCExpression.Empty);
+        JMCExpression signValue = sign.GetValueOrEmpty();
 
-        i.SubExpressions = [signValue];
+        signValue.SubExpressions = [i];
 
         exp.Value = $"{s.Value}{signValue.Value}{i.Value}";
-        exp.SubExpressions = [i];
+        exp.SubExpressions = [signValue];
 
         return exp;
     }
@@ -435,9 +422,8 @@ public sealed class JMCRuleInstance
     {
         return new()
         {
-            Position = e1.Position,
             SubExpressions = [e1, e2],
-            Value = $"{e1.Value} {e2.Value}"
+            Value = VEC2_COLLECTION
         };
     }
 
@@ -448,16 +434,15 @@ public sealed class JMCRuleInstance
     {
         return new()
         {
-            Position = e1.Position,
             SubExpressions = [e1, e2, e3],
-            Value = $"{e1.Value} {e2.Value} {e3.Value}"
+            Value = VEC3_COLLECTION
         };
     }
 
     [Production($"quotedProps: {nameof(TokenType.ListStart)}[d] properties? {nameof(TokenType.ListEnd)}[d]")]
     public static JMCExpression QuotedProperties(ValueOption<JMCExpression> props)
     {
-        return props.Match(v => v, () => JMCExpression.Empty);
+        return props.GetValueOrEmpty();
     }
 
     [Production($"properties: property ({COMMA} property)*")]
@@ -468,9 +453,8 @@ public sealed class JMCRuleInstance
 
         return new()
         {
-            Position = left.Position,
             SubExpressions = values,
-            Value = "Properties"
+            Value = COMMAND_PROPERTIES
         };
     }
 
@@ -511,8 +495,8 @@ public sealed class JMCRuleInstance
         return exp;
     }
 
-    [Production($"jsonObject: {LBLOCK_KEEP} ([STRING|IDENTIFIER] {COLON} jsonValue)* {RBLOCK}")]
-    public static JMCExpression JsonObject(Token<TokenType> lBlock, List<Group<TokenType, JMCExpression>> values)
+    [Production($"jsonObject: {LBLOCK} ([STRING|IDENTIFIER] {COLON} jsonValue)* {RBLOCK}")]
+    public static JMCExpression JsonObject(List<Group<TokenType, JMCExpression>> values)
     {
         ImmutableArray<JMCExpression> exps = values.Select(v => new JMCExpression()
         {
@@ -523,20 +507,18 @@ public sealed class JMCRuleInstance
 
         return new()
         {
-            Position = lBlock.Position,
             SubExpressions = exps,
-            Value = "JsonObject"
+            Value = COMMAND_JSON_OBJECT
         };
     }
 
-    [Production($"jsonList: {nameof(TokenType.ListStart)} jsonValue* {nameof(TokenType.ListEnd)}[d]")]
-    public static JMCExpression JsonList(Token<TokenType> token, List<JMCExpression> values)
+    [Production($"jsonList: {LLIST} jsonValue* {RLIST}")]
+    public static JMCExpression JsonList(List<JMCExpression> values)
     {
         return new()
         {
-            Position = token.Position,
             SubExpressions = [.. values],
-            Value = "JsonList"
+            Value = COMMAND_JSON_LIST
         };
     }
 
@@ -574,20 +556,15 @@ public sealed class JMCRuleInstance
     [Production($"bool: [{nameof(TokenType.True)}|{nameof(TokenType.False)}]")]
     public static JMCExpression Bool(Token<TokenType> b)
     {
-        return new()
-        {
-            Position = b.Position,
-            TokenType = b.TokenID,
-            Value = b.Value
-        };
+        return b.ToExpression();
     }
 
     [Production($"variable: {nameof(TokenType.DollarSign)} {IDENTIFIER}")]
     public JMCExpression Variable(Token<TokenType> dollarSign, Token<TokenType> identifier)
     {
-        string value = identifier.Value;
+        string value = $"${identifier.Value}";
 
-        _ = FileDetail.Variables.Add(value);
+        _ = FileDetail.ScoreboardVariables.Add(value);
 
         return new()
         {
@@ -605,7 +582,8 @@ public sealed class JMCRuleInstance
         {
             Position = dollarSign.Position,
             TokenType = dollarSign.TokenID,
-            Value = string.Join(",", identifiers.Select(v => v.Value))
+            Value = string.Join(",", identifiers.Select(v => v.Value)),
+            SubExpressions = [.. exps]
         };
     }
 
@@ -616,18 +594,17 @@ public sealed class JMCRuleInstance
         return new()
         {
             Position = start.Position,
-            Value = "String",
+            Value = VALUE_STRING,
             SubExpressions = exps
         };
     }
 
-    [Production($"fStringExpression: {nameof(TokenType.FStringBracketStart)} al {nameof(TokenType.FStringBracketEnd)}[d]")]
-    public static JMCExpression FStringExpression(Token<TokenType> start, JMCExpression al)
+    [Production($"fStringExpression: {nameof(TokenType.FStringBracketStart)}[d] al {nameof(TokenType.FStringBracketEnd)}[d]")]
+    public static JMCExpression FStringExpression(JMCExpression al)
     {
         return new()
         {
-            Position = start.Position,
-            Value = "FStringExpression",
+            Value = F_STRING_EXPRESSION,
             SubExpressions = [al]
         };
     }
@@ -638,13 +615,12 @@ public sealed class JMCRuleInstance
         return token.ToExpression();
     }
 
-    [Production($"fString: {nameof(TokenType.StartFString)} fStringExpression* {nameof(TokenType.EndFString)}[d]")]
-    public static JMCExpression FString(Token<TokenType> start, List<JMCExpression> contents)
+    [Production($"fString: {nameof(TokenType.StartFString)}[d] fStringExpression* {nameof(TokenType.EndFString)}[d]")]
+    public static JMCExpression FString(List<JMCExpression> contents)
     {
         return new()
         {
-            Position = start.Position,
-            Value = "FString",
+            Value = F_STRING,
             SubExpressions = [.. contents]
         };
     }
@@ -655,24 +631,22 @@ public sealed class JMCRuleInstance
         return token.ToExpression();
     }
 
-    [Production($"colorStringValue: {nameof(TokenType.ColoStringTagStart)} [{nameof(TokenType.ColorStringTagValue)}|{nameof(TokenType.ColorStringTagEndValue)}] {nameof(TokenType.ColoStringTagEnd)}[d]")]
-    public static JMCExpression ColorStringValue(Token<TokenType> start, Token<TokenType> value)
+    [Production($"colorStringValue: {nameof(TokenType.ColoStringTagStart)}[d] [{nameof(TokenType.ColorStringTagValue)}|{nameof(TokenType.ColorStringTagEndValue)}] {nameof(TokenType.ColoStringTagEnd)}[d]")]
+    public static JMCExpression ColorStringTagValue(Token<TokenType> value)
     {
         return new()
         {
-            Position = start.Position,
-            Value = "ColorTag",
+            Value = COLOR_TAG,
             SubExpressions = [value.ToExpression()]
         };
     }
 
-    [Production($"colorString: {nameof(TokenType.StartColorString)} colorStringValue* {nameof(TokenType.EndColorString)}[d]")]
-    public static JMCExpression ColorString(Token<TokenType> start, List<JMCExpression> values)
+    [Production($"colorString: {nameof(TokenType.StartColorString)}[d] colorStringValue* {nameof(TokenType.EndColorString)}[d]")]
+    public static JMCExpression ColorString(List<JMCExpression> values)
     {
         return new()
         {
-            Position = start.Position,
-            Value = "ColorString",
+            Value = COLOR_STRING,
             SubExpressions = [.. values]
         };
     }
@@ -681,26 +655,22 @@ public sealed class JMCRuleInstance
     public static JMCExpression ArrayElement(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
     {
         var rightValues = right.Select(v => v.Value(0));
-        var exps = new JMCExpression[] { left }.Concat(rightValues);
+        ImmutableArray<JMCExpression> exps = [left, .. right.Select(v => v.Value(0))];
 
         return new()
         {
-            Position = left.Position,
-            Value = "ArrayElems",
-            SubExpressions = [.. exps]
+            Value = ARRAY_ELEMS,
+            SubExpressions = exps
         };
     }
 
-    [Production($"array: {LLIST_KEEP} arrayElem? {RLIST}")]
-    public static JMCExpression ArrayExpressions(Token<TokenType> start, ValueOption<JMCExpression> elem)
+    [Production($"array: {LLIST} arrayElem? {RLIST}")]
+    public static JMCExpression ArrayExpressions(ValueOption<JMCExpression> elem)
     {
-        var exps = elem.Match(v => v.SubExpressions, () => []);
-
         return new()
         {
-            Position = start.Position,
-            SubExpressions = exps,
-            Value = "Array"
+            SubExpressions = elem.GetValueOrEmpty().SubExpressions,
+            Value = ARRAY
         };
     }
 
@@ -737,7 +707,7 @@ public sealed class JMCRuleInstance
     public static JMCExpression Selector(Token<TokenType> start, ValueOption<JMCExpression> properties)
     {
         JMCExpression exp = start.ToExpression();
-        exp.SubExpressions = [properties.Match(v => v, () => JMCExpression.Empty)];
+        exp.SubExpressions = [properties.GetValueOrEmpty()];
         return exp;
     }
 

@@ -1,4 +1,5 @@
 ﻿using sly.lexer;
+using sly.parser.parser;
 using Spectre.Console;
 
 namespace JMC.Parser.Helper;
@@ -14,6 +15,8 @@ public static class ExpressionHelper
         };
     }
 
+    public static JMCExpression GetValueOrEmpty(this ValueOption<JMCExpression> valueOption) => valueOption.Match(v => v, () => JMCExpression.Empty);
+
     public static IEnumerable<JMCExpression> ToExpressions(this IEnumerable<Token<TokenType>> tokens)
     {
         return tokens.Select(v => v.ToExpression());
@@ -22,11 +25,10 @@ public static class ExpressionHelper
     public static Tree GetConsoleTree(this JMCExpression token)
     {
         Tree root = new(token.Value?.ToString() ?? string.Empty);
-        string position = token.HasValue ? string.Empty : $" [red]{token.Position}[/]";
+        
         foreach (JMCExpression exp in token.SubExpressions)
         {
-            string type = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
-            TreeNode node = root.AddNode($"{type}[aqua]{exp.Value}[/]{position}");
+            TreeNode node = root.AddNode(exp.GenerateTreeInfo());
             exp.ConvertToConsoleTree(ref node);
         }
         return root;
@@ -41,10 +43,18 @@ public static class ExpressionHelper
 
         foreach (JMCExpression exp in token.SubExpressions)
         {
-            string type = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
-            string position = exp.HasValue ? string.Empty : $" [red]{exp.Position}[/]";
-            TreeNode subNode = node.AddNode($"{type}[aqua]{exp.Value}[/]{position}");
+            TreeNode subNode = node.AddNode(exp.GenerateTreeInfo());
             exp.ConvertToConsoleTree(ref subNode);
         }
+    }
+
+    private static string GenerateTreeInfo(this JMCExpression exp)
+    {
+        string type = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
+        string position = exp.Position.HasValue ? $"[red]{exp.Position}[/] " : string.Empty;
+        string value = exp.Value != null ? $"[aqua]{exp.Value}[/] " : string.Empty;
+        string collection = exp.IsCollection ? $"[yellow]Collection[/]" : string.Empty;
+        string empty = !exp.HasValue ? $"[yellow]Empty[/]" : string.Empty;
+        return $"{type}{value}{position}{collection}{empty}";
     }
 }
