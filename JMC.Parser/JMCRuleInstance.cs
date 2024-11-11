@@ -66,7 +66,7 @@ public sealed class JMCRuleInstance
 
     #region Statements
     [Production($"block: {nameof(TokenType.BlockStart)} statement* {RBLOCK}")]
-    public static JMCExpression Block(Token<TokenType> lBlock, List<JMCExpression> statements)
+    public JMCExpression Block(Token<TokenType> lBlock, List<JMCExpression> statements)
     {
         return new()
         {
@@ -86,49 +86,6 @@ public sealed class JMCRuleInstance
             TokenType = keyword.TokenID,
             Value = funcName.Value
         };
-    }
-
-    [Production($"importContent: {nameof(TokenType.ImportContent)} ({nameof(TokenType.ImportPathSeperator)}[d] {nameof(TokenType.ImportContent)})*")]
-    public static JMCExpression ImportContent(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
-    {
-        var rightExps = right.Select(v => v.Token(0).ToExpression());
-        var exps = new JMCExpression[] { left.ToExpression() }.Concat(rightExps);
-
-        return new()
-        {
-            Position = Position.Empty,
-            SubExpressions = [..exps]
-        };
-    }
-
-    [Production($"import: {nameof(TokenType.ImportKeyword)} importContent? {nameof(TokenType.EndImport)}[d]")]
-    public static JMCExpression ImportExpression(Token<TokenType> keyword, ValueOption<JMCExpression> content)
-    {
-        var exp = content.Match(v => v, () => JMCExpression.Empty);
-        var exps = exp.HasValue ? exp.SubExpressions : [];
-        var value = exps.IsDefaultOrEmpty ? string.Empty : string.Join('/', exps.Select(v => v.Value));
-
-        return new()
-        {
-            Position = keyword.Position,
-            SubExpressions = exps,
-            TokenType = keyword.TokenID,
-            Value = value
-        };
-    }
-
-    [Production($"import: {nameof(TokenType.CodeKeyword)} {nameof(TokenType.ImportKeyword)} importContent? {nameof(TokenType.EndImport)}[d]")]
-    public static JMCExpression ImportExpression(Token<TokenType> codeKeyword, Token<TokenType> importKeyword, ValueOption<JMCExpression> content)
-    {
-        var exp = content.Match(v => v, () => JMCExpression.Empty);
-        var exps = exp.HasValue ? exp.SubExpressions : [];
-        var value = exps.IsDefaultOrEmpty ? string.Empty : string.Join('/', exps.Select(v => v.Value));
-        var codeExp = codeKeyword.ToExpression();
-        var importExp = importKeyword.ToExpression();
-        importExp.Value = value;
-        importExp.SubExpressions = exps;
-        codeExp.SubExpressions = [importExp];
-        return codeExp;
     }
 
     [Production($"variableStatement: IDENTIFIER assign value {END}")]
@@ -191,6 +148,69 @@ public sealed class JMCRuleInstance
         return ns;
     }
 
+    #endregion
+
+    #region Import
+    [Production($"importAlias: {nameof(TokenType.AsKeyword)} {nameof(TokenType.ImportContent)}")]
+    public static JMCExpression ImportAlias(Token<TokenType> keyword, Token<TokenType> content)
+    {
+        var exp = keyword.ToExpression();
+        exp.SubExpressions = [content.ToExpression()];
+        return exp;
+    }
+
+    [Production($"importAlias: {nameof(TokenType.OfKeyword)} {nameof(TokenType.ImportContent)} ({COMMA} {nameof(TokenType.ImportContent)})*")]
+    public static JMCExpression ImportAlias(Token<TokenType> keyword, Token<TokenType> content, List<Group<TokenType, JMCExpression>> contents)
+    {
+        var exp = keyword.ToExpression();
+        var subExps = new JMCExpression[] { content.ToExpression() }.Concat(contents.Select(v => v.Token(0).ToExpression()));
+        exp.SubExpressions = [.. subExps];
+        return exp;
+    }
+
+    [Production($"importContent: {nameof(TokenType.ImportContent)} ({nameof(TokenType.ImportPathSeperator)}[d] {nameof(TokenType.ImportContent)})*")]
+    public static JMCExpression ImportContent(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
+    {
+        var rightExps = right.Select(v => v.Token(0).ToExpression());
+        var exps = new JMCExpression[] { left.ToExpression() }.Concat(rightExps);
+
+        return new()
+        {
+            Position = Position.Empty,
+            SubExpressions = [.. exps],
+            Value = "ImportPath"
+        };
+    }
+
+    [Production($"import: {nameof(TokenType.ImportKeyword)} importContent? importAlias? {nameof(TokenType.EndImport)}[d]")]
+    public static JMCExpression ImportExpression(Token<TokenType> keyword, ValueOption<JMCExpression> content, ValueOption<JMCExpression> alias)
+    {
+        var exp = content.Match(v => v, () => JMCExpression.Empty);
+        ImmutableArray<JMCExpression> exps = exp.HasValue ? [exp, alias.Match(v => v, () => JMCExpression.Empty)] : [];
+        var value = exps.IsDefaultOrEmpty ? string.Empty : string.Join('/', exps.Select(v => v.Value));
+
+        return new()
+        {
+            Position = keyword.Position,
+            SubExpressions = exps,
+            TokenType = keyword.TokenID,
+            Value = value
+        };
+    }
+
+    [Production($"import: {nameof(TokenType.CodeKeyword)} {nameof(TokenType.ImportKeyword)} importContent? importAlias? {nameof(TokenType.EndImport)}[d]")]
+    public static JMCExpression ImportExpression(Token<TokenType> codeKeyword, Token<TokenType> importKeyword, ValueOption<JMCExpression> content, ValueOption<JMCExpression> alias)
+    {
+        var exp = content.Match(v => v, () => JMCExpression.Empty);
+        ImmutableArray<JMCExpression> exps = exp.HasValue ? [exp, alias.Match(v => v, () => JMCExpression.Empty)] : [];
+        var value = exps[0].SubExpressions.IsDefaultOrEmpty ? string.Empty : string.Join('/', exps[0].SubExpressions.Select(v => v.Value));
+        var codeExp = codeKeyword.ToExpression();
+        var importExp = importKeyword.ToExpression();
+        importExp.Value = value;
+        importExp.SubExpressions = exps;
+        codeExp.SubExpressions = [importExp];
+        return codeExp;
+    }
     #endregion
 
     #region Functions

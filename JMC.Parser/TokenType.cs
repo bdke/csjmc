@@ -144,6 +144,12 @@ public enum TokenType
     #endregion
 
     #region Import
+    [Keyword("as")]
+    [Mode("importMode")]
+    AsKeyword,
+    [Keyword("of")]
+    [Mode("importMode")]
+    OfKeyword,
     [AlphaNumDashId]
     [Mode("importMode")]
     ImportContent,
