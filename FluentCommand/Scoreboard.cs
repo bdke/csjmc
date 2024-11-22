@@ -2,8 +2,8 @@
 
 public sealed class Scoreboard() : BaseCommand("scoreboard")
 {
-    public string Create(string name)
+    public static string AddObjective(string objName, string criteria)
     {
-        throw new NotImplementedException();
+
     }
 }
