@@ -2,7 +2,7 @@
 using System.Reflection;
 
 namespace FluentCommand.Helpers;
-public static class EnumExtensions
+internal static class EnumExtensions
 {
     public static string GetEnumDescription(this Enum value)
     {
