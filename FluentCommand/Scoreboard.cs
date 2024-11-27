@@ -1,9 +1,15 @@
-﻿namespace FluentCommand;
+﻿using FluentCommand.Arguments;
+
+namespace FluentCommand;
 
 public sealed class Scoreboard() : BaseCommand("scoreboard")
 {
-    public static string AddObjective(string objName, string criteria)
+    public static string AddObjective(string objName, string criteria, string? displayName)
     {
-        throw new NotImplementedException();
+        var s = new Scoreboard();
+        return s.Keyword("objectives")
+            .Keyword("add")
+            .Argument(new Objective(objName))
+            .Build();
     }
 }

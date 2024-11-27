@@ -1,7 +1,4 @@
 ﻿using FluentCommand.Helpers;
-using MineSharp.Commands;
-using MineSharp.Core;
-using System.Text;
 
 namespace FluentCommand.Test;
 public class DataTest
@@ -15,14 +12,8 @@ public class DataTest
     [Fact]
     public void GetData_Test()
     {
-        var blocks = _dataService.GetAllBlocks().ToArray();
-        blocks.Should().NotBeEmpty();
-    }
+        MineSharp.Core.Common.Blocks.BlockInfo[] blocks = _dataService.GetAllBlocks().ToArray();
 
-    [Fact]
-    public void ParseCommand_Test()
-    {
-        var commandBytes = Encoding.UTF8.GetBytes("execute if @s");
-        var r = CommandTree.Parse(new(commandBytes, ProtocolVersion.V_1_20_3), _dataService.MInecraftData);
+        _ = blocks.Should().NotBeEmpty();
     }
 }

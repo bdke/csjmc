@@ -6,7 +6,7 @@ public abstract class BaseCommand(string rootCommand)
     protected List<BaseArgument> _buildingArgs = [];
     public string RootCommand => rootCommand;
 
-    protected BaseCommand Argument(BaseArgument arg)
+    internal BaseCommand Argument(BaseArgument arg)
     {
         if (!arg.IsValidValue)
         {
@@ -16,7 +16,7 @@ public abstract class BaseCommand(string rootCommand)
         return this;
     }
 
-    protected BaseCommand Keyword(string word)
+    internal BaseCommand Keyword(string word)
     {
         return Argument(new Keyword(word));
     }

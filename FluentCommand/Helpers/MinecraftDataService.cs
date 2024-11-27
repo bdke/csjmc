@@ -1,15 +1,13 @@
-﻿using MineSharp.Commands;
-using MineSharp.Core;
-using MineSharp.Core.Common.Blocks;
+﻿using MineSharp.Core.Common.Blocks;
 using MineSharp.Data;
 
 namespace FluentCommand.Helpers;
 public sealed class MinecraftDataService(MinecraftData data)
 {
-    private readonly MinecraftData _data = data;
     private ReadOnlyMemory<BlockInfo> blockInfoCache;
 
-    public MinecraftData MInecraftData => _data;
+    private readonly MinecraftData _data = data;
+    public MinecraftData MinecraftData => _data;
 
     public static async Task<MinecraftDataService> GetDataServiceFactoryAsync(string version = "1.20.4")
     {
