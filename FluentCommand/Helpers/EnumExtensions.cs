@@ -4,7 +4,7 @@ using System.Reflection;
 namespace FluentCommand.Helpers;
 internal static class EnumExtensions
 {
-    public static string GetEnumDescription(this Enum value)
+    public static string GetEnumDescription<T>(this T value) where T : struct, Enum
     {
         DescriptionAttribute attr = value.GetType().GetCustomAttribute<DescriptionAttribute>() ?? throw new NullReferenceException();
         return attr.Description;
