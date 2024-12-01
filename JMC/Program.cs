@@ -10,21 +10,18 @@ internal class Program
     private static async Task<int> Main(string[] args)
     {
         var app = new CommandApp();
-        var services = await ConfigureServicesAsync();
         
         app.Configure(options =>
         {
             options.AddCommand<JMCParserCommand>("parse");
         });
-
-        return await app.RunAsync(args);
+        
+        var result = await app.RunAsync(args);
+        DisposeSingletons();
+        return result;
     }
 
-    public static async ValueTask<IServiceProvider> ConfigureServicesAsync()
+    private static void DisposeSingletons()
     {
-        var services = new ServiceCollection();
-        var dataService = await MinecraftDataService.GetDataServiceFactoryAsync();
-        services.AddSingleton(dataService);
-        return services.BuildServiceProvider();
     }
 }

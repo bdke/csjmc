@@ -5,11 +5,14 @@ using System.Collections.Immutable;
 namespace FluentCommand.Arguments;
 internal sealed class ObjectiveCriteria(string criteria) : BaseArgument
 {
+    private const string CUSTOM_CRITERIA_WORD = "custom";
+
     public override string Value => criteria;
 
     internal override bool IsValidValue => CheckValue(Value);
 
     public static readonly ImmutableArray<string> SINGLE_CRITERIAS = ["dummy", "trigger", "deathCount", "playerKillCount", "totalKillCount", "health", "xp", "level", "food", "air", "armor"];
+    public static readonly ImmutableArray<string> COMPOUND_CRITERIAS = ["custom", "mined", "broken", "crafted", "used", "picked_up", "dropped", "killed", "killed_by"];
 
     public static bool CheckValue(string value)
     {
@@ -17,42 +20,46 @@ internal sealed class ObjectiveCriteria(string criteria) : BaseArgument
         {
             return true;
         }
-        var compound = value.Split(':');
+        string[] compound = value.Split(':');
         if (compound.Length == 1)
         {
-            var kvPair = compound[0].Split('.');
+            string[] kvPair = compound[0].Split('.');
             if (kvPair.Length != 2)
             {
                 return false;
             }
 
-            var key = kvPair[0];
-            var v = kvPair[1];
-
+            string key = kvPair[0];
+            string v = kvPair[1];
             if (key is not "teamkill" and not "killedByTeam")
             {
                 return false;
             }
 
-            var validColors = EnumExtensions.GetAllDescriptionValues<CommandColor>();
-            if (!validColors.Contains(v))
-            {
-                return false;
-            }
-
-            return true;
+            string[] validColors = EnumExtensions.GetAllDescriptionValues<CommandColor>();
+            return validColors.Contains(v);
         }
         else if (compound.Length > 2)
         {
             return false;
         }
 
-        var clKey = compound[0].Split('.');
-        var clValue = compound[1].Split('.');
-        var cKey = clKey.Length > 1 ? clKey[1] : clKey[0];
-        var cValue = clValue.Length > 1 ? clValue[1] : clValue[0];
-
-
-        return false;
+        string[] clKey = compound[0].Split('.');
+        string[] clValue = compound[1].Split('.');
+        string cKey = clKey.Length > 1 ? clKey[1] : clKey[0];
+        string cValue = clValue.Length > 1 ? clValue[1] : clValue[0];
+        if (cKey == string.Empty || cValue == string.Empty)
+        {
+            return false;
+        }
+        if (!COMPOUND_CRITERIAS.Contains(cKey))
+        {
+            return false;
+        }
+        if (cKey == CUSTOM_CRITERIA_WORD && !MinecraftDataService.Instance.ExtendedData.CustomStatistics.ToArray().Contains(cValue))
+        {
+            return false;
+        }
+        return true;
     }
 }
