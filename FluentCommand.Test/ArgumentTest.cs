@@ -5,10 +5,12 @@ public class ArgumentTest
 {
     [Theory]
     [InlineData("xp")]
+    [InlineData("teamkill.dark_red")]
+    [InlineData("custom:clean_banner")]
     public void ValidObjectiveCriteria_Test(string argument)
     {
         var arg = new ObjectiveCriteria(argument);
 
-        arg.IsValidValue.Should().BeTrue();
+        ObjectiveCriteria.CheckValue(arg.Value).Should().BeTrue();
     }
 }

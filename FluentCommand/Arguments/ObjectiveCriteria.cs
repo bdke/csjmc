@@ -5,6 +5,7 @@ using System.Collections.Immutable;
 namespace FluentCommand.Arguments;
 internal sealed class ObjectiveCriteria(string criteria) : BaseArgument
 {
+
     private const string CUSTOM_CRITERIA_WORD = "custom";
 
     public override string Value => criteria;
@@ -48,15 +49,15 @@ internal sealed class ObjectiveCriteria(string criteria) : BaseArgument
         string[] clValue = compound[1].Split('.');
         string cKey = clKey.Length > 1 ? clKey[1] : clKey[0];
         string cValue = clValue.Length > 1 ? clValue[1] : clValue[0];
-        if (cKey == string.Empty || cValue == string.Empty)
+        if (cKey == CUSTOM_CRITERIA_WORD && !_customStats.Contains(cValue))
         {
             return false;
         }
-        if (!COMPOUND_CRITERIAS.Contains(cKey))
+        else if (cKey == string.Empty || cValue == string.Empty)
         {
             return false;
         }
-        if (cKey == CUSTOM_CRITERIA_WORD && !MinecraftDataService.Instance.ExtendedData.CustomStatistics.ToArray().Contains(cValue))
+        else if (!COMPOUND_CRITERIAS.Contains(cKey))
         {
             return false;
         }

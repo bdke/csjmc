@@ -17,11 +17,12 @@ internal class Program
         });
         
         var result = await app.RunAsync(args);
-        DisposeSingletons();
+        await DisposeSingletonsAsync();
         return result;
     }
 
-    private static void DisposeSingletons()
+    private static async Task DisposeSingletonsAsync()
     {
+        await MinecraftDataService.Transient.CreateCacheAsync();
     }
 }

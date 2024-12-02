@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JMC.Shared\JMC.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="datas\1.20.4_stats">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
