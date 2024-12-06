@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.71" />
-    <PackageReference Include="MineSharp.ChatComponent" Version="0.1.11" />
-    <PackageReference Include="MineSharp.Data" Version="0.1.11" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\JMC.Shared\JMC.Shared.csproj" />
   </ItemGroup>
 

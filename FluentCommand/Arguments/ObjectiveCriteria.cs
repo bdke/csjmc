@@ -5,7 +5,6 @@ using System.Collections.Immutable;
 namespace FluentCommand.Arguments;
 internal sealed class ObjectiveCriteria(string criteria) : BaseArgument
 {
-
     private const string CUSTOM_CRITERIA_WORD = "custom";
 
     public override string Value => criteria;

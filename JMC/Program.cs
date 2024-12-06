@@ -1,28 +1,24 @@
-﻿using FluentCommand.Helpers;
-using JMC.Console;
-using Microsoft.Extensions.DependencyInjection;
+﻿using JMC.Console;
+using Microsoft.Extensions.Hosting;
 using Spectre.Console.Cli;
 
 namespace JMC;
 
-internal class Program
+internal sealed class Program
 {
     private static async Task<int> Main(string[] args)
     {
-        var app = new CommandApp();
-        
+        CommandApp app = new();
+        var builder = Host.CreateApplicationBuilder();
+        using var host = builder.Build();
+
         app.Configure(options =>
         {
-            options.AddCommand<JMCParserCommand>("parse");
+            var unused = options.AddCommand<JMCParserCommand>("parse");
         });
-        
-        var result = await app.RunAsync(args);
-        await DisposeSingletonsAsync();
-        return result;
-    }
 
-    private static async Task DisposeSingletonsAsync()
-    {
-        await MinecraftDataService.Transient.CreateCacheAsync();
+        int result = await app.RunAsync(args);
+        await host.RunAsync();
+        return result;
     }
 }
