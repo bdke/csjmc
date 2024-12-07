@@ -1,6 +1,4 @@
-﻿using FluentCommand.Helpers;
-using JMC.Console;
-using Microsoft.Extensions.DependencyInjection;
+﻿using JMC.Console;
 using Spectre.Console.Cli;
 
 namespace JMC;
@@ -23,6 +21,5 @@ internal class Program
 
     private static async Task DisposeSingletonsAsync()
     {
-        await MinecraftDataService.Transient.CreateCacheAsync();
     }
 }

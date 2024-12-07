@@ -1,4 +1,5 @@
-﻿using FluentCommand.Helpers;
+﻿
+using JMC.Shared;
 
 namespace FluentCommand;
 public abstract class BaseArgument()
@@ -6,5 +7,5 @@ public abstract class BaseArgument()
     public abstract string Value { get; }
     internal abstract bool IsValidValue { get; }
 
-    protected static readonly string[] _customStats = MinecraftDataService.Transient.ExtendedData.CustomStatistics.ToArray();
+    protected static readonly string[] _customStats = Config.ExtendedMinecraftData.CustomStatistics.ToArray();
 }

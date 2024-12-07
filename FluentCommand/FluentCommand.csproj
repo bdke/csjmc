@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.71" />
-    <PackageReference Include="MineSharp.ChatComponent" Version="0.1.11" />
-    <PackageReference Include="MineSharp.Data" Version="0.1.11" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\JMC.Shared\JMC.Shared.csproj" />
   </ItemGroup>
 
@@ -20,6 +14,10 @@
     <None Update="datas\1.20.4_stats">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Types\" />
   </ItemGroup>
 
 </Project>

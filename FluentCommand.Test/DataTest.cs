@@ -1,4 +1,4 @@
-﻿using FluentCommand.Helpers;
+﻿using JMC.Shared;
 
 namespace FluentCommand.Test;
 public class DataTest
@@ -6,7 +6,8 @@ public class DataTest
     [Fact]
     public void GetData_Test()
     {
-        MineSharp.Core.Common.Blocks.BlockInfo[] blocks = MinecraftDataService.Transient.GetAllBlocks().ToArray();
+        Config.InitAsync().Wait();
+        var blocks = Config.GetBlockInfos();
 
         _ = blocks.Should().NotBeEmpty();
     }
