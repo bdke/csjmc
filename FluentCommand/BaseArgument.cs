@@ -1,10 +1,11 @@
-﻿namespace FluentCommand;
+﻿
+using JMC.Shared;
+
+namespace FluentCommand;
 public abstract class BaseArgument()
 {
-
     public abstract string Value { get; }
     internal abstract bool IsValidValue { get; }
 
-    //TODO
-    protected static readonly string[] _customStats = [];
+    protected static readonly string[] _customStats = Config.ExtendedMinecraftData.CustomStatistics.ToArray();
 }

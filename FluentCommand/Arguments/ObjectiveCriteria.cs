@@ -1,5 +1,5 @@
-﻿using FluentCommand.Helpers;
-using FluentCommand.Types;
+﻿using JMC.Shared;
+using JMC.Shared.Helpers;
 using System.Collections.Immutable;
 
 namespace FluentCommand.Arguments;

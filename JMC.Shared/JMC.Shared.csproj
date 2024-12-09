@@ -9,6 +9,10 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.3.2" />
     <PackageReference Include="Microsoft.VisualStudio.Threading" Version="17.12.19" />
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.12.19">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Validation" Version="17.8.8" />
     <PackageReference Include="MineSharp.Data" Version="0.1.11" />
     <PackageReference Include="OmniSharp.Extensions.LanguageProtocol" Version="0.19.9" />

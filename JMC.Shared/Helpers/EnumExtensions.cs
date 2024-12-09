@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace FluentCommand.Helpers;
-internal static class EnumExtensions
+namespace JMC.Shared.Helpers;
+public static class EnumExtensions
 {
     public static string GetEnumDescription<T>(this T value) where T : struct, Enum
     {

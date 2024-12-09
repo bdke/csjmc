@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FluentCommand.Types;
+namespace JMC.Shared;
 public enum CommandColor
 {
     [Description("black")]
