@@ -6,6 +6,8 @@ public static class EnumExtensions
 {
     public static string GetEnumDescription<T>(this T value) where T : struct, Enum
     {
+        var attrs = value.GetType().GetCustomAttributes();
+
         DescriptionAttribute attr = value.GetType().GetCustomAttribute<DescriptionAttribute>() ?? throw new NullReferenceException();
         return attr.Description;
     }

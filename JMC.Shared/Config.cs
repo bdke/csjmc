@@ -1,4 +1,5 @@
-﻿using MineSharp.Core.Common.Blocks;
+﻿using Microsoft.VisualStudio.Threading;
+using MineSharp.Core.Common.Blocks;
 using MineSharp.Data;
 
 namespace JMC.Shared;
@@ -20,6 +21,23 @@ public static class Config
         }
 
         isInitialized = true;
+        await ChangeVersionAsync(minecraftVersion);
+    }
+
+    public static void Init(string minecraftVersion = "1.20.4")
+    {
+        if (isInitialized)
+        {
+            return;
+        }
+
+        var taskContext = new JoinableTaskContext();
+        var taskFactory = new JoinableTaskFactory(taskContext);
+        taskFactory.Run(() => InitAsync(minecraftVersion));
+    }
+
+    public static async Task ChangeVersionAsync(string minecraftVersion)
+    {
         MinecraftData = await MinecraftData.FromVersion(minecraftVersion);
         version = MinecraftData.Version;
         ExtendedMinecraftData = new()

@@ -1,7 +1,8 @@
 ﻿using FluentCommand.Arguments;
+using JMC.Shared;
 
 namespace FluentCommand.Test;
-public class ArgumentTest
+public class ArgumentTest() : ConfigTest()
 {
     [Theory]
     [InlineData("xp")]
