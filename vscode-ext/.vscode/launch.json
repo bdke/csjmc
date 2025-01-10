@@ -8,16 +8,15 @@
             "request": "launch",
             "runtimeExecutable": "${execPath}",
             "args": [
-                "--disable-extensions",
+                "--profile=JMCDebug",
                 "--enable-proposed-api",
                 "--extensionDevelopmentPath=${workspaceRoot}"
             ],
-            "stopOnEntry": false,
             "sourceMaps": true,
             "outFiles": [
                 "${workspaceRoot}/out/src/**/*.js"
             ],
-            "preLaunchTask": "npm",
+            "preLaunchTask": "Build"
         },
         {
             "name": "Launch Tests",
@@ -27,14 +26,13 @@
             "args": [
                 "--disable-extensions",
                 "--extensionDevelopmentPath=${workspaceRoot}",
-                "--extensionTestsPath=${workspaceRoot}/out/test"
+                "--extensionTestsPath=${workspaceRoot}/out/test/suite/index"
             ],
-            "stopOnEntry": false,
             "sourceMaps": true,
             "outFiles": [
                 "${workspaceRoot}/out/test/**/*.js"
             ],
-            "preLaunchTask": "npm"
+            "preLaunchTask": "Build"
         }
     ]
 }

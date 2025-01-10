@@ -1,26 +1,20 @@
 {
-  "name": "jmc",
-  "displayName": "JMC",
-  "description": "language support for jmc",
-  "author": "WingedSeal, bdke",
+  "name": "jmc_extension",
+  "description": "VSCode part of a language server",
+  "author": "bdke",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "publisher": "WingedSeal",
   "engines": {
-    "vscode": "^1.8.0"
+    "vscode": "^1.94.0"
   },
-  "icon": "icons/jmc_icon.ico",
-  "categories": [
-    "Programming Languages",
-    "Snippets"
-  ],
   "activationEvents": [
     "onLanguage:plaintext"
   ],
+  "categories": [
+    "Other"
+  ],
   "main": "./out/src/extension",
-  "repository": {
-    "url": "https://github.com/WingedSeal/JMC-Syntax-Highlighting"
-  },
   "contributes": {
     "languages": [
       {
@@ -54,123 +48,49 @@
         }
       }
     ],
-    "grammars": [
-      {
-        "language": "jmc",
-        "scopeName": "source.jmc",
-        "path": "./syntaxes/jmc.tmLanguage.json"
-      },
-      {
-        "language": "hjmc",
-        "scopeName": "source.hjmc",
-        "path": "./syntaxes/hjmc.tmLanguage.json"
-      }
-    ],
-    "snippets": [
-      {
-        "language": "jmc",
-        "path": "./snippets/jmc.json"
-      }
-    ],
-    "configurationDefaults": {
-      "[jmc]": {
-        "editor.semanticHighlighting.enabled": true
-      },
-      "editor.semanticTokenColorCustomizations": {
-        "rules": {
-          "commandKeyword": {
-            "foreground": "#ffbfec"
-          },
-          "*.deprecated": {
-            "strikethrough": true
-          },
-          "*.commandStart": {
-            "bold": true
-          },
-          "*.classCamel": {
-            "foreground": "#ffb300"
-          }
-        }
-      }
-    },
-    "semanticTokenModifiers": [
-      {
-        "id": "commandStart",
-        "description": "start of the command"
-      },
-      {
-        "id": "classCamel",
-        "description": "camel case of the class"
-      }
-    ],
-    "semanticTokenScopes": [
-      {
-        "scopes": {
-          "command_keyword": [
-            "keyword.other.jmc"
-          ],
-          "command_number": [
-            "constant.numeric.jmc"
-          ]
-        }
-      }
-    ],
-    "semanticTokenTypes": [
-      {
-        "id": "command_keyword",
-        "superType": "commandKeyword",
-        "description": "keyword for the commands"
-      },
-      {
-        "id": "command_number",
-        "superType": "commandNumber",
-        "description": "number for the commands"
-      }
-    ],
     "configuration": {
-      "title": "JMC",
+      "type": "object",
+      "title": "Example configuration",
       "properties": {
-        "jmc.executable": {
+        "jmc.maxNumberOfProblems": {
+          "type": "number",
+          "default": 100,
+          "description": "Controls the maximum number of problems produced by the server."
+        },
+        "jmc.trace.server": {
           "type": "string",
-          "default": "",
-          "description": "Specifies JMC.exe path for debugging",
-          "scope": "resource",
-          "editPresentation": "singlelineText"
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "verbose",
+          "description": "Traces the communication between VSCode and the languageServerExample service."
         }
       }
-    },
-    "commands": [
-      {
-        "command": "jmc.compileCode",
-        "title": "Compile JMC File",
-        "category": "JMC",
-        "icon": "$(play)"
-      }
-    ],
-    "menus": {
-      "editor/title": [
-        {
-          "command": "jmc.compileCode",
-          "when": "editorLangId == jmc",
-          "group": "navigation"
-        }
-      ]
     }
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./",
+    "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "update-vscode": "node ./node_modules/vscode/bin/install",
-    "postinstall": "node ./node_modules/vscode/bin/install"
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/mocha": "8.0.0",
-    "@types/node": "14.0.25",
-    "typescript": "3.9.10",
-    "vscode": "1.1.37"
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.2",
+    "@types/node": "^20.8.0",
+    "@types/vscode": "^1.82.0",
+    "@vscode/test-electron": "^2.3.4",
+    "glob": "^11.0.0",
+    "mocha": "^10.2.0",
+    "source-map-support": "^0.5.21",
+    "tmp-promise": "^3.0.3",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
-    "vscode-languageclient": "^7.0.0-next.8",
-    "vscode-languageserver-protocol": "^3.16.0-next.6"
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver-protocol": "^3.17.5"
   }
 }

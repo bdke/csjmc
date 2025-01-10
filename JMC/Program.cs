@@ -12,14 +12,10 @@ internal class Program
         app.Configure(options =>
         {
             options.AddCommand<JMCParserCommand>("parse");
+            options.AddCommand<JMCServerCommand>("server");
         });
         
         var result = await app.RunAsync(args);
-        await DisposeSingletonsAsync();
         return result;
-    }
-
-    private static async Task DisposeSingletonsAsync()
-    {
     }
 }

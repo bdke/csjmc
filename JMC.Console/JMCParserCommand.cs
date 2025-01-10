@@ -36,7 +36,7 @@ public sealed class JMCParserCommand : AsyncCommand<JMCParserCommand.Settings>
         {
             return await ParseJMCFileAsync(settings.FilePath) ? 1 : 0;
         }
-        InvalidDataException error = new(settings.FilePath);
+        Exception error = new("Unknown Error");
         AnsiConsole.WriteException(error);
         return 1;
     }
@@ -45,20 +45,19 @@ public sealed class JMCParserCommand : AsyncCommand<JMCParserCommand.Settings>
     {
         string content = await File.ReadAllTextAsync(filePath);
         JMCParser.ParseResult result = JMCParser.TryParse(content);
-
+#if DEBUG
         //generate tokens
         LexicalError? lexError = JMCParser.TryGenerateTokens(content, out TokenChannels<TokenType>? channels);
-        IEnumerable<string>? tokens = channels?.GetChannel(0).Tokens
-            .Select(v => v?.ToString() ?? string.Empty)
-            .Where(v => !string.IsNullOrEmpty(v)) ?? null;
-        string tokenValues = string.Join(Environment.NewLine, tokens ?? []);
+        var tokens = channels?.GetChannel(0).Tokens
+            .Where(v => v != null) ?? null;
 
+        var table = JMCParser.GenerateTokenTable(tokens ?? []);
         if (!result.IsError && channels != null)
         {
             //print tree
             Tree tree = result.Root.GetConsoleTree();
             AnsiConsole.Write(tree);
-            AnsiConsole.WriteLine(tokenValues);
+            AnsiConsole.Write(table);
             return true;
         }
 
@@ -77,7 +76,8 @@ public sealed class JMCParserCommand : AsyncCommand<JMCParserCommand.Settings>
             AnsiConsole.WriteException(new InvalidProgramException(lexError.ErrorMessage));
             return false;
         }
-        AnsiConsole.WriteLine(tokenValues);
+        AnsiConsole.Write(table);
         return false;
     }
+#endif
 }

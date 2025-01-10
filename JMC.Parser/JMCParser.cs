@@ -85,6 +85,25 @@ public static class JMCParser
         return new([], parseResult.Result, r);
     }
 
+    public static Table GenerateTokenTable(IEnumerable<Token<TokenType>> tokens)
+    {
+        var table = new Table();
+        table.AddColumns("[aqua]TokenType[/]", "[green]Value[/]", "[blue]Position[/]", "[yellow]Channel[/]");
+        table.Title("Parsed Tokens");
+
+        foreach (var token in tokens)
+        {
+            var value = token.Value;
+            var modifiedValue = value;
+            if (modifiedValue.Length == 1 && modifiedValue is "[" or "]")
+            {
+                modifiedValue = modifiedValue.Insert(0, modifiedValue);
+            }
+            table.AddRow(token.TokenID.ToString(), modifiedValue, token.Position.ToString(), token.Channel.ToString());
+        }
+        return table;
+    }
+
     public readonly struct ParseResult(IEnumerable<ParseError> errors, JMCExpression root, JMCRuleInstance? instance)
     {
         public readonly ImmutableArray<ParseError> Errors = [.. errors];

@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Library</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JMC.LSP\JMC.LSP.csproj" />
     <ProjectReference Include="..\JMC.Parser\JMC.Parser.csproj" />
     <ProjectReference Include="..\JMC.Shared\JMC.Shared.csproj" />
   </ItemGroup>

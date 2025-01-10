@@ -1,12 +1,16 @@
 {
   "profiles": {
-    "JMC": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "TestParse": {
       "commandName": "Project",
       "commandLineArgs": "parse test.jmc"
     },
-    "ResetDatabase": {
+    "StartLSP": {
       "commandName": "Project",
-      "commandLineArgs": "db"
+      "commandLineArgs": "server -p 2007"
     }
   }
 }

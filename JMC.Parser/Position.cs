@@ -1,6 +1,6 @@
 ﻿using sly.lexer;
 using System.Diagnostics.CodeAnalysis;
-using LSPPosition = OmniSharp.Extensions.LanguageServer.Protocol.Models.Position;
+using LSPPosition = EmmyLua.LanguageServer.Framework.Protocol.Model.Position;
 
 namespace JMC.Parser;
 
