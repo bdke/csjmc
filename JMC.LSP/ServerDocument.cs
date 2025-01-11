@@ -17,6 +17,15 @@ internal static class ServerDocument
         return _cache.TryGetValue(uri, out _);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="uri"></param>
+    /// <param name="text"></param>
+    /// <param name="documentType"></param>
+    /// <returns></returns>
+    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="InvalidDataException"></exception>
     public static async Task<IServerDocument> AddDocumentAsync(DocumentUri uri, string text, string documentType)
     {
         var type = ToDocumentType(documentType);
@@ -25,6 +34,11 @@ internal static class ServerDocument
             DocumentType.Code => await AddCodeDocumentAsync(uri, text),
             _ => throw new NotSupportedException(),
         };
+    }
+
+    public static Task<IServerDocument?> GetDocumentAsync(DocumentUri uri)
+    {
+        return Task.FromResult(_cache.Get<IServerDocument>(uri));
     }
 
     private static async Task<JMCDocument> AddCodeDocumentAsync(DocumentUri uri, string text)
@@ -40,6 +54,12 @@ internal static class ServerDocument
         });
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="documentType"></param>
+    /// <returns></returns>
+    /// <exception cref="InvalidDataException"></exception>
     private static DocumentType ToDocumentType(string documentType) => documentType switch
     {
         "jmc" => DocumentType.Code,

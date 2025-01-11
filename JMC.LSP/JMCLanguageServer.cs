@@ -19,6 +19,7 @@ public class JMCLanguageServer
 
         server.OnInitialize(OnInitialize);
         server.AddHandler(new TextDocumentHandler(server));
+        server.AddHandler(new SemanticTokensHandler());
 
         return server;
     }

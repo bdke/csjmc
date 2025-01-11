@@ -6,6 +6,7 @@ using EmmyLua.LanguageServer.Framework.Protocol.Model.TextEdit;
 using EmmyLua.LanguageServer.Framework.Server;
 using EmmyLua.LanguageServer.Framework.Server.Handler;
 using Microsoft.Extensions.Caching.Memory;
+using System.Diagnostics;
 
 namespace JMC.LSP.Handlers;
 internal sealed class TextDocumentHandler(LanguageServer server) : TextDocumentHandlerBase
@@ -30,14 +31,34 @@ internal sealed class TextDocumentHandler(LanguageServer server) : TextDocumentH
         {
             return;
         }
-        var doc = await ServerDocument.AddDocumentAsync(textDoc.Uri, textDoc.Text, textDoc.LanguageId);
-        Log.Debug($"TextDocumentHandler: DidOpenTextDocument {doc.Uri}");
+
+        try
+        {
+            var doc = await ServerDocument.AddDocumentAsync(textDoc.Uri, textDoc.Text, textDoc.LanguageId);
+            Log.Debug($"TextDocumentHandler: DidOpenTextDocument {doc.Uri}");
+        }
+        catch (NotSupportedException ex)
+        {
+            Log.Error(ex, "File NotSupported");
+#if DEBUG 
+            Debugger.BreakForUserUnhandledException(ex); 
+#endif
+        }
+        catch (InvalidDataException ex)
+        {
+            Log.Fatal(ex, "Invalid Data");
+#if DEBUG 
+            Debugger.BreakForUserUnhandledException(ex);
+#endif
+        }
     }
 
-    protected override Task Handle(DidChangeTextDocumentParams request, CancellationToken token)
+    protected override async Task Handle(DidChangeTextDocumentParams request, CancellationToken token)
     {
-        Log.Debug($"TextDocumentHandler: DidChangeTextDocument {request.TextDocument.Uri}");
-        return Task.CompletedTask;
+        var textDoc = request.TextDocument;
+        var doc = await ServerDocument.GetDocumentAsync(textDoc.Uri) ?? throw new NullReferenceException();
+        doc.Text = request.ContentChanges.First().Text;
+        Log.Debug($"TextDocumentHandler: DidChangeTextDocument {textDoc.Uri}");
     }
 
     protected override Task Handle(DidCloseTextDocumentParams request, CancellationToken token)

@@ -1,7 +1,9 @@
 # Variable Syntax
 
 ## Scoreboard
+
 Generic cases
+
 ```
 $var = 3 + (3);
 $var++;
@@ -17,20 +19,43 @@ $var ??= 3;
 $var ?= execute if @s;
 ```
 
+### Disposable Variable
+
 `using` keyword could make a scoreboard be removed at the end of the function.
+
 ```ts
 using $var = 3;
 ```
 
+### Concat Variable Name
+
 anythings in `${}` will joined to form a scoreboard.
+
 ```
 // this will compile as $nametest
 ${name, test} = 3;
 ```
+
 > [!NOTE]  
 > if test is assigned as 3, it will compile as `$name3` instead
 
-## Static
+### Array Variable
+
+```
+//array
+$var = ["test", 3];
+```
+
+## Constants
+
+You can put this in anywhere.
+
+> ![NOTE]  
+> `constants` will be compiled and can not access through `scoreboard` or `data` command
+
+> ![WARNING]  
+> using values of `variable` is not allowed in `constants`  
+> e.g. `test = $"{$var} test"`  this will throw error
 
 ```
 test = "3";
@@ -43,8 +68,8 @@ test = $"{test} test";
 test = &"<red>amogus</>";
 
 //combined
-test = $&"<red>{test}</>"
+test = $&"<red>{test}</>";
 
 //array
-test = ["test", 1]
+test = ["test", 1];
 ```

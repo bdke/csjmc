@@ -4,6 +4,7 @@ using EmmyLua.LanguageServer.Framework.Protocol.Capabilities.Server;
 using EmmyLua.LanguageServer.Framework.Protocol.Capabilities.Server.Options;
 using EmmyLua.LanguageServer.Framework.Protocol.Message.SemanticToken;
 using EmmyLua.LanguageServer.Framework.Server.Handler;
+using JMC.Parser;
 using System.Collections.Immutable;
 
 namespace JMC.LSP.Handlers;
@@ -11,11 +12,17 @@ internal class SemanticTokensHandler : SemanticTokensHandlerBase
 {
     private static readonly ImmutableArray<string> Types = 
     [
-        SemanticTokenTypes.Keyword
+        SemanticTokenTypes.Keyword, SemanticTokenTypes.Property, SemanticTokenTypes.Variable, SemanticTokenTypes.Method,
     ];
     private static readonly ImmutableArray<string> Modifiers =
     [
     ];
+
+    private static string GetSemanticType(TokenType type) => type switch
+    {
+        TokenType.Identifier => SemanticTokenTypes.Property,
+        _ => SemanticTokenTypes.Method
+    };
 
     public override void RegisterCapability(ServerCapabilities serverCapabilities, ClientCapabilities clientCapabilities)
     {
@@ -27,7 +34,7 @@ internal class SemanticTokensHandler : SemanticTokensHandlerBase
                 TokenModifiers = [.. Modifiers],
             },
             Full = true,
-            Range = true,
+            //Range = true,
         };
     }
 
@@ -38,21 +45,47 @@ internal class SemanticTokensHandler : SemanticTokensHandlerBase
         var builder = new SemanticTokensBuilder([..Types], [..Modifiers]);
         var tokens = new SemanticTokens();
 
+        var doc = await ServerDocument.GetDocumentAsync(semanticTokensParams.TextDocument.Uri) ?? throw new NullReferenceException();
+        var text = doc.Text;
+        var error = JMCParser.TryGenerateTokens(text, out var parsedTokens);
+        if (error != null || parsedTokens == null)
+        {
+            return null;
+        }
+        foreach (var parsedToken in parsedTokens)
+        {
+            var semanticType = GetSemanticType(parsedToken.TokenID);
+            Position pos = parsedToken.Position;
+            builder.Push(pos, parsedToken.Value.Length, semanticType);
+        }
+
         tokens.Data = builder.Build();
         return tokens;
     }
 
-    protected override Task<SemanticTokensDeltaResponse?> Handle(
+    protected override async Task<SemanticTokensDeltaResponse?> Handle(
         SemanticTokensDeltaParams semanticTokensDeltaParams,
         CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var builder = new SemanticTokensBuilder([.. Types], [.. Modifiers]);
+        var tokens = new SemanticTokens();
+
+        var doc = await ServerDocument.GetDocumentAsync(semanticTokensDeltaParams.TextDocument.Uri);
+
+        tokens.Data = builder.Build();
+        return tokens;
     }
 
-    protected override Task<SemanticTokens?> Handle(
+    protected override async Task<SemanticTokens?> Handle(
         SemanticTokensRangeParams semanticTokensRangeParams, 
         CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var builder = new SemanticTokensBuilder([.. Types], [.. Modifiers]);
+        var tokens = new SemanticTokens();
+
+        var doc = await ServerDocument.GetDocumentAsync(semanticTokensRangeParams.TextDocument.Uri);
+
+        tokens.Data = builder.Build();
+        return tokens;
     }
 }

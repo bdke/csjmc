@@ -114,6 +114,7 @@ public sealed class JMCRuleInstance
 
     [Production($"variableStatement: IDENTIFIER assign value {END}")]
     [Production($"variableStatement: variable assign al {END}")]
+    [Production($"variableStatement: variable assign array {END}")]
     [Production($"variableStatement: variable cmdAssign command")]
     public static JMCExpression VariableStatement(JMCExpression variable, JMCExpression assign, JMCExpression als)
     {

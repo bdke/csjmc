@@ -1,4 +1,5 @@
 ﻿using JMC.LSP;
+using JMC.Shared;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
@@ -23,16 +24,18 @@ public sealed class JMCServerCommand : AsyncCommand<JMCServerCommand.Settings>
             await Task.Delay(100);
         }
 #endif
+        //setups
+        var provider = new ServiceCollection()
+            .AddMemoryCache()
+            .BuildServiceProvider();
+        lspServices = new(provider);
+        //logging
         var domainPath = AppDomain.CurrentDomain.BaseDirectory;
         var logPath = Path.Join(domainPath, "Logs", "JMCExtension.log");
         AnsiConsole.Console = AnsiConsole.Create(new AnsiConsoleSettings()
         {
             Out = new AnsiConsoleOutput(System.Console.Error),
         });
-        var provider = new ServiceCollection()
-            .AddMemoryCache()
-            .BuildServiceProvider();
-        lspServices = new(provider);
         Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
             .Enrich.WithExceptionDetails()
@@ -40,11 +43,20 @@ public sealed class JMCServerCommand : AsyncCommand<JMCServerCommand.Settings>
             .WriteTo.Spectre(restrictedToMinimumLevel: LogEventLevel.Information)
             .MinimumLevel.Verbose()
             .CreateLogger();
+        //handle exceptions
+        AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+        //server
         JMCLanguageServer server = (ServerMode)settings.Mode == ServerMode.Http 
             ? await JMCLanguageServer.CreateHttpServerAsync(IPAddress.Parse(settings.Host), settings.Port)
             : await JMCLanguageServer.CreatePipeServerAsync();
         await server.StartAsync();
         return 0;
+    }
+
+    private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+    {
+        Log.Fatal(e.ExceptionObject as Exception, "Unhandled exception during setup");
     }
 
     public override ValidationResult Validate(CommandContext context, Settings settings)
