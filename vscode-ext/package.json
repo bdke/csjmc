@@ -48,6 +48,13 @@
         }
       }
     ],
+    "grammars": [
+      {
+        "language": "jmc",
+        "scopeName": "source.jmc",
+        "path": "./syntaxes/jmc.tmLanguage.json"
+      }
+    ],
     "configuration": {
       "type": "object",
       "title": "Example configuration",

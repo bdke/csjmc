@@ -5,7 +5,8 @@ using EmmyLua.LanguageServer.Framework.Protocol.Message.TextDocument;
 using EmmyLua.LanguageServer.Framework.Protocol.Model.TextEdit;
 using EmmyLua.LanguageServer.Framework.Server;
 using EmmyLua.LanguageServer.Framework.Server.Handler;
-using Microsoft.Extensions.Caching.Memory;
+using JMC.LSP.Types;
+using JMC.Parser;
 using System.Diagnostics;
 
 namespace JMC.LSP.Handlers;
@@ -34,13 +35,16 @@ internal sealed class TextDocumentHandler(LanguageServer server) : TextDocumentH
 
         try
         {
-            var doc = await ServerDocument.AddDocumentAsync(textDoc.Uri, textDoc.Text, textDoc.LanguageId);
+            _ = JMCParser.TryGenerateTokens(textDoc.Text, out var tokenChannels);
+            var doc = textDoc.LanguageId == "jmc" ? 
+                await ServerDocument.AddCodeDocumentAsync(textDoc.Uri, textDoc.Text, tokenChannels) :
+                throw new NotImplementedException();
             Log.Debug($"TextDocumentHandler: DidOpenTextDocument {doc.Uri}");
         }
         catch (NotSupportedException ex)
         {
             Log.Error(ex, "File NotSupported");
-#if DEBUG 
+#if DEBUG
             Debugger.BreakForUserUnhandledException(ex); 
 #endif
         }
@@ -58,6 +62,12 @@ internal sealed class TextDocumentHandler(LanguageServer server) : TextDocumentH
         var textDoc = request.TextDocument;
         var doc = await ServerDocument.GetDocumentAsync(textDoc.Uri) ?? throw new NullReferenceException();
         doc.Text = request.ContentChanges.First().Text;
+        if (doc is JMCDocument jmcDoc)
+        {
+            _ = JMCParser.TryGenerateTokens(doc.Text, out var tokenChannels);
+            jmcDoc.TokenChannels = tokenChannels;
+            await ServerDocument.UpdateDocumentAsync(jmcDoc.Uri, jmcDoc);
+        }
         Log.Debug($"TextDocumentHandler: DidChangeTextDocument {textDoc.Uri}");
     }
 

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "JMC",
+  "scopeName": "source.jmc",
+  "injectionSelector": "L:source.jmc -string -comment",
+  "patterns": [
+    {
+      "name": "comment",
+      "match": "(//.*)"
+    },
+    {
+      "name": "comment",
+      "begin": "\\/\\*",
+      "end": "\\*\\/"
+    },
+    {
+      "name": "keyword",
+      "match": "true|false|import|function|while|if|else|do|class|new|null|command|code|using|as|of"
+    }
+  ],
+  "repository": {}
+}

@@ -48,8 +48,9 @@ public sealed class JMCParserCommand : AsyncCommand<JMCParserCommand.Settings>
 #if DEBUG
         //generate tokens
         LexicalError? lexError = JMCParser.TryGenerateTokens(content, out TokenChannels<TokenType>? channels);
-        var tokens = channels?.GetChannel(0).Tokens
-            .Where(v => v != null) ?? null;
+        var tokens = channels?.GetChannels()
+            .SelectMany(c => c.Tokens)
+            .Where(v => v != null && v.Channel != 1) ?? null;
 
         var table = JMCParser.GenerateTokenTable(tokens ?? []);
         if (!result.IsError && channels != null)

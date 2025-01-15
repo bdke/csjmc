@@ -15,34 +15,36 @@ public class JMCLanguageServer
 
     private static LanguageServer CreateStandardServer(Stream input, Stream output)
     {
-        var server = LanguageServer.From(input, output);
+        LanguageServer server = LanguageServer.From(input, output);
 
         server.OnInitialize(OnInitialize);
-        server.AddHandler(new TextDocumentHandler(server));
-        server.AddHandler(new SemanticTokensHandler());
+        var unused1 = server.AddHandler(new TextDocumentHandler(server));
+        var unused = server.AddHandler(new SemanticTokensHandler());
+        server.AddHandler(new CompletionHandler());
+        
 
         return server;
     }
 
     public static async Task<JMCHttpLanguageServer> CreateHttpServerAsync(IPAddress host, int port)
     {
-        var listener = new HttpListener();
+        HttpListener listener = new();
         Uri uri = new($"{Uri.UriSchemeHttp}://{host}:{port}/");
         listener.Prefixes.Add(uri.ToString());
 
         listener.Start();
-        var context = await listener.GetContextAsync();
-        var input = context.Request.InputStream;
-        var output = context.Response.OutputStream;
+        HttpListenerContext context = await listener.GetContextAsync();
+        Stream input = context.Request.InputStream;
+        Stream output = context.Response.OutputStream;
 
         return new JMCHttpLanguageServer(listener, CreateStandardServer(input, output));
     }
 
     public static Task<JMCPipeLanguageServer> CreatePipeServerAsync()
     {
-        var input = Console.OpenStandardInput();
-        var output = Console.OpenStandardOutput();
-        var server = CreateStandardServer(input, output);
+        Stream input = Console.OpenStandardInput();
+        Stream output = Console.OpenStandardOutput();
+        LanguageServer server = CreateStandardServer(input, output);
         return Task.FromResult(new JMCPipeLanguageServer(server));
     }
 

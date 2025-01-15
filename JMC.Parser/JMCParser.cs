@@ -39,15 +39,15 @@ public static class JMCParser
         return lexerBuiltResult.Result;
     }
 
-    public static LexicalError? TryGenerateTokens(string text, out TokenChannels<TokenType>? tokens)
+    public static LexicalError? TryGenerateTokens(string text, out TokenChannels<TokenType>? tokenChannels)
     {
         var lexResult = lexer.Tokenize(text);
         if (lexResult.IsError)
         {
-            tokens = null;
+            tokenChannels = null;
             return lexResult.Error;
         }
-        tokens = lexResult.Tokens;
+        tokenChannels = lexResult.Tokens;
         return null;
     }
 

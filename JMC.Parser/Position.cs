@@ -1,4 +1,5 @@
-﻿using sly.lexer;
+﻿using EmmyLua.LanguageServer.Framework.Protocol.Model;
+using sly.lexer;
 using System.Diagnostics.CodeAnalysis;
 using LSPPosition = EmmyLua.LanguageServer.Framework.Protocol.Model.Position;
 
@@ -9,8 +10,9 @@ public struct Position(int line, int column)
     public int Line { get; set; } = line;
     public int Column { get; set; } = column;
 
-    public static Position Empty => new(-1, -1);
-    public readonly bool HasValue => this != Empty;
+    private static readonly Position empty = new(-1, -1);
+    public static Position Empty => empty;
+    public readonly bool HasValue => this != empty;
 
     public static implicit operator LexerPosition(Position position) => new(-1, position.Line, position.Column);
     public static implicit operator Position(LexerPosition position) => new(position.Line, position.Column);
@@ -26,6 +28,31 @@ public struct Position(int line, int column)
     public static bool operator !=(Position left, Position right)
     {
         return !left.Equals(right);
+    }
+
+    public static bool operator >(Position left, Position right)
+    {
+        return left.Line > right.Line || (left.Line == right.Line && left.Column > right.Column);
+    }
+
+    public static bool operator <(Position left, Position right)
+    {
+        return left.Line < right.Line || (left.Line == right.Line && left.Column < right.Column);
+    }
+
+    public static bool operator >=(Position left, Position right)
+    {
+        return left.Line >= right.Line || (left.Line == right.Line && left.Column >= right.Column);
+    }
+
+    public static bool operator <=(Position left, Position right)
+    {
+        return left.Line <= right.Line || (left.Line == right.Line && left.Column <= right.Column);
+    }
+
+    public readonly DocumentRange Join(Position pos)
+    {
+        return new DocumentRange(this, pos);
     }
 
     public readonly override bool Equals([NotNullWhen(true)] object? obj)

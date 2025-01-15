@@ -1,10 +1,8 @@
 ﻿using JMC.LSP;
-using JMC.Shared;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
-using Serilog.Formatting.Json;
 using Serilog.Sinks.Spectre;
 using Spectre.Console;
 using Spectre.Console.Cli;
@@ -25,13 +23,13 @@ public sealed class JMCServerCommand : AsyncCommand<JMCServerCommand.Settings>
         }
 #endif
         //setups
-        var provider = new ServiceCollection()
+        ServiceProvider provider = new ServiceCollection()
             .AddMemoryCache()
             .BuildServiceProvider();
         lspServices = new(provider);
         //logging
-        var domainPath = AppDomain.CurrentDomain.BaseDirectory;
-        var logPath = Path.Join(domainPath, "Logs", "JMCExtension.log");
+        string domainPath = AppDomain.CurrentDomain.BaseDirectory;
+        string logPath = Path.Join(domainPath, "Logs", "JMCExtension.log");
         AnsiConsole.Console = AnsiConsole.Create(new AnsiConsoleSettings()
         {
             Out = new AnsiConsoleOutput(System.Console.Error),
@@ -47,7 +45,7 @@ public sealed class JMCServerCommand : AsyncCommand<JMCServerCommand.Settings>
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
         //server
-        JMCLanguageServer server = (ServerMode)settings.Mode == ServerMode.Http 
+        JMCLanguageServer server = (ServerMode)settings.Mode == ServerMode.Http
             ? await JMCLanguageServer.CreateHttpServerAsync(IPAddress.Parse(settings.Host), settings.Port)
             : await JMCLanguageServer.CreatePipeServerAsync();
         await server.StartAsync();
@@ -65,11 +63,7 @@ public sealed class JMCServerCommand : AsyncCommand<JMCServerCommand.Settings>
         {
             return ValidationResult.Error("Invalid Host");
         }
-        if (!Enum.IsDefined((ServerMode)settings.Mode))
-        {
-            return ValidationResult.Error("Invalid Mode");
-        }
-        return ValidationResult.Success();
+        return !Enum.IsDefined((ServerMode)settings.Mode) ? ValidationResult.Error("Invalid Mode") : ValidationResult.Success();
     }
 
     public sealed class Settings : CommandSettings
