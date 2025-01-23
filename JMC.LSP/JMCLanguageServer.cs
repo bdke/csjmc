@@ -18,10 +18,11 @@ public class JMCLanguageServer
         LanguageServer server = LanguageServer.From(input, output);
 
         server.OnInitialize(OnInitialize);
-        var unused1 = server.AddHandler(new TextDocumentHandler(server));
-        var unused = server.AddHandler(new SemanticTokensHandler());
-        server.AddHandler(new CompletionHandler());
-        
+        LanguageServer unused1 = server.AddHandler(new TextDocumentHandler(server));
+        LanguageServer unused = server.AddHandler(new SemanticTokensHandler());
+        LanguageServer unused4 = server.AddHandler(new CompletionHandler());
+        LanguageServer unused3 = server.AddHandler(new DocumentDiagnosticHandler(server));
+        LanguageServer unused2 = server.AddHandler(new WorkspaceDiagnosticHandler());
 
         return server;
     }

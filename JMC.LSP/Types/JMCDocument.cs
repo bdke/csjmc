@@ -10,6 +10,7 @@ internal struct JMCDocument : IServerDocument
     public DocumentUri Uri { get; set; }
     public string Text { get; set; }
     public TokenChannels<TokenType>? TokenChannels { get; set; }
+    public JMCParser.ParseResult? ParseResult { get; set; }
 
     public readonly (Token<TokenType>, DocumentRange)? GetToken(Parser.Position position)
     {
@@ -36,6 +37,6 @@ internal struct JMCDocument : IServerDocument
         }
         var lastValidToken = tokens[^2];
         var lastTokenPos = (Parser.Position)lastValidToken.Position;
-        return (lastValidToken, new(lastTokenPos, new(-1, -1)));
+        return (lastValidToken, new(lastTokenPos, (Parser.Position)tokens[^1].Position));
     }
 }

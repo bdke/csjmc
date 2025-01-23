@@ -7,6 +7,7 @@ using EmmyLua.LanguageServer.Framework.Server;
 using EmmyLua.LanguageServer.Framework.Server.Handler;
 using JMC.LSP.Types;
 using JMC.Parser;
+using sly.lexer;
 using System.Diagnostics;
 
 namespace JMC.LSP.Handlers;
@@ -21,7 +22,7 @@ internal sealed class TextDocumentHandler(LanguageServer server) : TextDocumentH
             OpenClose = true,
             WillSave = true,
             WillSaveWaitUntil = true,
-            Save = true
+            Save = true,
         };
     }
 
@@ -35,10 +36,14 @@ internal sealed class TextDocumentHandler(LanguageServer server) : TextDocumentH
 
         try
         {
-            _ = JMCParser.TryGenerateTokens(textDoc.Text, out var tokenChannels);
-            var doc = textDoc.LanguageId == "jmc" ? 
-                await ServerDocument.AddCodeDocumentAsync(textDoc.Uri, textDoc.Text, tokenChannels) :
-                throw new NotImplementedException();
+            if (textDoc.LanguageId is not (ServerDocument.JMC or ServerDocument.HJMC))
+            {
+                throw new NotSupportedException("Unsupport file types");
+            }
+
+            var doc = textDoc.LanguageId == ServerDocument.JMC
+                ? await ServerDocument.AddCodeDocumentAsync(textDoc.Uri, textDoc.Text, true)
+                : await ServerDocument.AddHeaderDocumentAsync(textDoc.Uri, textDoc.Text);
             Log.Debug($"TextDocumentHandler: DidOpenTextDocument {doc.Uri}");
         }
         catch (NotSupportedException ex)
@@ -64,9 +69,9 @@ internal sealed class TextDocumentHandler(LanguageServer server) : TextDocumentH
         doc.Text = request.ContentChanges.First().Text;
         if (doc is JMCDocument jmcDoc)
         {
-            _ = JMCParser.TryGenerateTokens(doc.Text, out var tokenChannels);
+            jmcDoc.ParseResult = ServerDocument.GenerateJMCSymbols(doc.Text, out var tokenChannels);
             jmcDoc.TokenChannels = tokenChannels;
-            await ServerDocument.UpdateDocumentAsync(jmcDoc.Uri, jmcDoc);
+            await ServerDocument.UpdateDocumentAsync(jmcDoc);
         }
         Log.Debug($"TextDocumentHandler: DidChangeTextDocument {textDoc.Uri}");
     }

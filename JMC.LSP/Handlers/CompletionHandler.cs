@@ -14,7 +14,7 @@ internal sealed class CompletionHandler : CompletionHandlerBase
     {
         serverCapabilities.CompletionProvider = new()
         {
-            TriggerCharacters = [" ", ","],
+            TriggerCharacters = [" ", ",", "$"],
             ResolveProvider = true,
             CompletionItem = new()
             {
@@ -52,6 +52,12 @@ internal sealed class CompletionHandler : CompletionHandlerBase
 
     public async IAsyncEnumerable<CompletionItem> HandleJMCDocument(JMCDocument doc, CompletionParams request)
     {
+        var triggerChar = request.Context.TriggerCharacter;
+        var triggerKind = request.Context.TriggerKind;
+        if (triggerChar == "$")
+        {
+
+        }
         yield break;
     }
 

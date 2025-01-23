@@ -1,10 +1,14 @@
 ﻿using EmmyLua.LanguageServer.Framework.Protocol.Model;
+using JMC.Parser;
 using Microsoft.Extensions.Caching.Memory;
 using sly.lexer;
+using sly.parser;
 
 namespace JMC.LSP.Types;
 internal static class ServerDocument
 {
+    public const string JMC = "jmc";
+    public const string HJMC = "hjmc";
     private enum DocumentType
     {
         Code, Header
@@ -31,7 +35,7 @@ internal static class ServerDocument
         DocumentType type = ToDocumentType(documentType);
         return type switch
         {
-            DocumentType.Code => await AddCodeDocumentAsync(uri, text),
+            DocumentType.Code => await AddCodeDocumentAsync(uri, text, true),
             _ => throw new NotSupportedException(),
         };
     }
@@ -46,27 +50,50 @@ internal static class ServerDocument
         return Task.FromResult(_cache.Get<IServerDocument>(uri));
     }
 
-    public static async Task<T> UpdateDocumentAsync<T>(DocumentUri uri, T document) where T : IServerDocument
+    public static async Task<T> UpdateDocumentAsync<T>(T document) where T : IServerDocument
     {
-        await RemoveDocumentAsync(uri);
-        return await _cache.GetOrCreateAsync(uri, (e) => Task.FromResult(document)) ?? throw new NullReferenceException();
+        await RemoveDocumentAsync(document.Uri);
+        return await _cache.GetOrCreateAsync(document.Uri, (e) => Task.FromResult(document)) ?? throw new NullReferenceException();
     }
 
     public static async Task<JMCDocument> AddCodeDocumentAsync(
         DocumentUri uri, 
         string text, 
-        TokenChannels<Parser.TokenType>? channels = null)
+        bool generateSymbols = true)
     {
         return await _cache.GetOrCreateAsync(uri, (e) =>
         {
+            TokenChannels<TokenType>? tokenChannels = null;
+            JMCParser.ParseResult? parseResult = generateSymbols 
+                ? GenerateJMCSymbols(text, out tokenChannels)
+                : null;
+
             JMCDocument doc = new()
             {
                 Uri = uri,
                 Text = text,
-                TokenChannels = channels
+                TokenChannels = tokenChannels,
+                ParseResult = parseResult,
             };
             return Task.FromResult(doc);
         });
+    }
+
+    public static JMCParser.ParseResult GenerateJMCSymbols(string text, out TokenChannels<TokenType>? tokenChannels)
+    {
+        var error = JMCParser.TryGenerateTokens(text, out tokenChannels);
+        if (error != null)
+        {
+            throw new NotImplementedException();
+        }
+
+        var result = JMCParser.TryParse(text);
+        return result;
+    }
+
+    public static Task<JMCDocument> AddHeaderDocumentAsync(DocumentUri uri, string text)
+    {
+        throw new NotImplementedException();
     }
 
     /// <summary>

@@ -68,23 +68,6 @@ public static class JMCParser
         return new([], parseResult.Result, r);
     }
 
-    public static ParseResult TryParse(IList<Token<TokenType>> tokens)
-    {
-        ruleInstance.FileDetail.Reset();
-        ParseResult<TokenType, JMCExpression> parseResult = parser.ParseWithContext(tokens);
-        if (parseResult.IsError)
-        {
-            return new(parseResult.Errors, JMCExpression.Empty, null);
-        }
-        var instance = parser.Instance;
-        if (instance is not JMCRuleInstance r)
-        {
-            throw new TypeAccessException($"{instance.GetType().Name} is not valid parser instance");
-        }
-
-        return new([], parseResult.Result, r);
-    }
-
     public static Table GenerateTokenTable(IEnumerable<Token<TokenType>> tokens)
     {
         var table = new Table();
@@ -106,9 +89,9 @@ public static class JMCParser
 
     public readonly struct ParseResult(IEnumerable<ParseError> errors, JMCExpression root, JMCRuleInstance? instance)
     {
-        public readonly ImmutableArray<ParseError> Errors = [.. errors];
-        public readonly JMCExpression Root = root;
-        public readonly JMCRuleInstance? Instance = instance;
+        public readonly ImmutableArray<ParseError> Errors { get; } = [.. errors];
+        public readonly JMCExpression Root { get; } = root;
+        public readonly JMCRuleInstance? Instance { get; } = instance;
 
         public bool IsError => Instance == null;
     }

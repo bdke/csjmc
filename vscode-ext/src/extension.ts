@@ -13,7 +13,8 @@ import {
     LanguageClientOptions,
     ServerOptions,
     TransportKind,
-    Trace
+    Trace,
+    DiagnosticPullMode
 } from "vscode-languageclient/node";
 
 let client: LanguageClient;
@@ -40,20 +41,28 @@ export async function activate(context: ExtensionContext) {
         documentSelector: [
             {
                 pattern: "**/*.jmc",
-                language: "jmc"
+                language: "jmc",
+                scheme: "file"
             },
             {
                 pattern: "**/*.hjmc",
-                language: "hjmc"
+                language: "hjmc",
+                scheme: "file"
             },
         ],
+
         outputChannelName: "JMC Language Server",
         progressOnInitialization: true,
+        diagnosticPullOptions: {
+            onChange: true,
+
+        },
         synchronize: {
             // Synchronize the setting section 'languageServerExample' to the server
             configurationSection: "jmc",
             fileEvents: workspace.createFileSystemWatcher("**/*.jmc"),
         },
+
     };
 
     // Create the language client and start the client.
