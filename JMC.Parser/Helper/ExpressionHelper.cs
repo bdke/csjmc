@@ -16,6 +16,8 @@ public static class ExpressionHelper
     }
 
     public static JMCExpression GetValueOrEmpty(this ValueOption<JMCExpression> valueOption) => valueOption.Match(v => v, () => JMCExpression.Empty);
+    public static Group<T1, T2>? GetValueOrNull<T1, T2>(this ValueOption<Group<T1, T2>> valueOption) where T1 : struct => 
+        valueOption.Match(v => v, () => null!);
 
     public static IEnumerable<JMCExpression> ToExpressions(this IEnumerable<Token<TokenType>> tokens)
     {

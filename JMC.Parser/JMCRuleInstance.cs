@@ -10,7 +10,7 @@ namespace JMC.Parser;
 [ParserRoot("program")]
 public sealed class JMCRuleInstance
 {
-    private const string END = $"{nameof(TokenType.End)}[d]";
+    private const string END = $"[{nameof(TokenType.End)}|{nameof(TokenType.EOF)}][d]";
     private const string IDENTIFIER = nameof(TokenType.Identifier);
     private const string DOT = $"{nameof(TokenType.Dot)}[d]";
     private const string LPAREN = $"{nameof(TokenType.ParenStart)}[d]";
@@ -83,6 +83,7 @@ public sealed class JMCRuleInstance
     [Production("statement: commandBlock")]
     [Production("statement: commandLine")]
     [Production("statement: import")]
+    [Production("statement: ifStatement")]
     public static JMCExpression Statement(JMCExpression exp)
     {
         return exp;
@@ -139,6 +140,22 @@ public sealed class JMCRuleInstance
     {
         funcName.SubExpressions = [funcArgs.Match(v => v, () => JMCExpression.Empty)];
         return funcName;
+    }
+
+    [Production($"ifStatement: {nameof(TokenType.IfKeyword)} {LPAREN} condition {RPAREN} block [elseStatement|elseIfStatement]?")]
+    public static JMCExpression IfStatement(Token<TokenType> keyword, JMCExpression condition, JMCExpression block, ValueOption<JMCExpression> exp)
+    {
+        var root = keyword.ToExpression();
+        var bElse = exp.GetValueOrEmpty();
+        root.SubExpressions = [condition, block, bElse];
+
+        return root;
+    }
+    [Production($"elseStatement: {nameof(TokenType.ElseKeyword)}[d] block")]
+    [Production($"elseIfStatement: {nameof(TokenType.ElseKeyword)}[d] ifStatement")]
+    public static JMCExpression ElseIfStatement(JMCExpression exp)
+    {
+        return exp;
     }
 
     [Production($"commandBlock: {nameof(TokenType.CommandKeyword)} {LBLOCK} command* {RBLOCK}")]
@@ -525,12 +542,37 @@ public sealed class JMCRuleInstance
 
     #endregion
 
+    #region Conditions
+
+    private const string CONDITION_OPERATORS = $"[{nameof(TokenType.And)}|{nameof(TokenType.Or)}|{nameof(TokenType.Equal)}|{nameof(TokenType.NotEqual)}|{nameof(TokenType.LessThan)}|{nameof(TokenType.LessThanOrEqual)}|{nameof(TokenType.GreaterThan)}|{nameof(TokenType.GreaterThanOrEqual)}]";
+    [Production($"conditionOp: {CONDITION_OPERATORS}")]
+    public static JMCExpression ConditionOperators(Token<TokenType> token)
+    {
+        return token.ToExpression();
+    }
+
+    [Production($"condition: value conditionOp subCondition")]
+    public static JMCExpression Condition(JMCExpression value, JMCExpression conditionOp, JMCExpression condition)
+    {
+        var root = value;
+
+        root.SubExpressions = [conditionOp, condition];
+
+        return root;
+    }
+
+    [Production($"condition: value")]
+    [Production($"subCondition: value")]
+    public static JMCExpression Condition(JMCExpression value)
+    {
+        return value;
+    }
+
+    #endregion
+
     #region Values
-    [Production($"assign: [" +
-        $"{nameof(TokenType.Assign)}|{nameof(TokenType.CompareAssign)}|{nameof(TokenType.DivideAssign)}|" +
-        $"{nameof(TokenType.MinusAssign)}|{nameof(TokenType.MultiplyAssign)}|{nameof(TokenType.NullColesleAssign)}|" +
-        $"{nameof(TokenType.PlusAssign)}|{nameof(TokenType.RemainderAssign)}" +
-        $"]")]
+    private const string ASSIGN_TOKENS = $"[{nameof(TokenType.Assign)}|{nameof(TokenType.CompareAssign)}|{nameof(TokenType.DivideAssign)}|{nameof(TokenType.MinusAssign)}|{nameof(TokenType.MultiplyAssign)}|{nameof(TokenType.NullColesleAssign)}|{nameof(TokenType.PlusAssign)}|{nameof(TokenType.RemainderAssign)}]";
+    [Production($"assign: {ASSIGN_TOKENS}")]
     public static JMCExpression Assign(Token<TokenType> token)
     {
         return token.ToExpression();

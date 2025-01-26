@@ -1,2 +1,1 @@
-import test as amogus;
-$test = ["test"];
+test.test();
