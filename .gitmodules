@@ -1,0 +1,3 @@
+[submodule "vanilla-mcdoc"]
+	path = vanilla-mcdoc
+	url = https://github.com/SpyglassMC/vanilla-mcdoc.git
