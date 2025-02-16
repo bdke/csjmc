@@ -135,12 +135,16 @@ public enum TokenType
     NewKeyword,
     [Keyword("null")]
     NullKeyword,
-    [Keyword("command")]
-    CommandKeyword,
     [Keyword("code")]
     CodeKeyword,
     [Keyword("using")]
     UsingKeyword,
+    [Keyword("switch")]
+    SwitchKeyword,
+    [Keyword("case")]
+    CaseKeyword,
+    [Keyword("default")]
+    DefaultKeyword,
     #endregion
 
     #region Import

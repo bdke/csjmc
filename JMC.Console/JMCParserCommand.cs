@@ -63,9 +63,12 @@ public sealed class JMCParserCommand : AsyncCommand<JMCParserCommand.Settings>
         }
 
         //print errors
-        IEnumerable<SyntaxErrorException> errors = result.Errors.Select(v => new SyntaxErrorException(v.ErrorMessage));
-        AggregateException rootError = new(errors);
-        AnsiConsole.WriteException(rootError);
+        IEnumerable<SyntaxErrorException> errors = result.Errors
+            .Select(v => new SyntaxErrorException(v.ErrorMessage));
+        foreach (var error in errors)
+        {
+            AnsiConsole.WriteException(error);
+        }
 
         if (channels == null)
         {

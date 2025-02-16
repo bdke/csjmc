@@ -1,7 +1,10 @@
-﻿using EmmyLua.LanguageServer.Framework.Protocol.Message.Initialize;
+﻿using EmmyLua.LanguageServer.Framework.Protocol.JsonRpc;
+using EmmyLua.LanguageServer.Framework.Protocol.Message.Initialize;
 using EmmyLua.LanguageServer.Framework.Server;
 using JMC.LSP.Handlers;
+using JMC.LSP.Types;
 using System.Net;
+using System.Text.Json;
 
 namespace JMC.LSP;
 public class JMCLanguageServer
@@ -23,6 +26,7 @@ public class JMCLanguageServer
         LanguageServer unused4 = server.AddHandler(new CompletionHandler());
         LanguageServer unused3 = server.AddHandler(new DocumentDiagnosticHandler(server));
         LanguageServer unused2 = server.AddHandler(new WorkspaceDiagnosticHandler());
+        server.RegisterAllRequestMethods();
 
         return server;
     }

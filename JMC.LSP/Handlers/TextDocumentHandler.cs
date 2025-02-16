@@ -6,8 +6,6 @@ using EmmyLua.LanguageServer.Framework.Protocol.Model.TextEdit;
 using EmmyLua.LanguageServer.Framework.Server;
 using EmmyLua.LanguageServer.Framework.Server.Handler;
 using JMC.LSP.Types;
-using JMC.Parser;
-using sly.lexer;
 using System.Diagnostics;
 
 namespace JMC.LSP.Handlers;

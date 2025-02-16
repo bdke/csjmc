@@ -15,18 +15,19 @@ public sealed class JMCServerCommand : AsyncCommand<JMCServerCommand.Settings>
     private LSPServices lspServices = default!;
     public override async Task<int> ExecuteAsync(CommandContext context, Settings settings)
     {
+        //setups
+        ServiceProvider provider = new ServiceCollection()
+            .AddMemoryCache()
+            .BuildServiceProvider();
+        lspServices = new(provider);
 #if DEBUG
         while (!Debugger.IsAttached)
         {
             Debugger.Launch();
             await Task.Delay(100);
         }
+        Debugger.NotifyOfCrossThreadDependency();
 #endif
-        //setups
-        ServiceProvider provider = new ServiceCollection()
-            .AddMemoryCache()
-            .BuildServiceProvider();
-        lspServices = new(provider);
         //logging
         string domainPath = AppDomain.CurrentDomain.BaseDirectory;
         string logPath = Path.Join(domainPath, "Logs", "JMCExtension.log");
@@ -59,11 +60,9 @@ public sealed class JMCServerCommand : AsyncCommand<JMCServerCommand.Settings>
 
     public override ValidationResult Validate(CommandContext context, Settings settings)
     {
-        if (!IPAddress.TryParse(settings.Host, out _))
-        {
-            return ValidationResult.Error("Invalid Host");
-        }
-        return !Enum.IsDefined((ServerMode)settings.Mode) ? ValidationResult.Error("Invalid Mode") : ValidationResult.Success();
+        return !IPAddress.TryParse(settings.Host, out _)
+            ? ValidationResult.Error("Invalid Host")
+            : !Enum.IsDefined((ServerMode)settings.Mode) ? ValidationResult.Error("Invalid Mode") : ValidationResult.Success();
     }
 
     public sealed class Settings : CommandSettings
@@ -76,6 +75,7 @@ public sealed class JMCServerCommand : AsyncCommand<JMCServerCommand.Settings>
         public byte Mode { get; set; } = (byte)ServerMode.Pipe;
     }
 
+    [Flags]
     public enum ServerMode : byte
     {
         Http = 0,

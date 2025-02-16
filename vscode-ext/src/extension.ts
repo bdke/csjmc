@@ -7,14 +7,12 @@
 
 import * as path from "path";
 
-import { workspace, ExtensionContext } from "vscode";
+import { workspace, ExtensionContext, EventEmitter, Uri, Range } from "vscode";
 import {
     LanguageClient,
     LanguageClientOptions,
     ServerOptions,
-    TransportKind,
-    Trace,
-    DiagnosticPullMode
+    Trace
 } from "vscode-languageclient/node";
 
 let client: LanguageClient;
@@ -31,9 +29,15 @@ export async function activate(context: ExtensionContext) {
         debug: {
             command: serverExe,
             args: [serverPath, "server"],
-
         },
     };
+
+    workspace.registerTextDocumentContentProvider("jmc-mcfunc", {
+        async provideTextDocumentContent(uri, token) {
+            console.log(uri);
+            return "";
+        },
+    })
 
     // Options to control the language client
     let clientOptions: LanguageClientOptions = {
@@ -48,9 +52,8 @@ export async function activate(context: ExtensionContext) {
                 pattern: "**/*.hjmc",
                 language: "hjmc",
                 scheme: "file"
-            },
+            }
         ],
-
         outputChannelName: "JMC Language Server",
         progressOnInitialization: true,
         diagnosticPullOptions: {
@@ -62,9 +65,7 @@ export async function activate(context: ExtensionContext) {
             configurationSection: "jmc",
             fileEvents: workspace.createFileSystemWatcher("**/*.jmc"),
         },
-
     };
-
     // Create the language client and start the client.
     client = new LanguageClient("jmcClient", "JMC Language Server", serverOptions, clientOptions);
     client.registerProposedFeatures();

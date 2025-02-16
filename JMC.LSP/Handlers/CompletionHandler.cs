@@ -8,13 +8,14 @@ using System.Collections.Immutable;
 namespace JMC.LSP.Handlers;
 internal sealed class CompletionHandler : CompletionHandlerBase
 {
-    private static readonly ImmutableArray<string> _keywords = ["command", "function", "import", "new", "null", "code", "class", "using", "if", "else", "while", "do", "switch", "true", "false"];
+    private static readonly ImmutableArray<string> KEYWORDS = ["command", "function", "import", "new", "null", "code", "class", "using", "if", "else", "while", "do", "switch", "true", "false"];
+    private static readonly ImmutableArray<string> COMPLETETION_TRIGGERS = [" ", ",", "$"];
 
     public override void RegisterCapability(ServerCapabilities serverCapabilities, ClientCapabilities clientCapabilities)
     {
         serverCapabilities.CompletionProvider = new()
         {
-            TriggerCharacters = [" ", ",", "$"],
+            TriggerCharacters = [.. COMPLETETION_TRIGGERS],
             ResolveProvider = true,
             CompletionItem = new()
             {
@@ -30,17 +31,20 @@ internal sealed class CompletionHandler : CompletionHandlerBase
 
         var completionList = new CompletionList
         {
-            Items = _keywords.Select(v => new CompletionItem()
+            // do not provide keywords for trigger characters
+            Items = COMPLETETION_TRIGGERS.Contains(request.Context.TriggerCharacter ?? string.Empty) 
+            ? KEYWORDS.Select(static v => new CompletionItem()
             {
                 Label = v,
                 InsertText = v,
                 Kind = CompletionItemKind.Keyword,
             }).ToList()
+            : []
         };
         if (doc is JMCDocument jmcDoc)
         {
-            var jmcHandleResult = HandleJMCDocument(jmcDoc, request);
-            await foreach (var item in jmcHandleResult)
+            var jmcHandleResult = HandleJMCDocumentCompletion(jmcDoc, request);
+            foreach (var item in jmcHandleResult)
             {
                 completionList.Items.Add(item);
             }
@@ -50,13 +54,13 @@ internal sealed class CompletionHandler : CompletionHandlerBase
         throw new NotSupportedException();
     }
 
-    public async IAsyncEnumerable<CompletionItem> HandleJMCDocument(JMCDocument doc, CompletionParams request)
+    public IEnumerable<CompletionItem> HandleJMCDocumentCompletion(JMCDocument doc, CompletionParams request)
     {
         var triggerChar = request.Context.TriggerCharacter;
         var triggerKind = request.Context.TriggerKind;
         if (triggerChar == "$")
         {
-
+            //TODO
         }
         yield break;
     }

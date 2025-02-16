@@ -12,7 +12,7 @@ internal struct JMCDocument : IServerDocument
     public TokenChannels<TokenType>? TokenChannels { get; set; }
     public JMCParser.ParseResult? ParseResult { get; set; }
 
-    public readonly (Token<TokenType>, DocumentRange)? GetToken(Parser.Position position)
+    public readonly KeyValuePair<Token<TokenType>, DocumentRange>? GetToken(Parser.Position position)
     {
         if (TokenChannels == null)
         {
@@ -32,11 +32,11 @@ internal struct JMCDocument : IServerDocument
             var range = pos.Join(nextPos);
             if (range.Contains(position))
             {
-                return (token, range);
+                return new(token, range);
             }
         }
         var lastValidToken = tokens[^2];
         var lastTokenPos = (Parser.Position)lastValidToken.Position;
-        return (lastValidToken, new(lastTokenPos, (Parser.Position)tokens[^1].Position));
+        return new(lastValidToken, new(lastTokenPos, (Parser.Position)tokens[^1].Position));
     }
 }
