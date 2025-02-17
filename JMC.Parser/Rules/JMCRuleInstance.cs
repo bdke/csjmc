@@ -187,7 +187,7 @@ public sealed partial class JMCRuleInstance
         };
     }
 
-    [Production($"funcNameArg: {IDENTIFIER} {nameof(TokenType.Colon)}[d] value")]
+    [Production($"funcNameArg: {IDENTIFIER} {COLON} value")]
     public static JMCExpression FuncNamedArg(Token<TokenType> paramName, JMCExpression value)
     {
         var exp = paramName.ToExpression();
@@ -206,6 +206,20 @@ public sealed partial class JMCRuleInstance
             SubExpressions = [.. values],
             Value = NAMED_ARG
         };
+    }
+
+    [Production($"enclosedFuncArgs: {LPAREN} funcArgs? {RPAREN}")]
+    public static JMCExpression EnclosedFuncNameAgs(ValueOption<JMCExpression> funcArgs)
+    {
+        return funcArgs.GetValueOrEmpty();
+    }
+
+    [Production($"subFuncCall: {DOT} {IDENTIFIER} enclosedFuncArgs subFuncCall?")]
+    public static JMCExpression SubFunctionCall(Token<TokenType> identifier, JMCExpression argsExp, ValueOption<JMCExpression> subFuncCall)
+    {
+        var root = identifier.ToExpression();
+        root.SubExpressions = [argsExp, subFuncCall.GetValueOrEmpty()];
+        return root;
     }
 
     #endregion Functions
