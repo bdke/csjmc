@@ -55,10 +55,10 @@ public partial class JMCRuleInstance
         };
     }
 
-    [Production($"funcCall: namespace {LPAREN} funcArgs? {RPAREN} {END}")]
-    public static JMCExpression FunctionCallStatement(JMCExpression funcName, ValueOption<JMCExpression> funcArgs)
+    [Production($"funcCall: namespace enclosedFuncArgs subFuncCall? {END}")]
+    public static JMCExpression FunctionCallStatement(JMCExpression funcName, JMCExpression funcArgs, ValueOption<JMCExpression> subFuncCall)
     {
-        funcName.SubExpressions = [funcArgs.Match(v => v, () => JMCExpression.Empty)];
+        funcName.SubExpressions = [funcArgs, subFuncCall.GetValueOrEmpty()];
         return funcName;
     }
 
@@ -67,10 +67,10 @@ public partial class JMCRuleInstance
         Token<TokenType> keyword,
         JMCExpression condition,
         JMCExpression block,
-        ValueOption<JMCExpression> exp)
+        ValueOption<JMCExpression> elseExp)
     {
         JMCExpression root = keyword.ToExpression();
-        JMCExpression bElse = exp.GetValueOrEmpty();
+        JMCExpression bElse = elseExp.GetValueOrEmpty();
         root.SubExpressions = [condition, block, bElse];
 
         return root;
