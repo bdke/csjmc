@@ -182,6 +182,8 @@ public partial class JMCRuleInstance
     [Production("value: STRING")]
     [Production("value: array")]
     [Production("value: BOOL")]
+    [Production("value: IDENTIFIER")]
+    [Production("value: funcCall")]
     public static JMCExpression Value(JMCExpression expression)
     {
         return expression;
@@ -197,6 +199,14 @@ public partial class JMCRuleInstance
         JMCExpression exp = start.ToExpression();
         exp.SubExpressions = [properties.GetValueOrEmpty()];
         return exp;
+    }
+
+
+    [Production($"funcCall: IDENTIFIER enclosedFuncArgs")]
+    public static JMCExpression FunctionCallStatement(JMCExpression funcName, JMCExpression funcArgs)
+    {
+        funcName.SubExpressions = [funcArgs];
+        return funcName;
     }
 
     [Production($"IDENTIFIER: {IDENTIFIER}")]

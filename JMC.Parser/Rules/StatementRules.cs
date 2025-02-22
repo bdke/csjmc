@@ -19,7 +19,7 @@ public partial class JMCRuleInstance
         };
     }
 
-    [Production($"class: {nameof(TokenType.ClassKeyword)} namespace {LBLOCK} [function|class]* {RBLOCK}")]
+    [Production($"class: {nameof(TokenType.ClassKeyword)} IDENTIFIER {LBLOCK} [function|class]* {RBLOCK}")]
     public static JMCExpression Class(Token<TokenType> keyword, JMCExpression funcName, List<JMCExpression> expressions)
     {
         return new()
@@ -32,15 +32,16 @@ public partial class JMCRuleInstance
     }
 
     [Production($"variableStatement: IDENTIFIER assign value {END}")]
+    [Production($"variableStatement: IDENTIFIER assign al {END}")]
+    [Production($"variableStatement: variable assign value {END}")]
     [Production($"variableStatement: variable assign al {END}")]
-    [Production($"variableStatement: variable assign array {END}")]
     public static JMCExpression VariableStatement(JMCExpression variable, JMCExpression assign, JMCExpression als)
     {
         variable.SubExpressions = [assign, als];
         return variable;
     }
 
-    [Production($"function: {nameof(TokenType.FunctionKeyword)}[d] namespace {LPAREN} funcParams? {RPAREN} block")]
+    [Production($"function: {nameof(TokenType.FunctionKeyword)}[d] IDENTIFIER {LPAREN} funcParams? {RPAREN} block")]
     public static JMCExpression FunctionStatement(
         JMCExpression funcName,
         ValueOption<JMCExpression> funcParams,
@@ -55,12 +56,6 @@ public partial class JMCRuleInstance
         };
     }
 
-    [Production($"funcCall: namespace enclosedFuncArgs subFuncCall? {END}")]
-    public static JMCExpression FunctionCallStatement(JMCExpression funcName, JMCExpression funcArgs, ValueOption<JMCExpression> subFuncCall)
-    {
-        funcName.SubExpressions = [funcArgs, subFuncCall.GetValueOrEmpty()];
-        return funcName;
-    }
 
     [Production($"ifStatement: {nameof(TokenType.IfKeyword)} enclosedConditions block [elseStatement|elseIfStatement]?")]
     public static JMCExpression IfStatement(

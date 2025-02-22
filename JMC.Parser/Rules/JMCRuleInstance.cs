@@ -125,23 +125,6 @@ public sealed partial class JMCRuleInstance
         };
     }
 
-    [Production($"namespace: {IDENTIFIER} ({DOT} {IDENTIFIER})*")]
-    public static JMCExpression Namespace(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
-    {
-        IEnumerable<JMCExpression> rightValues = right.Select(v => v.Token(IDENTIFIER).ToExpression());
-        IEnumerable<JMCExpression> values = new JMCExpression[] { left.ToExpression() }.Concat(rightValues);
-
-        string value = string.Join('.', rightValues.Select(v => v.Value));
-        value = !string.IsNullOrEmpty(value) ? $"{left.Value}.{value}" : left.Value;
-
-        return new()
-        {
-            Position = left.Position,
-            Value = value,
-            SubExpressions = [.. rightValues]
-        };
-    }
-
     [Production($"funcParams: {IDENTIFIER} ({COMMA} {IDENTIFIER})*")]
     public static JMCExpression FuncParams(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
     {
@@ -214,14 +197,6 @@ public sealed partial class JMCRuleInstance
         return funcArgs.GetValueOrEmpty();
     }
 
-    [Production($"subFuncCall: {DOT} {IDENTIFIER} enclosedFuncArgs subFuncCall?")]
-    public static JMCExpression SubFunctionCall(Token<TokenType> identifier, JMCExpression argsExp, ValueOption<JMCExpression> subFuncCall)
-    {
-        var root = identifier.ToExpression();
-        root.SubExpressions = [argsExp, subFuncCall.GetValueOrEmpty()];
-        return root;
-    }
-
     #endregion Functions
 
     #region AL
@@ -231,8 +206,8 @@ public sealed partial class JMCRuleInstance
     {
         IEnumerable<JMCExpression> subExps = right.Select(g =>
         {
-            JMCExpression operand = g.Value("operand");
-            JMCExpression als = g.Value("als");
+            JMCExpression operand = g.Value(0);
+            JMCExpression als = g.Value(1);
             operand.SubExpressions = [als];
             return operand;
         });
@@ -249,14 +224,11 @@ public sealed partial class JMCRuleInstance
         };
     }
 
-    [Production("als: number")]
+    [Production("als: IDENTIFIER")]
     [Production("als: variable")]
     [Production("als: unaryExp")]
-    [Production("als: IDENTIFIER")]
-    public static JMCExpression ALS(JMCExpression als)
-    {
-        return als;
-    }
+    [Production("als: number")]
+    [Production("als: funcCall")]
 
     [Production($"unaryExp: {LPAREN} al {RPAREN}")]
     public static JMCExpression Unary(JMCExpression al)
