@@ -15,16 +15,15 @@ public static class ExpressionHelper
         };
     }
 
-    public static JMCExpression WithExpressions(this JMCExpression exp, params JMCExpression[] exps)
+    public static JMCExpression AddSubExpressions(this JMCExpression exp, params JMCExpression[] exps)
     {
-        exp.SubExpressions = [.. exps];
+        exp.SubExpressions = exp.SubExpressions.AddRange(exps);
         return exp;
     }
 
-    public static JMCExpression WithExpressions(this JMCExpression exp, IEnumerable<JMCExpression> exps)
+    public static JMCExpression AddSubExpressions(this JMCExpression exp, IEnumerable<JMCExpression> exps)
     {
-        exp.SubExpressions = [.. exps];
-        return exp;
+        return AddSubExpressions(exp, exps.ToArray());
     }
 
     public static JMCExpression GetValueOrEmpty(this ValueOption<JMCExpression> valueOption) => valueOption.Match(v => v, () => JMCExpression.Empty);
@@ -34,7 +33,8 @@ public static class ExpressionHelper
     public static JMCExpression ComposeCollectionExpression(this IEnumerable<JMCExpression> values, string collectionName = JMCExpression.KEYWORD_EMPTY)
     {
         var root = JMCExpression.Empty;
-        root.Value = collectionName;
+        root.Description = collectionName;
+        root.Type = ValueType.Collection;
         root.SubExpressions = [.. values];
         return root;
     }
@@ -76,8 +76,8 @@ public static class ExpressionHelper
         string valueType = exp.Type != ValueType.Unspecify ? $"[blue]{exp.Type}[/] " : string.Empty;
         string position = exp.Position.HasValue ? $"[red]{exp.Position}[/] " : string.Empty;
         string value = exp.Value != null ? $"[aqua]{exp.Value}[/] " : string.Empty;
-        string collection = exp.IsCollection ? $"[yellow]Collection[/] " : string.Empty;
         string empty = !exp.HasValue ? $"[yellow]Empty[/]" : string.Empty;
-        return $"{tokenType}{valueType}{value}{position}{collection}{empty}";
+        string desc = exp.Description != string.Empty ? $"[magenta]{exp.Description}[/] " : string.Empty;
+        return $"{tokenType}{valueType}{value}{desc}{position}{empty}";
     }
 }

@@ -24,7 +24,7 @@ public sealed partial class JMCRuleInstance
         {
             Position = new(0, 0),
             SubExpressions = [.. expressions],
-            Value = "Root"
+            Description = "Root"
         };
     }
 
@@ -46,46 +46,42 @@ public sealed partial class JMCRuleInstance
     [Production($"importAlias: {nameof(TokenType.AsKeyword)} {nameof(TokenType.ImportContent)}")]
     public static JMCExpression ImportAlias(Token<TokenType> keyword, Token<TokenType> content)
     {
-        var exp = keyword.ToExpression();
-        exp.SubExpressions = [content.ToExpression()];
-        return exp;
+        return keyword.ToExpression().AddSubExpressions(content.ToExpression());
     }
 
     [Production($"importAlias: {nameof(TokenType.OfKeyword)} {nameof(TokenType.ImportContent)} ({COMMA} {nameof(TokenType.ImportContent)})*")]
     public static JMCExpression ImportAlias(Token<TokenType> keyword, Token<TokenType> content, List<Group<TokenType, JMCExpression>> contents)
     {
-        var exp = keyword.ToExpression();
-        var subExps = new JMCExpression[] { content.ToExpression() }.Concat(contents.Select(v => v.Token(0).ToExpression()));
-        exp.SubExpressions = [.. subExps];
-        return exp;
+        return keyword.ToExpression()
+            .AddSubExpressions(contents.Select(v => v.Token(0).ToExpression()))
+            .AddSubExpressions(content.ToExpression());
     }
 
     [Production($"importContent: {nameof(TokenType.ImportContent)} ({nameof(TokenType.ImportPathSeperator)}[d] {nameof(TokenType.ImportContent)})*")]
     public static JMCExpression ImportContent(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
     {
-        var rightExps = right.Select(v => v.Token(0).ToExpression());
-        var exps = new JMCExpression[] { left.ToExpression() }.Concat(rightExps);
-
         return new()
         {
-            SubExpressions = [.. exps],
-            Value = IMPORT_PATH
+            SubExpressions = [left.ToExpression(), .. right.Select(v => v.Token(0).ToExpression())],
+            Description = IMPORT_PATH
         };
     }
 
     [Production($"import: {nameof(TokenType.ImportKeyword)} importContent? importAlias? {nameof(TokenType.EndImport)}[d]")]
     public static JMCExpression ImportExpression(Token<TokenType> keyword, ValueOption<JMCExpression> content, ValueOption<JMCExpression> alias)
     {
-        var exp = content.Match(v => v, () => JMCExpression.Empty);
-        ImmutableArray<JMCExpression> exps = exp.HasValue ? [exp, alias.Match(v => v, () => JMCExpression.Empty)] : [];
-        var value = exps.IsDefaultOrEmpty ? string.Empty : string.Join('/', exps.Select(v => v.Value));
+        var path = content.GetValueOrEmpty();
+        ImmutableArray<JMCExpression> contents = path.HasValue 
+            ? [path, alias.GetValueOrEmpty()] 
+            : [];
+        var value = contents.IsDefaultOrEmpty ? string.Empty : string.Join('/', contents.Select(v => v.Value));
 
         return new()
         {
             Position = keyword.Position,
-            SubExpressions = exps,
+            SubExpressions = contents,
             TokenType = keyword.TokenID,
-            Value = value
+            Description = value
         };
     }
 
@@ -96,13 +92,14 @@ public sealed partial class JMCRuleInstance
         ValueOption<JMCExpression> content, 
         ValueOption<JMCExpression> alias)
     {
-        var importContent = content.Match(v => v, () => JMCExpression.Empty);
+        var importContent = content.GetValueOrEmpty();
         ImmutableArray<JMCExpression> splitImportContents = importContent.HasValue 
-            ? [importContent, alias.Match(v => v, () => JMCExpression.Empty)] 
+            ? [importContent, alias.GetValueOrEmpty()] 
             : [];
-        var contentValue = splitImportContents[0].SubExpressions.IsDefaultOrEmpty 
-            ? string.Empty 
-            : string.Join('/', splitImportContents[0].SubExpressions.Select(v => v.Value));
+        var hasExtraPath = splitImportContents[0].SubExpressions.IsDefaultOrEmpty;
+        var contentValue = hasExtraPath
+            ? string.Join('/', splitImportContents[0].SubExpressions.Select(v => v.Value)) 
+            : string.Empty;
         var codeExp = codeKeyword.ToExpression();
         var importExp = importKeyword.ToExpression();
         importExp.Value = contentValue;
@@ -116,38 +113,22 @@ public sealed partial class JMCRuleInstance
     [Production($"lambdaFunction: {LPAREN} funcParams? {RPAREN} {nameof(TokenType.Arrow)}[d] block")]
     public static JMCExpression LambdaFunction(ValueOption<JMCExpression> funcParams, JMCExpression block)
     {
-        return new()
-        {
-            SubExpressions = [funcParams.GetValueOrEmpty(), block],
-            Value = LAMBDA_FUNCTION
-        };
+        return JMCExpression.ComposeCollection(LAMBDA_FUNCTION, funcParams.GetValueOrEmpty(), block);
     }
 
     [Production($"funcParams: {IDENTIFIER} ({COMMA} {IDENTIFIER})*")]
     public static JMCExpression FuncParams(Token<TokenType> left, List<Group<TokenType, JMCExpression>> right)
     {
-        IEnumerable<JMCExpression> additionalParams = right
-            .Select(v => v.Token(IDENTIFIER).ToExpression());
-        IEnumerable<JMCExpression> allParams = new JMCExpression[] { left.ToExpression() }.Concat(additionalParams);
-
-        return new()
-        {
-            Value = FUNC_PARAMS,
-            SubExpressions = [.. allParams]
-        };
+        return JMCExpression
+            .ComposeCollection(FUNC_PARAMS, left.ToExpression())
+            .AddSubExpressions(right.Select(v => v.Token(IDENTIFIER).ToExpression()));
     }
 
     [Production($"funcArgs: funcArg ({COMMA} funcNameArgs)?")]
     public static JMCExpression FuncArgs(JMCExpression funcArg, ValueOption<Group<TokenType, JMCExpression>> namedArgs)
     {
-        Group<TokenType, JMCExpression> nArgsValue = namedArgs.Match(v => v, () => null!);
-        ImmutableArray<JMCExpression> values = nArgsValue == null ? [funcArg] : [funcArg, nArgsValue.Value(0)];
-
-        return new()
-        {
-            SubExpressions = values,
-            Value = ROOT_ARG
-        };
+        return JMCExpression
+            .ComposeCollection(ROOT_ARG, funcArg, namedArgs.Match(v => v.Value(0), () => JMCExpression.Empty));
     }
 
     [Production($"funcArgs: funcNameArgs")]
@@ -159,30 +140,21 @@ public sealed partial class JMCRuleInstance
     [Production($"funcArg: value ({COMMA} value)*")]
     public static JMCExpression FuncArg(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
     {
-        var subValues = right.SelectMany(v => v.Items.Select(v => v.Value));
-        return new()
-        {
-            SubExpressions = [left, ..subValues],
-            Value = NORMAL_ARG
-        };
+        return JMCExpression.ComposeCollection(NORMAL_ARG, left)
+            .AddSubExpressions(right.SelectMany(v => v.Items.Select(v => v.Value)));
     }
 
     [Production($"funcNameArg: {IDENTIFIER} {COLON} value")]
     public static JMCExpression FuncNamedArg(Token<TokenType> paramName, JMCExpression value)
     {
-        return paramName.ToExpression().WithExpressions(value);
+        return paramName.ToExpression().AddSubExpressions(value);
     }
 
     [Production($"funcNameArgs: funcNameArg ({COMMA} funcNameArg)*")]
     public static JMCExpression FuncNamedArgs(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
     {
-        IEnumerable<JMCExpression> subValues = right.Select(v => v.Value(0));
-
-        return new()
-        {
-            SubExpressions = [left, ..subValues],
-            Value = NAMED_ARG
-        };
+        return JMCExpression.ComposeCollection(NAMED_ARG, left)
+            .AddSubExpressions(right.Select(v => v.Value(0)));
     }
 
     [Production($"enclosedFuncArgs: {LPAREN} funcArgs? {RPAREN}")]
@@ -211,7 +183,8 @@ public sealed partial class JMCRuleInstance
 
         return new()
         {
-            Value = AL_ROOT,
+            Description = AL_ROOT,
+            Type = ValueType.Collection,
             SubExpressions = [pExp, ..subExps],
         };
     }
@@ -240,7 +213,6 @@ public sealed partial class JMCRuleInstance
         return token.ToExpression();
     }
     #endregion
-
 
     #region Conditions
 

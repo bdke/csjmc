@@ -10,36 +10,26 @@ public struct JMCExpression()
     public Position Position { get; set; } = Position.Empty;
     public ImmutableArray<JMCExpression> SubExpressions { get; set; } = [];
     public TokenType? TokenType { get; set; } = null;
+    public ValueType Type { get; internal set; } = ValueType.Unspecify;
+    public string Description { get; internal set; } = string.Empty;
 
-    public static JMCExpression Empty => new() { Position = new(-1, -1), Value = KEYWORD_EMPTY };
+    public static JMCExpression Empty => new() { Position = new(-1, -1), Description = KEYWORD_EMPTY };
     public readonly bool HasValue => Position.HasValue || !SubExpressions.IsDefaultOrEmpty;
-    public readonly bool IsCollection => 
-        !Position.HasValue && !SubExpressions.IsDefaultOrEmpty;
+    public readonly bool IsCollection => Type == ValueType.Collection;
     public readonly bool IsCollectionOrEmpty => IsCollection || !HasValue;
 
-    public ValueType Type { get; internal set; } = ValueType.Unspecify;
-
-    public static JMCExpression ComposeCollection(params JMCExpression[] exps)
+    public static JMCExpression ComposeCollection(string collectionName = KEYWORD_EMPTY, params JMCExpression[] exps)
     {
         var root = Empty;
         root.SubExpressions = [.. exps];
+        root.Type = ValueType.Collection;
+        root.Description = collectionName;
         return root;
     }
 
-    public static JMCExpression ComposeCollection(IEnumerable<JMCExpression> exps)
+    public static JMCExpression ComposeCollection(string collectionName, IEnumerable<JMCExpression> exps)
     {
-        return ComposeCollection(exps.ToArray());
-    }
-
-    public JMCExpression AddToCollection(params JMCExpression[] exps)
-    {
-        SubExpressions = SubExpressions.AddRange(exps);
-        return this;
-    }
-
-    public JMCExpression AddToCollection(IEnumerable<JMCExpression> exps)
-    {
-        return AddToCollection(exps.ToArray());
+        return ComposeCollection(collectionName, exps.ToArray());
     }
 
     public static bool operator ==(JMCExpression left, JMCExpression right)

@@ -2,7 +2,6 @@
 using sly.lexer;
 using sly.parser.generator;
 using sly.parser.parser;
-using System.Collections.Immutable;
 using static JMC.Parser.Rules.RuleConstants;
 
 namespace JMC.Parser.Rules;
@@ -49,7 +48,6 @@ public partial class JMCRuleInstance
         return new()
         {
             Position = dollarSign.Position,
-            TokenType = dollarSign.TokenID,
             Type = ValueType.Variable,
             Value = value,
             SubExpressions = [identifier.ToExpression()]
@@ -62,7 +60,6 @@ public partial class JMCRuleInstance
         return new()
         {
             Position = dollarSign.Position,
-            TokenType = TokenType.Identifier,
             Type = ValueType.Variable,
             Value = string.Join(",", identifiers.Select(v => v.Value)),
             SubExpressions = [.. identifiers]
@@ -72,12 +69,11 @@ public partial class JMCRuleInstance
     [Production($"defaultString: {STRING_START_KEEP} {STRING_VALUE}* {STRING_END}")]
     public static JMCExpression DefaultString(Token<TokenType> start, List<Token<TokenType>> strValues)
     {
-        ImmutableArray<JMCExpression> exps = [.. strValues.ToExpressions()];
         return new()
         {
             Position = start.Position,
             Value = VALUE_STRING,
-            SubExpressions = exps
+            SubExpressions = [.. strValues.ToExpressions()]
         };
     }
 
@@ -136,13 +132,10 @@ public partial class JMCRuleInstance
     [Production($"arrayElem: value ({COMMA} value)*")]
     public static JMCExpression ArrayElement(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
     {
-        var rightValues = right.Select(v => v.Value(0));
-        ImmutableArray<JMCExpression> exps = [left, .. right.Select(v => v.Value(0))];
-
         return new()
         {
             Value = ARRAY_ELEMS,
-            SubExpressions = exps
+            SubExpressions = [left, .. right.Select(v => v.Value(0))]
         };
     }
 
@@ -195,14 +188,11 @@ public partial class JMCRuleInstance
     [Production($"propertyValue: objectValue ({DOT} [funcCall|IDENTIFIER])+")]
     public static JMCExpression PropertyValue(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
     {
-        var root = left;
-
         var props = right
             .Select(v => v.Value(0))
             .ComposeCollectionExpression();
-        root.SubExpressions = [..left.SubExpressions, props];
-
-        return root;
+        left.AddSubExpressions(props);
+        return left;
     }
 
     [Production($"selector: {nameof(TokenType.SelectorSelf)} quotedProps?")]
@@ -212,9 +202,7 @@ public partial class JMCRuleInstance
     [Production($"selector: {nameof(TokenType.SelectorRandomPlayer)} quotedProps?")]
     public static JMCExpression Selector(Token<TokenType> start, ValueOption<JMCExpression> properties)
     {
-        JMCExpression exp = start.ToExpression();
-        exp.SubExpressions = [properties.GetValueOrEmpty()];
-        return exp;
+        return start.ToExpression().AddSubExpressions(properties.GetValueOrEmpty());
     }
 
 
