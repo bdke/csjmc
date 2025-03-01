@@ -43,28 +43,29 @@ public partial class JMCRuleInstance
     [Production($"variable: {nameof(TokenType.DollarSign)} {IDENTIFIER}")]
     public JMCExpression Variable(Token<TokenType> dollarSign, Token<TokenType> identifier)
     {
-        string value = $"${identifier.Value}";
-
+        string value = identifier.Value;
         _ = FileDetail.ScoreboardVariables.Add(value);
 
         return new()
         {
             Position = dollarSign.Position,
             TokenType = dollarSign.TokenID,
-            Value = value
+            Type = ValueType.Variable,
+            Value = value,
+            SubExpressions = [identifier.ToExpression()]
         };
     }
 
-    [Production($"variable: {nameof(TokenType.DollarSign)} {LBLOCK} {IDENTIFIER}* {RBLOCK}")]
-    public static JMCExpression Variable(Token<TokenType> dollarSign, List<Token<TokenType>> identifiers)
+    [Production($"variable: {nameof(TokenType.DollarSign)} {LBLOCK} IDENTIFIER* {RBLOCK}")]
+    public static JMCExpression Variable(Token<TokenType> dollarSign, List<JMCExpression> identifiers)
     {
-        IEnumerable<JMCExpression> exps = identifiers.Select(v => v.ToExpression());
         return new()
         {
             Position = dollarSign.Position,
-            TokenType = dollarSign.TokenID,
+            TokenType = TokenType.Identifier,
+            Type = ValueType.Variable,
             Value = string.Join(",", identifiers.Select(v => v.Value)),
-            SubExpressions = [.. exps]
+            SubExpressions = [.. identifiers]
         };
     }
 
@@ -176,17 +177,32 @@ public partial class JMCRuleInstance
         return value.ToExpression();
     }
 
-    [Production("value: lambdaFunction")]
-    [Production("value: number")]
-    [Production("value: variable")]
-    [Production("value: STRING")]
-    [Production("value: array")]
-    [Production("value: BOOL")]
-    [Production("value: IDENTIFIER")]
-    [Production("value: funcCall")]
+    [Production("objectValue: lambdaFunction")]
+    [Production("objectValue: number")]
+    [Production("objectValue: variable")]
+    [Production("objectValue: STRING")]
+    [Production("objectValue: array")]
+    [Production("objectValue: BOOL")]
+    [Production("objectValue: IDENTIFIER")]
+    [Production("objectValue: funcCall")]
+    [Production("value: objectValue")]
+    [Production("value: propertyValue")]
     public static JMCExpression Value(JMCExpression expression)
     {
         return expression;
+    }
+
+    [Production($"propertyValue: objectValue ({DOT} [funcCall|IDENTIFIER])+")]
+    public static JMCExpression PropertyValue(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
+    {
+        var root = left;
+
+        var props = right
+            .Select(v => v.Value(0))
+            .ComposeCollectionExpression();
+        root.SubExpressions = [..left.SubExpressions, props];
+
+        return root;
     }
 
     [Production($"selector: {nameof(TokenType.SelectorSelf)} quotedProps?")]
@@ -206,12 +222,15 @@ public partial class JMCRuleInstance
     public static JMCExpression FunctionCallStatement(JMCExpression funcName, JMCExpression funcArgs)
     {
         funcName.SubExpressions = [funcArgs];
+        funcName.Type = ValueType.Function;
         return funcName;
     }
 
     [Production($"IDENTIFIER: {IDENTIFIER}")]
     public static JMCExpression Identifier(Token<TokenType> token)
     {
-        return token.ToExpression();
+        var identifier = token.ToExpression();
+        identifier.Type = ValueType.Constant;
+        return identifier;
     }
 }

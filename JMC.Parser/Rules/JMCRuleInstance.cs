@@ -116,11 +116,9 @@ public sealed partial class JMCRuleInstance
     [Production($"lambdaFunction: {LPAREN} funcParams? {RPAREN} {nameof(TokenType.Arrow)}[d] block")]
     public static JMCExpression LambdaFunction(ValueOption<JMCExpression> funcParams, JMCExpression block)
     {
-        JMCExpression funcParamsValue = funcParams.Match(v => v, () => JMCExpression.Empty);
-
         return new()
         {
-            SubExpressions = [funcParamsValue, block],
+            SubExpressions = [funcParams.GetValueOrEmpty(), block],
             Value = LAMBDA_FUNCTION
         };
     }
@@ -161,11 +159,10 @@ public sealed partial class JMCRuleInstance
     [Production($"funcArg: value ({COMMA} value)*")]
     public static JMCExpression FuncArg(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
     {
-        IEnumerable<JMCExpression> values = new JMCExpression[] { left }.Concat(right.SelectMany(v => v.Items.Select(v => v.Value)));
-
+        var subValues = right.SelectMany(v => v.Items.Select(v => v.Value));
         return new()
         {
-            SubExpressions = [.. values],
+            SubExpressions = [left, ..subValues],
             Value = NORMAL_ARG
         };
     }
@@ -173,20 +170,17 @@ public sealed partial class JMCRuleInstance
     [Production($"funcNameArg: {IDENTIFIER} {COLON} value")]
     public static JMCExpression FuncNamedArg(Token<TokenType> paramName, JMCExpression value)
     {
-        var exp = paramName.ToExpression();
-        exp.SubExpressions = [value];
-        return exp;
+        return paramName.ToExpression().WithExpressions(value);
     }
 
     [Production($"funcNameArgs: funcNameArg ({COMMA} funcNameArg)*")]
     public static JMCExpression FuncNamedArgs(JMCExpression left, List<Group<TokenType, JMCExpression>> right)
     {
-        IEnumerable<JMCExpression> rightValues = right.Select(v => v.Value("funcNameArg"));
-        IEnumerable<JMCExpression> values = new JMCExpression[] { left }.Concat(rightValues);
+        IEnumerable<JMCExpression> subValues = right.Select(v => v.Value(0));
 
         return new()
         {
-            SubExpressions = [.. values],
+            SubExpressions = [left, ..subValues],
             Value = NAMED_ARG
         };
     }
@@ -212,23 +206,22 @@ public sealed partial class JMCRuleInstance
             return operand;
         });
 
-        JMCExpression pExp = prefix.Match(v => v, () => JMCExpression.Empty);
+        JMCExpression pExp = prefix.GetValueOrEmpty();
         pExp.SubExpressions = [left];
-
-        IEnumerable<JMCExpression> exps = new JMCExpression[] { pExp }.Concat(subExps);
 
         return new()
         {
             Value = AL_ROOT,
-            SubExpressions = [.. exps],
+            SubExpressions = [pExp, ..subExps],
         };
     }
 
-    [Production("als: IDENTIFIER")]
-    [Production("als: variable")]
     [Production("als: unaryExp")]
-    [Production("als: number")]
-    [Production("als: funcCall")]
+    [Production("als: value")]
+    public static JMCExpression ALS(JMCExpression als)
+    {
+        return als;
+    }
 
     [Production($"unaryExp: {LPAREN} al {RPAREN}")]
     public static JMCExpression Unary(JMCExpression al)

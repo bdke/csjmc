@@ -37,8 +37,10 @@ public partial class JMCRuleInstance
     [Production($"variableStatement: variable assign al {END}")]
     public static JMCExpression VariableStatement(JMCExpression variable, JMCExpression assign, JMCExpression als)
     {
-        variable.SubExpressions = [assign, als];
-        return variable;
+        var root = JMCExpression.Empty;
+        root.Value = "VariableStatement";
+        root.SubExpressions = [variable ,assign, als];
+        return root;
     }
 
     [Production($"function: {nameof(TokenType.FunctionKeyword)}[d] IDENTIFIER {LPAREN} funcParams? {RPAREN} block")]
@@ -50,7 +52,7 @@ public partial class JMCRuleInstance
         return new()
         {
             Position = funcName.Position,
-            SubExpressions = [funcParams.Match(v => v, () => JMCExpression.Empty), block],
+            SubExpressions = [funcParams.GetValueOrEmpty(), block],
             TokenType = TokenType.FunctionKeyword,
             Value = funcName.Value,
         };
@@ -64,11 +66,7 @@ public partial class JMCRuleInstance
         JMCExpression block,
         ValueOption<JMCExpression> elseExp)
     {
-        JMCExpression root = keyword.ToExpression();
-        JMCExpression bElse = elseExp.GetValueOrEmpty();
-        root.SubExpressions = [condition, block, bElse];
-
-        return root;
+        return keyword.ToExpression().WithExpressions(condition, block, elseExp.GetValueOrEmpty());
     }
 
     [Production($"elseStatement: {nameof(TokenType.ElseKeyword)}[d] block")]
@@ -81,58 +79,36 @@ public partial class JMCRuleInstance
     [Production($"whileStatement: {nameof(TokenType.WhileKeyword)} enclosedConditions block")]
     public static JMCExpression WhileStatement(Token<TokenType> keyword, JMCExpression conditions, JMCExpression block)
     {
-        JMCExpression root = keyword.ToExpression();
-
-        root.SubExpressions = [conditions, block];
-
-        return root;
+        return keyword.ToExpression().WithExpressions(conditions, block);
     }
 
     [Production($"doWhileStatement: {nameof(TokenType.DoKeyword)} block {nameof(TokenType.WhileKeyword)}[d] enclosedConditions {END}")]
     public static JMCExpression DoStatement(Token<TokenType> keyword, JMCExpression block, JMCExpression conditions)
     {
-        JMCExpression root = keyword.ToExpression();
-
-        root.SubExpressions = [conditions, block];
-
-        return root;
+        return keyword.ToExpression().WithExpressions(conditions, block);
     }
 
     [Production($"switchStatement: {nameof(TokenType.SwitchKeyword)} enclosedConditions switchBlock")]
     public static JMCExpression SwitchStatement(Token<TokenType> keywprd, JMCExpression conditions, JMCExpression block)
     {
-        JMCExpression root = keywprd.ToExpression();
-        root.SubExpressions = [conditions, block];
-        return root;
+        return keywprd.ToExpression().WithExpressions(conditions, block);
     }
 
     [Production($"switchBlock: {LBLOCK} caseBlock* defaultCaseBlock? {RBLOCK}")]
     public static JMCExpression SwitchBlock(List<JMCExpression> cases, ValueOption<JMCExpression> defaultCase)
     {
-        JMCExpression root = JMCExpression.Empty;
-
-        root.SubExpressions = [.. cases, defaultCase.GetValueOrEmpty()];
-
-        return root;
+        return JMCExpression.ComposeCollection(cases).AddToCollection(defaultCase.GetValueOrEmpty());
     }
 
     [Production($"caseBlock: {nameof(TokenType.CaseKeyword)} conditions {nameof(TokenType.Colon)}[d] block")]
     public static JMCExpression CaseBlock(Token<TokenType> keyword, JMCExpression conditions, JMCExpression block)
     {
-        var root = keyword.ToExpression();
-
-        root.SubExpressions = [conditions, block];
-
-        return root;
+        return keyword.ToExpression().WithExpressions(conditions, block);
     }
 
     [Production($"defaultCaseBlock: {nameof(TokenType.DefaultKeyword)} {nameof(TokenType.Colon)}[d] block")]
     public static JMCExpression DefaultCaseBlock(Token<TokenType> keyword, JMCExpression block)
     {
-        var root = keyword.ToExpression();
-
-        root.SubExpressions = [block];
-
-        return root;
+        return keyword.ToExpression().WithExpressions(block);
     }
 }

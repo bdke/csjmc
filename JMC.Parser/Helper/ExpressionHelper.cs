@@ -15,9 +15,29 @@ public static class ExpressionHelper
         };
     }
 
+    public static JMCExpression WithExpressions(this JMCExpression exp, params JMCExpression[] exps)
+    {
+        exp.SubExpressions = [.. exps];
+        return exp;
+    }
+
+    public static JMCExpression WithExpressions(this JMCExpression exp, IEnumerable<JMCExpression> exps)
+    {
+        exp.SubExpressions = [.. exps];
+        return exp;
+    }
+
     public static JMCExpression GetValueOrEmpty(this ValueOption<JMCExpression> valueOption) => valueOption.Match(v => v, () => JMCExpression.Empty);
     public static Group<T1, T2>? GetValueOrNull<T1, T2>(this ValueOption<Group<T1, T2>> valueOption) where T1 : struct => 
         valueOption.Match(v => v, () => null!);
+
+    public static JMCExpression ComposeCollectionExpression(this IEnumerable<JMCExpression> values, string collectionName = JMCExpression.KEYWORD_EMPTY)
+    {
+        var root = JMCExpression.Empty;
+        root.Value = collectionName;
+        root.SubExpressions = [.. values];
+        return root;
+    }
 
     public static IEnumerable<JMCExpression> ToExpressions(this IEnumerable<Token<TokenType>> tokens)
     {
@@ -52,11 +72,12 @@ public static class ExpressionHelper
 
     private static string GenerateTreeInfo(this JMCExpression exp)
     {
-        string type = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
+        string tokenType = exp.TokenType != null ? $"[green]{exp.TokenType}[/] " : string.Empty;
+        string valueType = exp.Type != ValueType.Unspecify ? $"[blue]{exp.Type}[/] " : string.Empty;
         string position = exp.Position.HasValue ? $"[red]{exp.Position}[/] " : string.Empty;
         string value = exp.Value != null ? $"[aqua]{exp.Value}[/] " : string.Empty;
-        string collection = exp.IsCollection ? $"[yellow]Collection[/]" : string.Empty;
+        string collection = exp.IsCollection ? $"[yellow]Collection[/] " : string.Empty;
         string empty = !exp.HasValue ? $"[yellow]Empty[/]" : string.Empty;
-        return $"{type}{value}{position}{collection}{empty}";
+        return $"{tokenType}{valueType}{value}{position}{collection}{empty}";
     }
 }
